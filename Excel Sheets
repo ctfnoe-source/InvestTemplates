@@ -1,97 +1,331 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InvestTemplates | Plantillas Excel de Inversión Premium</title>
-    <meta name="description" content="Plantillas Excel profesionales para inversión en bolsa y finanzas personales. Trackers de portafolio, análisis de acciones, calculadoras ROI y presupuestos listos para usar.">
-    <meta name="keywords" content="plantillas excel inversión, trackers portafolio excel, plantillas finanzas personales, excel bolsa de valores, calculadora ROI excel, tracker inversiones">
-    <meta name="author" content="InvestTemplates">
-    <meta property="og:title" content="InvestTemplates | Plantillas Excel de Inversión Premium">
-    <meta property="og:description" content="Multiplica tu dinero con plantillas Excel profesionales para inversión y finanzas personales.">
-    <meta property="og:type" content="website">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        display: ['Space Grotesk', 'sans-serif'],
-                        body: ['DM Sans', 'sans-serif'],
-                    },
-                    colors: {
-                        dark: {
-                            bg: '#060a12',
-                            card: '#0d1421',
-                            border: '#1e293b',
-                        },
-                        accent: {
-                            emerald: '#10b981',
-                            cyan: '#06b6d4',
-                            gold: '#f59e0b',
-                        }
-                    }
-                }
-            }
+  <!-- ===================== -->
+  <!-- META / SEO -->
+  <!-- ===================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InvestTemplates | Plantillas Excel de Inversión y Finanzas</title>
+  <meta name="description" content="Plantillas Excel premium para inversión en bolsa y finanzas personales. Trackers de portafolio, análisis de acciones, ROI, presupuestos y más." />
+  <meta name="keywords" content="plantillas excel inversión, trackers portafolio excel, finanzas personales excel, inversión bolsa excel" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://via.placeholder.com/32x32?text=$" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#10b981',
+            darkbg: '#0f172a'
+          }
         }
-    </script>
-    
-    <style>
-        :root {
-            --bg: #f8fafc;
-            --bg-secondary: #ffffff;
-            --fg: #0f172a;
-            --fg-muted: #64748b;
-            --accent: #10b981;
-            --accent-secondary: #06b6d4;
-            --card: #ffffff;
-            --border: #e2e8f0;
-            --glow: rgba(16, 185, 129, 0.15);
-        }
-        
-        .dark {
-            --bg: #060a12;
-            --bg-secondary: #0d1421;
-            --fg: #f1f5f9;
-            --fg-muted: #94a3b8;
-            --accent: #10b981;
-            --accent-secondary: #06b6d4;
-            --card: #0d1421;
-            --border: #1e293b;
-            --glow: rgba(16, 185, 129, 0.2);
-        }
-        
-        * {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background-color: var(--bg);
-            color: var(--fg);
-            overflow-x: hidden;
-        }
-        
-        .font-display {
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        
-        /* Background Effects */
-        .hero-bg {
-            background: 
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(16, 185, 129, 0.15), transparent),
-                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(6, 182, 212, 0.1), transparent),
-                var(--bg);
-        }
-        
-        .dark .hero-bg {
-            background: 
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(16, 185, 129, 0.2), transparent),
-                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(6
+      }
+    }
+  </script>
+
+  <!-- Smooth Scroll -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-slate-800 dark:bg-darkbg dark:text-slate-200 transition-colors duration-300">
+
+<!-- ===================== -->
+<!-- NAVBAR -->
+<!-- ===================== -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-darkbg/80 backdrop-blur border-b border-slate-200 dark:border-slate-700">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold text-primary">InvestTemplates</h1>
+    <div class="flex items-center gap-4">
+      <a href="#precios" class="hidden sm:block font-medium hover:text-primary">Precios</a>
+      <button id="themeToggle" class="text-lg hover:text-primary">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Spacer -->
+<div class="h-20"></div>
+
+<!-- ===================== -->
+<!-- HERO -->
+<!-- ===================== -->
+<section class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center fade-in">
+  <div>
+    <h2 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
+      Multiplica tu dinero con <span class="text-primary">plantillas Excel profesionales</span>
+    </h2>
+    <p class="text-lg text-slate-600 dark:text-slate-400 mb-8">
+      Trackers de portafolio, análisis de acciones, calculadoras ROI y presupuestos listos para usar.
+    </p>
+    <a href="#precios"
+      class="inline-block bg-primary text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:scale-105 transition-transform">
+      Ver plantillas →
+    </a>
+  </div>
+
+  <div class="relative">
+    <img src="https://via.placeholder.com/900x600?text=Dashboard+Excel+Finanzas"
+      alt="Plantillas Excel Inversión"
+      class="rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700">
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- FEATURES -->
+<!-- ===================== -->
+<section class="bg-slate-50 dark:bg-slate-900 py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <h3 class="text-3xl font-bold text-center mb-12">Todo lo que necesitas para invertir mejor</h3>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="feature-card">
+        <i class="fa-solid fa-chart-line"></i>
+        <h4>Gráficos Integrados</h4>
+        <p>Visualiza rendimiento, drawdowns y evolución del portafolio.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class="fa-solid fa-rotate"></i>
+        <h4>Actualización Automática</h4>
+        <p>Precios y métricas listas para actualizarse fácilmente.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class="fa-solid fa-sliders"></i>
+        <h4>100% Personalizable</h4>
+        <p>Adapta las plantillas a tu estrategia y objetivos.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class="fa-solid fa-file-excel"></i>
+        <h4>Excel & Google Sheets</h4>
+        <p>Compatible con Excel y exportable a Google Sheets.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class="fa-solid fa-shield-halved"></i>
+        <h4>Gestión de Riesgo</h4>
+        <p>Controla drawdown, exposición y diversificación.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class="fa-solid fa-bolt"></i>
+        <h4>Listo para usar</h4>
+        <p>Sin fórmulas complejas, todo está preparado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- GALERÍA -->
+<!-- ===================== -->
+<section class="max-w-7xl mx-auto px-6 py-24">
+  <h3 class="text-3xl font-bold text-center mb-12">Vista previa de las plantillas</h3>
+
+  <div class="grid md:grid-cols-2 gap-8">
+    <img class="gallery-img" src="https://via.placeholder.com/800x500?text=Plantilla+Portafolio" />
+    <img class="gallery-img" src="https://via.placeholder.com/800x500?text=Análisis+Acciones" />
+    <img class="gallery-img" src="https://via.placeholder.com/800x500?text=Presupuesto+Personal" />
+    <img class="gallery-img" src="https://via.placeholder.com/800x500?text=ROI+y+Cashflow" />
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- PRICING -->
+<!-- ===================== -->
+<section id="precios" class="bg-slate-50 dark:bg-slate-900 py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <h3 class="text-3xl font-bold text-center mb-12">Planes y precios</h3>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Básico -->
+      <div class="pricing-card">
+        <h4>Básico</h4>
+        <p class="price">$9</p>
+        <ul>
+          <li>✔ Tracker simple</li>
+          <li>✔ Gráficos básicos</li>
+          <li>✔ Uso personal</li>
+        </ul>
+        <a href="https://gumroad.com/l/ejemplo-plantilla" class="btn">Comprar ahora</a>
+      </div>
+
+      <!-- Pro -->
+      <div class="pricing-card featured">
+        <h4>Pro</h4>
+        <p class="price">$19</p>
+        <ul>
+          <li>✔ Todo en Básico</li>
+          <li>✔ Análisis avanzado</li>
+          <li>✔ Gestión de riesgo</li>
+          <li>✔ Soporte prioritario</li>
+        </ul>
+        <a href="https://gumroad.com/l/ejemplo-plantilla" class="btn">Comprar ahora</a>
+      </div>
+
+      <!-- Bundle -->
+      <div class="pricing-card">
+        <h4>Bundle</h4>
+        <p class="price">$39</p>
+        <ul>
+          <li>✔ Todas las plantillas</li>
+          <li>✔ Actualizaciones futuras</li>
+          <li>✔ Licencia comercial</li>
+        </ul>
+        <a href="https://gumroad.com/l/ejemplo-plantilla" class="btn">Comprar ahora</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- TESTIMONIOS -->
+<!-- ===================== -->
+<section class="max-w-7xl mx-auto px-6 py-24">
+  <h3 class="text-3xl font-bold text-center mb-12">Lo que dicen nuestros clientes</h3>
+
+  <div class="grid md:grid-cols-3 gap-8">
+    <blockquote class="testimonial">
+      ⭐⭐⭐⭐⭐
+      <p>“Ahora tengo control total de mi portafolio. Brutal.”</p>
+      <span>— Carlos M.</span>
+    </blockquote>
+
+    <blockquote class="testimonial">
+      ⭐⭐⭐⭐⭐
+      <p>“Las mejores plantillas financieras que he usado.”</p>
+      <span>— Laura G.</span>
+    </blockquote>
+
+    <blockquote class="testimonial">
+      ⭐⭐⭐⭐⭐
+      <p>“Profesional, claro y muy fácil de usar.”</p>
+      <span>— Andrés R.</span>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- FOOTER -->
+<!-- ===================== -->
+<footer class="bg-slate-900 text-slate-400 py-10">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+    <p>© 2026 InvestTemplates. Todos los derechos reservados.</p>
+    <div class="flex gap-4 text-xl">
+      <a href="#" class="hover:text-primary"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#" class="hover:text-primary"><i class="fa-brands fa-instagram"></i></a>
+      <a href="mailto:contacto@investtemplates.com" class="hover:text-primary">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== -->
+<!-- STYLES COMPONENTES -->
+<!-- ===================== -->
+<style>
+  .feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    transition: transform .3s;
+  }
+  .dark .feature-card {
+    background: #020617;
+  }
+  .feature-card:hover {
+    transform: translateY(-6px);
+  }
+  .feature-card i {
+    font-size: 2rem;
+    color: #10b981;
+    margin-bottom: 1rem;
+  }
+
+  .gallery-img {
+    border-radius: 1rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,.2);
+  }
+
+  .pricing-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 1.25rem;
+    text-align: center;
+  }
+  .dark .pricing-card {
+    background: #020617;
+  }
+  .pricing-card.featured {
+    border: 2px solid #10b981;
+    transform: scale(1.05);
+  }
+  .pricing-card .price {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 1rem 0;
+  }
+  .pricing-card ul {
+    margin-bottom: 2rem;
+  }
+  .pricing-card li {
+    margin: .5rem 0;
+  }
+  .btn {
+    display: inline-block;
+    background: #10b981;
+    color: white;
+    padding: .75rem 2rem;
+    border-radius: .75rem;
+    font-weight: 600;
+  }
+  .btn:hover {
+    opacity: .9;
+  }
+
+  .testimonial {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+  }
+  .dark .testimonial {
+    background: #020617;
+  }
+</style>
+
+<!-- ===================== -->
+<!-- JS -->
+<!-- ===================== -->
+<script>
+  // Dark mode toggle
+  const toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+  });
+</script>
+
+</body>
+</html>
