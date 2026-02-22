@@ -83,7 +83,6 @@
             font-family: 'Space Grotesk', sans-serif;
         }
         
-        /* Background Effects */
         .hero-bg {
             background: 
                 radial-gradient(ellipse 80% 50% at 50% -20%, rgba(16, 185, 129, 0.15), transparent),
@@ -98,7 +97,6 @@
                 linear-gradient(180deg, #060a12 0%, #0a1020 100%);
         }
         
-        /* Grid Pattern */
         .grid-pattern {
             background-image: 
                 linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
@@ -106,7 +104,6 @@
             background-size: 60px 60px;
         }
         
-        /* Floating Orbs */
         .orb {
             position: absolute;
             border-radius: 50%;
@@ -150,7 +147,6 @@
             75% { transform: translate(20px, 30px) scale(1.02); }
         }
         
-        /* Particle Animation */
         .particle {
             position: absolute;
             width: 4px;
@@ -168,7 +164,6 @@
             100% { opacity: 0; transform: translateY(-100px) scale(1); }
         }
         
-        /* Reveal Animations */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -198,7 +193,6 @@
             }
         }
         
-        /* Card Styles */
         .card {
             background: var(--card);
             border: 1px solid var(--border);
@@ -211,7 +205,6 @@
             box-shadow: 0 20px 40px -20px rgba(16, 185, 129, 0.2);
         }
         
-        /* Button Styles */
         .btn-primary {
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
@@ -253,7 +246,6 @@
             background: var(--glow);
         }
         
-        /* Pricing Card Highlight */
         .pricing-highlight {
             background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%);
             border: 2px solid var(--accent);
@@ -261,7 +253,7 @@
         }
         
         .pricing-highlight::before {
-            content: 'Popular';
+            content: 'Mas vendido';
             position: absolute;
             top: -12px;
             left: 50%;
@@ -275,7 +267,6 @@
             letter-spacing: 0.5px;
         }
         
-        /* Mockup Styles */
         .mockup-container {
             position: relative;
             perspective: 1000px;
@@ -294,12 +285,10 @@
             box-shadow: 0 30px 60px -20px rgba(16, 185, 129, 0.25);
         }
         
-        /* Star Rating */
         .star {
             color: #f59e0b;
         }
         
-        /* Theme Toggle */
         .theme-toggle {
             position: relative;
             width: 56px;
@@ -326,7 +315,6 @@
             transform: translateX(28px);
         }
         
-        /* Nav */
         .nav-blur {
             backdrop-filter: blur(12px);
             background: rgba(6, 10, 18, 0.8);
@@ -337,13 +325,11 @@
             background: rgba(6, 10, 18, 0.85);
         }
         
-        /* Icon Container */
         .icon-container {
             background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.05));
             border: 1px solid rgba(16, 185, 129, 0.2);
         }
         
-        /* Scroll indicator */
         .scroll-indicator {
             animation: bounce 2s ease-in-out infinite;
         }
@@ -353,13 +339,11 @@
             50% { transform: translateY(10px); }
         }
         
-        /* Focus States */
         *:focus-visible {
             outline: 2px solid var(--accent);
             outline-offset: 2px;
         }
         
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -379,7 +363,6 @@
     </style>
 </head>
 <body class="min-h-screen">
-    <!-- Particles Background -->
     <div id="particles" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
     
     <!-- Navigation -->
@@ -406,7 +389,7 @@
                     <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">
                         <span class="sr-only">Cambiar tema</span>
                     </button>
-                    <a href="#precios" class="hidden sm:inline-flex btn-primary px-5 py-2.5 rounded-lg font-semibold text-sm">
+                    <a href="https://noeclipse6.gumroad.com/l/ibmno" target="_blank" rel="noopener" class="hidden sm:inline-flex btn-primary px-5 py-2.5 rounded-lg font-semibold text-sm">
                         Comprar Ahora
                     </a>
                 </div>
@@ -440,8 +423,8 @@
                     </p>
                     
                     <div class="reveal reveal-delay-3 flex flex-col sm:flex-row gap-4">
-                        <a href="#precios" class="btn-primary px-8 py-4 rounded-xl font-semibold text-lg text-center">
-                            Ver plantillas
+                        <a href="https://noeclipse6.gumroad.com/l/ibmno" target="_blank" rel="noopener" class="btn-primary px-8 py-4 rounded-xl font-semibold text-lg text-center">
+                            Comprar plantillas
                             <svg class="inline-block w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                             </svg>
@@ -512,7 +495,6 @@
             </div>
             
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Feature 1 -->
                 <div class="reveal card rounded-2xl p-8">
                     <div class="icon-container w-14 h-14 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-7 h-7" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -523,7 +505,6 @@
                     <p style="color: var(--fg-muted);">Conecta con APIs financieras para mantener tus datos actualizados en tiempo real sin esfuerzo manual.</p>
                 </div>
                 
-                <!-- Feature 2 -->
                 <div class="reveal reveal-delay-1 card rounded-2xl p-8">
                     <div class="icon-container w-14 h-14 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-7 h-7" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -534,7 +515,6 @@
                     <p style="color: var(--fg-muted);">Visualizaciones profesionales que te permiten analizar tendencias y tomar decisiones informadas.</p>
                 </div>
                 
-                <!-- Feature 3 -->
                 <div class="reveal reveal-delay-2 card rounded-2xl p-8">
                     <div class="icon-container w-14 h-14 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-7 h-7" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -545,7 +525,6 @@
                     <p style="color: var(--fg-muted);">Adapta cada plantilla a tus necesidades especificas con formulas editables y estructuras modulares.</p>
                 </div>
                 
-                <!-- Feature 4 -->
                 <div class="reveal card rounded-2xl p-8">
                     <div class="icon-container w-14 h-14 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-7 h-7" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -556,7 +535,6 @@
                     <p style="color: var(--fg-muted);">Importa sin problemas a Google Sheets para colaborar en tiempo real con tu equipo o socio.</p>
                 </div>
                 
-                <!-- Feature 5 -->
                 <div class="reveal reveal-delay-1 card rounded-2xl p-8">
                     <div class="icon-container w-14 h-14 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-7 h-7" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -567,7 +545,6 @@
                     <p style="color: var(--fg-muted);">Calcula automaticamente tu retorno de inversion, dividendos y rendimiento anual con un solo click.</p>
                 </div>
                 
-                <!-- Feature 6 -->
                 <div class="reveal reveal-delay-2 card rounded-2xl p-8">
                     <div class="icon-container w-14 h-14 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-7 h-7" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -597,7 +574,6 @@
             </div>
             
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Mockup 1 -->
                 <div class="reveal mockup-container">
                     <div class="mockup">
                         <div class="flex items-center gap-2 px-4 py-3" style="background: var(--border);">
@@ -614,7 +590,6 @@
                     </div>
                 </div>
                 
-                <!-- Mockup 2 -->
                 <div class="reveal reveal-delay-1 mockup-container">
                     <div class="mockup">
                         <div class="flex items-center gap-2 px-4 py-3" style="background: var(--border);">
@@ -631,7 +606,6 @@
                     </div>
                 </div>
                 
-                <!-- Mockup 3 -->
                 <div class="reveal mockup-container">
                     <div class="mockup">
                         <div class="flex items-center gap-2 px-4 py-3" style="background: var(--border);">
@@ -648,7 +622,6 @@
                     </div>
                 </div>
                 
-                <!-- Mockup 4 -->
                 <div class="reveal reveal-delay-1 mockup-container">
                     <div class="mockup">
                         <div class="flex items-center gap-2 px-4 py-3" style="background: var(--border);">
@@ -673,71 +646,41 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style="color: var(--fg);">
-                    Elige tu plan
+                    Obtener todas las plantillas
                 </h2>
                 <p class="reveal reveal-delay-1 text-lg max-w-2xl mx-auto" style="color: var(--fg-muted);">
-                    Inversion unica, actualizaciones gratuitas de por vida. Sin suscripciones.
+                    Pago unico. Sin suscripciones. Acceso de por vida con actualizaciones gratuitas.
                 </p>
+                
+                <div class="reveal reveal-delay-2 inline-flex items-center gap-2 mt-6 px-4 py-2 rounded-full" style="background: var(--glow); border: 1px solid var(--accent);">
+                    <svg class="w-5 h-5" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span class="font-semibold" style="color: var(--accent);">Pagas una vez, es tuyo para siempre</span>
+                </div>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <!-- Basic Plan -->
-                <div class="reveal card rounded-2xl p-8">
+            <!-- Single Product Card -->
+            <div class="max-w-lg mx-auto">
+                <div class="reveal card pricing-highlight rounded-2xl p-10 text-center">
                     <div class="mb-6">
-                        <h3 class="font-display text-xl font-semibold mb-2" style="color: var(--fg);">Basico</h3>
-                        <p class="text-sm" style="color: var(--fg-muted);">Para inversores que inician</p>
+                        <h3 class="font-display text-2xl font-semibold mb-2" style="color: var(--fg);">Pack Completo</h3>
+                        <p class="text-sm" style="color: var(--fg-muted);">Todas las plantillas incluidas</p>
                     </div>
-                    <div class="mb-6">
-                        <span class="font-display text-5xl font-bold" style="color: var(--fg);">$9</span>
+                    
+                    <div class="mb-4">
+                        <span class="font-display text-6xl font-bold" style="color: var(--accent);">$19</span>
                         <span style="color: var(--fg-muted);">USD</span>
                     </div>
-                    <ul class="space-y-4 mb-8">
+                    
+                    <p class="text-sm mb-8 font-medium" style="color: var(--accent);">Pago unico - Sin cargos recurrentes</p>
+                    
+                    <ul class="space-y-4 mb-10 text-left max-w-sm mx-auto">
                         <li class="flex items-center gap-3">
                             <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                             </svg>
-                            <span style="color: var(--fg-muted);">Portfolio Tracker</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span style="color: var(--fg-muted);">Budget Planner</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span style="color: var(--fg-muted);">Soporte por email</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 flex-shrink-0" style="color: var(--fg-muted);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                            </svg>
-                            <span style="color: var(--fg-muted);">Actualizaciones premium</span>
-                        </li>
-                    </ul>
-                    <a href="https://gumroad.com/l/ejemplo-plantilla" target="_blank" rel="noopener" class="btn-secondary block text-center px-6 py-4 rounded-xl font-semibold">
-                        Comprar ahora
-                    </a>
-                </div>
-                
-                <!-- Pro Plan -->
-                <div class="reveal reveal-delay-1 card pricing-highlight rounded-2xl p-8">
-                    <div class="mb-6">
-                        <h3 class="font-display text-xl font-semibold mb-2" style="color: var(--fg);">Pro</h3>
-                        <p class="text-sm" style="color: var(--fg-muted);">Para inversores activos</p>
-                    </div>
-                    <div class="mb-6">
-                        <span class="font-display text-5xl font-bold" style="color: var(--accent);">$19</span>
-                        <span style="color: var(--fg-muted);">USD</span>
-                    </div>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span style="color: var(--fg);">Todo en Basico</span>
+                            <span style="color: var(--fg);">Portfolio Tracker</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
@@ -749,76 +692,70 @@
                             <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                             </svg>
+                            <span style="color: var(--fg);">Budget Planner</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
                             <span style="color: var(--fg);">ROI Calculator</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                             </svg>
-                            <span style="color: var(--fg);">Soporte prioritario</span>
+                            <span style="color: var(--fg);">Dividend Tracker</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                             </svg>
-                            <span style="color: var(--fg);">Actualizaciones de por vida</span>
+                            <span style="color: var(--fg);">Crypto Portfolio</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span style="color: var(--fg);">15+ plantillas en total</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span style="color: var(--fg);">Actualizaciones gratuitas de por vida</span>
                         </li>
                     </ul>
-                    <a href="https://gumroad.com/l/ejemplo-plantilla" target="_blank" rel="noopener" class="btn-primary block text-center px-6 py-4 rounded-xl font-semibold">
-                        Comprar ahora
-                    </a>
-                </div>
-                
-                <!-- Bundle Plan -->
-                <div class="reveal reveal-delay-2 card rounded-2xl p-8">
-                    <div class="mb-6">
-                        <h3 class="font-display text-xl font-semibold mb-2" style="color: var(--fg);">Bundle Completo</h3>
-                        <p class="text-sm" style="color: var(--fg-muted);">Todas las plantillas incluidas</p>
-                    </div>
-                    <div class="mb-6">
-                        <span class="font-display text-5xl font-bold" style="color: var(--fg);">$39</span>
-                        <span style="color: var(--fg-muted);">USD</span>
-                    </div>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span style="color: var(--fg-muted);">Todo en Pro</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span style="color: var(--fg-muted);">Dividend Tracker</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span style="color: var(--fg-muted);">Crypto Portfolio</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span style="color: var(--fg-muted);">15+ plantillas totales</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span style="color: var(--fg-muted);">Acceso a plantillas futuras</span>
-                        </li>
-                    </ul>
-                    <a href="https://gumroad.com/l/ejemplo-plantilla" target="_blank" rel="noopener" class="btn-secondary block text-center px-6 py-4 rounded-xl font-semibold">
+                    
+                    <a href="https://noeclipse6.gumroad.com/l/ibmno" target="_blank" rel="noopener" class="btn-primary block text-center px-8 py-4 rounded-xl font-semibold text-lg">
                         Comprar ahora
                     </a>
                 </div>
             </div>
             
-            <p class="reveal text-center mt-12 text-sm" style="color: var(--fg-muted);">
-                Pago seguro via Gumroad. Garantia de devolucion de 30 dias si no quedas satisfecho.
+            <!-- Garantías -->
+            <div class="reveal mt-16 grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="flex items-center gap-3 justify-center">
+                    <svg class="w-8 h-8 flex-shrink-0" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                    <span class="text-sm font-medium" style="color: var(--fg);">Garantia 30 dias</span>
+                </div>
+                <div class="flex items-center gap-3 justify-center">
+                    <svg class="w-8 h-8 flex-shrink-0" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                    </svg>
+                    <span class="text-sm font-medium" style="color: var(--fg);">Pago 100% seguro</span>
+                </div>
+                <div class="flex items-center gap-3 justify-center">
+                    <svg class="w-8 h-8 flex-shrink-0" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                    </svg>
+                    <span class="text-sm font-medium" style="color: var(--fg);">Descarga instantanea</span>
+                </div>
+            </div>
+            
+            <p class="reveal text-center mt-8 text-sm" style="color: var(--fg-muted);">
+                Pago seguro via Gumroad. Si no quedas satisfecho, te devolvemos el 100% de tu dinero.
             </p>
         </div>
     </section>
@@ -838,7 +775,6 @@
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Testimonial 1 -->
                 <div class="reveal card rounded-2xl p-8">
                     <div class="flex items-center gap-1 mb-4">
                         <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -861,7 +797,6 @@
                     </div>
                 </div>
                 
-                <!-- Testimonial 2 -->
                 <div class="reveal reveal-delay-1 card rounded-2xl p-8">
                     <div class="flex items-center gap-1 mb-4">
                         <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -884,7 +819,6 @@
                     </div>
                 </div>
                 
-                <!-- Testimonial 3 -->
                 <div class="reveal reveal-delay-2 card rounded-2xl p-8">
                     <div class="flex items-center gap-1 mb-4">
                         <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -907,7 +841,6 @@
                     </div>
                 </div>
                 
-                <!-- Testimonial 4 -->
                 <div class="reveal card rounded-2xl p-8 md:col-span-2 lg:col-span-1">
                     <div class="flex items-center gap-1 mb-4">
                         <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -944,8 +877,8 @@
                 Unete a miles de inversores que ya usan nuestras plantillas para maximizar sus retornos y ahorrar horas de trabajo manual.
             </p>
             <div class="reveal reveal-delay-2 flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#precios" class="btn-primary px-8 py-4 rounded-xl font-semibold text-lg">
-                    Ver planes y precios
+                <a href="https://noeclipse6.gumroad.com/l/ibmno" target="_blank" rel="noopener" class="btn-primary px-8 py-4 rounded-xl font-semibold text-lg">
+                    Comprar ahora
                 </a>
                 <a href="mailto:hola@investtemplates.com" class="btn-secondary px-8 py-4 rounded-xl font-semibold text-lg">
                     Contactar
@@ -1006,15 +939,12 @@
     </footer>
     
     <script>
-        // Initialize variables first
         const themeToggle = document.getElementById('themeToggle');
         const html = document.documentElement;
         const particlesContainer = document.getElementById('particles');
         
-        // Check for reduced motion preference
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         
-        // Theme Toggle
         function initTheme() {
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -1029,7 +959,6 @@
             localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
         });
         
-        // Scroll Reveal with Intersection Observer
         function initScrollReveal() {
             const reveals = document.querySelectorAll('.reveal');
             
@@ -1052,7 +981,6 @@
             reveals.forEach(el => observer.observe(el));
         }
         
-        // Particle System
         function initParticles() {
             if (prefersReducedMotion || !particlesContainer) return;
             
@@ -1068,7 +996,6 @@
             }
         }
         
-        // Smooth scroll for anchor links
         function initSmoothScroll() {
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
@@ -1087,7 +1014,6 @@
             });
         }
         
-        // Navbar background on scroll
         function initNavbar() {
             const nav = document.querySelector('nav');
             
@@ -1100,7 +1026,6 @@
             });
         }
         
-        // Initialize all functions
         document.addEventListener('DOMContentLoaded', () => {
             initScrollReveal();
             initParticles();
