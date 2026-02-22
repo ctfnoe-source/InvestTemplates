@@ -3,216 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InvestTemplates | Plantillas Excel de Inversión Premium</title>
-    <meta name="description" content="Plantillas Excel profesionales para inversión en bolsa y finanzas personales. Trackers de portafolio, análisis de acciones, calculadoras ROI y presupuestos listos para usar.">
-    <meta name="keywords" content="plantillas excel inversión, trackers portafolio excel, plantillas finanzas personales, excel bolsa de valores, calculadora ROI excel, tracker inversiones">
-    <meta name="author" content="InvestTemplates">
-    <meta property="og:title" content="InvestTemplates | Plantillas Excel de Inversión Premium">
-    <meta property="og:description" content="Multiplica tu dinero con plantillas Excel profesionales para inversión y finanzas personales.">
-    <meta property="og:type" content="website">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
-    
+    <title>InvestTemplates | Plantillas Premium de Excel para Inversión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: {
-                        display: ['Space Grotesk', 'sans-serif'],
-                        body: ['DM Sans', 'sans-serif'],
-                    },
                     colors: {
-                        dark: {
-                            bg: '#060a12',
-                            card: '#0d1421',
-                            border: '#1e293b',
-                        },
-                        accent: {
-                            emerald: '#10b981',
-                            cyan: '#06b6d4',
-                            gold: '#f59e0b',
-                        }
+                        bg: '#0a0a0f',
+                        'bg-elevated': '#12121a',
+                        'bg-card': '#1a1a24',
+                        fg: '#f5f5f7',
+                        muted: '#8a8a9a',
+                        accent: '#d4af37',
+                        'accent-light': '#e8c964',
+                        'accent-dark': '#b8942d',
+                        success: '#22c55e',
+                        border: '#2a2a36',
+                    },
+                    fontFamily: {
+                        display: ['Instrument Serif', 'serif'],
+                        body: ['Space Grotesk', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-    
     <style>
         :root {
-            --bg: #f8fafc;
-            --bg-secondary: #ffffff;
-            --fg: #0f172a;
-            --fg-muted: #64748b;
-            --accent: #10b981;
-            --accent-secondary: #06b6d4;
-            --card: #ffffff;
-            --border: #e2e8f0;
-            --glow: rgba(16, 185, 129, 0.15);
+            --bg: #0a0a0f;
+            --bg-elevated: #12121a;
+            --bg-card: #1a1a24;
+            --fg: #f5f5f7;
+            --muted: #8a8a9a;
+            --accent: #d4af37;
+            --accent-light: #e8c964;
+            --accent-dark: #b8942d;
+            --success: #22c55e;
+            --border: #2a2a36;
         }
-        
-        .dark {
-            --bg: #060a12;
-            --bg-secondary: #0d1421;
-            --fg: #f1f5f9;
-            --fg-muted: #94a3b8;
-            --accent: #10b981;
-            --accent-secondary: #06b6d4;
-            --card: #0d1421;
-            --border: #1e293b;
-            --glow: rgba(16, 185, 129, 0.2);
-        }
-        
+
         * {
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) var(--bg-elevated);
+        }
+
+        html {
             scroll-behavior: smooth;
         }
-        
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
         body {
-            font-family: 'DM Sans', sans-serif;
-            background-color: var(--bg);
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
             color: var(--fg);
             overflow-x: hidden;
         }
-        
+
         .font-display {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Instrument Serif', serif;
         }
-        
+
+        /* Background Effects */
         .hero-bg {
             background: 
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(16, 185, 129, 0.15), transparent),
-                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(6, 182, 212, 0.1), transparent),
-                var(--bg);
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+                linear-gradient(180deg, var(--bg) 0%, var(--bg-elevated) 100%);
         }
-        
-        .dark .hero-bg {
-            background: 
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(16, 185, 129, 0.2), transparent),
-                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(6, 182, 212, 0.12), transparent),
-                linear-gradient(180deg, #060a12 0%, #0a1020 100%);
-        }
-        
+
         .grid-pattern {
             background-image: 
-                linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
             background-size: 60px 60px;
         }
-        
-        .orb {
+
+        /* Floating Elements */
+        .float-element {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.6;
+            filter: blur(60px);
+            opacity: 0.4;
             animation: float 20s ease-in-out infinite;
-            pointer-events: none;
         }
-        
-        .orb-1 {
-            width: 400px;
-            height: 400px;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(6, 182, 212, 0.2));
-            top: -100px;
-            right: -100px;
-            animation-delay: 0s;
-        }
-        
-        .orb-2 {
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(16, 185, 129, 0.15));
-            bottom: 20%;
-            left: -100px;
-            animation-delay: -7s;
-        }
-        
-        .orb-3 {
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(16, 185, 129, 0.15));
-            top: 60%;
-            right: 10%;
-            animation-delay: -14s;
-        }
-        
+
         @keyframes float {
             0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(30px, -30px) scale(1.05); }
-            50% { transform: translate(-20px, 20px) scale(0.95); }
-            75% { transform: translate(20px, 30px) scale(1.02); }
+            25% { transform: translate(30px, -30px) scale(1.1); }
+            50% { transform: translate(-20px, 20px) scale(0.9); }
+            75% { transform: translate(20px, 10px) scale(1.05); }
         }
-        
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 50%;
-            opacity: 0;
-            animation: particle-rise 8s ease-in-out infinite;
-        }
-        
-        @keyframes particle-rise {
-            0% { opacity: 0; transform: translateY(100vh) scale(0); }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
-            100% { opacity: 0; transform: translateY(-100px) scale(1); }
-        }
-        
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-        .reveal-delay-4 { transition-delay: 0.4s; }
-        .reveal-delay-5 { transition-delay: 0.5s; }
-        
-        @media (prefers-reduced-motion: reduce) {
-            .reveal {
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
                 opacity: 1;
-                transform: none;
-                transition: none;
-            }
-            .orb, .particle {
-                animation: none;
+                transform: translateY(0);
             }
         }
-        
-        .card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
-        
-        .card:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px -20px rgba(16, 185, 129, 0.2);
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
         }
-        
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-fade-in-scale {
+            animation: fadeInScale 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-600 { animation-delay: 0.6s; }
+
+        /* Button Styles */
         .btn-primary {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: var(--bg);
+            font-weight: 600;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            transition: all 0.3s ease;
         }
-        
+
         .btn-primary::before {
             content: '';
             position: absolute;
@@ -220,817 +176,1106 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
             transition: left 0.5s ease;
         }
-        
+
         .btn-primary:hover::before {
             left: 100%;
         }
-        
+
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.5);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
         }
-        
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--border);
-            color: var(--fg);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            background: var(--glow);
-        }
-        
-        .pricing-highlight {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%);
-            border: 2px solid var(--accent);
-            position: relative;
-        }
-        
-        .pricing-highlight::before {
-            content: 'Mas vendido';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            padding: 4px 16px;
-            border-radius: 9999px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-        
-        .mockup-container {
-            position: relative;
-            perspective: 1000px;
-        }
-        
-        .mockup {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        
-        .mockup:hover {
-            transform: rotateY(-5deg) rotateX(5deg) scale(1.02);
-            box-shadow: 0 30px 60px -20px rgba(16, 185, 129, 0.25);
-        }
-        
-        .star {
-            color: #f59e0b;
-        }
-        
-        .theme-toggle {
-            position: relative;
-            width: 56px;
-            height: 28px;
-            background: var(--border);
-            border-radius: 9999px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        
-        .theme-toggle::after {
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            width: 24px;
-            height: 24px;
-            background: var(--accent);
-            border-radius: 50%;
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        
-        .dark .theme-toggle::after {
-            transform: translateX(28px);
-        }
-        
-        .nav-blur {
-            backdrop-filter: blur(12px);
-            background: rgba(6, 10, 18, 0.8);
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .dark .nav-blur {
-            background: rgba(6, 10, 18, 0.85);
-        }
-        
-        .icon-container {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.05));
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-        
-        .scroll-indicator {
-            animation: bounce 2s ease-in-out infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(10px); }
-        }
-        
-        *:focus-visible {
-            outline: 2px solid var(--accent);
+
+        .btn-primary:focus-visible {
+            outline: 2px solid var(--accent-light);
             outline-offset: 2px;
         }
-        
-        ::-webkit-scrollbar {
-            width: 8px;
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-weight: 500;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
         }
-        
-        ::-webkit-scrollbar-track {
-            background: var(--bg);
+
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-2px);
         }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 4px;
+
+        .btn-secondary:focus-visible {
+            outline: 2px solid var(--accent-light);
+            outline-offset: 2px;
         }
-        
-        ::-webkit-scrollbar-thumb:hover {
+
+        /* Card Styles */
+        .product-card {
+            background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.1);
+        }
+
+        /* Excel Preview */
+        .excel-preview {
+            background: linear-gradient(135deg, #1e3a2f 0%, #0d1f17 100%);
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.7rem;
+        }
+
+        .cell {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.25rem 0.5rem;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .cell-header {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .cell-positive {
+            color: var(--success);
+        }
+
+        .cell-accent {
+            color: var(--accent);
+        }
+
+        /* Testimonial Card */
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        /* Pricing Card */
+        .pricing-card {
+            background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent);
+            position: relative;
+        }
+
+        .pricing-card.featured::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 20px;
+            padding: 1px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            -webkit-mask-composite: xor;
+        }
+
+        /* Stats Counter */
+        .stat-number {
+            background: linear-gradient(135deg, var(--fg) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Modal */
+        .modal-backdrop {
+            background: rgba(10, 10, 15, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* FAQ Accordion */
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            background: var(--bg-elevated);
+            border-left: 1px solid var(--border);
+        }
+
+        /* Chart Animation */
+        .chart-line {
+            stroke-dasharray: 300;
+            stroke-dashoffset: 300;
+            animation: drawLine 2s ease forwards;
+        }
+
+        @keyframes drawLine {
+            to { stroke-dashoffset: 0; }
+        }
+
+        /* Sparkle effect */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
             background: var(--accent);
+            border-radius: 50%;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
         }
     </style>
 </head>
-<body class="min-h-screen">
-    <div id="particles" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
-    
+<body class="font-body antialiased" x-data="{ 
+    mobileMenuOpen: false,
+    previewModal: false,
+    selectedProduct: null,
+    activeTab: 'all',
+    faqOpen: null,
+    scrolled: false
+}" @scroll.window="scrolled = window.scrollY > 50">
+
+    <!-- Floating Background Elements -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden">
+        <div class="float-element w-96 h-96 bg-accent/20 -top-48 -left-48" style="animation-delay: 0s;"></div>
+        <div class="float-element w-64 h-64 bg-accent/10 top-1/3 right-0" style="animation-delay: -5s;"></div>
+        <div class="float-element w-80 h-80 bg-accent/15 bottom-0 left-1/4" style="animation-delay: -10s;"></div>
+    </div>
+
+    <!-- Grid Pattern Overlay -->
+    <div class="fixed inset-0 grid-pattern pointer-events-none opacity-50"></div>
+
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 nav-blur">
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" :class="scrolled ? 'bg-bg/95 backdrop-blur-md border-b border-border' : 'bg-transparent'">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <a href="#" class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent-emerald to-accent-cyan flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center transition-transform group-hover:scale-110">
+                        <svg class="w-6 h-6 text-bg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 3v18h18"/>
+                            <path d="M7 16l4-4 4 4 5-6"/>
                         </svg>
                     </div>
-                    <span class="font-display font-bold text-xl" style="color: var(--fg);">InvestTemplates</span>
+                    <span class="font-display text-2xl text-fg">InvestTemplates</span>
                 </a>
-                
+
+                <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center gap-8">
-                    <a href="#beneficios" class="text-sm font-medium hover:text-accent-emerald transition-colors" style="color: var(--fg-muted);">Beneficios</a>
-                    <a href="#galeria" class="text-sm font-medium hover:text-accent-emerald transition-colors" style="color: var(--fg-muted);">Galeria</a>
-                    <a href="#precios" class="text-sm font-medium hover:text-accent-emerald transition-colors" style="color: var(--fg-muted);">Precios</a>
-                    <a href="#testimonios" class="text-sm font-medium hover:text-accent-emerald transition-colors" style="color: var(--fg-muted);">Testimonios</a>
+                    <a href="#productos" class="text-muted hover:text-fg transition-colors">Plantillas</a>
+                    <a href="#beneficios" class="text-muted hover:text-fg transition-colors">Beneficios</a>
+                    <a href="#testimonios" class="text-muted hover:text-fg transition-colors">Testimonios</a>
+                    <a href="#precios" class="text-muted hover:text-fg transition-colors">Precios</a>
+                    <a href="#faq" class="text-muted hover:text-fg transition-colors">FAQ</a>
                 </div>
-                
-                <div class="flex items-center gap-4">
-                    <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">
-                        <span class="sr-only">Cambiar tema</span>
-                    </button>
-                    <a href="https://noeclipse6.gumroad.com/l/ibmno" target="_blank" rel="noopener" class="hidden sm:inline-flex btn-primary px-5 py-2.5 rounded-lg font-semibold text-sm">
-                        Comprar Ahora
+
+                <!-- CTA Button -->
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="#precios" class="btn-primary text-sm">
+                        Comenzar Ahora
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 text-fg focus-visible:outline-accent" aria-label="Abrir menú">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform translate-x-full" class="mobile-menu fixed top-0 right-0 bottom-0 w-80 z-50 md:hidden">
+            <div class="p-6 pt-24">
+                <div class="flex flex-col gap-6">
+                    <a href="#productos" @click="mobileMenuOpen = false" class="text-lg text-fg hover:text-accent transition-colors">Plantillas</a>
+                    <a href="#beneficios" @click="mobileMenuOpen = false" class="text-lg text-fg hover:text-accent transition-colors">Beneficios</a>
+                    <a href="#testimonios" @click="mobileMenuOpen = false" class="text-lg text-fg hover:text-accent transition-colors">Testimonios</a>
+                    <a href="#precios" @click="mobileMenuOpen = false" class="text-lg text-fg hover:text-accent transition-colors">Precios</a>
+                    <a href="#faq" @click="mobileMenuOpen = false" class="text-lg text-fg hover:text-accent transition-colors">FAQ</a>
+                    <hr class="border-border">
+                    <a href="#precios" @click="mobileMenuOpen = false" class="btn-primary text-center">
+                        Comenzar Ahora
                     </a>
                 </div>
             </div>
         </div>
     </nav>
-    
+
     <!-- Hero Section -->
-    <section class="hero-bg grid-pattern min-h-screen flex items-center relative overflow-hidden pt-16">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+    <section class="hero-bg relative min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-                <div>
-                    <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6" style="background: var(--glow); color: var(--accent);">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
-                        </svg>
-                        Mas de 2,500+ inversores confian en nosotros
+                <!-- Hero Content -->
+                <div class="text-center lg:text-left">
+                    <div class="animate-fade-in-up">
+                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/30 text-accent text-sm font-medium mb-6">
+                            <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
+                            Mas de 2,500 inversores confían en nosotros
+                        </span>
                     </div>
                     
-                    <h1 class="reveal reveal-delay-1 font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6" style="color: var(--fg);">
-                        Multiplica tu dinero con plantillas Excel
-                        <span class="bg-gradient-to-r from-accent-emerald to-accent-cyan bg-clip-text text-transparent"> profesionales</span>
+                    <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-fg leading-tight mb-6 animate-fade-in-up delay-100">
+                        Domina tus finanzas con
+                        <span class="text-accent italic">plantillas Excel</span>
+                        profesionales
                     </h1>
                     
-                    <p class="reveal reveal-delay-2 text-lg sm:text-xl mb-8 leading-relaxed" style="color: var(--fg-muted);">
-                        Trackers de portafolio, analisis de acciones, calculadoras ROI y presupuestos listos para usar. Todo lo que necesitas para gestionar tus inversiones como un profesional.
+                    <p class="text-lg sm:text-xl text-muted max-w-xl mx-auto lg:mx-0 mb-8 animate-fade-in-up delay-200">
+                        Herramientas de inversión diseñadas por analistas financieros. Controla tu portfolio, analiza rentabilidades y toma decisiones informadas.
                     </p>
                     
-                    <div class="reveal reveal-delay-3 flex flex-col sm:flex-row gap-4">
-                        <a href="https://noeclipse6.gumroad.com/l/ibmno" target="_blank" rel="noopener" class="btn-primary px-8 py-4 rounded-xl font-semibold text-lg text-center">
-                            Comprar plantillas
-                            <svg class="inline-block w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up delay-300">
+                        <a href="#precios" class="btn-primary text-lg">
+                            Ver Plantillas Premium
+                        </a>
+                        <button @click="previewModal = true; selectedProduct = {name: 'Portfolio Tracker', preview: 'demo'}" class="btn-secondary text-lg flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
-                        </a>
-                        <a href="#galeria" class="btn-secondary px-8 py-4 rounded-xl font-semibold text-lg text-center">
-                            Ver demos
-                        </a>
+                            Ver Demo
+                        </button>
                     </div>
-                    
-                    <div class="reveal reveal-delay-4 flex items-center gap-8 mt-10 pt-8" style="border-top: 1px solid var(--border);">
-                        <div>
-                            <div class="font-display text-3xl font-bold" style="color: var(--fg);">4.9</div>
-                            <div class="flex items-center gap-1 mt-1">
-                                <svg class="w-4 h-4 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                                <svg class="w-4 h-4 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                                <svg class="w-4 h-4 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                                <svg class="w-4 h-4 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                                <svg class="w-4 h-4 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            </div>
-                            <div class="text-sm mt-1" style="color: var(--fg-muted);">Rating promedio</div>
-                        </div>
-                        <div>
-                            <div class="font-display text-3xl font-bold" style="color: var(--fg);">15+</div>
-                            <div class="text-sm" style="color: var(--fg-muted);">Plantillas incluidas</div>
-                        </div>
-                        <div>
-                            <div class="font-display text-3xl font-bold" style="color: var(--fg);">100%</div>
-                            <div class="text-sm" style="color: var(--fg-muted);">Garantia de devolucion</div>
+
+                    <!-- Trust Badges -->
+                    <div class="mt-12 pt-8 border-t border-border/50 animate-fade-in-up delay-400">
+                        <p class="text-sm text-muted mb-4">Compatibles con:</p>
+                        <div class="flex flex-wrap gap-6 justify-center lg:justify-start items-center opacity-60">
+                            <svg class="h-8" viewBox="0 0 100 30" fill="currentColor">
+                                <text x="0" y="22" font-family="Space Grotesk" font-size="16" font-weight="600">Excel 365</text>
+                            </svg>
+                            <svg class="h-8" viewBox="0 0 100 30" fill="currentColor">
+                                <text x="0" y="22" font-family="Space Grotesk" font-size="16" font-weight="600">Google Sheets</text>
+                            </svg>
+                            <svg class="h-8" viewBox="0 0 80 30" fill="currentColor">
+                                <text x="0" y="22" font-family="Space Grotesk" font-size="16" font-weight="600">Numbers</text>
+                            </svg>
                         </div>
                     </div>
                 </div>
-                
-                <div class="reveal reveal-delay-2 mockup-container hidden lg:block">
-                    <div class="mockup shadow-2xl">
-                        <div class="flex items-center gap-2 px-4 py-3" style="background: var(--border);">
-                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            <span class="ml-4 text-sm font-medium" style="color: var(--fg-muted);">Portfolio_Tracker.xlsx</span>
+
+                <!-- Hero Visual - Excel Preview -->
+                <div class="relative animate-fade-in-scale delay-300">
+                    <div class="relative z-10 bg-bg-card rounded-2xl border border-border p-6 shadow-2xl">
+                        <!-- Window Header -->
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                            <span class="ml-4 text-sm text-muted">Portfolio_Tracker_2024.xlsx</span>
                         </div>
-                        <img src="https://via.placeholder.com/600x400/0d1421/10b981?text=Portfolio+Tracker+Dashboard" alt="Portfolio Tracker Preview" class="w-full">
+
+                        <!-- Excel Preview Content -->
+                        <div class="excel-preview overflow-x-auto">
+                            <div class="grid grid-cols-5 gap-1 text-xs">
+                                <div class="cell cell-header">ACCION</div>
+                                <div class="cell cell-header">CANTIDAD</div>
+                                <div class="cell cell-header">PRECIO</div>
+                                <div class="cell cell-header">VALOR</div>
+                                <div class="cell cell-header">RENTAB.</div>
+                                
+                                <div class="cell">AAPL</div>
+                                <div class="cell">150</div>
+                                <div class="cell">$178.50</div>
+                                <div class="cell">$26,775</div>
+                                <div class="cell cell-positive">+24.3%</div>
+                                
+                                <div class="cell">MSFT</div>
+                                <div class="cell">80</div>
+                                <div class="cell">$412.30</div>
+                                <div class="cell">$32,984</div>
+                                <div class="cell cell-positive">+31.7%</div>
+                                
+                                <div class="cell">GOOGL</div>
+                                <div class="cell">45</div>
+                                <div class="cell">$141.80</div>
+                                <div class="cell">$6,381</div>
+                                <div class="cell cell-positive">+18.2%</div>
+                                
+                                <div class="cell cell-accent font-semibold">TOTAL</div>
+                                <div class="cell"></div>
+                                <div class="cell"></div>
+                                <div class="cell cell-accent font-semibold">$66,140</div>
+                                <div class="cell cell-positive font-semibold">+26.1%</div>
+                            </div>
+                        </div>
+
+                        <!-- Mini Chart -->
+                        <div class="mt-4 h-24 relative">
+                            <svg class="w-full h-full" viewBox="0 0 300 80" preserveAspectRatio="none">
+                                <defs>
+                                    <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:rgba(212,175,55,0.3)"/>
+                                        <stop offset="100%" style="stop-color:rgba(212,175,55,0)"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M0,60 Q30,55 60,45 T120,40 T180,25 T240,30 T300,10 L300,80 L0,80 Z" fill="url(#chartGradient)"/>
+                                <path class="chart-line" d="M0,60 Q30,55 60,45 T120,40 T180,25 T240,30 T300,10" fill="none" stroke="#d4af37" stroke-width="2"/>
+                            </svg>
+                        </div>
                     </div>
+
+                    <!-- Decorative Elements -->
+                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-accent/20 rounded-full blur-2xl"></div>
+                    <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-accent/10 rounded-full blur-3xl"></div>
                 </div>
             </div>
         </div>
-        
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 scroll-indicator">
-            <a href="#beneficios" class="flex flex-col items-center gap-2" style="color: var(--fg-muted);">
-                <span class="text-sm">Descubre mas</span>
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-bg-elevated border-y border-border relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center reveal">
+                    <div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="2547">0</div>
+                    <p class="text-muted">Clientes Activos</p>
+                </div>
+                <div class="text-center reveal">
+                    <div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="15">0</div>
+                    <p class="text-muted">Plantillas Premium</p>
+                </div>
+                <div class="text-center reveal">
+                    <div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="98">0</div>
+                    <p class="text-muted">% Satisfaccion</p>
+                </div>
+                <div class="text-center reveal">
+                    <div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="4">0</div>
+                    <p class="text-muted">Actualizaciones/Mes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="productos" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal">
+                <span class="text-accent font-medium tracking-wider uppercase text-sm">Nuestras Plantillas</span>
+                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mt-4 mb-6">
+                    Herramientas profesionales para
+                    <span class="text-accent italic">inversores serios</span>
+                </h2>
+                <p class="text-muted text-lg max-w-2xl mx-auto">
+                    Cada plantilla está diseñada con fórmulas avanzadas, formato profesional y automatizaciones que te ahorrarán horas de trabajo.
+                </p>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-12 reveal" x-data="{ activeTab: 'all' }">
+                <button @click="activeTab = 'all'" :class="activeTab === 'all' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">
+                    Todas
+                </button>
+                <button @click="activeTab = 'portfolio'" :class="activeTab === 'portfolio' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">
+                    Portfolio
+                </button>
+                <button @click="activeTab = 'analysis'" :class="activeTab === 'analysis' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">
+                    Analisis
+                </button>
+                <button @click="activeTab = 'personal'" :class="activeTab === 'personal' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">
+                    Finanzas Personales
+                </button>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" x-data="{ 
+                products: [
+                    { id: 1, name: 'Portfolio Tracker Pro', category: 'portfolio', price: 29, originalPrice: 49, description: 'Controla todas tus inversiones en un solo lugar con seguimiento en tiempo real.', features: ['Seguimiento multi-cuenta', 'Alertas de precio', 'Dashboard interactivo', 'Export PDF'], rating: 4.9, reviews: 342 },
+                    { id: 2, name: 'Dividend Calculator', category: 'analysis', price: 19, originalPrice: 35, description: 'Calcula y proyecta tus ingresos por dividendos a 10 años.', features: ['Proyeccion futura', 'Calendario dividendos', 'Analisis por sector', 'DRIP simulator'], rating: 4.8, reviews: 256 },
+                    { id: 3, name: 'Budget Master', category: 'personal', price: 24, originalPrice: 39, description: 'Gestiona tus finanzas personales con el metodo 50/30/20.', features: ['Control gastos', 'Metas ahorro', 'Graficos automaticos', 'Alertas presupuesto'], rating: 4.9, reviews: 489 },
+                    { id: 4, name: 'Stock Analyzer', category: 'analysis', price: 39, originalPrice: 65, description: 'Analiza cualquier empresa con ratios financieros y valoracion DCF.', features: ['Modelo DCF integrado', '50+ ratios', 'Comparativa sector', 'Screener personal'], rating: 4.7, reviews: 178 },
+                    { id: 5, name: 'ETF Portfolio Builder', category: 'portfolio', price: 27, originalPrice: 45, description: 'Construye y optimiza tu cartera de ETFs con asignacion eficiente.', features: ['Optimizador MPT', 'Correlacion ETFs', 'Rebalanceo auto', 'Backtesting 10Y'], rating: 4.8, reviews: 203 },
+                    { id: 6, name: 'Retirement Planner', category: 'personal', price: 34, originalPrice: 55, description: 'Planifica tu jubilacion con proyecciones detalladas y estrategias.', features: ['Proyeccion 40 años', 'Simulacion escenarios', 'FIRE calculator', 'Tax optimization'], rating: 4.9, reviews: 312 }
+                ],
+                activeTab: 'all'
+            }">
+                <template x-for="product in products.filter(p => activeTab === 'all' || p.category === activeTab)" :key="product.id">
+                    <article class="product-card reveal">
+                        <!-- Discount Badge -->
+                        <div class="absolute top-4 right-4 bg-success/20 text-success text-xs font-bold px-3 py-1 rounded-full">
+                            <span x-text="'-' + Math.round((1 - product.price / product.originalPrice) * 100) + '%'"></span>
+                        </div>
+                        
+                        <!-- Product Preview -->
+                        <div class="p-6 border-b border-border">
+                            <div class="h-40 bg-gradient-to-br from-accent/5 to-accent/10 rounded-lg flex items-center justify-center">
+                                <svg class="w-16 h-16 text-accent/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Product Info -->
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-xs font-medium px-2 py-1 rounded bg-accent/10 text-accent" x-text="product.category === 'portfolio' ? 'Portfolio' : product.category === 'analysis' ? 'Analisis' : 'Personal'"></span>
+                                <div class="flex items-center gap-1 text-sm">
+                                    <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <span class="text-fg" x-text="product.rating"></span>
+                                    <span class="text-muted" x-text="`(${product.reviews})`"></span>
+                                </div>
+                            </div>
+                            
+                            <h3 class="font-display text-xl text-fg mb-2" x-text="product.name"></h3>
+                            <p class="text-muted text-sm mb-4" x-text="product.description"></p>
+                            
+                            <!-- Features -->
+                            <ul class="space-y-2 mb-6">
+                                <template x-for="feature in product.features" :key="feature">
+                                    <li class="flex items-center gap-2 text-sm text-muted">
+                                        <svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                        <span x-text="feature"></span>
+                                    </li>
+                                </template>
+                            </ul>
+
+                            <!-- Price & CTA -->
+                            <div class="flex items-center justify-between pt-4 border-t border-border">
+                                <div>
+                                    <span class="text-muted text-sm line-through" x-text="'€' + product.originalPrice"></span>
+                                    <span class="text-2xl font-bold text-fg ml-2" x-text="'€' + product.price"></span>
+                                </div>
+                                <button class="btn-primary text-sm py-2 px-4">
+                                    Anadir
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </template>
+            </div>
+
+            <!-- View All CTA -->
+            <div class="text-center mt-12 reveal">
+                <a href="#precios" class="btn-secondary inline-flex items-center gap-2">
+                    Ver todos los packs
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="beneficios" class="py-24 bg-bg-elevated relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Content -->
+                <div class="reveal">
+                    <span class="text-accent font-medium tracking-wider uppercase text-sm">Por que elegirnos</span>
+                    <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mt-4 mb-6">
+                        Deja de perder tiempo en hojas de calculo
+                        <span class="text-accent italic">mediocres</span>
+                    </h2>
+                    <p class="text-muted text-lg mb-8">
+                        Nuestras plantillas están creadas por analistas financieros con más de 10 años de experiencia en mercados internacionales.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-fg text-lg mb-1">Listas para usar en minutos</h3>
+                                <p class="text-muted">Sin configuraciones complejas. Descarga, abre y comienza a gestionar tus inversiones inmediatamente.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-fg text-lg mb-1">Fórmulas auditadas y probadas</h3>
+                                <p class="text-muted">Cada cálculo ha sido verificado por contadores y analistas. Precisión del 100% garantizada.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-fg text-lg mb-1">Actualizaciones gratuitas de por vida</h3>
+                                <p class="text-muted">Los mercados cambian y nuestras plantillas también. Recibe mejoras sin coste adicional.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-fg text-lg mb-1">Soporte técnico prioritario</h3>
+                                <p class="text-muted">¿Dudas? Nuestro equipo responde en menos de 24 horas con soluciones concretas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual -->
+                <div class="relative reveal">
+                    <div class="bg-bg-card rounded-2xl border border-border p-8 relative z-10">
+                        <!-- Comparison Table -->
+                        <h3 class="font-display text-xl text-fg mb-6">Comparativa</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-bg rounded-lg">
+                                <span class="text-muted">Tiempo de configuracion</span>
+                                <div class="flex gap-8">
+                                    <div class="text-center">
+                                        <span class="text-red-400 font-bold">4-8h</span>
+                                        <p class="text-xs text-muted">Excel basico</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <span class="text-success font-bold">5 min</span>
+                                        <p class="text-xs text-muted">InvestTemplates</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-bg rounded-lg">
+                                <span class="text-muted">Formulas avanzadas</span>
+                                <div class="flex gap-8">
+                                    <div class="text-center">
+                                        <span class="text-red-400 font-bold">Manual</span>
+                                        <p class="text-xs text-muted">Propenso errores</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <span class="text-success font-bold">Incluidas</span>
+                                        <p class="text-xs text-muted">Probadas</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-bg rounded-lg">
+                                <span class="text-muted">Actualizaciones</span>
+                                <div class="flex gap-8">
+                                    <div class="text-center">
+                                        <span class="text-red-400 font-bold">Tu las haces</span>
+                                        <p class="text-xs text-muted">Mas trabajo</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <span class="text-success font-bold">Gratis</span>
+                                        <p class="text-xs text-muted">De por vida</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-bg rounded-lg">
+                                <span class="text-muted">Soporte</span>
+                                <div class="flex gap-8">
+                                    <div class="text-center">
+                                        <span class="text-red-400 font-bold">Ninguno</span>
+                                        <p class="text-xs text-muted">-</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <span class="text-success font-bold">24h</span>
+                                        <p class="text-xs text-muted">Prioritario</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Decorative -->
+                    <div class="absolute -top-6 -right-6 w-32 h-32 bg-accent/10 rounded-full blur-2xl"></div>
+                    <div class="absolute -bottom-8 -left-8 w-40 h-40 bg-accent/5 rounded-full blur-3xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonios" class="py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal">
+                <span class="text-accent font-medium tracking-wider uppercase text-sm">Testimonios</span>
+                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mt-4 mb-6">
+                    Lo que dicen nuestros
+                    <span class="text-accent italic">clientes</span>
+                </h2>
+            </div>
+
+            <!-- Testimonials Carousel -->
+            <div class="relative" x-data="{ 
+                testimonials: [
+                    { name: 'Carlos Mendez', role: 'Inversor Independiente', avatar: 'CM', content: 'El Portfolio Tracker me ha ahorrado horas cada semana. Antes usaba 3 hojas diferentes, ahora todo en una. La proyeccion de dividendos es impresionante.', rating: 5 },
+                    { name: 'Ana Garcia', role: 'Consultora Financiera', avatar: 'AG', content: 'Recomiendo estas plantillas a todos mis clientes. El nivel de detalle y las formulas de analisis estan a la altura de herramientas que cuestan 10 veces mas.', rating: 5 },
+                    { name: 'Miguel Torres', role: 'Economista', avatar: 'MT', content: 'El Stock Analyzer es exactamente lo que buscaba. El modelo DCF integrado y los ratios financieros me permiten valorar empresas en minutos. Imprescindible.', rating: 5 },
+                    { name: 'Laura Sanchez', role: 'Empresaria', avatar: 'LS', content: 'El Budget Master transformo mis finanzas personales. Por primera vez tengo claridad total sobre mis gastos y ahorros. El metodo 50/30/20 implementado es genial.', rating: 5 },
+                    { name: 'Roberto Diaz', role: 'Trader', avatar: 'RD', content: 'Llevaba años buscando algo asi. El ETF Portfolio Builder con backtesting de 10 años me dio la confianza para optimizar mi cartera. Resultados visibles desde el primer mes.', rating: 5 }
+                ],
+                current: 0
+            }">
+                <!-- Testimonial Cards -->
+                <div class="overflow-hidden">
+                    <div class="flex transition-transform duration-500 ease-out" :style="`transform: translateX(-${current * 100}%)`">
+                        <template x-for="(testimonial, index) in testimonials" :key="index">
+                            <div class="w-full flex-shrink-0 px-4">
+                                <div class="testimonial-card max-w-3xl mx-auto">
+                                    <!-- Stars -->
+                                    <div class="flex gap-1 mb-4">
+                                        <template x-for="i in 5" :key="i">
+                                            <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                            </svg>
+                                        </template>
+                                    </div>
+                                    
+                                    <!-- Quote -->
+                                    <blockquote class="text-xl sm:text-2xl text-fg font-display leading-relaxed mb-6" x-text="'\"' + testimonial.content + '\"'"></blockquote>
+                                    
+                                    <!-- Author -->
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center text-bg font-bold" x-text="testimonial.avatar"></div>
+                                        <div>
+                                            <div class="font-semibold text-fg" x-text="testimonial.name"></div>
+                                            <div class="text-sm text-muted" x-text="testimonial.role"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="flex justify-center items-center gap-4 mt-8">
+                    <button @click="current = current > 0 ? current - 1 : testimonials.length - 1" class="w-12 h-12 rounded-full border border-border flex items-center justify-center text-muted hover:text-fg hover:border-accent transition-colors" aria-label="Testimonio anterior">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    
+                    <div class="flex gap-2">
+                        <template x-for="(testimonial, index) in testimonials" :key="index">
+                            <button @click="current = index" :class="current === index ? 'bg-accent w-8' : 'bg-border w-2'" class="h-2 rounded-full transition-all" :aria-label="`Ir a testimonio ${index + 1}`"></button>
+                        </template>
+                    </div>
+                    
+                    <button @click="current = current < testimonials.length - 1 ? current + 1 : 0" class="w-12 h-12 rounded-full border border-border flex items-center justify-center text-muted hover:text-fg hover:border-accent transition-colors" aria-label="Siguiente testimonio">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="precios" class="py-24 bg-bg-elevated relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal">
+                <span class="text-accent font-medium tracking-wider uppercase text-sm">Precios</span>
+                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mt-4 mb-6">
+                    Invierte en tu
+                    <span class="text-accent italic">educacion financiera</span>
+                </h2>
+                <p class="text-muted text-lg max-w-2xl mx-auto">
+                    Elige el pack que mejor se adapte a tus necesidades. Pago unico, acceso de por vida.
+                </p>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto" x-data="{
+                plans: [
+                    { name: 'Starter', price: 49, description: 'Para inversores que empiezan', features: ['3 plantillas esenciales', 'Actualizaciones gratuitas', 'Soporte por email', 'Guia de inicio'], popular: false },
+                    { name: 'Professional', price: 89, description: 'El mas vendido para inversores activos', features: ['8 plantillas premium', 'Actualizaciones gratuitas', 'Soporte prioritario 24h', 'Guia avanzada incluida', 'Bonos: Screener ETF', 'Acceso a comunidad'], popular: true },
+                    { name: 'Enterprise', price: 149, description: 'Para profesionales y consultores', features: ['Todas las plantillas (15+)', 'Actualizaciones gratuitas', 'Soporte VIP dedicado', 'Personalizacion incluida', 'Licencia comercial', 'Consultoria 1 hora'], popular: false }
+                ]
+            }">
+                <template x-for="plan in plans" :key="plan.name">
+                    <div class="pricing-card reveal relative" :class="plan.popular ? 'featured' : ''">
+                        <!-- Popular Badge -->
+                        <div x-show="plan.popular" class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-bg text-sm font-bold px-4 py-1 rounded-full">
+                            Mas vendido
+                        </div>
+                        
+                        <div class="text-center mb-8">
+                            <h3 class="font-display text-2xl text-fg mb-2" x-text="plan.name"></h3>
+                            <p class="text-muted text-sm" x-text="plan.description"></p>
+                            <div class="mt-6">
+                                <span class="text-5xl font-bold text-fg" x-text="'€' + plan.price"></span>
+                                <span class="text-muted">/ pago unico</span>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-4 mb-8">
+                            <template x-for="feature in plan.features" :key="feature">
+                                <li class="flex items-center gap-3">
+                                    <svg class="w-5 h-5 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    <span class="text-muted" x-text="feature"></span>
+                                </li>
+                            </template>
+                        </ul>
+
+                        <button :class="plan.popular ? 'btn-primary w-full' : 'btn-secondary w-full'" x-text="plan.popular ? 'Obtener Professional' : 'Elegir ' + plan.name">
+                        </button>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Guarantee -->
+            <div class="text-center mt-12 reveal">
+                <div class="inline-flex items-center gap-3 bg-bg-card border border-border rounded-full px-6 py-3">
+                    <svg class="w-6 h-6 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                    <span class="text-fg font-medium">Garantia de devolucion de 30 dias</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 relative">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal">
+                <span class="text-accent font-medium tracking-wider uppercase text-sm">FAQ</span>
+                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mt-4 mb-6">
+                    Preguntas
+                    <span class="text-accent italic">frecuentes</span>
+                </h2>
+            </div>
+
+            <!-- FAQ Items -->
+            <div class="space-y-4 reveal" x-data="{ 
+                faqs: [
+                    { q: 'Necesito conocimientos avanzados de Excel?', a: 'No, nuestras plantillas estan disenadas para usuarios de todos los niveles. Incluimos guias detalladas y videos tutoriales que te guian paso a paso. Solo necesitas saber lo basico de Excel.' },
+                    { q: 'Las plantillas funcionan en Google Sheets?', a: 'Si, todas nuestras plantillas son compatibles con Google Sheets, Excel 365, Excel 2019+ y Numbers. Al comprar, recibes versiones optimizadas para cada plataforma.' },
+                    { q: 'Que pasa si tengo problemas o dudas?', a: 'Ofrecemos soporte tecnico por email con tiempo de respuesta de 24 horas (48h en pack Starter). El pack Enterprise incluye soporte VIP dedicado.' },
+                    { q: 'Recibo actualizaciones futuras?', a: 'Si, todas las actualizaciones son gratuitas de por vida. Cuando mejoremos una plantilla o anadamos nuevas funciones, recibiras un email con el enlace de descarga.' },
+                    { q: 'Puedo obtener un reembolso?', a: 'Ofrecemos garantia de devolucion de 30 dias. Si no estas satisfecho, envianos un email y procesaremos tu reembolso sin preguntas.' },
+                    { q: 'Puedo usar las plantillas para clientes?', a: 'El pack Enterprise incluye licencia comercial que te permite usar las plantillas con tus clientes. Los packs Starter y Professional son para uso personal.' }
+                ],
+                open: null
+            }">
+                <template x-for="(faq, index) in faqs" :key="index">
+                    <div class="faq-item">
+                        <button @click="open = open === index ? null : index" class="w-full flex items-center justify-between py-5 text-left focus-visible:outline-accent" :aria-expanded="open === index">
+                            <span class="text-fg font-medium pr-4" x-text="faq.q"></span>
+                            <svg class="w-5 h-5 text-accent flex-shrink-0 transition-transform" :class="open === index ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div x-show="open === index" x-collapse class="pb-5">
+                            <p class="text-muted leading-relaxed" x-text="faq.a"></p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-bg-elevated relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-r from-accent/10 via-transparent to-accent/10"></div>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center reveal">
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mb-6">
+                Empieza a invertir con
+                <span class="text-accent italic">inteligencia</span>
+            </h2>
+            <p class="text-muted text-lg mb-8 max-w-2xl mx-auto">
+                Unete a mas de 2,500 inversores que ya usan nuestras plantillas para tomar mejores decisiones financieras.
+            </p>
+            <a href="#precios" class="btn-primary text-lg inline-flex items-center gap-2">
+                Ver plantillas premium
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                 </svg>
             </a>
         </div>
     </section>
-    
-    <!-- Benefits Section -->
-    <section id="beneficios" class="py-24 relative" style="background: var(--bg-secondary);">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style="color: var(--fg);">
-                    Todo lo que necesitas para
-                    <span class="bg-gradient-to-r from-accent-emerald to-accent-cyan bg-clip-text text-transparent"> invertir mejor</span>
-                </h2>
-                <p class="reveal reveal-delay-1 text-lg max-w-2xl mx-auto" style="color: var(--fg-muted);">
-                    Herramientas profesionales disenadas para inversores serios que buscan optimizar su rentabilidad.
-                </p>
-            </div>
-            
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="reveal card rounded-2xl p-8">
-                    <div class="icon-container w-14 h-14 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-7 h-7" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-                        </svg>
-                    </div>
-                    <h3 class="font-display text-xl font-semibold mb-3" style="color: var(--fg);">Actualizacion automatica de precios</h3>
-                    <p style="color: var(--fg-muted);">Conecta con APIs financieras para mantener tus datos actualizados en tiempo real sin esfuerzo manual.</p>
-                </div>
-                
-                <div class="reveal reveal-delay-1 card rounded-2xl p-8">
-                    <div class="icon-container w-14 h-14 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-7 h-7" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                        </svg>
-                    </div>
-                    <h3 class="font-display text-xl font-semibold mb-3" style="color: var(--fg);">Graficos integrados</h3>
-                    <p style="color: var(--fg-muted);">Visualizaciones profesionales que te permiten analizar tendencias y tomar decisiones informadas.</p>
-                </div>
-                
-                <div class="reveal reveal-delay-2 card rounded-2xl p-8">
-                    <div class="icon-container w-14 h-14 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-7 h-7" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
-                        </svg>
-                    </div>
-                    <h3 class="font-display text-xl font-semibold mb-3" style="color: var(--fg);">Facil de personalizar</h3>
-                    <p style="color: var(--fg-muted);">Adapta cada plantilla a tus necesidades especificas con formulas editables y estructuras modulares.</p>
-                </div>
-                
-                <div class="reveal card rounded-2xl p-8">
-                    <div class="icon-container w-14 h-14 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-7 h-7" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
-                        </svg>
-                    </div>
-                    <h3 class="font-display text-xl font-semibold mb-3" style="color: var(--fg);">Compatible con Google Sheets</h3>
-                    <p style="color: var(--fg-muted);">Importa sin problemas a Google Sheets para colaborar en tiempo real con tu equipo o socio.</p>
-                </div>
-                
-                <div class="reveal reveal-delay-1 card rounded-2xl p-8">
-                    <div class="icon-container w-14 h-14 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-7 h-7" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <h3 class="font-display text-xl font-semibold mb-3" style="color: var(--fg);">Calculadoras ROI integradas</h3>
-                    <p style="color: var(--fg-muted);">Calcula automaticamente tu retorno de inversion, dividendos y rendimiento anual con un solo click.</p>
-                </div>
-                
-                <div class="reveal reveal-delay-2 card rounded-2xl p-8">
-                    <div class="icon-container w-14 h-14 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-7 h-7" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                        </svg>
-                    </div>
-                    <h3 class="font-display text-xl font-semibold mb-3" style="color: var(--fg);">Sin macros ni codigo VBA</h3>
-                    <p style="color: var(--fg-muted);">100% funcionales con formulas nativas de Excel. Sin riesgos de seguridad ni advertencias de macros.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Gallery Section -->
-    <section id="galeria" class="py-24 relative overflow-hidden">
-        <div class="absolute inset-0 grid-pattern opacity-50"></div>
-        <div class="orb orb-2" style="top: 20%; right: -150px;"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style="color: var(--fg);">
-                    Mira lo que obtienes
-                </h2>
-                <p class="reveal reveal-delay-1 text-lg max-w-2xl mx-auto" style="color: var(--fg-muted);">
-                    Plantillas disenadas con atencion al detalle para una experiencia profesional.
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="reveal mockup-container">
-                    <div class="mockup">
-                        <div class="flex items-center gap-2 px-4 py-3" style="background: var(--border);">
-                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            <span class="ml-4 text-sm font-medium" style="color: var(--fg-muted);">Portfolio_Tracker.xlsx</span>
-                        </div>
-                        <img src="https://via.placeholder.com/800x500/0d1421/10b981?text=Portfolio+Tracker" alt="Portfolio Tracker" class="w-full">
-                        <div class="p-6" style="background: var(--card);">
-                            <h3 class="font-display text-lg font-semibold mb-2" style="color: var(--fg);">Portfolio Tracker</h3>
-                            <p class="text-sm" style="color: var(--fg-muted);">Monitorea todas tus inversiones en un solo lugar con actualizaciones en tiempo real.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="reveal reveal-delay-1 mockup-container">
-                    <div class="mockup">
-                        <div class="flex items-center gap-2 px-4 py-3" style="background: var(--border);">
-                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            <span class="ml-4 text-sm font-medium" style="color: var(--fg-muted);">Stock_Analyzer.xlsx</span>
-                        </div>
-                        <img src="https://via.placeholder.com/800x500/0d1421/06b6d4?text=Stock+Analyzer" alt="Stock Analyzer" class="w-full">
-                        <div class="p-6" style="background: var(--card);">
-                            <h3 class="font-display text-lg font-semibold mb-2" style="color: var(--fg);">Stock Analyzer</h3>
-                            <p class="text-sm" style="color: var(--fg-muted);">Analiza acciones con ratios financieros, graficos de tendencias y senales de compra/venta.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="reveal mockup-container">
-                    <div class="mockup">
-                        <div class="flex items-center gap-2 px-4 py-3" style="background: var(--border);">
-                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            <span class="ml-4 text-sm font-medium" style="color: var(--fg-muted);">Budget_Planner.xlsx</span>
-                        </div>
-                        <img src="https://via.placeholder.com/800x500/0d1421/f59e0b?text=Budget+Planner" alt="Budget Planner" class="w-full">
-                        <div class="p-6" style="background: var(--card);">
-                            <h3 class="font-display text-lg font-semibold mb-2" style="color: var(--fg);">Budget Planner</h3>
-                            <p class="text-sm" style="color: var(--fg-muted);">Controla tus gastos personales y planifica tu futuro financiero con proyecciones.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="reveal reveal-delay-1 mockup-container">
-                    <div class="mockup">
-                        <div class="flex items-center gap-2 px-4 py-3" style="background: var(--border);">
-                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            <span class="ml-4 text-sm font-medium" style="color: var(--fg-muted);">ROI_Calculator.xlsx</span>
-                        </div>
-                        <img src="https://via.placeholder.com/800x500/0d1421/8b5cf6?text=ROI+Calculator" alt="ROI Calculator" class="w-full">
-                        <div class="p-6" style="background: var(--card);">
-                            <h3 class="font-display text-lg font-semibold mb-2" style="color: var(--fg);">ROI Calculator</h3>
-                            <p class="text-sm" style="color: var(--fg-muted);">Calcula retornos, intereses compuestos y proyecciones a multiples anos.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Pricing Section -->
-    <section id="precios" class="py-24 relative" style="background: var(--bg-secondary);">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style="color: var(--fg);">
-                    Obtener todas las plantillas
-                </h2>
-                <p class="reveal reveal-delay-1 text-lg max-w-2xl mx-auto" style="color: var(--fg-muted);">
-                    Pago unico. Sin suscripciones. Acceso de por vida con actualizaciones gratuitas.
-                </p>
-                
-                <div class="reveal reveal-delay-2 inline-flex items-center gap-2 mt-6 px-4 py-2 rounded-full" style="background: var(--glow); border: 1px solid var(--accent);">
-                    <svg class="w-5 h-5" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                    <span class="font-semibold" style="color: var(--accent);">Pagas una vez, es tuyo para siempre</span>
-                </div>
-            </div>
-            
-            <!-- Single Product Card -->
-            <div class="max-w-lg mx-auto">
-                <div class="reveal card pricing-highlight rounded-2xl p-10 text-center">
-                    <div class="mb-6">
-                        <h3 class="font-display text-2xl font-semibold mb-2" style="color: var(--fg);">Pack Completo</h3>
-                        <p class="text-sm" style="color: var(--fg-muted);">Todas las plantillas incluidas</p>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <span class="font-display text-6xl font-bold" style="color: var(--accent);">$19</span>
-                        <span style="color: var(--fg-muted);">USD</span>
-                    </div>
-                    
-                    <p class="text-sm mb-8 font-medium" style="color: var(--accent);">Pago unico - Sin cargos recurrentes</p>
-                    
-                    <ul class="space-y-4 mb-10 text-left max-w-sm mx-auto">
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span style="color: var(--fg);">Portfolio Tracker</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span style="color: var(--fg);">Stock Analyzer</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span style="color: var(--fg);">Budget Planner</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span style="color: var(--fg);">ROI Calculator</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span style="color: var(--fg);">Dividend Tracker</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span style="color: var(--fg);">Crypto Portfolio</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span style="color: var(--fg);">15+ plantillas en total</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span style="color: var(--fg);">Actualizaciones gratuitas de por vida</span>
-                        </li>
-                    </ul>
-                    
-                    <a href="https://noeclipse6.gumroad.com/l/ibmno" target="_blank" rel="noopener" class="btn-primary block text-center px-8 py-4 rounded-xl font-semibold text-lg">
-                        Comprar ahora
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Garantías -->
-            <div class="reveal mt-16 grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                <div class="flex items-center gap-3 justify-center">
-                    <svg class="w-8 h-8 flex-shrink-0" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                    </svg>
-                    <span class="text-sm font-medium" style="color: var(--fg);">Garantia 30 dias</span>
-                </div>
-                <div class="flex items-center gap-3 justify-center">
-                    <svg class="w-8 h-8 flex-shrink-0" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                    </svg>
-                    <span class="text-sm font-medium" style="color: var(--fg);">Pago 100% seguro</span>
-                </div>
-                <div class="flex items-center gap-3 justify-center">
-                    <svg class="w-8 h-8 flex-shrink-0" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                    </svg>
-                    <span class="text-sm font-medium" style="color: var(--fg);">Descarga instantanea</span>
-                </div>
-            </div>
-            
-            <p class="reveal text-center mt-8 text-sm" style="color: var(--fg-muted);">
-                Pago seguro via Gumroad. Si no quedas satisfecho, te devolvemos el 100% de tu dinero.
-            </p>
-        </div>
-    </section>
-    
-    <!-- Testimonials Section -->
-    <section id="testimonios" class="py-24 relative overflow-hidden">
-        <div class="absolute inset-0 grid-pattern opacity-30"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style="color: var(--fg);">
-                    Lo que dicen nuestros clientes
-                </h2>
-                <p class="reveal reveal-delay-1 text-lg max-w-2xl mx-auto" style="color: var(--fg-muted);">
-                    Miles de inversores ya confian en InvestTemplates para gestionar su patrimonio.
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="reveal card rounded-2xl p-8">
-                    <div class="flex items-center gap-1 mb-4">
-                        <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    </div>
-                    <p class="mb-6 leading-relaxed" style="color: var(--fg);">
-                        "El Portfolio Tracker me ahorra horas cada semana. Antes usaba hojas de calculo basicas, pero esto es otro nivel. Los graficos son increibles."
-                    </p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-accent-emerald to-accent-cyan flex items-center justify-center text-white font-bold">
-                            MR
-                        </div>
-                        <div>
-                            <div class="font-semibold" style="color: var(--fg);">Miguel Rodriguez</div>
-                            <div class="text-sm" style="color: var(--fg-muted);">Inversor independiente</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="reveal reveal-delay-1 card rounded-2xl p-8">
-                    <div class="flex items-center gap-1 mb-4">
-                        <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    </div>
-                    <p class="mb-6 leading-relaxed" style="color: var(--fg);">
-                        "Compre el bundle completo y fue la mejor decision. La calculadora ROI me ayudo a proyectar mis inversiones a 10 anos. Muy recomendado."
-                    </p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-accent-cyan to-accent-emerald flex items-center justify-center text-white font-bold">
-                            LC
-                        </div>
-                        <div>
-                            <div class="font-semibold" style="color: var(--fg);">Laura Castillo</div>
-                            <div class="text-sm" style="color: var(--fg-muted);">Contadora publica</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="reveal reveal-delay-2 card rounded-2xl p-8">
-                    <div class="flex items-center gap-1 mb-4">
-                        <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    </div>
-                    <p class="mb-6 leading-relaxed" style="color: var(--fg);">
-                        "La verdad esque no esperaba tanta calidad por el precio. El Stock Analyzer tiene funciones que solo habia visto en herramientas de $200+ al mes."
-                    </p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-accent-gold to-accent-emerald flex items-center justify-center text-white font-bold">
-                            JP
-                        </div>
-                        <div>
-                            <div class="font-semibold" style="color: var(--fg);">Javier Perez</div>
-                            <div class="text-sm" style="color: var(--fg-muted);">Trader a tiempo parcial</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="reveal card rounded-2xl p-8 md:col-span-2 lg:col-span-1">
-                    <div class="flex items-center gap-1 mb-4">
-                        <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="w-5 h-5 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    </div>
-                    <p class="mb-6 leading-relaxed" style="color: var(--fg);">
-                        "Por fin puedo tener todos mis datos financieros en un solo lugar. El soporte al cliente tambien es excelente, me ayudaron a personalizar una formula."
-                    </p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-accent-emerald to-accent-cyan flex items-center justify-center text-white font-bold">
-                            AG
-                        </div>
-                        <div>
-                            <div class="font-semibold" style="color: var(--fg);">Ana Gonzalez</div>
-                            <div class="text-sm" style="color: var(--fg-muted);">Empresaria</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- CTA Section -->
-    <section class="py-24 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-accent-emerald/10 to-accent-cyan/10"></div>
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-6" style="color: var(--fg);">
-                Listo para tomar el control de tus inversiones?
-            </h2>
-            <p class="reveal reveal-delay-1 text-lg mb-8 max-w-2xl mx-auto" style="color: var(--fg-muted);">
-                Unete a miles de inversores que ya usan nuestras plantillas para maximizar sus retornos y ahorrar horas de trabajo manual.
-            </p>
-            <div class="reveal reveal-delay-2 flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://noeclipse6.gumroad.com/l/ibmno" target="_blank" rel="noopener" class="btn-primary px-8 py-4 rounded-xl font-semibold text-lg">
-                    Comprar ahora
-                </a>
-                <a href="mailto:hola@investtemplates.com" class="btn-secondary px-8 py-4 rounded-xl font-semibold text-lg">
-                    Contactar
-                </a>
-            </div>
-        </div>
-    </section>
-    
+
     <!-- Footer -->
-    <footer class="py-12 border-t" style="border-color: var(--border); background: var(--bg-secondary);">
+    <footer class="py-12 border-t border-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <!-- Brand -->
                 <div class="md:col-span-2">
                     <a href="#" class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent-emerald to-accent-cyan flex items-center justify-center">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center">
+                            <svg class="w-6 h-6 text-bg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 3v18h18"/>
+                                <path d="M7 16l4-4 4 4 5-6"/>
                             </svg>
                         </div>
-                        <span class="font-display font-bold text-xl" style="color: var(--fg);">InvestTemplates</span>
+                        <span class="font-display text-2xl text-fg">InvestTemplates</span>
                     </a>
-                    <p class="text-sm max-w-sm" style="color: var(--fg-muted);">
-                        Plantillas Excel profesionales para inversionistas inteligentes. Simplifica tu gestion financiera.
+                    <p class="text-muted max-w-sm">
+                        Plantillas Excel premium para inversores que buscan herramientas profesionales de analisis y gestion de portfolio.
                     </p>
                 </div>
-                
+
+                <!-- Links -->
                 <div>
-                    <h4 class="font-semibold mb-4" style="color: var(--fg);">Enlaces</h4>
+                    <h4 class="font-semibold text-fg mb-4">Productos</h4>
                     <ul class="space-y-2">
-                        <li><a href="#beneficios" class="text-sm hover:text-accent-emerald transition-colors" style="color: var(--fg-muted);">Beneficios</a></li>
-                        <li><a href="#galeria" class="text-sm hover:text-accent-emerald transition-colors" style="color: var(--fg-muted);">Galeria</a></li>
-                        <li><a href="#precios" class="text-sm hover:text-accent-emerald transition-colors" style="color: var(--fg-muted);">Precios</a></li>
-                        <li><a href="#testimonios" class="text-sm hover:text-accent-emerald transition-colors" style="color: var(--fg-muted);">Testimonios</a></li>
+                        <li><a href="#productos" class="text-muted hover:text-accent transition-colors">Portfolio Tracker</a></li>
+                        <li><a href="#productos" class="text-muted hover:text-accent transition-colors">Stock Analyzer</a></li>
+                        <li><a href="#productos" class="text-muted hover:text-accent transition-colors">Budget Master</a></li>
+                        <li><a href="#productos" class="text-muted hover:text-accent transition-colors">ETF Builder</a></li>
                     </ul>
                 </div>
-                
+
+                <!-- Legal -->
                 <div>
-                    <h4 class="font-semibold mb-4" style="color: var(--fg);">Contacto</h4>
+                    <h4 class="font-semibold text-fg mb-4">Legal</h4>
                     <ul class="space-y-2">
-                        <li><a href="mailto:hola@investtemplates.com" class="text-sm hover:text-accent-emerald transition-colors" style="color: var(--fg-muted);">hola@investtemplates.com</a></li>
-                        <li><a href="https://twitter.com/investtemplates" target="_blank" rel="noopener" class="text-sm hover:text-accent-emerald transition-colors" style="color: var(--fg-muted);">Twitter</a></li>
-                        <li><a href="https://instagram.com/investtemplates" target="_blank" rel="noopener" class="text-sm hover:text-accent-emerald transition-colors" style="color: var(--fg-muted);">Instagram</a></li>
-                        <li><a href="https://linkedin.com/company/investtemplates" target="_blank" rel="noopener" class="text-sm hover:text-accent-emerald transition-colors" style="color: var(--fg-muted);">LinkedIn</a></li>
+                        <li><a href="#" class="text-muted hover:text-accent transition-colors">Terminos de servicio</a></li>
+                        <li><a href="#" class="text-muted hover:text-accent transition-colors">Politica de privacidad</a></li>
+                        <li><a href="#" class="text-muted hover:text-accent transition-colors">Politica de reembolso</a></li>
+                        <li><a href="#" class="text-muted hover:text-accent transition-colors">Contacto</a></li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="pt-8 border-t flex flex-col sm:flex-row justify-between items-center gap-4" style="border-color: var(--border);">
-                <p class="text-sm" style="color: var(--fg-muted);">
-                    2024 InvestTemplates. Todos los derechos reservados.
-                </p>
-                <div class="flex items-center gap-6">
-                    <a href="#" class="text-sm hover:text-accent-emerald transition-colors" style="color: var(--fg-muted);">Terminos</a>
-                    <a href="#" class="text-sm hover:text-accent-emerald transition-colors" style="color: var(--fg-muted);">Privacidad</a>
+
+            <!-- Bottom -->
+            <div class="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-muted text-sm">2024 InvestTemplates. Todos los derechos reservados.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="text-muted hover:text-accent transition-colors" aria-label="Twitter">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/></svg>
+                    </a>
+                    <a href="#" class="text-muted hover:text-accent transition-colors" aria-label="LinkedIn">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <a href="#" class="text-muted hover:text-accent transition-colors" aria-label="YouTube">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
     </footer>
-    
+
+    <!-- Preview Modal -->
+    <div x-show="previewModal" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop" @click.self="previewModal = false" x-cloak>
+        <div class="bg-bg-card border border-border rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-auto" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between p-6 border-b border-border">
+                <h3 class="font-display text-xl text-fg">Demo: Portfolio Tracker Pro</h3>
+                <button @click="previewModal = false" class="p-2 text-muted hover:text-fg transition-colors" aria-label="Cerrar modal">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Modal Content -->
+            <div class="p-6">
+                <div class="excel-preview text-xs">
+                    <div class="grid grid-cols-6 gap-1">
+                        <div class="cell cell-header">SIMBOLO</div>
+                        <div class="cell cell-header">EMPRESA</div>
+                        <div class="cell cell-header">ACCIONES</div>
+                        <div class="cell cell-header">PRECIO MEDIO</div>
+                        <div class="cell cell-header">PRECIO ACTUAL</div>
+                        <div class="cell cell-header">P/L (%)</div>
+                        
+                        <div class="cell">NVDA</div>
+                        <div class="cell">NVIDIA Corp</div>
+                        <div class="cell">25</div>
+                        <div class="cell">$450.00</div>
+                        <div class="cell">$875.30</div>
+                        <div class="cell cell-positive">+94.5%</div>
+                        
+                        <div class="cell">TSLA</div>
+                        <div class="cell">Tesla Inc</div>
+                        <div class="cell">40</div>
+                        <div class="cell">$210.50</div>
+                        <div class="cell">$248.90</div>
+                        <div class="cell cell-positive">+18.3%</div>
+                        
+                        <div class="cell">AMZN</div>
+                        <div class="cell">Amazon.com</div>
+                        <div class="cell">15</div>
+                        <div class="cell">$155.00</div>
+                        <div class="cell">$178.25</div>
+                        <div class="cell cell-positive">+15.0%</div>
+                        
+                        <div class="cell">META</div>
+                        <div class="cell">Meta Platforms</div>
+                        <div class="cell">20</div>
+                        <div class="cell">$320.00</div>
+                        <div class="cell">$505.75</div>
+                        <div class="cell cell-positive">+58.1%</div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 grid md:grid-cols-3 gap-4">
+                    <div class="bg-bg p-4 rounded-lg border border-border">
+                        <div class="text-muted text-sm mb-1">Valor total</div>
+                        <div class="text-2xl font-bold text-fg">€47,842.50</div>
+                    </div>
+                    <div class="bg-bg p-4 rounded-lg border border-border">
+                        <div class="text-muted text-sm mb-1">Beneficio</div>
+                        <div class="text-2xl font-bold text-success">+€12,456.80</div>
+                    </div>
+                    <div class="bg-bg p-4 rounded-lg border border-border">
+                        <div class="text-muted text-sm mb-1">Rentabilidad</div>
+                        <div class="text-2xl font-bold text-success">+35.2%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="p-6 border-t border-border flex justify-end gap-4">
+                <button @click="previewModal = false" class="btn-secondary">Cerrar</button>
+                <a href="#precios" @click="previewModal = false" class="btn-primary">Obtener esta plantilla</a>
+            </div>
+        </div>
+    </div>
+
     <script>
-        const themeToggle = document.getElementById('themeToggle');
-        const html = document.documentElement;
-        const particlesContainer = document.getElementById('particles');
+        // Scroll Reveal
+        const revealElements = document.querySelectorAll('.reveal');
         
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        
-        function initTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                html.classList.add('dark');
-            }
-        }
-        
-        initTheme();
-        
-        themeToggle.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-        });
-        
-        function initScrollReveal() {
-            const reveals = document.querySelectorAll('.reveal');
-            
-            if (prefersReducedMotion) {
-                reveals.forEach(el => el.classList.add('active'));
-                return;
-            }
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
-            
-            reveals.forEach(el => observer.observe(el));
-        }
-        
-        function initParticles() {
-            if (prefersReducedMotion || !particlesContainer) return;
-            
-            const particleCount = 15;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 8 + 's';
-                particle.style.animationDuration = (8 + Math.random() * 4) + 's';
-                particlesContainer.appendChild(particle);
-            }
-        }
-        
-        function initSmoothScroll() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href === '#') return;
-                    
-                    const target = document.querySelector(href);
-                    if (target) {
-                        e.preventDefault();
-                        target.scrollIntoView({
-                            behavior: prefersReducedMotion ? 'auto' : 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        }
-        
-        function initNavbar() {
-            const nav = document.querySelector('nav');
-            
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    nav.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
-                } else {
-                    nav.style.boxShadow = 'none';
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
                 }
             });
-        }
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Stats Counter Animation
+        const statNumbers = document.querySelectorAll('.stat-number');
         
-        document.addEventListener('DOMContentLoaded', () => {
-            initScrollReveal();
-            initParticles();
-            initSmoothScroll();
-            initNavbar();
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.dataset.target);
+                    animateCounter(entry.target, target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statNumbers.forEach(stat => counterObserver.observe(stat));
+
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 60;
+            const duration = 2000;
+            const stepTime = duration / 60;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString();
+                }
+            }, stepTime);
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Alpine.js collapse plugin inline
+        document.addEventListener('alpine:init', () => {
+            Alpine.directive('collapse', (el, { expression }, { effect, evaluateLater }) => {
+                let show = evaluateLater(expression || 'true');
+                
+                effect(() => {
+                    show(value => {
+                        if (value) {
+                            el.style.height = 'auto';
+                            el.style.overflow = 'visible';
+                        } else {
+                            el.style.height = '0';
+                            el.style.overflow = 'hidden';
+                        }
+                    });
+                });
+            });
         });
     </script>
 </body>
