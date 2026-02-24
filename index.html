@@ -258,10 +258,10 @@
     openFaq: null,
     scrolled: false,
     testimonials: [
-        { name: 'Carlos Mendoza', role: 'Inversor Independiente', avatar: 'CM', content: 'La plantilla de Portafolio me ha ahorrado horas cada semana. Antes usaba 3 hojas distintas, ahora todo en una. La proyección de dividendos es impresionante.' },
-        { name: 'Ana García', role: 'Consultora Financiera', avatar: 'AG', content: 'Recomiendo estas plantillas a todos mis clientes. El nivel de detalle y las fórmulas de análisis están a la par con herramientas que cuestan 10 veces más.' },
-        { name: 'Michael Johnson', role: 'Analista Financiero', avatar: 'MJ', content: 'La Plantilla de Plataformas es exactamente lo que necesitaba. Finalmente puedo rastrear todas mis cuentas en un solo lugar. Los reportes automatizados me ahorran horas.' },
-        { name: 'Laura Sánchez', role: 'Empresaria', avatar: 'LS', content: 'Esto transformó mis finanzas personales. Por primera vez tengo total claridad sobre mis gastos e inversiones. ¡Altamente recomendado!' }
+        { name: 'Carlos Mendoza', role: 'Independent Investor', avatar: 'CM', content: 'The Portfolio template has saved me hours every week. I used to juggle 3 different spreadsheets — now everything is in one place. The dividend tracking is incredible.' },
+        { name: 'Ana García', role: 'Financial Consultant', avatar: 'AG', content: 'I recommend these templates to all my clients. The level of detail and the analysis formulas are on par with tools that cost ten times more.' },
+        { name: 'Michael Johnson', role: 'Financial Analyst', avatar: 'MJ', content: 'The Platforms template is exactly what I needed. I can finally track all my accounts in one place. The automated reports save me hours every month.' },
+        { name: 'Laura Sánchez', role: 'Entrepreneur', avatar: 'LS', content: 'This completely transformed my personal finances. For the first time I have total clarity over my investments and expenses. Highly recommended!' }
     ],
     products: [
         {
@@ -294,13 +294,13 @@
                     <span class="font-display text-2xl text-fg">InvestTemplates</span>
                 </a>
                 <div class="hidden md:flex items-center gap-8">
-                    <a href="#productos" class="text-muted hover:text-fg transition-colors">Plantillas</a>
-                    <a href="#beneficios" class="text-muted hover:text-fg transition-colors">Beneficios</a>
-                    <a href="#testimonios" class="text-muted hover:text-fg transition-colors">Testimonios</a>
+                    <a href="#templates" class="text-muted hover:text-fg transition-colors">Templates</a>
+                    <a href="#benefits" class="text-muted hover:text-fg transition-colors">Benefits</a>
+                    <a href="#testimonials" class="text-muted hover:text-fg transition-colors">Testimonials</a>
                     <a href="#faq" class="text-muted hover:text-fg transition-colors">FAQ</a>
                 </div>
                 <div class="hidden md:flex items-center gap-4">
-                    <a href="#productos" class="btn-primary text-sm">Ver Plantillas</a>
+                    <a href="#templates" class="btn-primary text-sm">View Templates</a>
                 </div>
                 <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 text-fg">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -312,12 +312,12 @@
         </div>
         <div x-show="mobileMenuOpen" x-transition class="mobile-menu fixed top-0 right-0 bottom-0 w-80 z-50 md:hidden">
             <div class="p-6 pt-24 flex flex-col gap-6">
-                <a href="#productos" @click="mobileMenuOpen=false" class="text-lg text-fg hover:text-accent transition-colors">Plantillas</a>
-                <a href="#beneficios" @click="mobileMenuOpen=false" class="text-lg text-fg hover:text-accent transition-colors">Beneficios</a>
-                <a href="#testimonios" @click="mobileMenuOpen=false" class="text-lg text-fg hover:text-accent transition-colors">Testimonios</a>
+                <a href="#templates" @click="mobileMenuOpen=false" class="text-lg text-fg hover:text-accent transition-colors">Templates</a>
+                <a href="#benefits" @click="mobileMenuOpen=false" class="text-lg text-fg hover:text-accent transition-colors">Benefits</a>
+                <a href="#testimonials" @click="mobileMenuOpen=false" class="text-lg text-fg hover:text-accent transition-colors">Testimonials</a>
                 <a href="#faq" @click="mobileMenuOpen=false" class="text-lg text-fg hover:text-accent transition-colors">FAQ</a>
                 <hr class="border-border">
-                <a href="#productos" @click="mobileMenuOpen=false" class="btn-primary text-center">Ver Plantillas</a>
+                <a href="#templates" @click="mobileMenuOpen=false" class="btn-primary text-center">View Templates</a>
             </div>
         </div>
     </nav>
@@ -330,27 +330,27 @@
                     <div class="animate-fade-in-up">
                         <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/30 text-accent text-sm font-medium mb-6">
                             <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
-                            Más de 2,500 inversores confían en nosotros
+                            Trusted by over 2,500 investors
                         </span>
                     </div>
                     <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-fg leading-tight mb-6 animate-fade-in-up delay-100">
-                        Domina tus finanzas con<br><span class="text-accent italic">plantillas Excel</span><br>profesionales
+                        Master your finances with<br><span class="text-accent italic">professional Excel</span><br>templates
                     </h1>
                     <p class="text-lg sm:text-xl text-muted max-w-xl mx-auto lg:mx-0 mb-8 animate-fade-in-up delay-200">
-                        Herramientas de inversión diseñadas por analistas financieros. Rastrea tu portafolio, analiza rendimientos y toma decisiones informadas.
+                        Investment tools built by financial analysts. Track your portfolio, analyze returns and make informed decisions — all in one spreadsheet.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up delay-300">
-                        <a href="#productos" class="btn-primary text-lg">Ver Plantillas</a>
+                        <a href="#templates" class="btn-primary text-lg">View Templates</a>
                         <button @click="previewModal=true; selectedProduct=0; activeTab=0" class="btn-secondary text-lg gap-2">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
-                            Ver Demo
+                            Live Demo
                         </button>
                     </div>
                     <div class="mt-12 pt-8 border-t border-border/50 animate-fade-in-up delay-400">
-                        <p class="text-sm text-muted mb-4">Compatible con:</p>
+                        <p class="text-sm text-muted mb-4">Compatible with:</p>
                         <div class="flex flex-wrap gap-6 justify-center lg:justify-start items-center opacity-60">
                             <span class="font-semibold">Excel 365</span>
                             <span class="font-semibold">Google Sheets</span>
@@ -390,7 +390,7 @@
                         </div>
                         <div class="flex items-center justify-between mt-2">
                             <span class="text-xs text-muted">Ene 2024</span>
-                            <span class="text-xs text-success font-semibold">+31.9% acumulado</span>
+                            <span class="text-xs text-success font-semibold">+31.9% cumulative return</span>
                             <span class="text-xs text-muted">Feb 2025</span>
                         </div>
                     </div>
@@ -410,31 +410,31 @@
     <section class="py-16 bg-bg-elevated border-y border-border relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center reveal"><div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="2547">0</div><p class="text-muted">Clientes Activos</p></div>
-                <div class="text-center reveal"><div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="2">0</div><p class="text-muted">Plantillas Premium</p></div>
-                <div class="text-center reveal"><div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="98">0</div><p class="text-muted">% Satisfacción</p></div>
-                <div class="text-center reveal"><div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="4">0</div><p class="text-muted">Updates/Mes</p></div>
+                <div class="text-center reveal"><div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="2547">0</div><p class="text-muted">Active Clients</p></div>
+                <div class="text-center reveal"><div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="2">0</div><p class="text-muted">Premium Templates</p></div>
+                <div class="text-center reveal"><div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="98">0</div><p class="text-muted">% Satisfaction</p></div>
+                <div class="text-center reveal"><div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="4">0</div><p class="text-muted">Updates / Month</p></div>
             </div>
         </div>
     </section>
 
     <!-- Products Section -->
-    <section id="productos" class="py-24 relative">
+    <section id="templates" class="py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
-                <span class="text-accent font-medium tracking-wider uppercase text-sm">Nuestras Plantillas</span>
+                <span class="text-accent font-medium tracking-wider uppercase text-sm">Our Templates</span>
                 <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mt-4 mb-6">
-                    Herramientas profesionales para<br><span class="text-accent italic">inversores serios</span>
+                    Professional tools for<br><span class="text-accent italic">serious investors</span>
                 </h2>
                 <p class="text-muted text-lg max-w-2xl mx-auto">
-                    Cada plantilla está diseñada con fórmulas avanzadas, formato profesional y automatizaciones que te ahorrarán horas de trabajo.
+                    Each template is built with advanced formulas, professional formatting and automations that will save you hours of work every week.
                 </p>
             </div>
 
             <div class="flex flex-wrap justify-center gap-2 mb-12 reveal">
-                <button @click="activeFilter='all'" :class="activeFilter==='all' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">Todas</button>
-                <button @click="activeFilter='platform'" :class="activeFilter==='platform' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">Por Plataforma</button>
-                <button @click="activeFilter='portfolio'" :class="activeFilter==='portfolio' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">Portafolio</button>
+                <button @click="activeFilter='all'" :class="activeFilter==='all' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">All</button>
+                <button @click="activeFilter='platform'" :class="activeFilter==='platform' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">By Platform</button>
+                <button @click="activeFilter='portfolio'" :class="activeFilter==='portfolio' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">Portfolio</button>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -496,27 +496,27 @@
                     </div>
                     <div class="p-6">
                         <div class="flex items-center gap-2 mb-2">
-                            <span class="text-xs font-medium px-2 py-1 rounded bg-accent/10 text-accent">Por Plataforma</span>
+                            <span class="text-xs font-medium px-2 py-1 rounded bg-accent/10 text-accent">By Platform</span>
                             <div class="flex items-center gap-1 text-sm">
                                 <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                                 <span class="text-fg">4.9</span><span class="text-muted">(342)</span>
                             </div>
                         </div>
                         <h3 class="font-display text-xl text-fg mb-2">PLATAFORMAS DEFINITIVO</h3>
-                        <p class="text-muted text-sm mb-4">Gestiona tus inversiones por plataforma. Controla múltiples cuentas, brokers y activos en un solo lugar con dashboard consolidado y comparativa vs S&P500.</p>
+                        <p class="text-muted text-sm mb-4">Manage all your investment accounts in one place. Consolidate multiple brokers and platforms with an automatic dashboard, net worth evolution chart and S&P500 comparison.</p>
                         <ul class="space-y-2 mb-6">
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Multi-plataforma consolidado (hasta 30)</li>
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Dashboard con evolución del patrimonio</li>
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Análisis vs S&P500 y CETES</li>
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Estimación fiscal (ISR)</li>
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Metas financieras con proyección</li>
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Hasta 2,000 registros de movimientos</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Consolidated multi-platform dashboard (up to 30)</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Net worth evolution chart by month</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Performance comparison vs S&P500 & CETES</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Tax estimation (ISR 20% withholding)</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Financial goals with projection</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Up to 2,000 transaction records</li>
                         </ul>
                         <div class="flex items-center justify-between pt-4 border-t border-border">
                             <div><span class="text-3xl font-bold text-fg">$9</span><span class="text-muted text-sm ml-1">USD</span></div>
                             <div class="flex gap-2">
-                                <button @click="previewModal=true; selectedProduct=0; activeTab=0" class="btn-secondary text-sm py-2 px-4">Vista Previa</button>
-                                <button class="btn-primary text-sm py-2 px-4">Comprar</button>
+                                <button @click="previewModal=true; selectedProduct=0; activeTab=0" class="btn-secondary text-sm py-2 px-4">Preview</button>
+                                <button class="btn-primary text-sm py-2 px-4">Buy Now</button>
                             </div>
                         </div>
                     </div>
@@ -579,27 +579,27 @@
                     </div>
                     <div class="p-6">
                         <div class="flex items-center gap-2 mb-2">
-                            <span class="text-xs font-medium px-2 py-1 rounded bg-accent/10 text-accent">Portafolio</span>
+                            <span class="text-xs font-medium px-2 py-1 rounded bg-accent/10 text-accent">Portfolio</span>
                             <div class="flex items-center gap-1 text-sm">
                                 <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                                 <span class="text-fg">4.9</span><span class="text-muted">(489)</span>
                             </div>
                         </div>
                         <h3 class="font-display text-xl text-fg mb-2">PORTAFOLIO DE INVERSIONES</h3>
-                        <p class="text-muted text-sm mb-4">Seguimiento completo de acciones, ETFs y criptomonedas. P&L automático, calendario de dividendos, score de salud del portafolio y objetivos financieros.</p>
+                        <p class="text-muted text-sm mb-4">Full tracking for stocks, ETFs and crypto. Automatic P&L per asset, dividend calendar, portfolio health score and financial goals — all in a single spreadsheet.</p>
                         <ul class="space-y-2 mb-6">
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Acciones, ETFs y Crypto</li>
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>P&L automático por activo</li>
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Calendario de dividendos</li>
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Reporte mensual automático</li>
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Score de salud 0–100 pts</li>
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Seguimiento de objetivos financieros</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Stocks, ETFs &amp; Crypto tracking</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Automatic P&amp;L per asset</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Dividend calendar &amp; tracker</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Automatic monthly report</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Portfolio health score 0–100 pts</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Financial goals progress tracking</li>
                         </ul>
                         <div class="flex items-center justify-between pt-4 border-t border-border">
                             <div><span class="text-3xl font-bold text-fg">$9</span><span class="text-muted text-sm ml-1">USD</span></div>
                             <div class="flex gap-2">
-                                <button @click="previewModal=true; selectedProduct=1; activeTab=0" class="btn-secondary text-sm py-2 px-4">Vista Previa</button>
-                                <button class="btn-primary text-sm py-2 px-4">Comprar</button>
+                                <button @click="previewModal=true; selectedProduct=1; activeTab=0" class="btn-secondary text-sm py-2 px-4">Preview</button>
+                                <button class="btn-primary text-sm py-2 px-4">Buy Now</button>
                             </div>
                         </div>
                     </div>
@@ -609,28 +609,28 @@
     </section>
 
     <!-- Benefits Section -->
-    <section id="beneficios" class="py-24 bg-bg-elevated relative">
+    <section id="benefits" class="py-24 bg-bg-elevated relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="reveal">
-                    <span class="text-accent font-medium tracking-wider uppercase text-sm">¿Por qué elegirnos?</span>
-                    <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mt-4 mb-6">Deja de perder tiempo en<br><span class="text-accent italic">hojas mediocres</span></h2>
-                    <p class="text-muted text-lg mb-8">Nuestras plantillas son creadas por analistas financieros con más de 10 años de experiencia en mercados internacionales.</p>
+                    <span class="text-accent font-medium tracking-wider uppercase text-sm">Why choose us?</span>
+                    <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mt-4 mb-6">Stop wasting time on<br><span class="text-accent italic">mediocre spreadsheets</span></h2>
+                    <p class="text-muted text-lg mb-8">Our templates are built by financial analysts with over 10 years of experience in international markets.</p>
                     <div class="space-y-6">
-                        <div class="flex gap-4"><div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 text-2xl">⚡</div><div><h3 class="font-semibold text-fg text-lg mb-1">Listo para usar en minutos</h3><p class="text-muted">Sin configuraciones complejas. Descarga, abre y comienza a gestionar tus inversiones de inmediato.</p></div></div>
-                        <div class="flex gap-4"><div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 text-2xl">🛡️</div><div><h3 class="font-semibold text-fg text-lg mb-1">Fórmulas auditadas y probadas</h3><p class="text-muted">Cada cálculo ha sido verificado por contadores y analistas. 100% de precisión garantizada.</p></div></div>
-                        <div class="flex gap-4"><div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 text-2xl">🔄</div><div><h3 class="font-semibold text-fg text-lg mb-1">Actualizaciones gratuitas de por vida</h3><p class="text-muted">Los mercados cambian y nuestras plantillas también. Recibe mejoras sin costo adicional.</p></div></div>
-                        <div class="flex gap-4"><div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 text-2xl">🛠️</div><div><h3 class="font-semibold text-fg text-lg mb-1">Soporte técnico prioritario</h3><p class="text-muted">¿Dudas? Nuestro equipo responde en 24h con soluciones concretas.</p></div></div>
+                        <div class="flex gap-4"><div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 text-2xl">⚡</div><div><h3 class="font-semibold text-fg text-lg mb-1">Ready to use in minutes</h3><p class="text-muted">No complex setup. Download, open and start managing your investments right away.</p></div></div>
+                        <div class="flex gap-4"><div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 text-2xl">🛡️</div><div><h3 class="font-semibold text-fg text-lg mb-1">Audited and tested formulas</h3><p class="text-muted">Every calculation has been verified by accountants and analysts. 100% accuracy guaranteed.</p></div></div>
+                        <div class="flex gap-4"><div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 text-2xl">🔄</div><div><h3 class="font-semibold text-fg text-lg mb-1">Free lifetime updates</h3><p class="text-muted">Markets change and our templates do too. Receive improvements at no extra cost, forever.</p></div></div>
+                        <div class="flex gap-4"><div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 text-2xl">🛠️</div><div><h3 class="font-semibold text-fg text-lg mb-1">Priority technical support</h3><p class="text-muted">Questions? Our team responds within 24h with concrete solutions.</p></div></div>
                     </div>
                 </div>
                 <div class="relative reveal">
                     <div class="bg-bg-card rounded-2xl border border-border p-8 relative z-10">
-                        <h3 class="font-display text-xl text-fg mb-6">Comparativa</h3>
+                        <h3 class="font-display text-xl text-fg mb-6">Comparison</h3>
                         <div class="space-y-4">
-                            <div class="flex items-center justify-between p-4 bg-bg rounded-lg"><span class="text-muted">Tiempo de configuración</span><div class="flex gap-8"><div class="text-center"><span class="text-red-400 font-bold">4–8h</span><p class="text-xs text-muted">Excel básico</p></div><div class="text-center"><span class="text-success font-bold">5 min</span><p class="text-xs text-muted">InvestTemplates</p></div></div></div>
-                            <div class="flex items-center justify-between p-4 bg-bg rounded-lg"><span class="text-muted">Fórmulas avanzadas</span><div class="flex gap-8"><div class="text-center"><span class="text-red-400 font-bold">Manual</span><p class="text-xs text-muted">Con errores</p></div><div class="text-center"><span class="text-success font-bold">Incluidas</span><p class="text-xs text-muted">Probadas</p></div></div></div>
-                            <div class="flex items-center justify-between p-4 bg-bg rounded-lg"><span class="text-muted">Actualizaciones</span><div class="flex gap-8"><div class="text-center"><span class="text-red-400 font-bold">Tú las haces</span><p class="text-xs text-muted">Más trabajo</p></div><div class="text-center"><span class="text-success font-bold">Gratis</span><p class="text-xs text-muted">De por vida</p></div></div></div>
-                            <div class="flex items-center justify-between p-4 bg-bg rounded-lg"><span class="text-muted">Soporte</span><div class="flex gap-8"><div class="text-center"><span class="text-red-400 font-bold">Ninguno</span></div><div class="text-center"><span class="text-success font-bold">24h</span><p class="text-xs text-muted">Prioritario</p></div></div></div>
+                            <div class="flex items-center justify-between p-4 bg-bg rounded-lg"><span class="text-muted">Setup time</span><div class="flex gap-8"><div class="text-center"><span class="text-red-400 font-bold">4–8h</span><p class="text-xs text-muted">Basic Excel</p></div><div class="text-center"><span class="text-success font-bold">5 min</span><p class="text-xs text-muted">InvestTemplates</p></div></div></div>
+                            <div class="flex items-center justify-between p-4 bg-bg rounded-lg"><span class="text-muted">Advanced formulas</span><div class="flex gap-8"><div class="text-center"><span class="text-red-400 font-bold">Manual</span><p class="text-xs text-muted">Error-prone</p></div><div class="text-center"><span class="text-success font-bold">Included</span><p class="text-xs text-muted">Tested</p></div></div></div>
+                            <div class="flex items-center justify-between p-4 bg-bg rounded-lg"><span class="text-muted">Updates</span><div class="flex gap-8"><div class="text-center"><span class="text-red-400 font-bold">DIY</span><p class="text-xs text-muted">More work</p></div><div class="text-center"><span class="text-success font-bold">Free</span><p class="text-xs text-muted">Lifetime</p></div></div></div>
+                            <div class="flex items-center justify-between p-4 bg-bg rounded-lg"><span class="text-muted">Support</span><div class="flex gap-8"><div class="text-center"><span class="text-red-400 font-bold">None</span></div><div class="text-center"><span class="text-success font-bold">24h</span><p class="text-xs text-muted">Priority</p></div></div></div>
                         </div>
                     </div>
                     <div class="absolute -top-6 -right-6 w-32 h-32 bg-accent/10 rounded-full blur-2xl"></div>
@@ -641,11 +641,11 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonios" class="py-24 relative overflow-hidden">
+    <section id="testimonials" class="py-24 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
-                <span class="text-accent font-medium tracking-wider uppercase text-sm">Testimonios</span>
-                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mt-4 mb-6">Lo que dicen<br><span class="text-accent italic">nuestros clientes</span></h2>
+                <span class="text-accent font-medium tracking-wider uppercase text-sm">Testimonials</span>
+                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mt-4 mb-6">What our<br><span class="text-accent italic">customers say</span></h2>
             </div>
             <div class="relative reveal">
                 <div class="max-w-3xl mx-auto">
@@ -685,15 +685,15 @@
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
                 <span class="text-accent font-medium tracking-wider uppercase text-sm">FAQ</span>
-                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mt-4 mb-6">Preguntas<br><span class="text-accent italic">frecuentes</span></h2>
+                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mt-4 mb-6">Frequently asked<br><span class="text-accent italic">questions</span></h2>
             </div>
             <div class="space-y-4 reveal" x-data="{ faqs: [
-                { q: '¿Necesito conocimientos avanzados de Excel?', a: 'No, nuestras plantillas están diseñadas para usuarios de todos los niveles. Incluimos guías detalladas y tutoriales en video que te guían paso a paso. Solo necesitas conocer los básicos de Excel.' },
-                { q: '¿Las plantillas funcionan en Google Sheets?', a: 'Sí, todas nuestras plantillas son compatibles con Google Sheets, Excel 365, Excel 2019+ y Numbers. Al comprar recibes versiones optimizadas para cada plataforma.' },
-                { q: '¿Qué pasa si tengo problemas o dudas?', a: 'Ofrecemos soporte técnico por email con tiempo de respuesta de 24 horas. Nuestro equipo está listo para ayudarte con cualquier consulta.' },
-                { q: '¿Recibo actualizaciones futuras?', a: 'Sí, todas las actualizaciones son gratuitas de por vida. Cuando mejoramos una plantilla o añadimos nuevas funcionalidades, recibirás un email con el enlace de descarga.' },
-                { q: '¿Puedo obtener un reembolso?', a: 'Ofrecemos garantía de devolución de 30 días. Si no estás satisfecho, envíanos un email y procesamos tu reembolso sin preguntas.' },
-                { q: '¿En qué idioma están las plantillas?', a: 'Nuestras plantillas están actualmente disponibles en español, con etiquetas claras y fórmulas que funcionan en cualquier configuración de idioma de Excel.' }
+                { q: 'Do I need advanced Excel skills?', a: 'No, our templates are designed for users of all levels. We include detailed guides and video tutorials that walk you through every step. You only need basic Excel knowledge.' },
+                { q: 'Do the templates work in Google Sheets?', a: 'Yes, all our templates are compatible with Google Sheets, Excel 365, Excel 2019+ and Numbers. On purchase you receive versions optimized for each platform.' },
+                { q: 'What if I have issues or questions?', a: 'We offer email technical support with a 24-hour response time. Our team is ready to help you with any questions.' },
+                { q: 'Do I get future updates?', a: 'Yes, all updates are free for life. When we improve a template or add new features, you will receive an email with the download link.' },
+                { q: 'Can I get a refund?', a: 'We offer a 30-day money-back guarantee. If you are not satisfied, send us an email and we will process your refund, no questions asked.' },
+                { q: 'What language are the templates in?', a: 'Our templates are currently available in Spanish, with clear labels and formulas that work with any Excel language setting.' }
             ] }">
                 <template x-for="(faq, index) in faqs" :key="index">
                     <div class="faq-item">
@@ -709,9 +709,9 @@
     <section class="py-24 bg-bg-elevated relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-r from-accent/10 via-transparent to-accent/10"></div>
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center reveal">
-            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mb-6">Comienza a invertir con<br><span class="text-accent italic">inteligencia</span></h2>
-            <p class="text-muted text-lg mb-8 max-w-2xl mx-auto">Únete a más de 2,500 inversores que ya usan nuestras plantillas para tomar mejores decisiones financieras.</p>
-            <a href="#productos" class="btn-primary text-lg gap-2">Ver plantillas <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mb-6">Start investing with<br><span class="text-accent italic">intelligence</span></h2>
+            <p class="text-muted text-lg mb-8 max-w-2xl mx-auto">Join over 2,500 investors already using our templates to make smarter financial decisions.</p>
+            <a href="#templates" class="btn-primary text-lg gap-2">View Templates <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
         </div>
     </section>
 
@@ -724,13 +724,13 @@
                         <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center"><svg class="w-6 h-6 text-bg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 5-6"/></svg></div>
                         <span class="font-display text-2xl text-fg">InvestTemplates</span>
                     </a>
-                    <p class="text-muted max-w-sm">Plantillas Excel premium para inversores que buscan herramientas de análisis profesional y gestión de portafolio.</p>
+                    <p class="text-muted max-w-sm">Premium Excel templates for investors who want professional-grade analysis tools and portfolio management.</p>
                 </div>
-                <div><h4 class="font-semibold text-fg mb-4">Productos</h4><ul class="space-y-2"><li><a href="#productos" class="text-muted hover:text-accent transition-colors">Plantilla Plataformas</a></li><li><a href="#productos" class="text-muted hover:text-accent transition-colors">Plantilla Portafolio</a></li></ul></div>
-                <div><h4 class="font-semibold text-fg mb-4">Legal</h4><ul class="space-y-2"><li><a href="#" class="text-muted hover:text-accent transition-colors">Términos de servicio</a></li><li><a href="#" class="text-muted hover:text-accent transition-colors">Política de privacidad</a></li><li><a href="#" class="text-muted hover:text-accent transition-colors">Política de reembolso</a></li><li><a href="#" class="text-muted hover:text-accent transition-colors">Contacto</a></li></ul></div>
+                <div><h4 class="font-semibold text-fg mb-4">Products</h4><ul class="space-y-2"><li><a href="#templates" class="text-muted hover:text-accent transition-colors">Platforms Template</a></li><li><a href="#templates" class="text-muted hover:text-accent transition-colors">Portfolio Template</a></li></ul></div>
+                <div><h4 class="font-semibold text-fg mb-4">Legal</h4><ul class="space-y-2"><li><a href="#" class="text-muted hover:text-accent transition-colors">Terms of Service</a></li><li><a href="#" class="text-muted hover:text-accent transition-colors">Privacy Policy</a></li><li><a href="#" class="text-muted hover:text-accent transition-colors">Refund Policy</a></li><li><a href="#" class="text-muted hover:text-accent transition-colors">Contact</a></li></ul></div>
             </div>
             <div class="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
-                <p class="text-muted text-sm">2025 InvestTemplates. Todos los derechos reservados.</p>
+                <p class="text-muted text-sm">© 2025 InvestTemplates. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -745,7 +745,7 @@
                     <h3 class="font-display text-xl text-fg" x-text="selectedProduct===0 ? 'PLATAFORMAS DEFINITIVO' : 'PORTAFOLIO DE INVERSIONES'"></h3>
                     <div class="flex items-center gap-3 mt-1">
                         <span class="product-badge es">🇪🇸 Español</span>
-                        <span class="text-muted text-xs" x-text="selectedProduct===0 ? '6 hojas · Hasta 30 plataformas' : '6 hojas · Acciones · ETFs · Crypto'"></span>
+                        <span class="text-muted text-xs" x-text="selectedProduct===0 ? '6 sheets · Up to 30 platforms' : '6 sheets · Stocks · ETFs · Crypto'"></span>
                     </div>
                 </div>
                 <button @click="previewModal=false" class="p-2 text-muted hover:text-fg transition-colors rounded-lg hover:bg-border">
@@ -757,29 +757,29 @@
             <div class="px-5 pt-4 grid grid-cols-3 gap-3">
                 <!-- PLATAFORMAS stats -->
                 <template x-if="selectedProduct===0">
-                    <div class="stat-box"><div class="text-xs text-muted mb-1">💼 Valor Total</div><div class="text-xl font-bold text-accent">$118,977</div></div>
+                    <div class="stat-box"><div class="text-xs text-muted mb-1">💼 Total Value</div><div class="text-xl font-bold text-accent">$118,977</div></div>
                 </template>
                 <template x-if="selectedProduct===0">
-                    <div class="stat-box"><div class="text-xs text-muted mb-1">📈 Ganancias</div><div class="text-xl font-bold text-success">+$47,477</div></div>
+                    <div class="stat-box"><div class="text-xs text-muted mb-1">📈 Gains</div><div class="text-xl font-bold text-success">+$47,477</div></div>
                 </template>
                 <template x-if="selectedProduct===0">
-                    <div class="stat-box"><div class="text-xs text-muted mb-1">📊 Rendimiento</div><div class="text-xl font-bold text-success">+66.4%</div></div>
+                    <div class="stat-box"><div class="text-xs text-muted mb-1">📊 Return</div><div class="text-xl font-bold text-success">+66.4%</div></div>
                 </template>
                 <!-- PORTAFOLIO stats -->
                 <template x-if="selectedProduct===1">
-                    <div class="stat-box"><div class="text-xs text-muted mb-1">💰 Capital Invertido</div><div class="text-xl font-bold text-accent">$38,917</div></div>
+                    <div class="stat-box"><div class="text-xs text-muted mb-1">💰 Capital Invested</div><div class="text-xl font-bold text-accent">$38,917</div></div>
                 </template>
                 <template x-if="selectedProduct===1">
-                    <div class="stat-box"><div class="text-xs text-muted mb-1">📈 G/P Realizada</div><div class="text-xl font-bold text-success">+$4,540</div></div>
+                    <div class="stat-box"><div class="text-xs text-muted mb-1">📈 Realized G/P</div><div class="text-xl font-bold text-success">+$4,540</div></div>
                 </template>
                 <template x-if="selectedProduct===1">
-                    <div class="stat-box"><div class="text-xs text-muted mb-1">💸 Dividendos</div><div class="text-xl font-bold text-success">$317.50</div></div>
+                    <div class="stat-box"><div class="text-xs text-muted mb-1">💸 Dividends</div><div class="text-xl font-bold text-success">$317.50</div></div>
                 </template>
             </div>
 
             <!-- Sheet Tabs -->
             <div class="px-5 pt-4 pb-2">
-                <p class="text-xs text-muted mb-2 uppercase tracking-wider">Hojas de la plantilla:</p>
+                <p class="text-xs text-muted mb-2 uppercase tracking-wider">Template sheets:</p>
                 <!-- PLATAFORMAS tabs -->
                 <div x-show="selectedProduct===0" class="flex flex-wrap gap-2">
                     <template x-for="(tab, i) in ['🏠 Inicio','💰 Saldos','📋 Movimientos','📈 Análisis','📊 S&P500','🎯 Metas']" :key="i">
@@ -1169,7 +1169,7 @@
                 </div>
                 <div class="flex gap-3">
                     <button @click="previewModal=false" class="btn-secondary py-2 px-4 text-sm">Cerrar</button>
-                    <a href="#productos" @click="previewModal=false" class="btn-primary py-2 px-4 text-sm">Obtener Plantilla — $9 USD</a>
+                    <a href="#templates" @click="previewModal=false" class="btn-primary py-2 px-4 text-sm">Get Template — $9 USD</a>
                 </div>
             </div>
         </div>
