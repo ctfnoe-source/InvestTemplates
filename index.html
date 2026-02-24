@@ -76,38 +76,155 @@
         .product-card { background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-elevated) 100%); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: all 0.4s ease; }
         .product-card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.1); }
 
-        /* Excel preview styles */
-        .excel-window { background: #1e2d1e; border-radius: 8px; overflow: hidden; font-family: 'Courier New', monospace; font-size: 0.68rem; }
-        .excel-titlebar { background: #217346; padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
-        .excel-titlebar-dot { width: 10px; height: 10px; border-radius: 50%; }
-        .excel-ribbon { background: #1d6b3c; padding: 4px 10px; display: flex; gap: 12px; border-bottom: 1px solid #155228; }
-        .excel-ribbon span { font-size: 0.6rem; color: #a8d5b5; cursor: default; }
-        .excel-sheet-tabs { background: #1a2e1a; display: flex; gap: 1px; padding: 4px 8px 0; border-top: 1px solid #2d4a2d; overflow-x: auto; }
-        .excel-tab { padding: 4px 10px; border-radius: 4px 4px 0 0; font-size: 0.6rem; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
-        .excel-tab.active { background: #1e3a2f; color: #d4af37; border: 1px solid #2d6040; border-bottom: none; }
-        .excel-tab.inactive { background: #152215; color: #6a8a6a; }
-        .excel-tab:hover:not(.active) { background: #1c3020; color: #8ab88a; }
-        .excel-body { background: #1e3a2f; padding: 10px; overflow-x: auto; }
-        .excel-col-headers { display: flex; gap: 1px; margin-bottom: 1px; }
-        .col-header { background: #1d6b3c; color: #a8d5b5; text-align: center; padding: 3px 6px; min-width: 70px; font-size: 0.58rem; border: 1px solid #155228; }
-        .col-header.row-num { min-width: 28px; background: #155228; }
-        .excel-row { display: flex; gap: 1px; margin-bottom: 1px; }
-        .excel-row:hover .xc { background: rgba(212,175,55,0.08) !important; }
-        .xc { padding: 3px 6px; min-width: 70px; border: 1px solid #1d3a20; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 120px; }
-        .xc.row-num { min-width: 28px; background: #155228; color: #6a9a6a; font-size: 0.55rem; text-align: center; border-color: #1a4a28; }
-        .xc.header { background: rgba(212,175,55,0.18); color: #d4af37; font-weight: 700; font-size: 0.6rem; border-color: rgba(212,175,55,0.3); }
-        .xc.pos { color: #4ade80; }
-        .xc.neg { color: #f87171; }
-        .xc.gold { color: #d4af37; font-weight: 600; }
-        .xc.total { background: rgba(212,175,55,0.12); color: #d4af37; font-weight: 700; }
-        .xc.blue { color: #60a5fa; }
-        .xc.white { color: #f5f5f7; }
-        .xc.muted { color: #6a8a7a; font-size: 0.58rem; }
-        .xc.formula { color: #93c5fd; font-size: 0.58rem; }
-        .xc.orange { color: #fb923c; }
-        .xc.purple { color: #c084fc; }
+        /* ============================================
+           EXCEL PREVIEW — colores basados en plantillas reales
+           Paleta: navy oscuro, KPIs vibrant, texto dorado
+        ============================================ */
 
-        /* stat cards in modal */
+        /* Ventana completa */
+        .excel-window {
+            background: #080c14;
+            border-radius: 8px;
+            overflow: hidden;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.67rem;
+            border: 1px solid #1a2540;
+        }
+
+        /* Barra de título - navy oscuro con acento */
+        .excel-titlebar {
+            background: linear-gradient(90deg, #0d1528 0%, #111e38 100%);
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-bottom: 1px solid #1e3060;
+        }
+        .excel-titlebar-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+        /* Pestañas de hojas */
+        .excel-sheet-tabs {
+            background: #060a10;
+            display: flex;
+            gap: 2px;
+            padding: 5px 8px 0;
+            border-top: 1px solid #1a2540;
+            overflow-x: auto;
+        }
+        .excel-tab {
+            padding: 4px 10px;
+            border-radius: 4px 4px 0 0;
+            font-size: 0.59rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .excel-tab.active {
+            background: #0d1528;
+            color: #f0c040;
+            border: 1px solid #2a4080;
+            border-bottom: 1px solid #0d1528;
+            font-weight: 600;
+        }
+        .excel-tab.inactive {
+            background: #08111e;
+            color: #4a6080;
+        }
+        .excel-tab:hover:not(.active) { background: #0d1825; color: #7090b0; }
+
+        /* Cuerpo de la hoja */
+        .excel-body {
+            background: #080c14;
+            padding: 10px;
+            overflow-x: auto;
+        }
+
+        /* Encabezados de columna */
+        .excel-col-headers { display: flex; gap: 1px; margin-bottom: 1px; }
+        .col-header {
+            background: #0d1830;
+            color: #5a7898;
+            text-align: center;
+            padding: 3px 6px;
+            min-width: 70px;
+            font-size: 0.57rem;
+            border: 1px solid #1a2a48;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        .col-header.row-num { min-width: 28px; background: #060a10; border-color: #101828; }
+
+        /* Filas de datos */
+        .excel-row { display: flex; gap: 1px; margin-bottom: 1px; }
+        .excel-row:hover .xc { background: rgba(255,255,255,0.04) !important; }
+        .xc {
+            padding: 4px 7px;
+            min-width: 70px;
+            border: 1px solid #101828;
+            background: #0a0f1c;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 130px;
+            color: #c8d8e8;
+        }
+        .xc.row-num {
+            min-width: 28px;
+            background: #060a10;
+            color: #2a4060;
+            font-size: 0.54rem;
+            text-align: center;
+            border-color: #101828;
+        }
+
+        /* Colores de texto — espejo de las plantillas reales */
+        .xc.pos    { color: #22d35a; font-weight: 500; }          /* Verde brillante */
+        .xc.neg    { color: #f05050; font-weight: 500; }          /* Rojo */
+        .xc.gold   { color: #f0c040; font-weight: 700; }          /* Dorado — tickers */
+        .xc.cyan   { color: #22d4ee; font-weight: 500; }          /* Cyan — rendimientos */
+        .xc.amber  { color: #f0a020; }                            /* Amber — % */
+        .xc.blue   { color: #60a8f8; }                            /* Azul — tipos */
+        .xc.purple { color: #b87cf8; }                            /* Morado — ops */
+        .xc.orange { color: #f87840; }                            /* Naranja — crypto */
+        .xc.white  { color: #e8eef8; }                            /* Blanco suave */
+        .xc.muted  { color: #4a6880; font-size: 0.58rem; }        /* Gris apagado */
+        .xc.formula{ color: #6090c8; font-size: 0.57rem; font-style: italic; } /* Fórmulas */
+        .xc.total  { background: #101828; color: #f0c040; font-weight: 700; border-color: #2a3a58; }
+        .xc.inp    { background: #0d1820; color: #f0d060; border: 1px solid #3a5020; }  /* Input amarillo */
+
+        /* ---- KPI cards dentro del Excel ---- */
+        /* Verde — Valor Total, Capital, Ganancia */
+        .kpi-green  { background: #071a10; border: 1px solid #1a5c28; border-radius: 5px; padding: 8px 10px; }
+        .kpi-green  .kpi-label { font-size: 0.57rem; color: #3a8050; text-transform: uppercase; letter-spacing: 0.05em; }
+        .kpi-green  .kpi-val   { color: #22d35a; font-weight: 700; font-size: 1rem; margin-top: 2px; }
+
+        /* Cyan — Rendimientos */
+        .kpi-cyan   { background: #061520; border: 1px solid #104858; border-radius: 5px; padding: 8px 10px; }
+        .kpi-cyan   .kpi-label { font-size: 0.57rem; color: #2a6878; text-transform: uppercase; letter-spacing: 0.05em; }
+        .kpi-cyan   .kpi-val   { color: #22d4ee; font-weight: 700; font-size: 1rem; margin-top: 2px; }
+
+        /* Amber — Rend % */
+        .kpi-amber  { background: #100e04; border: 1px solid #503808; border-radius: 5px; padding: 8px 10px; }
+        .kpi-amber  .kpi-label { font-size: 0.57rem; color: #705010; text-transform: uppercase; letter-spacing: 0.05em; }
+        .kpi-amber  .kpi-val   { color: #f0c040; font-weight: 700; font-size: 1rem; margin-top: 2px; }
+
+        /* Azul oscuro — Aportado */
+        .kpi-blue   { background: #060e20; border: 1px solid #0e2858; border-radius: 5px; padding: 8px 10px; }
+        .kpi-blue   .kpi-label { font-size: 0.57rem; color: #2a4878; text-transform: uppercase; letter-spacing: 0.05em; }
+        .kpi-blue   .kpi-val   { color: #60a8f8; font-weight: 700; font-size: 1rem; margin-top: 2px; }
+
+        /* Rojo — Retiros / Comisiones */
+        .kpi-red    { background: #100606; border: 1px solid #501010; border-radius: 5px; padding: 8px 10px; }
+        .kpi-red    .kpi-label { font-size: 0.57rem; color: #703030; text-transform: uppercase; letter-spacing: 0.05em; }
+        .kpi-red    .kpi-val   { color: #f05050; font-weight: 700; font-size: 1rem; margin-top: 2px; }
+
+        /* Morado — Total Ops */
+        .kpi-purple { background: #0c0618; border: 1px solid #3a1868; border-radius: 5px; padding: 8px 10px; }
+        .kpi-purple .kpi-label { font-size: 0.57rem; color: #603090; text-transform: uppercase; letter-spacing: 0.05em; }
+        .kpi-purple .kpi-val   { color: #b87cf8; font-weight: 700; font-size: 1rem; margin-top: 2px; }
+
+        /* stat cards en modal — misma paleta */
         .stat-box { background: rgba(212,175,55,0.06); border: 1px solid rgba(212,175,55,0.2); border-radius: 10px; padding: 12px 16px; }
 
         .testimonial-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; }
@@ -123,12 +240,12 @@
         .product-badge.es { background: rgba(34, 197, 94, 0.1); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); }
 
         /* Hero excel preview */
-        .hero-excel { background: linear-gradient(135deg, #1e3a2f 0%, #0d1f17 100%); border-radius: 8px; padding: 1rem; font-family: 'Courier New', monospace; font-size: 0.7rem; overflow-x: auto; }
-        .cell { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.25rem 0.5rem; min-width: 60px; text-align: center; white-space: nowrap; }
-        .cell-header { background: rgba(212,175,55,0.2); color: var(--accent); font-weight: 600; }
-        .cell-positive { color: var(--success); }
-        .cell-negative { color: #ef4444; }
-        .cell-accent { color: var(--accent); font-weight: 600; }
+        .hero-excel { background: #080c14; border-radius: 8px; padding: 1rem; font-family: 'Consolas','Courier New', monospace; font-size: 0.7rem; overflow-x: auto; border: 1px solid #1a2540; }
+        .cell { background: #0a0f1c; border: 1px solid #101828; padding: 0.25rem 0.5rem; min-width: 60px; text-align: center; white-space: nowrap; color: #c8d8e8; }
+        .cell-header { background: #0d1830; color: #5a7898; font-weight: 600; text-transform: uppercase; font-size: 0.62rem; }
+        .cell-positive { color: #22d35a; font-weight: 500; }
+        .cell-negative { color: #f05050; font-weight: 500; }
+        .cell-accent { color: #f0c040; font-weight: 700; }
     </style>
 </head>
 <body class="font-body antialiased" x-data="{
@@ -342,35 +459,38 @@
                                 <div class="excel-tab inactive">🎯 Metas</div>
                             </div>
                             <div class="excel-body">
+                                <!-- KPI Row — idéntico a la plantilla real -->
+                                <div style="font-size:0.62rem;color:#4a6880;margin-bottom:6px;font-weight:600;letter-spacing:0.05em">PORTAFOLIO DE INVERSIONES · México · Dashboard en tiempo real</div>
+                                <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-bottom:8px">
+                                    <div class="kpi-green"><div class="kpi-label">💼 VALOR TOTAL</div><div class="kpi-val" style="font-size:0.82rem">$118,977</div></div>
+                                    <div class="kpi-cyan"><div class="kpi-label">📈 RENDIM.</div><div class="kpi-val" style="font-size:0.82rem">+$47,477</div></div>
+                                    <div class="kpi-amber"><div class="kpi-label">📊 REND %</div><div class="kpi-val" style="font-size:0.82rem">+66.4%</div></div>
+                                    <div class="kpi-blue"><div class="kpi-label">💰 APORTADO</div><div class="kpi-val" style="font-size:0.82rem">$71,500</div></div>
+                                    <div class="kpi-red"><div class="kpi-label">📤 RETIROS</div><div class="kpi-val" style="font-size:0.82rem">$0</div></div>
+                                </div>
+                                <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-bottom:8px">
+                                    <div class="kpi-blue" style="background:#060e1a"><div class="kpi-label">🏦 INV. INICIAL</div><div class="kpi-val" style="font-size:0.82rem">$35,000</div></div>
+                                    <div class="kpi-cyan" style="background:#050e18"><div class="kpi-label">🔢 MOVIMIENTOS</div><div class="kpi-val" style="font-size:0.82rem;color:#22d4ee">55</div></div>
+                                    <div class="kpi-amber" style="background:#0c0a04"><div class="kpi-label">🏆 TOP PLAT.</div><div class="kpi-val" style="font-size:0.82rem">GBM</div></div>
+                                    <div class="kpi-red" style="background:#0c0808"><div class="kpi-label">📉 GASTOS</div><div class="kpi-val" style="font-size:0.82rem">$85</div></div>
+                                    <div class="kpi-green" style="background:#051208"><div class="kpi-label">✅ GANANCIA</div><div class="kpi-val" style="font-size:0.82rem">+$47,477</div></div>
+                                </div>
+                                <!-- Tabla resumen -->
+                                <div style="font-size:0.58rem;color:#3a6050;margin-bottom:3px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em">■ RESUMEN POR PLATAFORMA · Todas (6)</div>
                                 <div class="excel-col-headers">
-                                    <div class="col-header row-num"></div>
-                                    <div class="col-header" style="min-width:90px">PLATAFORMA</div>
+                                    <div class="col-header row-num">#</div>
+                                    <div class="col-header" style="min-width:88px">PLATAFORMA</div>
                                     <div class="col-header">TIPO</div>
-                                    <div class="col-header">APORTADO</div>
-                                    <div class="col-header">SALDO</div>
-                                    <div class="col-header">REND %</div>
+                                    <div class="col-header">SALDO ACTUAL</div>
+                                    <div class="col-header">% PORT.</div>
+                                    <div class="col-header">ESTATUS</div>
                                 </div>
-                                <div class="excel-row">
-                                    <div class="xc row-num">6</div><div class="xc white" style="min-width:90px">Interactive Brokers</div><div class="xc muted">Broker</div><div class="xc blue">$44,500</div><div class="xc gold">$72,915</div><div class="xc pos">+63.9%</div>
-                                </div>
-                                <div class="excel-row">
-                                    <div class="xc row-num">7</div><div class="xc white" style="min-width:90px">GBM+</div><div class="xc muted">Broker</div><div class="xc blue">$7,000</div><div class="xc gold">$9,900</div><div class="xc pos">+41.4%</div>
-                                </div>
-                                <div class="excel-row">
-                                    <div class="xc row-num">8</div><div class="xc white" style="min-width:90px">Binance</div><div class="xc muted">Crypto</div><div class="xc blue">$3,000</div><div class="xc gold">$14,150</div><div class="xc pos">+371.7%</div>
-                                </div>
-                                <div class="excel-row">
-                                    <div class="xc row-num">9</div><div class="xc white" style="min-width:90px">Fidelity</div><div class="xc muted">Broker</div><div class="xc blue">$10,000</div><div class="xc gold">$13,000</div><div class="xc pos">+30.0%</div>
-                                </div>
-                                <div class="excel-row">
-                                    <div class="xc row-num">10</div><div class="xc white" style="min-width:90px">CETES Directo</div><div class="xc muted">Renta Fija</div><div class="xc blue">$5,000</div><div class="xc gold">$6,302</div><div class="xc pos">+26.0%</div>
-                                </div>
-                                <div class="excel-row">
-                                    <div class="xc row-num">11</div><div class="xc white" style="min-width:90px">Nu México</div><div class="xc muted">Fintech</div><div class="xc blue">$2,000</div><div class="xc gold">$2,710</div><div class="xc pos">+35.5%</div>
-                                </div>
-                                <div class="excel-row" style="border-top:1px solid rgba(212,175,55,0.4);margin-top:2px;padding-top:2px">
-                                    <div class="xc row-num">—</div><div class="xc total" style="min-width:90px">TOTAL</div><div class="xc total"></div><div class="xc total">$71,500</div><div class="xc total">$118,977</div><div class="xc pos" style="font-weight:700">+66.4%</div>
-                                </div>
+                                <div class="excel-row"><div class="xc row-num">1</div><div class="xc white" style="min-width:88px;font-weight:700">Interactive Brokers</div><div class="xc muted">Bolsa/ETFs</div><div class="xc gold">$72,915</div><div class="xc white">61.3%</div><div class="xc pos" style="font-size:0.58rem">● Activa</div></div>
+                                <div class="excel-row"><div class="xc row-num">2</div><div class="xc white" style="min-width:88px;font-weight:700">Binance</div><div class="xc orange">Crypto</div><div class="xc gold">$14,150</div><div class="xc white">11.9%</div><div class="xc pos" style="font-size:0.58rem">● Activa</div></div>
+                                <div class="excel-row"><div class="xc row-num">3</div><div class="xc white" style="min-width:88px;font-weight:700">Fidelity</div><div class="xc muted">Bolsa/ETFs</div><div class="xc gold">$13,000</div><div class="xc white">10.9%</div><div class="xc pos" style="font-size:0.58rem">● Activa</div></div>
+                                <div class="excel-row"><div class="xc row-num">4</div><div class="xc white" style="min-width:88px;font-weight:700">GBM+</div><div class="xc muted">Bolsa/ETFs</div><div class="xc gold">$9,900</div><div class="xc white">8.3%</div><div class="xc pos" style="font-size:0.58rem">● Activa</div></div>
+                                <div class="excel-row"><div class="xc row-num">5</div><div class="xc white" style="min-width:88px;font-weight:700">CETES Directo</div><div class="xc cyan">Deuda/CETE</div><div class="xc gold">$6,302</div><div class="xc white">5.3%</div><div class="xc pos" style="font-size:0.58rem">● Activa</div></div>
+                                <div class="excel-row"><div class="xc row-num">6</div><div class="xc white" style="min-width:88px;font-weight:700">Nu México</div><div class="xc blue">Cta. Digital</div><div class="xc gold">$2,710</div><div class="xc white">2.3%</div><div class="xc pos" style="font-size:0.58rem">● Activa</div></div>
                             </div>
                         </div>
                     </div>
@@ -423,34 +543,36 @@
                                 <div class="excel-tab inactive">🎯 Objetivos</div>
                             </div>
                             <div class="excel-body">
+                                <!-- KPI Row — idéntico a la plantilla real -->
+                                <div style="font-size:0.62rem;color:#4a6880;margin-bottom:6px;font-weight:600;letter-spacing:0.05em">PORTAFOLIO DE INVERSIONES · Acciones · ETFs · Crypto</div>
+                                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:4px">
+                                    <div class="kpi-green"><div class="kpi-label">💰 CAPITAL INV.</div><div class="kpi-val" style="font-size:0.82rem">$38,917</div></div>
+                                    <div class="kpi-cyan"><div class="kpi-label">💵 RECUPERADO</div><div class="kpi-val" style="font-size:0.82rem">$4,739</div></div>
+                                    <div class="kpi-amber"><div class="kpi-label">💸 DIVIDENDOS</div><div class="kpi-val" style="font-size:0.82rem">$317.50</div></div>
+                                    <div class="kpi-red"><div class="kpi-label">💳 COMISIONES</div><div class="kpi-val" style="font-size:0.82rem">-$30.00</div></div>
+                                </div>
+                                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:8px">
+                                    <div class="kpi-amber" style="background:#0a0800"><div class="kpi-label">📊 G/P REALIZADA</div><div class="kpi-val" style="font-size:0.82rem">+$4,540</div></div>
+                                    <div class="kpi-purple"><div class="kpi-label">🔢 TOTAL OPS</div><div class="kpi-val" style="font-size:0.82rem">30</div></div>
+                                    <div class="kpi-green" style="background:#040e08"><div class="kpi-label">🟢 OPS COMPRA</div><div class="kpi-val" style="font-size:0.82rem">24</div></div>
+                                    <div class="kpi-red" style="background:#0a0606"><div class="kpi-label">🔴 OPS VENTA</div><div class="kpi-val" style="font-size:0.82rem">2</div></div>
+                                </div>
+                                <!-- Tabla TOP 5 activos -->
+                                <div style="font-size:0.58rem;color:#3a6050;margin-bottom:3px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em">🏆 TOP 5 ACTIVOS · escribe tickers en col B (amarillo)</div>
                                 <div class="excel-col-headers">
                                     <div class="col-header row-num"></div>
-                                    <div class="col-header" style="min-width:55px">TICKER</div>
+                                    <div class="col-header" style="min-width:50px">TICKER</div>
                                     <div class="col-header">TIPO</div>
-                                    <div class="col-header">BROKER</div>
                                     <div class="col-header">INVERTIDO</div>
-                                    <div class="col-header">P&L %</div>
+                                    <div class="col-header">G/P REAL.</div>
+                                    <div class="col-header">ESTADO</div>
                                 </div>
-                                <div class="excel-row">
-                                    <div class="xc row-num">5</div><div class="xc gold" style="min-width:55px">AAPL</div><div class="xc blue">Acción</div><div class="xc muted">IB</div><div class="xc white">$3,582</div><div class="xc pos">+20.3%</div>
-                                </div>
-                                <div class="excel-row">
-                                    <div class="xc row-num">6</div><div class="xc gold" style="min-width:55px">NVDA</div><div class="xc blue">Acción</div><div class="xc muted">IB</div><div class="xc white">$8,720</div><div class="xc pos">+31.3%</div>
-                                </div>
-                                <div class="excel-row">
-                                    <div class="xc row-num">7</div><div class="xc gold" style="min-width:55px">VOO</div><div class="xc blue">ETF</div><div class="xc muted">IB</div><div class="xc white">$5,163</div><div class="xc pos">+21.8%</div>
-                                </div>
-                                <div class="excel-row">
-                                    <div class="xc row-num">8</div><div class="xc gold" style="min-width:55px">BTC</div><div class="xc orange">Crypto</div><div class="xc muted">Binance</div><div class="xc white">$12,870</div><div class="xc pos">+34.0%</div>
-                                </div>
-                                <div class="excel-row">
-                                    <div class="xc row-num">9</div><div class="xc gold" style="min-width:55px">META</div><div class="xc blue">Acción</div><div class="xc muted">IB</div><div class="xc white">$1,680</div><div class="xc pos">+18.9%</div>
-                                </div>
-                                <div class="excel-row">
-                                    <div class="xc row-num">10</div><div class="xc gold" style="min-width:55px">MSFT</div><div class="xc blue">Acción</div><div class="xc muted">IB</div><div class="xc white">$6,683</div><div class="xc pos">+24.7%</div>
-                                </div>
-                                <div class="excel-row" style="border-top:1px solid rgba(212,175,55,0.4);margin-top:2px;padding-top:2px">
-                                    <div class="xc row-num">—</div><div class="xc total" style="min-width:55px">TOTAL</div><div class="xc total"></div><div class="xc total"></div><div class="xc total">$38,917</div><div class="xc pos" style="font-weight:700">+31.9%</div>
+                                <div class="excel-row"><div class="xc row-num">1</div><div class="xc gold" style="min-width:50px;font-weight:700">AAPL</div><div class="xc blue">Acción</div><div class="xc white">$3,582</div><div class="xc pos">+$728</div><div class="xc pos" style="font-size:0.57rem">↑ Abierta</div></div>
+                                <div class="excel-row"><div class="xc row-num">2</div><div class="xc gold" style="min-width:50px;font-weight:700">BTC</div><div class="xc orange">Crypto</div><div class="xc white">$9,145</div><div class="xc pos">+$3,891</div><div class="xc pos" style="font-size:0.57rem">↑ Abierta</div></div>
+                                <div class="excel-row"><div class="xc row-num">3</div><div class="xc gold" style="min-width:50px;font-weight:700">NVDA</div><div class="xc blue">Acción</div><div class="xc white">$8,720</div><div class="xc pos">+$2,979</div><div class="xc pos" style="font-size:0.57rem">↑ Abierta</div></div>
+                                <div class="excel-row"><div class="xc row-num">4</div><div class="xc gold" style="min-width:50px;font-weight:700">VOO</div><div class="xc cyan" style="color:#22d4ee">ETF</div><div class="xc white">$5,163</div><div class="xc pos">+$1,127</div><div class="xc pos" style="font-size:0.57rem">↑ Abierta</div></div>
+                                <div class="excel-row"><div class="xc row-num">5</div><div class="xc gold" style="min-width:50px;font-weight:700">MSFT</div><div class="xc blue">Acción</div><div class="xc white">$6,683</div><div class="xc pos">+$1,650</div><div class="xc pos" style="font-size:0.57rem">↑ Abierta</div></div>
+                            </div>
                                 </div>
                             </div>
                         </div>
@@ -704,54 +826,67 @@
 
                     <!-- P0 T0: Inicio -->
                     <div class="excel-body" x-show="selectedProduct===0 && activeTab===0">
-                        <div style="color:#d4af37;font-size:0.75rem;font-weight:700;margin-bottom:8px;padding:4px 8px;background:rgba(212,175,55,0.08);border-radius:4px">📊 PORTAFOLIO DE INVERSIONES · México · Dashboard en tiempo real</div>
-                        <div class="grid grid-cols-4 gap-3 mb-4">
-                            <div style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:6px;padding:10px"><div style="font-size:0.6rem;color:#6a9a7a">💼 VALOR TOTAL</div><div style="color:#4ade80;font-size:1.1rem;font-weight:700">$118,977</div></div>
-                            <div style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);border-radius:6px;padding:10px"><div style="font-size:0.6rem;color:#8a8a9a">📈 RENDIMIENTOS</div><div style="color:#d4af37;font-size:1.1rem;font-weight:700">+$47,477</div></div>
-                            <div style="background:rgba(96,165,250,0.08);border:1px solid rgba(96,165,250,0.2);border-radius:6px;padding:10px"><div style="font-size:0.6rem;color:#8a8a9a">📊 REND %</div><div style="color:#60a5fa;font-size:1.1rem;font-weight:700">+66.4%</div></div>
-                            <div style="background:rgba(212,175,55,0.05);border:1px solid rgba(212,175,55,0.15);border-radius:6px;padding:10px"><div style="font-size:0.6rem;color:#8a8a9a">💰 APORTADO</div><div style="color:#f5f5f7;font-size:1.1rem;font-weight:700">$71,500</div></div>
+                        <div style="color:#3a6878;font-size:0.72rem;font-weight:700;margin-bottom:10px;letter-spacing:0.03em">■ PORTAFOLIO DE INVERSIONES &nbsp;·&nbsp; México &nbsp;·&nbsp; Dashboard en tiempo real</div>
+                        <!-- KPI Fila 1 - 5 cols -->
+                        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:4px">
+                            <div class="kpi-green"><div class="kpi-label">💼 VALOR TOTAL</div><div class="kpi-val">$118,977</div></div>
+                            <div class="kpi-cyan"><div class="kpi-label">📈 RENDIMIENTOS</div><div class="kpi-val">+$47,477</div></div>
+                            <div class="kpi-amber"><div class="kpi-label">📊 REND %</div><div class="kpi-val">+66.4%</div></div>
+                            <div class="kpi-blue"><div class="kpi-label">💰 APORTADO</div><div class="kpi-val">$71,500</div></div>
+                            <div class="kpi-red"><div class="kpi-label">📤 RETIROS</div><div class="kpi-val">$0</div></div>
                         </div>
-                        <div style="color:#8a8a9a;font-size:0.6rem;margin-bottom:4px">📈 EVOLUCIÓN DEL PATRIMONIO (mensual)</div>
+                        <!-- KPI Fila 2 - 5 cols -->
+                        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:12px">
+                            <div class="kpi-blue" style="background:#050c1c"><div class="kpi-label">🏦 INV. INICIAL</div><div class="kpi-val">$35,000</div></div>
+                            <div class="kpi-cyan" style="background:#040c18"><div class="kpi-label">🔢 MOVIMIENTOS</div><div class="kpi-val" style="color:#22d4ee">55</div></div>
+                            <div class="kpi-amber" style="background:#0c0a04"><div class="kpi-label">🏆 TOP PLATAFORMA</div><div class="kpi-val">GBM+</div></div>
+                            <div class="kpi-red" style="background:#0a0606"><div class="kpi-label">📉 GASTOS</div><div class="kpi-val">$85</div></div>
+                            <div class="kpi-green" style="background:#040e08"><div class="kpi-label">💹 GANANCIA NETA</div><div class="kpi-val">+$47,392</div></div>
+                        </div>
+                        <!-- Tabla evolución patrimonio -->
+                        <div style="color:#3a6050;font-size:0.58rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px">■ RESUMEN POR PLATAFORMA · Todas (6)</div>
                         <div class="excel-col-headers">
-                            <div class="col-header row-num"></div>
-                            <div class="col-header">MES</div>
-                            <div class="col-header">PATRIMONIO</div>
-                            <div class="col-header">VARIACIÓN</div>
-                            <div class="col-header">REND. ACUM.</div>
+                            <div class="col-header row-num">#</div>
+                            <div class="col-header" style="min-width:120px">PLATAFORMA</div>
+                            <div class="col-header">TIPO</div>
+                            <div class="col-header">SALDO ACTUAL</div>
+                            <div class="col-header">% PORT.</div>
+                            <div class="col-header">ISR EST. (20%)</div>
+                            <div class="col-header">ESTATUS</div>
                         </div>
-                        <div class="excel-row"><div class="xc row-num">14</div><div class="xc muted">Ene 2024</div><div class="xc white">$32,000</div><div class="xc pos">+$2,000</div><div class="xc pos">+6.7%</div></div>
-                        <div class="excel-row"><div class="xc row-num">15</div><div class="xc muted">Mar 2024</div><div class="xc white">$47,300</div><div class="xc pos">+$15,300</div><div class="xc pos">+23.8%</div></div>
-                        <div class="excel-row"><div class="xc row-num">16</div><div class="xc muted">Jun 2024</div><div class="xc white">$61,300</div><div class="xc pos">+$14,000</div><div class="xc pos">+35.1%</div></div>
-                        <div class="excel-row"><div class="xc row-num">17</div><div class="xc muted">Sep 2024</div><div class="xc white">$79,500</div><div class="xc pos">+$18,200</div><div class="xc pos">+53.3%</div></div>
-                        <div class="excel-row"><div class="xc row-num">18</div><div class="xc muted">Dic 2024</div><div class="xc white">$98,200</div><div class="xc pos">+$18,700</div><div class="xc pos">+60.2%</div></div>
-                        <div class="excel-row"><div class="xc row-num">19</div><div class="xc muted">Feb 2025</div><div class="xc total">$118,977</div><div class="xc pos">+$20,777</div><div class="xc pos" style="font-weight:700">+66.4%</div></div>
+                        <div class="excel-row"><div class="xc row-num">1</div><div class="xc white" style="min-width:120px;font-weight:700">GBM+</div><div class="xc muted">Bolsa/ETFs</div><div class="xc gold">$72,915</div><div class="xc white">61.3%</div><div class="xc amber">$5,683</div><div class="xc muted" style="font-size:0.57rem">⚠️ Alta</div></div>
+                        <div class="excel-row"><div class="xc row-num">2</div><div class="xc white" style="min-width:120px;font-weight:700">Binance</div><div class="xc orange">Crypto</div><div class="xc gold">$14,150</div><div class="xc white">11.9%</div><div class="xc amber">$2,230</div><div class="xc pos" style="font-size:0.57rem">✅ Moderada</div></div>
+                        <div class="excel-row"><div class="xc row-num">3</div><div class="xc white" style="min-width:120px;font-weight:700">Nu Bank</div><div class="xc blue">Cta. Digital</div><div class="xc gold">$13,000</div><div class="xc white">10.9%</div><div class="xc amber">$600</div><div class="xc pos" style="font-size:0.57rem">✅ Moderada</div></div>
+                        <div class="excel-row"><div class="xc row-num">4</div><div class="xc white" style="min-width:120px;font-weight:700">FINSUS</div><div class="xc cyan" style="color:#22d4ee">Deuda/CETE</div><div class="xc gold">$9,900</div><div class="xc white">8.3%</div><div class="xc pos">$142</div><div class="xc pos" style="font-size:0.57rem">● Baja</div></div>
+                        <div class="excel-row"><div class="xc row-num">5</div><div class="xc white" style="min-width:120px;font-weight:700">CETES Directo</div><div class="xc cyan" style="color:#22d4ee">Deuda/CETE</div><div class="xc gold">$6,302</div><div class="xc white">5.3%</div><div class="xc pos">$260</div><div class="xc pos" style="font-size:0.57rem">● Baja</div></div>
+                        <div class="excel-row"><div class="xc row-num">6</div><div class="xc white" style="min-width:120px;font-weight:700">Nu México</div><div class="xc blue">Cta. Digital</div><div class="xc gold">$2,710</div><div class="xc white">2.3%</div><div class="xc pos">$142</div><div class="xc pos" style="font-size:0.57rem">● Baja</div></div>
                     </div>
 
                     <!-- P0 T1: Saldos -->
                     <div class="excel-body" x-show="selectedProduct===0 && activeTab===1">
-                        <div style="color:#60a5fa;font-size:0.65rem;margin-bottom:8px">⚙️ MOTOR DE CÁLCULO · SALDOS POR PLATAFORMA · Solo edita la columna D (amarillo)</div>
+                        <div style="color:#60a8f8;font-size:0.65rem;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0">⚙️ MOTOR DE CÁLCULO · SALDOS POR PLATAFORMA · Solo edita la columna D (amarillo)</div>
                         <div class="excel-col-headers">
                             <div class="col-header row-num">#</div>
                             <div class="col-header" style="min-width:110px">PLATAFORMA</div>
                             <div class="col-header">TIPO</div>
-                            <div class="col-header" style="background:rgba(255,255,0,0.15);color:#fbbf24">SALDO INI.</div>
+                            <div class="col-header" style="background:#101a08;color:#a8c040">SALDO INI.</div>
                             <div class="col-header">+ APORT.</div>
                             <div class="col-header">+ REND.</div>
                             <div class="col-header">SALDO</div>
                             <div class="col-header">REND %</div>
                         </div>
-                        <div class="excel-row"><div class="xc row-num">6</div><div class="xc white" style="min-width:110px">Interactive Brokers</div><div class="xc muted">Broker</div><div class="xc" style="background:rgba(255,255,0,0.08);color:#fbbf24">$10,000</div><div class="xc formula">=SUMIFS(...)</div><div class="xc formula">=SUMIFS(...)</div><div class="xc gold">$72,915</div><div class="xc pos">+63.9%</div></div>
-                        <div class="excel-row"><div class="xc row-num">7</div><div class="xc white" style="min-width:110px">GBM+</div><div class="xc muted">Broker</div><div class="xc" style="background:rgba(255,255,0,0.08);color:#fbbf24">$5,000</div><div class="xc formula">=SUMIFS(...)</div><div class="xc formula">=SUMIFS(...)</div><div class="xc gold">$9,900</div><div class="xc pos">+41.4%</div></div>
-                        <div class="excel-row"><div class="xc row-num">8</div><div class="xc white" style="min-width:110px">Binance</div><div class="xc muted">Crypto</div><div class="xc" style="background:rgba(255,255,0,0.08);color:#fbbf24">$3,000</div><div class="xc formula">=SUMIFS(...)</div><div class="xc formula">=SUMIFS(...)</div><div class="xc gold">$14,150</div><div class="xc pos">+371.7%</div></div>
-                        <div class="excel-row"><div class="xc row-num">9</div><div class="xc white" style="min-width:110px">Fidelity</div><div class="xc muted">Broker</div><div class="xc" style="background:rgba(255,255,0,0.08);color:#fbbf24">$10,000</div><div class="xc formula">=SUMIFS(...)</div><div class="xc formula">=SUMIFS(...)</div><div class="xc gold">$13,000</div><div class="xc pos">+30.0%</div></div>
-                        <div class="excel-row"><div class="xc row-num">10</div><div class="xc white" style="min-width:110px">CETES Directo</div><div class="xc muted">Renta Fija</div><div class="xc" style="background:rgba(255,255,0,0.08);color:#fbbf24">$5,000</div><div class="xc formula">=SUMIFS(...)</div><div class="xc formula">=SUMIFS(...)</div><div class="xc gold">$6,302</div><div class="xc pos">+26.0%</div></div>
-                        <div class="excel-row"><div class="xc row-num">11</div><div class="xc white" style="min-width:110px">Nu México</div><div class="xc muted">Fintech</div><div class="xc" style="background:rgba(255,255,0,0.08);color:#fbbf24">$2,000</div><div class="xc formula">=SUMIFS(...)</div><div class="xc formula">=SUMIFS(...)</div><div class="xc gold">$2,710</div><div class="xc pos">+35.5%</div></div>
-                        <div class="excel-row" style="border-top:1px solid rgba(212,175,55,0.4);margin-top:2px"><div class="xc row-num">—</div><div class="xc total" style="min-width:110px">TOTAL</div><div class="xc total"></div><div class="xc total">$35,000</div><div class="xc total">$36,500</div><div class="xc total">$47,477</div><div class="xc total">$118,977</div><div class="xc pos" style="font-weight:700">+66.4%</div></div>
+                        <div class="excel-row"><div class="xc row-num">6</div><div class="xc white" style="min-width:110px">Interactive Brokers</div><div class="xc muted">Broker</div><div class="xc inp">$10,000</div><div class="xc formula">=SUMIFS(...)</div><div class="xc formula">=SUMIFS(...)</div><div class="xc gold">$72,915</div><div class="xc pos">+63.9%</div></div>
+                        <div class="excel-row"><div class="xc row-num">7</div><div class="xc white" style="min-width:110px">GBM+</div><div class="xc muted">Broker</div><div class="xc inp">$5,000</div><div class="xc formula">=SUMIFS(...)</div><div class="xc formula">=SUMIFS(...)</div><div class="xc gold">$9,900</div><div class="xc pos">+41.4%</div></div>
+                        <div class="excel-row"><div class="xc row-num">8</div><div class="xc white" style="min-width:110px">Binance</div><div class="xc muted">Crypto</div><div class="xc inp">$3,000</div><div class="xc formula">=SUMIFS(...)</div><div class="xc formula">=SUMIFS(...)</div><div class="xc gold">$14,150</div><div class="xc pos">+371.7%</div></div>
+                        <div class="excel-row"><div class="xc row-num">9</div><div class="xc white" style="min-width:110px">Fidelity</div><div class="xc muted">Broker</div><div class="xc inp">$10,000</div><div class="xc formula">=SUMIFS(...)</div><div class="xc formula">=SUMIFS(...)</div><div class="xc gold">$13,000</div><div class="xc pos">+30.0%</div></div>
+                        <div class="excel-row"><div class="xc row-num">10</div><div class="xc white" style="min-width:110px">CETES Directo</div><div class="xc muted">Renta Fija</div><div class="xc inp">$5,000</div><div class="xc formula">=SUMIFS(...)</div><div class="xc formula">=SUMIFS(...)</div><div class="xc gold">$6,302</div><div class="xc pos">+26.0%</div></div>
+                        <div class="excel-row"><div class="xc row-num">11</div><div class="xc white" style="min-width:110px">Nu México</div><div class="xc muted">Fintech</div><div class="xc inp">$2,000</div><div class="xc formula">=SUMIFS(...)</div><div class="xc formula">=SUMIFS(...)</div><div class="xc gold">$2,710</div><div class="xc pos">+35.5%</div></div>
+                        <div class="excel-row" style="border-top:1px solid #2a4060;margin-top:2px"><div class="xc row-num">—</div><div class="xc total" style="min-width:110px">TOTAL</div><div class="xc total"></div><div class="xc total">$35,000</div><div class="xc total">$36,500</div><div class="xc total">$47,477</div><div class="xc total">$118,977</div><div class="xc pos" style="font-weight:700;background:#071a10">+66.4%</div></div>
                     </div>
 
                     <!-- P0 T2: Movimientos -->
                     <div class="excel-body" x-show="selectedProduct===0 && activeTab===2">
-                        <div style="color:#60a5fa;font-size:0.65rem;margin-bottom:8px">📋 REGISTRO DE MOVIMIENTOS · Usa las LISTAS DESPLEGABLES · Tabla extendida hasta 2,000 registros</div>
+                        <div style="color:#60a8f8;font-size:0.65rem;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0">📋 REGISTRO DE MOVIMIENTOS · Usa las LISTAS DESPLEGABLES · Tabla extendida hasta 2,000 registros</div>
                         <div class="excel-col-headers">
                             <div class="col-header row-num">#</div>
                             <div class="col-header">AÑO</div>
@@ -761,8 +896,8 @@
                             <div class="col-header">MONTO ($)</div>
                             <div class="col-header" style="min-width:130px">DESCRIPCIÓN</div>
                         </div>
-                        <div class="excel-row"><div class="xc row-num">6</div><div class="xc muted">2023</div><div class="xc muted">Ene</div><div class="xc white" style="min-width:100px">Interactive Brokers</div><div class="xc" style="color:#60a5fa">Aportación</div><div class="xc gold">$10,000</div><div class="xc muted" style="min-width:130px">Capital inicial IB</div></div>
-                        <div class="excel-row"><div class="xc row-num">7</div><div class="xc muted">2023</div><div class="xc muted">Ene</div><div class="xc white" style="min-width:100px">GBM+</div><div class="xc" style="color:#60a5fa">Aportación</div><div class="xc gold">$5,000</div><div class="xc muted" style="min-width:130px">Capital inicial GBM</div></div>
+                        <div class="excel-row"><div class="xc row-num">6</div><div class="xc muted">2023</div><div class="xc muted">Ene</div><div class="xc white" style="min-width:100px">Interactive Brokers</div><div class="xc" style="color:#60a8f8">Aportación</div><div class="xc gold">$10,000</div><div class="xc muted" style="min-width:130px">Capital inicial IB</div></div>
+                        <div class="excel-row"><div class="xc row-num">7</div><div class="xc muted">2023</div><div class="xc muted">Ene</div><div class="xc white" style="min-width:100px">GBM+</div><div class="xc" style="color:#60a8f8">Aportación</div><div class="xc gold">$5,000</div><div class="xc muted" style="min-width:130px">Capital inicial GBM</div></div>
                         <div class="excel-row"><div class="xc row-num">8</div><div class="xc muted">2023</div><div class="xc muted">Mar</div><div class="xc white" style="min-width:100px">Interactive Brokers</div><div class="xc pos">Rendimiento</div><div class="xc pos">+$850</div><div class="xc muted" style="min-width:130px">Ganancias Q1</div></div>
                         <div class="excel-row"><div class="xc row-num">9</div><div class="xc muted">2023</div><div class="xc muted">Mar</div><div class="xc white" style="min-width:100px">Binance</div><div class="xc pos">Rendimiento</div><div class="xc pos">+$620</div><div class="xc muted" style="min-width:130px">Ganancias crypto Q1</div></div>
                         <div class="excel-row"><div class="xc row-num">10</div><div class="xc muted">2024</div><div class="xc muted">Feb</div><div class="xc white" style="min-width:100px">Binance</div><div class="xc pos">Rendimiento</div><div class="xc pos">+$2,100</div><div class="xc muted" style="min-width:130px">BTC ETF aprobación</div></div>
@@ -774,7 +909,7 @@
 
                     <!-- P0 T3: Análisis -->
                     <div class="excel-body" x-show="selectedProduct===0 && activeTab===3">
-                        <div style="color:#60a5fa;font-size:0.65rem;margin-bottom:8px">📈 ANÁLISIS · FILTROS DINÁMICOS · Cambia los filtros y todo se actualiza automáticamente</div>
+                        <div style="color:#60a8f8;font-size:0.65rem;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0">📈 ANÁLISIS · FILTROS DINÁMICOS · Cambia los filtros y todo se actualiza automáticamente</div>
                         <div class="excel-col-headers">
                             <div class="col-header row-num"></div>
                             <div class="col-header" style="min-width:100px">PLATAFORMA</div>
@@ -789,20 +924,20 @@
                         <div class="excel-row"><div class="xc row-num">12</div><div class="xc white" style="min-width:100px">GBM+</div><div class="xc pos">+$2,900</div><div class="xc blue">$7,000</div><div class="xc gold">$9,900</div><div class="xc muted">8.3%</div></div>
                         <div class="excel-row"><div class="xc row-num">13</div><div class="xc white" style="min-width:100px">CETES Directo</div><div class="xc pos">+$1,302</div><div class="xc blue">$5,000</div><div class="xc gold">$6,302</div><div class="xc muted">5.3%</div></div>
                         <div class="excel-row"><div class="xc row-num">14</div><div class="xc white" style="min-width:100px">Nu México</div><div class="xc pos">+$710</div><div class="xc blue">$2,000</div><div class="xc gold">$2,710</div><div class="xc muted">2.3%</div></div>
-                        <div style="margin-top:10px;padding:8px;background:rgba(212,175,55,0.06);border-radius:6px;border:1px solid rgba(212,175,55,0.15)">
-                            <div style="font-size:0.6rem;color:#d4af37;font-weight:600;margin-bottom:6px">💰 ESTIMACIÓN FISCAL · ISR sobre rendimientos (retención provisional 20%)</div>
-                            <div class="excel-row"><div class="xc muted" style="min-width:120px">Rendimiento Bruto</div><div class="xc white">$47,477</div><div class="xc muted" style="min-width:120px">ISR Retenido (20%)</div><div class="xc neg">-$9,495</div><div class="xc muted" style="min-width:100px">Rendimiento Neto</div><div class="xc pos">$37,982</div></div>
+                        <div style="margin-top:10px;padding:8px;background:#060e20;border-radius:6px;border:1px solid #1a3060">
+                            <div style="font-size:0.6rem;color:#f0c040;font-weight:600;margin-bottom:6px">💰 ESTIMACIÓN FISCAL · ISR sobre rendimientos (retención provisional 20%)</div>
+                            <div class="excel-row"><div class="xc muted" style="min-width:120px">Rendimiento Bruto</div><div class="xc cyan">$47,477</div><div class="xc muted" style="min-width:120px">ISR Retenido (20%)</div><div class="xc neg">-$9,495</div><div class="xc muted" style="min-width:100px">Rendimiento Neto</div><div class="xc pos">$37,982</div></div>
                         </div>
                     </div>
 
                     <!-- P0 T4: S&P500 -->
                     <div class="excel-body" x-show="selectedProduct===0 && activeTab===4">
-                        <div style="color:#60a5fa;font-size:0.65rem;margin-bottom:8px">📊 RENDIMIENTO vs S&P 500 · ¿Tu portafolio le gana al mercado?</div>
+                        <div style="color:#60a8f8;font-size:0.65rem;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0">📊 RENDIMIENTO vs S&P 500 · ¿Tu portafolio le gana al mercado?</div>
                         <div class="grid grid-cols-4 gap-2 mb-4">
-                            <div style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);border-radius:6px;padding:8px;text-align:center"><div style="font-size:0.58rem;color:#6a9a7a">💼 PORTAFOLIO</div><div style="color:#4ade80;font-size:1rem;font-weight:700">+66.4%</div></div>
-                            <div style="background:rgba(96,165,250,0.08);border:1px solid rgba(96,165,250,0.2);border-radius:6px;padding:8px;text-align:center"><div style="font-size:0.58rem;color:#8a8a9a">📈 S&P 500</div><div style="color:#60a5fa;font-size:1rem;font-weight:700">+24.2%</div></div>
-                            <div style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);border-radius:6px;padding:8px;text-align:center"><div style="font-size:0.58rem;color:#8a8a9a">🏦 CETES YTD</div><div style="color:#d4af37;font-size:1rem;font-weight:700">+10.5%</div></div>
-                            <div style="background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.2);border-radius:6px;padding:8px;text-align:center"><div style="font-size:0.58rem;color:#8a8a9a">🏆 ALPHA</div><div style="color:#c084fc;font-size:1rem;font-weight:700">+42.2%</div></div>
+                            <div class="kpi-green"><div class="kpi-label">💼 PORTAFOLIO</div><div class="kpi-val">+66.4%</div></div>
+                            <div class="kpi-blue"><div class="kpi-label">📈 S&P 500</div><div class="kpi-val">+24.2%</div></div>
+                            <div class="kpi-amber"><div class="kpi-label">🏦 CETES YTD</div><div class="kpi-val">+10.5%</div></div>
+                            <div class="kpi-purple"><div class="kpi-label">🏆 ALPHA</div><div class="kpi-val">+42.2%</div></div>
                         </div>
                         <div class="excel-col-headers">
                             <div class="col-header row-num"></div>
@@ -812,17 +947,17 @@
                             <div class="col-header">CETES %</div>
                             <div class="col-header">RESULTADO</div>
                         </div>
-                        <div class="excel-row"><div class="xc row-num">8</div><div class="xc muted">Ene 2024</div><div class="xc pos">+6.7%</div><div class="xc blue">+1.8%</div><div class="xc muted">+0.9%</div><div class="xc pos">✅ Ganas a ambos</div></div>
-                        <div class="excel-row"><div class="xc row-num">9</div><div class="xc muted">Mar 2024</div><div class="xc pos">+9.2%</div><div class="xc blue">+3.1%</div><div class="xc muted">+0.9%</div><div class="xc pos">✅ Ganas a ambos</div></div>
-                        <div class="excel-row"><div class="xc row-num">10</div><div class="xc muted">Jun 2024</div><div class="xc pos">+4.8%</div><div class="xc blue">+3.5%</div><div class="xc muted">+0.9%</div><div class="xc pos">✅ Ganas a ambos</div></div>
-                        <div class="excel-row"><div class="xc row-num">11</div><div class="xc muted">Sep 2024</div><div class="xc neg">-1.2%</div><div class="xc blue">-4.2%</div><div class="xc muted">+0.9%</div><div class="xc orange">⚠️ Pierdes al S&P</div></div>
-                        <div class="excel-row"><div class="xc row-num">12</div><div class="xc muted">Nov 2024</div><div class="xc pos">+8.1%</div><div class="xc blue">+5.9%</div><div class="xc muted">+0.9%</div><div class="xc pos">✅ Ganas a ambos</div></div>
-                        <div class="excel-row"><div class="xc row-num">13</div><div class="xc muted">Ene 2025</div><div class="xc pos">+9.0%</div><div class="xc blue">+2.0%</div><div class="xc muted">+0.6%</div><div class="xc pos">✅ Ganas a ambos</div></div>
+                        <div class="excel-row"><div class="xc row-num">8</div><div class="xc muted">Ene 2024</div><div class="xc pos">+6.7%</div><div class="xc blue">+1.8%</div><div class="xc amber">+0.9%</div><div class="xc pos">✅ Ganas a ambos</div></div>
+                        <div class="excel-row"><div class="xc row-num">9</div><div class="xc muted">Mar 2024</div><div class="xc pos">+9.2%</div><div class="xc blue">+3.1%</div><div class="xc amber">+0.9%</div><div class="xc pos">✅ Ganas a ambos</div></div>
+                        <div class="excel-row"><div class="xc row-num">10</div><div class="xc muted">Jun 2024</div><div class="xc pos">+4.8%</div><div class="xc blue">+3.5%</div><div class="xc amber">+0.9%</div><div class="xc pos">✅ Ganas a ambos</div></div>
+                        <div class="excel-row"><div class="xc row-num">11</div><div class="xc muted">Sep 2024</div><div class="xc neg">-1.2%</div><div class="xc blue">-4.2%</div><div class="xc amber">+0.9%</div><div class="xc orange">⚠️ Pierdes al S&P</div></div>
+                        <div class="excel-row"><div class="xc row-num">12</div><div class="xc muted">Nov 2024</div><div class="xc pos">+8.1%</div><div class="xc blue">+5.9%</div><div class="xc amber">+0.9%</div><div class="xc pos">✅ Ganas a ambos</div></div>
+                        <div class="excel-row"><div class="xc row-num">13</div><div class="xc muted">Ene 2025</div><div class="xc pos">+9.0%</div><div class="xc blue">+2.0%</div><div class="xc amber">+0.6%</div><div class="xc pos">✅ Ganas a ambos</div></div>
                     </div>
 
                     <!-- P0 T5: Metas -->
                     <div class="excel-body" x-show="selectedProduct===0 && activeTab===5">
-                        <div style="color:#60a5fa;font-size:0.65rem;margin-bottom:8px">🎯 METAS FINANCIERAS · Proyección de crecimiento · Monitorea tu camino hacia la libertad financiera</div>
+                        <div style="color:#60a8f8;font-size:0.65rem;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0">🎯 METAS FINANCIERAS · Proyección de crecimiento · Monitorea tu camino hacia la libertad financiera</div>
                         <div class="excel-col-headers">
                             <div class="col-header row-num"></div>
                             <div class="col-header" style="min-width:130px">META</div>
@@ -852,31 +987,54 @@
 
                     <!-- P1 T0: Inicio -->
                     <div class="excel-body" x-show="selectedProduct===1 && activeTab===0">
-                        <div style="color:#d4af37;font-size:0.75rem;font-weight:700;margin-bottom:8px;padding:4px 8px;background:rgba(212,175,55,0.08);border-radius:4px">📊 PORTAFOLIO DE INVERSIONES · Acciones · ETFs · Crypto · Dashboard completo</div>
-                        <div class="grid grid-cols-4 gap-3 mb-4">
-                            <div style="background:rgba(96,165,250,0.08);border:1px solid rgba(96,165,250,0.2);border-radius:6px;padding:10px"><div style="font-size:0.6rem;color:#8a8a9a">💰 CAPITAL INVERTIDO</div><div style="color:#60a5fa;font-size:1rem;font-weight:700">$38,917</div></div>
-                            <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:6px;padding:10px"><div style="font-size:0.6rem;color:#6a9a7a">💵 DINERO RECUPERADO</div><div style="color:#4ade80;font-size:1rem;font-weight:700">$4,739</div></div>
-                            <div style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);border-radius:6px;padding:10px"><div style="font-size:0.6rem;color:#8a8a9a">💸 DIVIDENDOS</div><div style="color:#d4af37;font-size:1rem;font-weight:700">$317.50</div></div>
-                            <div style="background:rgba(248,113,113,0.06);border:1px solid rgba(248,113,113,0.2);border-radius:6px;padding:10px"><div style="font-size:0.6rem;color:#8a8a9a">💳 COMISIONES</div><div style="color:#f87171;font-size:1rem;font-weight:700">-$30.00</div></div>
+                        <div style="color:#3a6878;font-size:0.72rem;font-weight:700;margin-bottom:10px;letter-spacing:0.03em">■ PORTAFOLIO DE INVERSIONES &nbsp;·&nbsp; Acciones · ETFs · Crypto</div>
+                        <!-- KPI Fila 1 — 4 cols como en la plantilla real -->
+                        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:4px">
+                            <div class="kpi-green"><div class="kpi-label">💰 CAPITAL INVERTIDO</div><div class="kpi-val">$38,917</div><div style="font-size:0.55rem;color:#1a5c28;margin-top:2px">← lo que pusiste</div></div>
+                            <div class="kpi-cyan"><div class="kpi-label">💵 DINERO RECUPERADO</div><div class="kpi-val">$4,739</div><div style="font-size:0.55rem;color:#0a4058;margin-top:2px">← lo que recuperaste</div></div>
+                            <div class="kpi-amber"><div class="kpi-label">💸 DIVIDENDOS</div><div class="kpi-val">$317.50</div><div style="font-size:0.55rem;color:#503808;margin-top:2px">← ingresos pasivos</div></div>
+                            <div class="kpi-red"><div class="kpi-label">💳 COMISIONES</div><div class="kpi-val">-$30.00</div><div style="font-size:0.55rem;color:#501010;margin-top:2px">← costos de broker</div></div>
                         </div>
-                        <div style="color:#8a8a9a;font-size:0.6rem;margin-bottom:4px">📋 RESUMEN POR CLASE DE ACTIVO</div>
-                        <div class="excel-col-headers">
-                            <div class="col-header row-num"></div>
-                            <div class="col-header">TIPO</div>
-                            <div class="col-header">COMPRAS ($)</div>
-                            <div class="col-header">VENTAS ($)</div>
-                            <div class="col-header">DIVIDENDOS ($)</div>
+                        <!-- KPI Fila 2 -->
+                        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:12px">
+                            <div class="kpi-amber" style="background:#0c0800"><div class="kpi-label">📊 G/P REALIZADA</div><div class="kpi-val">+$4,540</div><div style="font-size:0.55rem;color:#503808;margin-top:2px">← solo al vender</div></div>
+                            <div class="kpi-purple"><div class="kpi-label">🔢 TOTAL OPS</div><div class="kpi-val">30</div><div style="font-size:0.55rem;color:#3a1868;margin-top:2px">↗ Movimientos</div></div>
+                            <div class="kpi-green" style="background:#040e08"><div class="kpi-label">🟢 OPS COMPRA</div><div class="kpi-val">24</div><div style="font-size:0.55rem;color:#1a5c28;margin-top:2px">↗ Movimientos</div></div>
+                            <div class="kpi-red" style="background:#0a0606"><div class="kpi-label">🔴 OPS VENTA</div><div class="kpi-val">2</div><div style="font-size:0.55rem;color:#501010;margin-top:2px">↗ Movimientos</div></div>
                         </div>
-                        <div class="excel-row"><div class="xc row-num">10</div><div class="xc blue">Acción</div><div class="xc white">$17,560</div><div class="xc pos">$3,599</div><div class="xc pos">$160.00</div></div>
-                        <div class="excel-row"><div class="xc row-num">11</div><div class="xc blue">ETF</div><div class="xc white">$8,184</div><div class="xc muted">—</div><div class="xc pos">$89.00</div></div>
-                        <div class="excel-row"><div class="xc row-num">12</div><div class="xc orange">Crypto</div><div class="xc white">$13,303</div><div class="xc pos">$1,138</div><div class="xc muted">—</div></div>
-                        <div style="color:#8a8a9a;font-size:0.6rem;margin:8px 0 4px">📐 ESTADÍSTICAS GENERALES</div>
-                        <div class="excel-row"><div class="xc muted">🔢 Total Operaciones</div><div class="xc white">30</div><div class="xc muted">🟢 Ops Compra</div><div class="xc pos">24</div><div class="xc muted">🔴 Ops Venta</div><div class="xc neg">2</div></div>
+                        <!-- Resumen por clase -->
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                            <div>
+                                <div style="color:#3a6050;font-size:0.58rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px">📋 RESUMEN POR CLASE DE ACTIVO</div>
+                                <div class="excel-col-headers">
+                                    <div class="col-header row-num"></div>
+                                    <div class="col-header">TIPO</div>
+                                    <div class="col-header">COMPRAS</div>
+                                    <div class="col-header">VENTAS</div>
+                                    <div class="col-header">DIVID.</div>
+                                </div>
+                                <div class="excel-row"><div class="xc row-num">10</div><div class="xc blue">🟢 Acciones</div><div class="xc white">$17,560</div><div class="xc pos">$3,599</div><div class="xc pos">$160</div></div>
+                                <div class="excel-row"><div class="xc row-num">11</div><div class="xc cyan" style="color:#22d4ee">🔵 ETFs</div><div class="xc white">$8,184</div><div class="xc muted">—</div><div class="xc pos">$89</div></div>
+                                <div class="excel-row"><div class="xc row-num">12</div><div class="xc orange">🟠 Crypto</div><div class="xc white">$13,303</div><div class="xc pos">$1,138</div><div class="xc muted">—</div></div>
+                            </div>
+                            <div>
+                                <div style="color:#3a6050;font-size:0.58rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px">🏦 RESUMEN POR BROKER</div>
+                                <div class="excel-col-headers">
+                                    <div class="col-header row-num"></div>
+                                    <div class="col-header">BROKER</div>
+                                    <div class="col-header">COMPRAS</div>
+                                    <div class="col-header">COMIS.</div>
+                                </div>
+                                <div class="excel-row"><div class="xc row-num">10</div><div class="xc white">Interactive Brokers</div><div class="xc white">$17,045</div><div class="xc neg">$13</div></div>
+                                <div class="excel-row"><div class="xc row-num">11</div><div class="xc white">Binance</div><div class="xc white">$13,303</div><div class="xc neg">$18</div></div>
+                                <div class="excel-row"><div class="xc row-num">12</div><div class="xc white">GBM</div><div class="xc white">$1,247</div><div class="xc neg">$0</div></div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- P1 T1: Movimientos -->
                     <div class="excel-body" x-show="selectedProduct===1 && activeTab===1">
-                        <div style="color:#60a5fa;font-size:0.65rem;margin-bottom:8px">📋 REGISTRO DE MOVIMIENTOS · Acciones · ETFs · Crypto · Usa listas desplegables</div>
+                        <div style="color:#60a8f8;font-size:0.65rem;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0">📋 REGISTRO DE MOVIMIENTOS · Acciones · ETFs · Crypto · Usa listas desplegables</div>
                         <div class="excel-col-headers">
                             <div class="col-header row-num"></div>
                             <div class="col-header">FECHA</div>
@@ -888,20 +1046,20 @@
                             <div class="col-header">PRECIO</div>
                             <div class="col-header">TOTAL</div>
                         </div>
-                        <div class="excel-row"><div class="xc row-num">5</div><div class="xc muted">15/01/24</div><div class="xc blue">Acción</div><div class="xc gold">AAPL</div><div class="xc muted">IB</div><div class="xc" style="color:#60a5fa">Compra</div><div class="xc white">10</div><div class="xc white">$185.50</div><div class="xc neg">$1,855</div></div>
-                        <div class="excel-row"><div class="xc row-num">6</div><div class="xc muted">22/01/24</div><div class="xc blue">ETF</div><div class="xc gold">VOO</div><div class="xc muted">IB</div><div class="xc" style="color:#60a5fa">Compra</div><div class="xc white">5</div><div class="xc white">$432.10</div><div class="xc neg">$2,161</div></div>
-                        <div class="excel-row"><div class="xc row-num">7</div><div class="xc muted">10/02/24</div><div class="xc blue">Acción</div><div class="xc gold">MSFT</div><div class="xc muted">IB</div><div class="xc" style="color:#60a5fa">Compra</div><div class="xc white">8</div><div class="xc white">$405.20</div><div class="xc neg">$3,242</div></div>
-                        <div class="excel-row"><div class="xc row-num">8</div><div class="xc muted">28/02/24</div><div class="xc orange">Crypto</div><div class="xc gold">BTC</div><div class="xc muted">Binance</div><div class="xc" style="color:#60a5fa">Compra</div><div class="xc white">0.10</div><div class="xc white">$48,200</div><div class="xc neg">$4,828</div></div>
-                        <div class="excel-row"><div class="xc row-num">9</div><div class="xc muted">05/03/24</div><div class="xc blue">Acción</div><div class="xc gold">NVDA</div><div class="xc muted">IB</div><div class="xc" style="color:#60a5fa">Compra</div><div class="xc white">6</div><div class="xc white">$820.00</div><div class="xc neg">$4,921</div></div>
+                        <div class="excel-row"><div class="xc row-num">5</div><div class="xc muted">15/01/24</div><div class="xc blue">Acción</div><div class="xc gold">AAPL</div><div class="xc muted">IB</div><div class="xc" style="color:#60a8f8">Compra</div><div class="xc white">10</div><div class="xc white">$185.50</div><div class="xc neg">$1,855</div></div>
+                        <div class="excel-row"><div class="xc row-num">6</div><div class="xc muted">22/01/24</div><div class="xc blue">ETF</div><div class="xc gold">VOO</div><div class="xc muted">IB</div><div class="xc" style="color:#60a8f8">Compra</div><div class="xc white">5</div><div class="xc white">$432.10</div><div class="xc neg">$2,161</div></div>
+                        <div class="excel-row"><div class="xc row-num">7</div><div class="xc muted">10/02/24</div><div class="xc blue">Acción</div><div class="xc gold">MSFT</div><div class="xc muted">IB</div><div class="xc" style="color:#60a8f8">Compra</div><div class="xc white">8</div><div class="xc white">$405.20</div><div class="xc neg">$3,242</div></div>
+                        <div class="excel-row"><div class="xc row-num">8</div><div class="xc muted">28/02/24</div><div class="xc orange">Crypto</div><div class="xc gold">BTC</div><div class="xc muted">Binance</div><div class="xc" style="color:#60a8f8">Compra</div><div class="xc white">0.10</div><div class="xc white">$48,200</div><div class="xc neg">$4,828</div></div>
+                        <div class="excel-row"><div class="xc row-num">9</div><div class="xc muted">05/03/24</div><div class="xc blue">Acción</div><div class="xc gold">NVDA</div><div class="xc muted">IB</div><div class="xc" style="color:#60a8f8">Compra</div><div class="xc white">6</div><div class="xc white">$820.00</div><div class="xc neg">$4,921</div></div>
                         <div class="excel-row"><div class="xc row-num">10</div><div class="xc muted">15/04/24</div><div class="xc blue">Acción</div><div class="xc gold">AAPL</div><div class="xc muted">IB</div><div class="xc pos">Dividendo</div><div class="xc white">—</div><div class="xc white">—</div><div class="xc pos">+$38.50</div></div>
                         <div class="excel-row"><div class="xc row-num">11</div><div class="xc muted">10/07/24</div><div class="xc blue">Acción</div><div class="xc gold">NVDA</div><div class="xc muted">IB</div><div class="xc orange">Venta</div><div class="xc white">3</div><div class="xc white">$1,200</div><div class="xc pos">+$3,599</div></div>
-                        <div class="excel-row"><div class="xc row-num">12</div><div class="xc muted">02/05/25</div><div class="xc blue">Acción</div><div class="xc gold">META</div><div class="xc muted">IB</div><div class="xc" style="color:#60a5fa">Compra</div><div class="xc white">3</div><div class="xc white">$560.00</div><div class="xc neg">$1,681</div></div>
+                        <div class="excel-row"><div class="xc row-num">12</div><div class="xc muted">02/05/25</div><div class="xc blue">Acción</div><div class="xc gold">META</div><div class="xc muted">IB</div><div class="xc" style="color:#60a8f8">Compra</div><div class="xc white">3</div><div class="xc white">$560.00</div><div class="xc neg">$1,681</div></div>
                         <div style="padding:4px 6px;font-size:0.58rem;color:#6a8a7a;text-align:center">... 22 movimientos más registrados ...</div>
                     </div>
 
                     <!-- P1 T2: Análisis -->
                     <div class="excel-body" x-show="selectedProduct===1 && activeTab===2">
-                        <div style="color:#60a5fa;font-size:0.65rem;margin-bottom:8px">📈 ANÁLISIS DE PORTAFOLIO · P&L · Gráficos · Rendimiento · Ingresa tickers en columna B (amarilla)</div>
+                        <div style="color:#60a8f8;font-size:0.65rem;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0">📈 ANÁLISIS DE PORTAFOLIO · P&L · Gráficos · Rendimiento · Ingresa tickers en columna B (amarilla)</div>
                         <div class="excel-col-headers">
                             <div class="col-header row-num"></div>
                             <div class="col-header">TICKER</div>
@@ -922,7 +1080,7 @@
 
                     <!-- P1 T3: Reporte Mensual -->
                     <div class="excel-body" x-show="selectedProduct===1 && activeTab===3">
-                        <div style="color:#60a5fa;font-size:0.65rem;margin-bottom:8px">🧾 REPORTE MENSUAL · Selecciona año y mes · Cambia AÑO y MES # y todo se actualiza</div>
+                        <div style="color:#60a8f8;font-size:0.65rem;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0">🧾 REPORTE MENSUAL · Selecciona año y mes · Cambia AÑO y MES # y todo se actualiza</div>
                         <div class="excel-col-headers">
                             <div class="col-header row-num"></div>
                             <div class="col-header">📅 AÑO</div>
@@ -958,11 +1116,11 @@
 
                     <!-- P1 T4: Score -->
                     <div class="excel-body" x-show="selectedProduct===1 && activeTab===4">
-                        <div style="color:#60a5fa;font-size:0.65rem;margin-bottom:8px">🏅 SCORE DE SALUD DEL PORTAFOLIO · Puntuación 0 - 100 · Evaluación automática</div>
-                        <div style="text-align:center;padding:16px;background:rgba(212,175,55,0.08);border-radius:8px;margin-bottom:12px;border:1px solid rgba(212,175,55,0.2)">
-                            <div style="font-size:2.5rem;font-weight:700;color:#d4af37">78</div>
-                            <div style="font-size:0.65rem;color:#8a8a9a">PUNTUACIÓN TOTAL / 100</div>
-                            <div style="font-size:0.8rem;color:#4ade80;font-weight:600;margin-top:4px">⭐ BUENO</div>
+                        <div style="color:#60a8f8;font-size:0.65rem;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0">🏅 SCORE DE SALUD DEL PORTAFOLIO · Puntuación 0 - 100 · Evaluación automática</div>
+                        <div style="text-align:center;padding:16px;background:#071a10;border-radius:8px;margin-bottom:12px;border:1px solid #1a5c28">
+                            <div style="font-size:2.5rem;font-weight:700;color:#22d35a">78</div>
+                            <div style="font-size:0.65rem;color:#3a8050;text-transform:uppercase;letter-spacing:0.1em">PUNTUACIÓN TOTAL / 100</div>
+                            <div style="font-size:0.85rem;color:#22d35a;font-weight:600;margin-top:4px">⭐ BUENO</div>
                         </div>
                         <div class="excel-col-headers">
                             <div class="col-header row-num"></div>
@@ -983,7 +1141,7 @@
 
                     <!-- P1 T5: Objetivos -->
                     <div class="excel-body" x-show="selectedProduct===1 && activeTab===5">
-                        <div style="color:#60a5fa;font-size:0.65rem;margin-bottom:8px">🎯 OBJETIVOS FINANCIEROS · Define metas · Ingresa objetivo ($) y fecha · Avance automático</div>
+                        <div style="color:#60a8f8;font-size:0.65rem;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0">🎯 OBJETIVOS FINANCIEROS · Define metas · Ingresa objetivo ($) y fecha · Avance automático</div>
                         <div class="excel-col-headers">
                             <div class="col-header row-num"></div>
                             <div class="col-header" style="min-width:130px">OBJETIVO</div>
