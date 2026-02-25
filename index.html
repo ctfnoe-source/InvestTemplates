@@ -411,7 +411,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
                 <div class="text-center reveal"><div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="2547">0</div><p class="text-muted">Active Clients</p></div>
-                <div class="text-center reveal"><div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="2">0</div><p class="text-muted">Premium Templates</p></div>
+                <div class="text-center reveal"><div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="4">0</div><p class="text-muted">Premium Templates</p></div>
                 <div class="text-center reveal"><div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="98">0</div><p class="text-muted">% Satisfaction</p></div>
                 <div class="text-center reveal"><div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="4">0</div><p class="text-muted">Updates / Month</p></div>
             </div>
@@ -435,11 +435,13 @@
                 <button @click="activeFilter='all'" :class="activeFilter==='all' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">All</button>
                 <button @click="activeFilter='platform'" :class="activeFilter==='platform' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">By Platform</button>
                 <button @click="activeFilter='portfolio'" :class="activeFilter==='portfolio' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">Portfolio</button>
+                <button @click="activeFilter='spanish'" :class="activeFilter==='spanish' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">🇪🇸 Español</button>
+                <button @click="activeFilter='english'" :class="activeFilter==='english' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">🇺🇸 English</button>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Product 1: PLATAFORMAS -->
-                <article x-show="activeFilter==='all' || activeFilter==='platform'" class="product-card reveal relative">
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Product 1: PLATAFORMAS ES -->
+                <article x-show="activeFilter==='all' || activeFilter==='platform' || activeFilter==='spanish'" class="product-card reveal relative">
                     <div class="absolute top-4 left-4 z-10"><span class="product-badge es">🇪🇸 Español</span></div>
                     <!-- Mini Excel preview -->
                     <div class="p-4 border-b border-border pt-14">
@@ -448,7 +450,7 @@
                                 <div class="excel-titlebar-dot bg-red-400"></div>
                                 <div class="excel-titlebar-dot bg-yellow-400"></div>
                                 <div class="excel-titlebar-dot bg-green-400"></div>
-                                <span class="text-white text-xs ml-2 opacity-80 font-sans">PLATAFORMAS_DEFINITIVO.xlsx</span>
+                                <span class="text-white text-xs ml-2 opacity-80 font-sans">PLATAFORMAS_DE_INVERSIONES.xlsx</span>
                             </div>
                             <div class="excel-sheet-tabs">
                                 <div class="excel-tab active">🏠 Inicio</div>
@@ -502,7 +504,7 @@
                                 <span class="text-fg">4.9</span><span class="text-muted">(342)</span>
                             </div>
                         </div>
-                        <h3 class="font-display text-xl text-fg mb-2">PLATAFORMAS DEFINITIVO</h3>
+                        <h3 class="font-display text-xl text-fg mb-2">PLATAFORMAS DE INVERSIONES</h3>
                         <p class="text-muted text-sm mb-4">Manage all your investment accounts in one place. Consolidate multiple brokers and platforms with an automatic dashboard, net worth evolution chart and S&P500 comparison.</p>
                         <ul class="space-y-2 mb-6">
                             <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Consolidated multi-platform dashboard (up to 30)</li>
@@ -513,7 +515,7 @@
                             <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Up to 2,000 transaction records</li>
                         </ul>
                         <div class="flex items-center justify-between pt-4 border-t border-border">
-                            <div><span class="text-3xl font-bold text-fg">$9</span><span class="text-muted text-sm ml-1">USD</span></div>
+                            <div><span class="text-3xl font-bold text-fg">$8</span><span class="text-muted text-sm ml-1">USD</span></div>
                             <div class="flex gap-2">
                                 <button @click="previewModal=true; selectedProduct=0; activeTab=0" class="btn-secondary text-sm py-2 px-4">Preview</button>
                                 <button class="btn-primary text-sm py-2 px-4">Buy Now</button>
@@ -522,8 +524,8 @@
                     </div>
                 </article>
 
-                <!-- Product 2: PORTAFOLIO -->
-                <article x-show="activeFilter==='all' || activeFilter==='portfolio'" class="product-card reveal relative">
+                <!-- Product 2: PORTAFOLIO ES -->
+                <article x-show="activeFilter==='all' || activeFilter==='portfolio' || activeFilter==='spanish'" class="product-card reveal relative">
                     <div class="absolute top-4 left-4 z-10"><span class="product-badge es">🇪🇸 Español</span></div>
                     <!-- Mini Excel preview -->
                     <div class="p-4 border-b border-border pt-14">
@@ -594,9 +596,168 @@
                             <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Financial goals progress tracking</li>
                         </ul>
                         <div class="flex items-center justify-between pt-4 border-t border-border">
-                            <div><span class="text-3xl font-bold text-fg">$9</span><span class="text-muted text-sm ml-1">USD</span></div>
+                            <div><span class="text-3xl font-bold text-fg">$8</span><span class="text-muted text-sm ml-1">USD</span></div>
                             <div class="flex gap-2">
                                 <button @click="previewModal=true; selectedProduct=1; activeTab=0" class="btn-secondary text-sm py-2 px-4">Preview</button>
+                                <button class="btn-primary text-sm py-2 px-4">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 3: PLATAFORMAS EN -->
+                <article x-show="activeFilter==='all' || activeFilter==='platform' || activeFilter==='english'" class="product-card reveal relative">
+                    <div class="absolute top-4 left-4 z-10"><span class="product-badge es" style="background:rgba(59,130,246,0.12);color:#60a5fa;border-color:rgba(59,130,246,0.3)">🇺🇸 English</span></div>
+                    <div class="p-4 border-b border-border pt-14">
+                        <div class="excel-window">
+                            <div class="excel-titlebar">
+                                <div class="excel-titlebar-dot bg-red-400"></div>
+                                <div class="excel-titlebar-dot bg-yellow-400"></div>
+                                <div class="excel-titlebar-dot bg-green-400"></div>
+                                <span class="text-white text-xs ml-2 opacity-80 font-sans">INVESTMENT_PLATFORMS_TRACKER.xlsx</span>
+                            </div>
+                            <div class="excel-sheet-tabs">
+                                <div class="excel-tab active">🏠 Home</div>
+                                <div class="excel-tab inactive">💰 Balances</div>
+                                <div class="excel-tab inactive">📋 Transactions</div>
+                                <div class="excel-tab inactive">📈 Analysis</div>
+                                <div class="excel-tab inactive">📊 S&P500</div>
+                                <div class="excel-tab inactive">🎯 Goals</div>
+                            </div>
+                            <div class="excel-body">
+                                <div style="font-size:0.62rem;color:#4a6880;margin-bottom:6px;font-weight:600;letter-spacing:0.05em">INVESTMENT PORTFOLIO · Mexico · Real-time Dashboard</div>
+                                <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-bottom:4px">
+                                    <div class="kpi-green"><div class="kpi-label">💼 TOTAL VALUE</div><div class="kpi-val" style="font-size:0.82rem">$118,977</div></div>
+                                    <div class="kpi-cyan"><div class="kpi-label">📈 RETURNS</div><div class="kpi-val" style="font-size:0.82rem">+$47,477</div></div>
+                                    <div class="kpi-amber"><div class="kpi-label">📊 RETURN %</div><div class="kpi-val" style="font-size:0.82rem">+66.4%</div></div>
+                                    <div class="kpi-blue"><div class="kpi-label">💰 CONTRIBUTED</div><div class="kpi-val" style="font-size:0.82rem">$71,500</div></div>
+                                    <div class="kpi-red"><div class="kpi-label">📤 WITHDRAWALS</div><div class="kpi-val" style="font-size:0.82rem">$0</div></div>
+                                </div>
+                                <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-bottom:8px">
+                                    <div class="kpi-blue" style="background:#060e1a"><div class="kpi-label">🏦 INIT. INV.</div><div class="kpi-val" style="font-size:0.82rem">$35,000</div></div>
+                                    <div class="kpi-cyan" style="background:#050e18"><div class="kpi-label">🔢 MOVEMENTS</div><div class="kpi-val" style="font-size:0.82rem;color:#22d4ee">55</div></div>
+                                    <div class="kpi-amber" style="background:#0c0a04"><div class="kpi-label">🏆 TOP PLATFORM</div><div class="kpi-val" style="font-size:0.82rem">GBM</div></div>
+                                    <div class="kpi-red" style="background:#0c0808"><div class="kpi-label">📉 EXPENSES</div><div class="kpi-val" style="font-size:0.82rem">$85</div></div>
+                                    <div class="kpi-green" style="background:#051208"><div class="kpi-label">✅ NET GAIN</div><div class="kpi-val" style="font-size:0.82rem">+$47,477</div></div>
+                                </div>
+                                <div style="font-size:0.58rem;color:#3a6050;margin-bottom:3px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em">■ SUMMARY BY PLATFORM · All (6)</div>
+                                <div class="excel-col-headers">
+                                    <div class="col-header row-num">#</div>
+                                    <div class="col-header" style="min-width:88px">PLATFORM</div>
+                                    <div class="col-header">TYPE</div>
+                                    <div class="col-header">BALANCE</div>
+                                    <div class="col-header">% PORT.</div>
+                                    <div class="col-header">STATUS</div>
+                                </div>
+                                <div class="excel-row"><div class="xc row-num">1</div><div class="xc white" style="min-width:88px;font-weight:700">Interactive Brokers</div><div class="xc muted">Stocks/ETFs</div><div class="xc gold">$72,915</div><div class="xc white">61.3%</div><div class="xc pos" style="font-size:0.58rem">● Active</div></div>
+                                <div class="excel-row"><div class="xc row-num">2</div><div class="xc white" style="min-width:88px;font-weight:700">Binance</div><div class="xc orange">Crypto</div><div class="xc gold">$14,150</div><div class="xc white">11.9%</div><div class="xc pos" style="font-size:0.58rem">● Active</div></div>
+                                <div class="excel-row"><div class="xc row-num">3</div><div class="xc white" style="min-width:88px;font-weight:700">Fidelity</div><div class="xc muted">Stocks/ETFs</div><div class="xc gold">$13,000</div><div class="xc white">10.9%</div><div class="xc pos" style="font-size:0.58rem">● Active</div></div>
+                                <div class="excel-row"><div class="xc row-num">4</div><div class="xc white" style="min-width:88px;font-weight:700">GBM+</div><div class="xc muted">Stocks/ETFs</div><div class="xc gold">$9,900</div><div class="xc white">8.3%</div><div class="xc pos" style="font-size:0.58rem">● Active</div></div>
+                                <div class="excel-row"><div class="xc row-num">5</div><div class="xc white" style="min-width:88px;font-weight:700">CETES Direct</div><div class="xc cyan" style="color:#22d4ee">Fixed Income</div><div class="xc gold">$6,302</div><div class="xc white">5.3%</div><div class="xc pos" style="font-size:0.58rem">● Active</div></div>
+                                <div class="excel-row"><div class="xc row-num">6</div><div class="xc white" style="min-width:88px;font-weight:700">Nu México</div><div class="xc blue">Digital Acct.</div><div class="xc gold">$2,710</div><div class="xc white">2.3%</div><div class="xc pos" style="font-size:0.58rem">● Active</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-medium px-2 py-1 rounded" style="background:rgba(59,130,246,0.1);color:#60a5fa">By Platform</span>
+                            <div class="flex items-center gap-1 text-sm">
+                                <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <span class="text-fg">4.9</span><span class="text-muted">(198)</span>
+                            </div>
+                        </div>
+                        <h3 class="font-display text-xl text-fg mb-2">INVESTMENT PLATFORMS TRACKER</h3>
+                        <p class="text-muted text-sm mb-4">Manage all your investment accounts in one place. Consolidate multiple brokers and platforms with an automatic dashboard, net worth chart and S&P500 comparison — fully in English.</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Consolidated multi-platform dashboard (up to 30)</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Net worth evolution chart by month</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Performance comparison vs S&P500 & CETES</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Tax estimation (ISR 20% withholding)</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Financial goals with 6% annual projection</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Up to 2,000 transaction records</li>
+                        </ul>
+                        <div class="flex items-center justify-between pt-4 border-t border-border">
+                            <div><span class="text-3xl font-bold text-fg">$8</span><span class="text-muted text-sm ml-1">USD</span></div>
+                            <div class="flex gap-2">
+                                <button @click="previewModal=true; selectedProduct=2; activeTab=0" class="btn-secondary text-sm py-2 px-4">Preview</button>
+                                <button class="btn-primary text-sm py-2 px-4">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 4: PORTAFOLIO EN -->
+                <article x-show="activeFilter==='all' || activeFilter==='portfolio' || activeFilter==='english'" class="product-card reveal relative">
+                    <div class="absolute top-4 left-4 z-10"><span class="product-badge es" style="background:rgba(59,130,246,0.12);color:#60a5fa;border-color:rgba(59,130,246,0.3)">🇺🇸 English</span></div>
+                    <div class="p-4 border-b border-border pt-14">
+                        <div class="excel-window">
+                            <div class="excel-titlebar">
+                                <div class="excel-titlebar-dot bg-red-400"></div>
+                                <div class="excel-titlebar-dot bg-yellow-400"></div>
+                                <div class="excel-titlebar-dot bg-green-400"></div>
+                                <span class="text-white text-xs ml-2 opacity-80 font-sans">INVESTMENT_PORTFOLIO.xlsx</span>
+                            </div>
+                            <div class="excel-sheet-tabs">
+                                <div class="excel-tab active">🏠 Home</div>
+                                <div class="excel-tab inactive">📋 Transactions</div>
+                                <div class="excel-tab inactive">📈 Analysis</div>
+                                <div class="excel-tab inactive">🧾 Monthly Report</div>
+                                <div class="excel-tab inactive">🏅 Score</div>
+                                <div class="excel-tab inactive">🎯 Goals</div>
+                            </div>
+                            <div class="excel-body">
+                                <div style="font-size:0.62rem;color:#4a6880;margin-bottom:6px;font-weight:600;letter-spacing:0.05em">INVESTMENT PORTFOLIO · Stocks · ETFs · Crypto</div>
+                                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:4px">
+                                    <div class="kpi-green"><div class="kpi-label">💰 CAPITAL INV.</div><div class="kpi-val" style="font-size:0.82rem">$38,917</div></div>
+                                    <div class="kpi-cyan"><div class="kpi-label">💵 RECOVERED</div><div class="kpi-val" style="font-size:0.82rem">$4,739</div></div>
+                                    <div class="kpi-amber"><div class="kpi-label">💸 DIVIDENDS</div><div class="kpi-val" style="font-size:0.82rem">$317.50</div></div>
+                                    <div class="kpi-red"><div class="kpi-label">💳 COMMISSIONS</div><div class="kpi-val" style="font-size:0.82rem">-$30.00</div></div>
+                                </div>
+                                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:8px">
+                                    <div class="kpi-amber" style="background:#0a0800"><div class="kpi-label">📊 REALIZED G/P</div><div class="kpi-val" style="font-size:0.82rem">+$4,540</div></div>
+                                    <div class="kpi-purple"><div class="kpi-label">🔢 TOTAL OPS</div><div class="kpi-val" style="font-size:0.82rem">30</div></div>
+                                    <div class="kpi-green" style="background:#040e08"><div class="kpi-label">🟢 BUY OPS</div><div class="kpi-val" style="font-size:0.82rem">24</div></div>
+                                    <div class="kpi-red" style="background:#0a0606"><div class="kpi-label">🔴 SELL OPS</div><div class="kpi-val" style="font-size:0.82rem">2</div></div>
+                                </div>
+                                <div style="font-size:0.58rem;color:#3a6050;margin-bottom:3px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em">🏆 TOP 5 ASSETS · enter tickers in col B (yellow)</div>
+                                <div class="excel-col-headers">
+                                    <div class="col-header row-num"></div>
+                                    <div class="col-header" style="min-width:50px">TICKER</div>
+                                    <div class="col-header">TYPE</div>
+                                    <div class="col-header">INVESTED</div>
+                                    <div class="col-header">REAL. G/P</div>
+                                    <div class="col-header">STATUS</div>
+                                </div>
+                                <div class="excel-row"><div class="xc row-num">1</div><div class="xc gold" style="min-width:50px;font-weight:700">AAPL</div><div class="xc blue">Stock</div><div class="xc white">$3,582</div><div class="xc pos">+$728</div><div class="xc pos" style="font-size:0.57rem">↑ Open</div></div>
+                                <div class="excel-row"><div class="xc row-num">2</div><div class="xc gold" style="min-width:50px;font-weight:700">BTC</div><div class="xc orange">Crypto</div><div class="xc white">$9,145</div><div class="xc pos">+$3,891</div><div class="xc pos" style="font-size:0.57rem">↑ Open</div></div>
+                                <div class="excel-row"><div class="xc row-num">3</div><div class="xc gold" style="min-width:50px;font-weight:700">NVDA</div><div class="xc blue">Stock</div><div class="xc white">$8,720</div><div class="xc pos">+$2,979</div><div class="xc pos" style="font-size:0.57rem">↑ Open</div></div>
+                                <div class="excel-row"><div class="xc row-num">4</div><div class="xc gold" style="min-width:50px;font-weight:700">VOO</div><div class="xc cyan" style="color:#22d4ee">ETF</div><div class="xc white">$5,163</div><div class="xc pos">+$1,127</div><div class="xc pos" style="font-size:0.57rem">↑ Open</div></div>
+                                <div class="excel-row"><div class="xc row-num">5</div><div class="xc gold" style="min-width:50px;font-weight:700">MSFT</div><div class="xc blue">Stock</div><div class="xc white">$6,683</div><div class="xc pos">+$1,650</div><div class="xc pos" style="font-size:0.57rem">↑ Open</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-medium px-2 py-1 rounded" style="background:rgba(59,130,246,0.1);color:#60a5fa">Portfolio</span>
+                            <div class="flex items-center gap-1 text-sm">
+                                <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <span class="text-fg">4.9</span><span class="text-muted">(231)</span>
+                            </div>
+                        </div>
+                        <h3 class="font-display text-xl text-fg mb-2">INVESTMENT PORTFOLIO</h3>
+                        <p class="text-muted text-sm mb-4">Full tracking for stocks, ETFs and crypto. Automatic P&L per asset, dividend calendar, portfolio health score and financial goals — all in English, ready to use worldwide.</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Stocks, ETFs &amp; Crypto tracking</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Automatic P&amp;L per asset</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Dividend calendar &amp; tracker</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Automatic monthly report</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Portfolio health score 0–100 pts</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Financial goals progress tracking</li>
+                        </ul>
+                        <div class="flex items-center justify-between pt-4 border-t border-border">
+                            <div><span class="text-3xl font-bold text-fg">$8</span><span class="text-muted text-sm ml-1">USD</span></div>
+                            <div class="flex gap-2">
+                                <button @click="previewModal=true; selectedProduct=3; activeTab=0" class="btn-secondary text-sm py-2 px-4">Preview</button>
                                 <button class="btn-primary text-sm py-2 px-4">Buy Now</button>
                             </div>
                         </div>
@@ -724,7 +885,7 @@
                     </a>
                     <p class="text-muted max-w-sm">Premium Excel templates for investors who want professional-grade analysis tools and portfolio management.</p>
                 </div>
-                <div><h4 class="font-semibold text-fg mb-4">Products</h4><ul class="space-y-2"><li><a href="#templates" class="text-muted hover:text-accent transition-colors">Platforms Template</a></li><li><a href="#templates" class="text-muted hover:text-accent transition-colors">Portfolio Template</a></li></ul></div>
+                <div><h4 class="font-semibold text-fg mb-4">Products</h4><ul class="space-y-2"><li><a href="#templates" class="text-muted hover:text-accent transition-colors">🇪🇸 Plataformas de Inversiones</a></li><li><a href="#templates" class="text-muted hover:text-accent transition-colors">🇪🇸 Portafolio de Inversiones</a></li><li><a href="#templates" class="text-muted hover:text-accent transition-colors">🇺🇸 Investment Platforms Tracker</a></li><li><a href="#templates" class="text-muted hover:text-accent transition-colors">🇺🇸 Investment Portfolio</a></li></ul></div>
                 <div><h4 class="font-semibold text-fg mb-4">Legal</h4><ul class="space-y-2"><li><a href="#" class="text-muted hover:text-accent transition-colors">Terms of Service</a></li><li><a href="#" class="text-muted hover:text-accent transition-colors">Privacy Policy</a></li><li><a href="#" class="text-muted hover:text-accent transition-colors">Refund Policy</a></li><li><a href="#" class="text-muted hover:text-accent transition-colors">Contact</a></li></ul></div>
             </div>
             <div class="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
@@ -740,10 +901,11 @@
             <!-- Modal Header -->
             <div class="flex items-center justify-between p-5 border-b border-border sticky top-0 bg-bg-card z-10">
                 <div>
-                    <h3 class="font-display text-xl text-fg" x-text="selectedProduct===0 ? 'PLATAFORMAS DEFINITIVO' : 'PORTAFOLIO DE INVERSIONES'"></h3>
+                    <h3 class="font-display text-xl text-fg" x-text="selectedProduct===0 ? 'PLATAFORMAS DE INVERSIONES' : selectedProduct===1 ? 'PORTAFOLIO DE INVERSIONES' : selectedProduct===2 ? 'INVESTMENT PLATFORMS TRACKER' : 'INVESTMENT PORTFOLIO'"></h3>
                     <div class="flex items-center gap-3 mt-1">
-                        <span class="product-badge es">🇪🇸 Español</span>
-                        <span class="text-muted text-xs" x-text="selectedProduct===0 ? '6 sheets · Up to 30 platforms' : '6 sheets · Stocks · ETFs · Crypto'"></span>
+                        <span x-show="selectedProduct<=1" class="product-badge es">🇪🇸 Español</span>
+                        <span x-show="selectedProduct>=2" class="product-badge es" style="background:rgba(59,130,246,0.12);color:#60a5fa;border-color:rgba(59,130,246,0.3)">🇺🇸 English</span>
+                        <span class="text-muted text-xs" x-text="selectedProduct===0 ? '6 sheets · Up to 30 platforms' : selectedProduct===1 ? '6 sheets · Stocks · ETFs · Crypto' : selectedProduct===2 ? '6 sheets · Up to 30 platforms' : '6 sheets · Stocks · ETFs · Crypto'"></span>
                     </div>
                 </div>
                 <button @click="previewModal=false" class="p-2 text-muted hover:text-fg transition-colors rounded-lg hover:bg-border">
@@ -775,18 +937,52 @@
                 </template>
             </div>
 
+                <!-- PLATAFORMAS EN stats -->
+                <template x-if="selectedProduct===2">
+                    <div class="stat-box"><div class="text-xs text-muted mb-1">💼 Total Value</div><div class="text-xl font-bold text-accent">$118,977</div></div>
+                </template>
+                <template x-if="selectedProduct===2">
+                    <div class="stat-box"><div class="text-xs text-muted mb-1">📈 Gains</div><div class="text-xl font-bold text-success">+$47,477</div></div>
+                </template>
+                <template x-if="selectedProduct===2">
+                    <div class="stat-box"><div class="text-xs text-muted mb-1">📊 Return</div><div class="text-xl font-bold text-success">+66.4%</div></div>
+                </template>
+                <!-- PORTAFOLIO EN stats -->
+                <template x-if="selectedProduct===3">
+                    <div class="stat-box"><div class="text-xs text-muted mb-1">💰 Capital Invested</div><div class="text-xl font-bold text-accent">$38,917</div></div>
+                </template>
+                <template x-if="selectedProduct===3">
+                    <div class="stat-box"><div class="text-xs text-muted mb-1">📈 Realized G/P</div><div class="text-xl font-bold text-success">+$4,540</div></div>
+                </template>
+                <template x-if="selectedProduct===3">
+                    <div class="stat-box"><div class="text-xs text-muted mb-1">💸 Dividends</div><div class="text-xl font-bold text-success">$317.50</div></div>
+                </template>
+            </div>
+
             <!-- Sheet Tabs -->
             <div class="px-5 pt-4 pb-2">
                 <p class="text-xs text-muted mb-2 uppercase tracking-wider">Template sheets:</p>
-                <!-- PLATAFORMAS tabs -->
+                <!-- PLATAFORMAS ES tabs -->
                 <div x-show="selectedProduct===0" class="flex flex-wrap gap-2">
                     <template x-for="(tab, i) in ['🏠 Inicio','💰 Saldos','📋 Movimientos','📈 Análisis','📊 S&P500','🎯 Metas']" :key="i">
                         <button @click="activeTab=i" :class="activeTab===i ? 'bg-accent text-bg font-semibold' : 'bg-bg-elevated text-muted border border-border hover:text-fg'" class="px-3 py-1.5 rounded-lg text-xs transition-all" x-text="tab"></button>
                     </template>
                 </div>
-                <!-- PORTAFOLIO tabs -->
+                <!-- PORTAFOLIO ES tabs -->
                 <div x-show="selectedProduct===1" class="flex flex-wrap gap-2">
                     <template x-for="(tab, i) in ['🏠 Inicio','📋 Movimientos','📈 Análisis','🧾 Reporte Mensual','🏅 Score','🎯 Objetivos']" :key="i">
+                        <button @click="activeTab=i" :class="activeTab===i ? 'bg-accent text-bg font-semibold' : 'bg-bg-elevated text-muted border border-border hover:text-fg'" class="px-3 py-1.5 rounded-lg text-xs transition-all" x-text="tab"></button>
+                    </template>
+                </div>
+                <!-- PLATAFORMAS EN tabs -->
+                <div x-show="selectedProduct===2" class="flex flex-wrap gap-2">
+                    <template x-for="(tab, i) in ['🏠 Home','💰 Balances','📋 Transactions','📈 Analysis','📊 S&P500','🎯 Goals']" :key="i">
+                        <button @click="activeTab=i" :class="activeTab===i ? 'bg-accent text-bg font-semibold' : 'bg-bg-elevated text-muted border border-border hover:text-fg'" class="px-3 py-1.5 rounded-lg text-xs transition-all" x-text="tab"></button>
+                    </template>
+                </div>
+                <!-- PORTAFOLIO EN tabs -->
+                <div x-show="selectedProduct===3" class="flex flex-wrap gap-2">
+                    <template x-for="(tab, i) in ['🏠 Home','📋 Transactions','📈 Analysis','🧾 Monthly Report','🏅 Score','🎯 Goals']" :key="i">
                         <button @click="activeTab=i" :class="activeTab===i ? 'bg-accent text-bg font-semibold' : 'bg-bg-elevated text-muted border border-border hover:text-fg'" class="px-3 py-1.5 rounded-lg text-xs transition-all" x-text="tab"></button>
                     </template>
                 </div>
@@ -799,10 +995,10 @@
                         <div class="excel-titlebar-dot bg-red-400"></div>
                         <div class="excel-titlebar-dot bg-yellow-400"></div>
                         <div class="excel-titlebar-dot bg-green-400"></div>
-                        <span class="text-white text-xs ml-3 opacity-80 font-sans" x-text="selectedProduct===0 ? 'PLATAFORMAS_DEFINITIVO.xlsx' : 'PORTAFOLIO_DE_INVERSIONES.xlsx'"></span>
+                        <span class="text-white text-xs ml-3 opacity-80 font-sans" x-text="selectedProduct===0 ? 'PLATAFORMAS_DE_INVERSIONES.xlsx' : selectedProduct===1 ? 'PORTAFOLIO_DE_INVERSIONES.xlsx' : selectedProduct===2 ? 'INVESTMENT_PLATFORMS_TRACKER.xlsx' : 'INVESTMENT_PORTFOLIO.xlsx'"></span>
                     </div>
                     <div class="excel-sheet-tabs overflow-x-auto">
-                        <!-- PLATAFORMAS sheet tabs -->
+                        <!-- PLATAFORMAS ES sheet tabs -->
                         <template x-if="selectedProduct===0">
                             <div style="display:flex;gap:1px">
                                 <template x-for="(tab,i) in ['🏠 Inicio','💰 Saldos','📋 Movimientos','📈 Análisis','📊 S&P500','🎯 Metas']" :key="i">
@@ -810,10 +1006,26 @@
                                 </template>
                             </div>
                         </template>
-                        <!-- PORTAFOLIO sheet tabs -->
+                        <!-- PORTAFOLIO ES sheet tabs -->
                         <template x-if="selectedProduct===1">
                             <div style="display:flex;gap:1px">
                                 <template x-for="(tab,i) in ['🏠 Inicio','📋 Movimientos','📈 Análisis','🧾 Reporte','🏅 Score','🎯 Objetivos']" :key="i">
+                                    <div :class="activeTab===i ? 'excel-tab active' : 'excel-tab inactive'" x-text="tab" @click="activeTab=i" style="cursor:pointer"></div>
+                                </template>
+                            </div>
+                        </template>
+                        <!-- PLATAFORMAS EN sheet tabs -->
+                        <template x-if="selectedProduct===2">
+                            <div style="display:flex;gap:1px">
+                                <template x-for="(tab,i) in ['🏠 Home','💰 Balances','📋 Transactions','📈 Analysis','📊 S&P500','🎯 Goals']" :key="i">
+                                    <div :class="activeTab===i ? 'excel-tab active' : 'excel-tab inactive'" x-text="tab" @click="activeTab=i" style="cursor:pointer"></div>
+                                </template>
+                            </div>
+                        </template>
+                        <!-- PORTAFOLIO EN sheet tabs -->
+                        <template x-if="selectedProduct===3">
+                            <div style="display:flex;gap:1px">
+                                <template x-for="(tab,i) in ['🏠 Home','📋 Transactions','📈 Analysis','🧾 Monthly Report','🏅 Score','🎯 Goals']" :key="i">
                                     <div :class="activeTab===i ? 'excel-tab active' : 'excel-tab inactive'" x-text="tab" @click="activeTab=i" style="cursor:pointer"></div>
                                 </template>
                             </div>
@@ -1158,16 +1370,272 @@
                     </div>
 
                 </div><!-- end excel-window -->
+
+                <!-- ===== PLATAFORMAS EN SHEETS ===== -->
+                    <!-- P2 T0: Home -->
+                    <div class="excel-body" x-show="selectedProduct===2 && activeTab===0">
+                        <div style="color:#3a6878;font-size:0.72rem;font-weight:700;margin-bottom:10px;letter-spacing:0.03em">■ INVESTMENT PORTFOLIO &nbsp;·&nbsp; Mexico &nbsp;·&nbsp; Real-time Dashboard</div>
+                        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:4px">
+                            <div class="kpi-green"><div class="kpi-label">💼 TOTAL VALUE</div><div class="kpi-val">$118,977</div></div>
+                            <div class="kpi-cyan"><div class="kpi-label">📈 RETURNS</div><div class="kpi-val">+$47,477</div></div>
+                            <div class="kpi-amber"><div class="kpi-label">📊 RETURN %</div><div class="kpi-val">+66.4%</div></div>
+                            <div class="kpi-blue"><div class="kpi-label">💰 CONTRIBUTED</div><div class="kpi-val">$71,500</div></div>
+                            <div class="kpi-red"><div class="kpi-label">📤 WITHDRAWALS</div><div class="kpi-val">$0</div></div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:12px">
+                            <div class="kpi-blue" style="background:#050c1c"><div class="kpi-label">🏦 INIT. INV.</div><div class="kpi-val">$35,000</div></div>
+                            <div class="kpi-cyan" style="background:#040c18"><div class="kpi-label">🔢 MOVEMENTS</div><div class="kpi-val" style="color:#22d4ee">55</div></div>
+                            <div class="kpi-amber" style="background:#0c0a04"><div class="kpi-label">🏆 TOP PLATFORM</div><div class="kpi-val">GBM+</div></div>
+                            <div class="kpi-red" style="background:#0a0606"><div class="kpi-label">📉 EXPENSES</div><div class="kpi-val">$85</div></div>
+                            <div class="kpi-green" style="background:#040e08"><div class="kpi-label">💹 NET GAIN</div><div class="kpi-val">+$47,392</div></div>
+                        </div>
+                        <div style="color:#3a6050;font-size:0.58rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px">■ SUMMARY BY PLATFORM · All (6)</div>
+                        <div class="excel-col-headers">
+                            <div class="col-header row-num">#</div>
+                            <div class="col-header" style="min-width:120px">PLATFORM</div>
+                            <div class="col-header">TYPE</div>
+                            <div class="col-header">BALANCE</div>
+                            <div class="col-header">% PORT.</div>
+                            <div class="col-header">EST. TAX (20%)</div>
+                            <div class="col-header">STATUS</div>
+                        </div>
+                        <div class="excel-row"><div class="xc row-num">1</div><div class="xc white" style="min-width:120px;font-weight:700">GBM+</div><div class="xc muted">Stocks/ETFs</div><div class="xc gold">$72,915</div><div class="xc white">61.3%</div><div class="xc amber">$5,683</div><div class="xc muted" style="font-size:0.57rem">⚠️ High</div></div>
+                        <div class="excel-row"><div class="xc row-num">2</div><div class="xc white" style="min-width:120px;font-weight:700">Binance</div><div class="xc orange">Crypto</div><div class="xc gold">$14,150</div><div class="xc white">11.9%</div><div class="xc amber">$2,230</div><div class="xc pos" style="font-size:0.57rem">✅ Moderate</div></div>
+                        <div class="excel-row"><div class="xc row-num">3</div><div class="xc white" style="min-width:120px;font-weight:700">Fidelity</div><div class="xc muted">Stocks/ETFs</div><div class="xc gold">$13,000</div><div class="xc white">10.9%</div><div class="xc amber">$600</div><div class="xc pos" style="font-size:0.57rem">✅ Moderate</div></div>
+                        <div class="excel-row"><div class="xc row-num">4</div><div class="xc white" style="min-width:120px;font-weight:700">GBM+</div><div class="xc cyan" style="color:#22d4ee">Fixed Income</div><div class="xc gold">$9,900</div><div class="xc white">8.3%</div><div class="xc pos">$142</div><div class="xc pos" style="font-size:0.57rem">● Low</div></div>
+                        <div class="excel-row"><div class="xc row-num">5</div><div class="xc white" style="min-width:120px;font-weight:700">CETES Direct</div><div class="xc cyan" style="color:#22d4ee">Fixed Income</div><div class="xc gold">$6,302</div><div class="xc white">5.3%</div><div class="xc pos">$260</div><div class="xc pos" style="font-size:0.57rem">● Low</div></div>
+                        <div class="excel-row"><div class="xc row-num">6</div><div class="xc white" style="min-width:120px;font-weight:700">Nu México</div><div class="xc blue">Digital Acct.</div><div class="xc gold">$2,710</div><div class="xc white">2.3%</div><div class="xc pos">$142</div><div class="xc pos" style="font-size:0.57rem">● Low</div></div>
+                    </div>
+                    <!-- P2 T1: Balances -->
+                    <div class="excel-body" x-show="selectedProduct===2 && activeTab===1">
+                        <div style="color:#60a8f8;font-size:0.65rem;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0">⚙️ CALCULATION ENGINE · BALANCES BY PLATFORM · Only edit column D (yellow)</div>
+                        <div class="excel-col-headers">
+                            <div class="col-header row-num">#</div>
+                            <div class="col-header" style="min-width:110px">PLATFORM</div>
+                            <div class="col-header">TYPE</div>
+                            <div class="col-header" style="background:#101a08;color:#a8c040">INIT. BAL.</div>
+                            <div class="col-header">+ CONTRIB.</div>
+                            <div class="col-header">+ RETURNS</div>
+                            <div class="col-header">BALANCE</div>
+                            <div class="col-header">RETURN %</div>
+                        </div>
+                        <div class="excel-row"><div class="xc row-num">6</div><div class="xc white" style="min-width:110px">Interactive Brokers</div><div class="xc muted">Broker</div><div class="xc inp">$10,000</div><div class="xc formula">=SUMIFS(...)</div><div class="xc formula">=SUMIFS(...)</div><div class="xc gold">$72,915</div><div class="xc pos">+63.9%</div></div>
+                        <div class="excel-row"><div class="xc row-num">7</div><div class="xc white" style="min-width:110px">GBM+</div><div class="xc muted">Broker</div><div class="xc inp">$5,000</div><div class="xc formula">=SUMIFS(...)</div><div class="xc formula">=SUMIFS(...)</div><div class="xc gold">$9,900</div><div class="xc pos">+41.4%</div></div>
+                        <div class="excel-row"><div class="xc row-num">8</div><div class="xc white" style="min-width:110px">Binance</div><div class="xc orange">Crypto</div><div class="xc inp">$3,000</div><div class="xc formula">=SUMIFS(...)</div><div class="xc formula">=SUMIFS(...)</div><div class="xc gold">$14,150</div><div class="xc pos">+371.7%</div></div>
+                        <div class="excel-row"><div class="xc row-num">9</div><div class="xc white" style="min-width:110px">Fidelity</div><div class="xc muted">Broker</div><div class="xc inp">$10,000</div><div class="xc formula">=SUMIFS(...)</div><div class="xc formula">=SUMIFS(...)</div><div class="xc gold">$13,000</div><div class="xc pos">+30.0%</div></div>
+                        <div class="excel-row" style="border-top:1px solid #2a4060;margin-top:2px"><div class="xc row-num">—</div><div class="xc total" style="min-width:110px">TOTAL</div><div class="xc total"></div><div class="xc total">$35,000</div><div class="xc total">$36,500</div><div class="xc total">$47,477</div><div class="xc total">$118,977</div><div class="xc pos" style="font-weight:700;background:#071a10">+66.4%</div></div>
+                    </div>
+                    <!-- P2 T2: Transactions -->
+                    <div class="excel-body" x-show="selectedProduct===2 && activeTab===2">
+                        <div style="color:#60a8f8;font-size:0.65rem;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0">📋 TRANSACTIONS LOG · Use DROPDOWN LISTS · Table extended to 2,000 records</div>
+                        <div class="excel-col-headers">
+                            <div class="col-header row-num">#</div>
+                            <div class="col-header">YEAR</div>
+                            <div class="col-header">MONTH</div>
+                            <div class="col-header" style="min-width:100px">PLATFORM</div>
+                            <div class="col-header">TYPE</div>
+                            <div class="col-header">AMOUNT ($)</div>
+                            <div class="col-header" style="min-width:130px">DESCRIPTION</div>
+                        </div>
+                        <div class="excel-row"><div class="xc row-num">6</div><div class="xc muted">2023</div><div class="xc muted">Jan</div><div class="xc white" style="min-width:100px">Interactive Brokers</div><div class="xc" style="color:#60a8f8">Contribution</div><div class="xc gold">$10,000</div><div class="xc muted" style="min-width:130px">Initial capital IB</div></div>
+                        <div class="excel-row"><div class="xc row-num">7</div><div class="xc muted">2023</div><div class="xc muted">Mar</div><div class="xc white" style="min-width:100px">Interactive Brokers</div><div class="xc pos">Return</div><div class="xc pos">+$850</div><div class="xc muted" style="min-width:130px">Q1 gains</div></div>
+                        <div class="excel-row"><div class="xc row-num">8</div><div class="xc muted">2024</div><div class="xc muted">Feb</div><div class="xc white" style="min-width:100px">Binance</div><div class="xc pos">Return</div><div class="xc pos">+$2,100</div><div class="xc muted" style="min-width:130px">BTC ETF approval</div></div>
+                        <div class="excel-row"><div class="xc row-num">9</div><div class="xc muted">2024</div><div class="xc muted">Nov</div><div class="xc white" style="min-width:100px">Interactive Brokers</div><div class="xc pos">Return</div><div class="xc pos">+$3,200</div><div class="xc muted" style="min-width:130px">Trump rally Q4</div></div>
+                        <div class="excel-row"><div class="xc row-num">10</div><div class="xc muted">2025</div><div class="xc muted">Feb</div><div class="xc white" style="min-width:100px">Interactive Brokers</div><div class="xc neg">Expense</div><div class="xc neg">-$85</div><div class="xc muted" style="min-width:130px">Annual IB fee</div></div>
+                        <div style="padding:4px 6px;font-size:0.58rem;color:#6a8a7a;text-align:center">... 50 more transactions recorded · Table up to 2,000 records ...</div>
+                    </div>
+                    <!-- P2 T3: Analysis -->
+                    <div class="excel-body" x-show="selectedProduct===2 && activeTab===3">
+                        <div style="color:#60a8f8;font-size:0.65rem;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0">📈 ANALYSIS · DYNAMIC FILTERS · Change the filters and everything updates automatically</div>
+                        <div class="excel-col-headers">
+                            <div class="col-header row-num"></div>
+                            <div class="col-header" style="min-width:100px">PLATFORM</div>
+                            <div class="col-header">RETURNS</div>
+                            <div class="col-header">CONTRIBUTED</div>
+                            <div class="col-header">NET BALANCE</div>
+                            <div class="col-header">% WEIGHT</div>
+                        </div>
+                        <div class="excel-row"><div class="xc row-num">9</div><div class="xc white" style="min-width:100px">Interactive Brokers</div><div class="xc pos">+$28,415</div><div class="xc blue">$44,500</div><div class="xc gold">$72,915</div><div class="xc muted">61.3%</div></div>
+                        <div class="excel-row"><div class="xc row-num">10</div><div class="xc white" style="min-width:100px">Binance</div><div class="xc pos">+$11,150</div><div class="xc blue">$3,000</div><div class="xc gold">$14,150</div><div class="xc muted">11.9%</div></div>
+                        <div class="excel-row"><div class="xc row-num">11</div><div class="xc white" style="min-width:100px">Fidelity</div><div class="xc pos">+$3,000</div><div class="xc blue">$10,000</div><div class="xc gold">$13,000</div><div class="xc muted">10.9%</div></div>
+                        <div style="margin-top:10px;padding:8px;background:#060e20;border-radius:6px;border:1px solid #1a3060">
+                            <div style="font-size:0.6rem;color:#f0c040;font-weight:600;margin-bottom:6px">💰 TAX ESTIMATION · ISR on returns (provisional withholding 20%)</div>
+                            <div class="excel-row"><div class="xc muted" style="min-width:120px">Gross Return</div><div class="xc cyan">$47,477</div><div class="xc muted" style="min-width:120px">ISR Withheld (20%)</div><div class="xc neg">-$9,495</div><div class="xc muted" style="min-width:100px">Net Return</div><div class="xc pos">$37,982</div></div>
+                        </div>
+                    </div>
+                    <!-- P2 T4: S&P500 -->
+                    <div class="excel-body" x-show="selectedProduct===2 && activeTab===4">
+                        <div style="color:#60a8f8;font-size:0.65rem;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0">📊 PERFORMANCE vs S&P 500 · Does your portfolio beat the market?</div>
+                        <div class="excel-col-headers">
+                            <div class="col-header row-num"></div>
+                            <div class="col-header">YEAR</div>
+                            <div class="col-header">YOUR PORTFOLIO</div>
+                            <div class="col-header">S&P 500</div>
+                            <div class="col-header">CETES</div>
+                            <div class="col-header">ALPHA vs S&P</div>
+                        </div>
+                        <div class="excel-row"><div class="xc row-num">8</div><div class="xc muted">2023</div><div class="xc pos">+24.0%</div><div class="xc blue">+26.3%</div><div class="xc cyan" style="color:#22d4ee">+11.2%</div><div class="xc neg">-2.3%</div></div>
+                        <div class="excel-row"><div class="xc row-num">9</div><div class="xc muted">2024</div><div class="xc pos">+41.2%</div><div class="xc blue">+23.3%</div><div class="xc cyan" style="color:#22d4ee">+10.5%</div><div class="xc pos">+17.9%</div></div>
+                        <div class="excel-row" style="border-top:1px solid #1a3a50"><div class="xc row-num">10</div><div class="xc muted">Cumulative</div><div class="xc pos" style="font-weight:700">+66.4%</div><div class="xc blue">+24.2%</div><div class="xc cyan" style="color:#22d4ee">+10.5%</div><div class="xc pos" style="font-weight:700">+42.2% Alpha</div></div>
+                    </div>
+                    <!-- P2 T5: Goals -->
+                    <div class="excel-body" x-show="selectedProduct===2 && activeTab===5">
+                        <div style="color:#60a8f8;font-size:0.65rem;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0">🎯 FINANCIAL GOALS · Set your targets · Track your progress</div>
+                        <div class="excel-col-headers">
+                            <div class="col-header row-num"></div>
+                            <div class="col-header" style="min-width:130px">GOAL</div>
+                            <div class="col-header">CURRENT</div>
+                            <div class="col-header">TARGET</div>
+                            <div class="col-header">PROGRESS</div>
+                            <div class="col-header">TIMEFRAME</div>
+                            <div class="col-header">STATUS</div>
+                        </div>
+                        <div class="excel-row"><div class="xc row-num">5</div><div class="xc white" style="min-width:130px">🎯 Conservative Goal</div><div class="xc gold">$118,977</div><div class="xc blue">$200,000</div><div class="xc orange">59.5%</div><div class="xc muted">5 years</div><div class="xc orange">⏳ In progress</div></div>
+                        <div class="excel-row"><div class="xc row-num">6</div><div class="xc white" style="min-width:130px">🚀 Ambitious Goal</div><div class="xc gold">$118,977</div><div class="xc blue">$500,000</div><div class="xc orange">23.8%</div><div class="xc muted">10 years</div><div class="xc orange">⏳ In progress</div></div>
+                    </div>
+
+                <!-- ===== PORTAFOLIO EN SHEETS ===== -->
+                    <!-- P3 T0: Home -->
+                    <div class="excel-body" x-show="selectedProduct===3 && activeTab===0">
+                        <div style="color:#3a6878;font-size:0.72rem;font-weight:700;margin-bottom:10px;letter-spacing:0.03em">■ INVESTMENT PORTFOLIO &nbsp;·&nbsp; Stocks · ETFs · Crypto</div>
+                        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:4px">
+                            <div class="kpi-green"><div class="kpi-label">💰 CAPITAL INV.</div><div class="kpi-val">$38,917</div><div style="font-size:0.55rem;color:#1a5c28;margin-top:2px">← what you put in</div></div>
+                            <div class="kpi-cyan"><div class="kpi-label">💵 RECOVERED</div><div class="kpi-val">$4,739</div><div style="font-size:0.55rem;color:#0a4058;margin-top:2px">← what you took out</div></div>
+                            <div class="kpi-amber"><div class="kpi-label">💸 DIVIDENDS</div><div class="kpi-val">$317.50</div><div style="font-size:0.55rem;color:#503808;margin-top:2px">← passive income</div></div>
+                            <div class="kpi-red"><div class="kpi-label">💳 COMMISSIONS</div><div class="kpi-val">-$30.00</div><div style="font-size:0.55rem;color:#501010;margin-top:2px">← broker costs</div></div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:12px">
+                            <div class="kpi-amber" style="background:#0c0800"><div class="kpi-label">📊 REALIZED G/P</div><div class="kpi-val">+$4,540</div><div style="font-size:0.55rem;color:#503808;margin-top:2px">← only when selling</div></div>
+                            <div class="kpi-purple"><div class="kpi-label">🔢 TOTAL OPS</div><div class="kpi-val">30</div></div>
+                            <div class="kpi-green" style="background:#040e08"><div class="kpi-label">🟢 BUY OPS</div><div class="kpi-val">24</div></div>
+                            <div class="kpi-red" style="background:#0a0606"><div class="kpi-label">🔴 SELL OPS</div><div class="kpi-val">2</div></div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                            <div>
+                                <div style="color:#3a6050;font-size:0.58rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px">📋 SUMMARY BY ASSET CLASS</div>
+                                <div class="excel-col-headers"><div class="col-header row-num"></div><div class="col-header">TYPE</div><div class="col-header">BOUGHT</div><div class="col-header">SOLD</div><div class="col-header">DIVID.</div></div>
+                                <div class="excel-row"><div class="xc row-num">10</div><div class="xc blue">🟢 Stocks</div><div class="xc white">$17,560</div><div class="xc pos">$3,599</div><div class="xc pos">$160</div></div>
+                                <div class="excel-row"><div class="xc row-num">11</div><div class="xc cyan" style="color:#22d4ee">🔵 ETFs</div><div class="xc white">$8,184</div><div class="xc muted">—</div><div class="xc pos">$89</div></div>
+                                <div class="excel-row"><div class="xc row-num">12</div><div class="xc orange">🟠 Crypto</div><div class="xc white">$13,303</div><div class="xc pos">$1,138</div><div class="xc muted">—</div></div>
+                            </div>
+                            <div>
+                                <div style="color:#3a6050;font-size:0.58rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px">🏦 SUMMARY BY BROKER</div>
+                                <div class="excel-col-headers"><div class="col-header row-num"></div><div class="col-header">BROKER</div><div class="col-header">BOUGHT</div><div class="col-header">COMM.</div></div>
+                                <div class="excel-row"><div class="xc row-num">10</div><div class="xc white">Interactive Brokers</div><div class="xc white">$17,045</div><div class="xc neg">$13</div></div>
+                                <div class="excel-row"><div class="xc row-num">11</div><div class="xc white">Binance</div><div class="xc white">$13,303</div><div class="xc neg">$18</div></div>
+                                <div class="excel-row"><div class="xc row-num">12</div><div class="xc white">GBM</div><div class="xc white">$1,247</div><div class="xc neg">$0</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- P3 T1: Transactions -->
+                    <div class="excel-body" x-show="selectedProduct===3 && activeTab===1">
+                        <div style="color:#60a8f8;font-size:0.65rem;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0">📋 TRANSACTIONS LOG · Stocks · ETFs · Crypto · Use dropdown lists</div>
+                        <div class="excel-col-headers">
+                            <div class="col-header row-num"></div>
+                            <div class="col-header">DATE</div>
+                            <div class="col-header">TYPE</div>
+                            <div class="col-header">TICKER</div>
+                            <div class="col-header">BROKER</div>
+                            <div class="col-header">OPERATION</div>
+                            <div class="col-header">QTY</div>
+                            <div class="col-header">PRICE</div>
+                            <div class="col-header">TOTAL</div>
+                        </div>
+                        <div class="excel-row"><div class="xc row-num">5</div><div class="xc muted">01/15/24</div><div class="xc blue">Stock</div><div class="xc gold">AAPL</div><div class="xc muted">IB</div><div class="xc" style="color:#60a8f8">Buy</div><div class="xc white">10</div><div class="xc white">$185.50</div><div class="xc neg">$1,855</div></div>
+                        <div class="excel-row"><div class="xc row-num">6</div><div class="xc muted">01/22/24</div><div class="xc cyan" style="color:#22d4ee">ETF</div><div class="xc gold">VOO</div><div class="xc muted">IB</div><div class="xc" style="color:#60a8f8">Buy</div><div class="xc white">5</div><div class="xc white">$432.10</div><div class="xc neg">$2,161</div></div>
+                        <div class="excel-row"><div class="xc row-num">7</div><div class="xc muted">02/28/24</div><div class="xc orange">Crypto</div><div class="xc gold">BTC</div><div class="xc muted">Binance</div><div class="xc" style="color:#60a8f8">Buy</div><div class="xc white">0.10</div><div class="xc white">$48,200</div><div class="xc neg">$4,828</div></div>
+                        <div class="excel-row"><div class="xc row-num">8</div><div class="xc muted">04/15/24</div><div class="xc blue">Stock</div><div class="xc gold">AAPL</div><div class="xc muted">IB</div><div class="xc pos">Dividend</div><div class="xc white">—</div><div class="xc white">—</div><div class="xc pos">+$38.50</div></div>
+                        <div class="excel-row"><div class="xc row-num">9</div><div class="xc muted">07/10/24</div><div class="xc blue">Stock</div><div class="xc gold">NVDA</div><div class="xc muted">IB</div><div class="xc orange">Sell</div><div class="xc white">3</div><div class="xc white">$1,200</div><div class="xc pos">+$3,599</div></div>
+                        <div style="padding:4px 6px;font-size:0.58rem;color:#6a8a7a;text-align:center">... 25 more transactions recorded ...</div>
+                    </div>
+                    <!-- P3 T2: Analysis -->
+                    <div class="excel-body" x-show="selectedProduct===3 && activeTab===2">
+                        <div style="color:#60a8f8;font-size:0.65rem;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0">📈 PORTFOLIO ANALYSIS · P&L · Charts · Returns · Enter tickers in column B (yellow)</div>
+                        <div class="excel-col-headers">
+                            <div class="col-header row-num"></div>
+                            <div class="col-header">TICKER</div>
+                            <div class="col-header">TYPE</div>
+                            <div class="col-header">INVESTED ($)</div>
+                            <div class="col-header">RECOVERED ($)</div>
+                            <div class="col-header">DIVIDENDS ($)</div>
+                            <div class="col-header">REALIZED G/P ($)</div>
+                        </div>
+                        <div class="excel-row"><div class="xc row-num">11</div><div class="xc gold">AAPL</div><div class="xc blue">Stock</div><div class="xc white">$3,582</div><div class="xc muted">—</div><div class="xc pos">$121</div><div class="xc formula">=SUMIFS(...)</div></div>
+                        <div class="excel-row"><div class="xc row-num">12</div><div class="xc gold">MSFT</div><div class="xc blue">Stock</div><div class="xc white">$6,683</div><div class="xc muted">—</div><div class="xc pos">$24</div><div class="xc formula">=SUMIFS(...)</div></div>
+                        <div class="excel-row"><div class="xc row-num">13</div><div class="xc gold">NVDA</div><div class="xc blue">Stock</div><div class="xc white">$8,720</div><div class="xc pos">$3,599</div><div class="xc muted">—</div><div class="xc pos">+$2,979</div></div>
+                        <div class="excel-row"><div class="xc row-num">14</div><div class="xc gold">VOO</div><div class="xc cyan" style="color:#22d4ee">ETF</div><div class="xc white">$5,163</div><div class="xc muted">—</div><div class="xc pos">$89</div><div class="xc formula">=SUMIFS(...)</div></div>
+                        <div class="excel-row"><div class="xc row-num">15</div><div class="xc gold">BTC</div><div class="xc orange">Crypto</div><div class="xc white">$9,145</div><div class="xc muted">—</div><div class="xc muted">—</div><div class="xc formula">=SUMIFS(...)</div></div>
+                        <div class="excel-row"><div class="xc row-num">16</div><div class="xc gold">ETH</div><div class="xc orange">Crypto</div><div class="xc white">$1,428</div><div class="xc pos">$1,138</div><div class="xc muted">—</div><div class="xc pos">+$562</div></div>
+                    </div>
+                    <!-- P3 T3: Monthly Report -->
+                    <div class="excel-body" x-show="selectedProduct===3 && activeTab===3">
+                        <div style="color:#60a8f8;font-size:0.65rem;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0">🧾 MONTHLY REPORT · Select year and month · Change YEAR and MONTH # and everything updates</div>
+                        <div class="excel-col-headers">
+                            <div class="col-header row-num"></div>
+                            <div class="col-header">📅 YEAR</div>
+                            <div class="col-header">📅 MONTH #</div>
+                            <div class="col-header">MONTH NAME</div>
+                            <div class="col-header">📊 CURRENT YEAR</div>
+                            <div class="col-header">📉 PREV. YEAR</div>
+                            <div class="col-header">📈 VARIATION</div>
+                        </div>
+                        <div class="excel-row"><div class="xc row-num">5</div><div class="xc" style="background:rgba(255,255,0,0.12);color:#fbbf24">2025</div><div class="xc" style="background:rgba(255,255,0,0.12);color:#fbbf24">2</div><div class="xc muted">February</div><div class="xc gold">$8,432</div><div class="xc white">$3,810</div><div class="xc pos">+$4,622</div></div>
+                        <div style="margin-top:10px;color:#8a8a9a;font-size:0.6rem;margin-bottom:4px">📊 SUMMARY: February 2025</div>
+                        <div class="excel-col-headers">
+                            <div class="col-header row-num"></div>
+                            <div class="col-header">💰 BOUGHT</div>
+                            <div class="col-header">📤 SOLD</div>
+                            <div class="col-header">💸 DIVIDENDS</div>
+                            <div class="col-header">💳 COMMISSIONS</div>
+                            <div class="col-header">📊 NET FLOW</div>
+                        </div>
+                        <div class="excel-row"><div class="xc row-num">9</div><div class="xc neg">-$1,091</div><div class="xc pos">—</div><div class="xc pos">$45</div><div class="xc neg">—</div><div class="xc formula">=SUMIFS(...)</div></div>
+                    </div>
+                    <!-- P3 T4: Score -->
+                    <div class="excel-body" x-show="selectedProduct===3 && activeTab===4">
+                        <div style="color:#60a8f8;font-size:0.65rem;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0">🏅 PORTFOLIO HEALTH SCORE · Score 0 - 100 · Automatic evaluation</div>
+                        <div style="text-align:center;padding:16px;background:#071a10;border-radius:8px;margin-bottom:12px;border:1px solid #1a5c28">
+                            <div style="font-size:2.5rem;font-weight:700;color:#22d35a">78<span style="font-size:1rem;color:#3a8050">/100</span></div>
+                            <div style="font-size:0.75rem;color:#3a8050;margin-top:4px">🟢 Good Portfolio</div>
+                        </div>
+                        <div class="excel-col-headers"><div class="col-header row-num"></div><div class="col-header" style="min-width:140px">CATEGORY</div><div class="col-header">SCORE</div><div class="col-header">MAX</div><div class="col-header">STATUS</div></div>
+                        <div class="excel-row"><div class="xc row-num">8</div><div class="xc white" style="min-width:140px">🌍 Diversification</div><div class="xc pos">25</div><div class="xc muted">25</div><div class="xc pos">✅ Excellent</div></div>
+                        <div class="excel-row"><div class="xc row-num">9</div><div class="xc white" style="min-width:140px">📊 Asset count</div><div class="xc pos">15</div><div class="xc muted">15</div><div class="xc pos">✅ Excellent</div></div>
+                        <div class="excel-row"><div class="xc row-num">10</div><div class="xc white" style="min-width:140px">📅 Discipline</div><div class="xc pos">15</div><div class="xc muted">15</div><div class="xc pos">✅ Excellent</div></div>
+                        <div class="excel-row"><div class="xc row-num">11</div><div class="xc white" style="min-width:140px">💳 Cost control</div><div class="xc pos">15</div><div class="xc muted">15</div><div class="xc pos">✅ Excellent</div></div>
+                        <div class="excel-row"><div class="xc row-num">12</div><div class="xc white" style="min-width:140px">💸 Dividends</div><div class="xc orange">8</div><div class="xc muted">15</div><div class="xc orange">⚠️ Improve</div></div>
+                    </div>
+                    <!-- P3 T5: Goals -->
+                    <div class="excel-body" x-show="selectedProduct===3 && activeTab===5">
+                        <div style="color:#60a8f8;font-size:0.65rem;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0">🎯 FINANCIAL GOALS · Set your targets · Track your progress</div>
+                        <div class="excel-col-headers">
+                            <div class="col-header row-num"></div>
+                            <div class="col-header" style="min-width:130px">GOAL</div>
+                            <div class="col-header">CLASS</div>
+                            <div class="col-header">TARGET ($)</div>
+                            <div class="col-header">CURRENT ($)</div>
+                            <div class="col-header">% PROGRESS</div>
+                            <div class="col-header">DEADLINE</div>
+                            <div class="col-header">STATUS</div>
+                        </div>
+                        <div class="excel-row"><div class="xc row-num">6</div><div class="xc white" style="min-width:130px">Total portfolio $100K</div><div class="xc muted">All</div><div class="xc blue">$100,000</div><div class="xc gold">$38,917</div><div class="xc orange">38.9%</div><div class="xc muted">12/31/27</div><div class="xc orange">⏳ In progress</div></div>
+                        <div class="excel-row"><div class="xc row-num">7</div><div class="xc white" style="min-width:130px">Stocks portfolio $50K</div><div class="xc blue">Stock</div><div class="xc blue">$50,000</div><div class="xc gold">$17,560</div><div class="xc orange">35.1%</div><div class="xc muted">12/31/26</div><div class="xc orange">⏳ In progress</div></div>
+                        <div class="excel-row"><div class="xc row-num">8</div><div class="xc white" style="min-width:130px">ETF portfolio $30K</div><div class="xc cyan" style="color:#22d4ee">ETF</div><div class="xc blue">$30,000</div><div class="xc gold">$8,184</div><div class="xc orange">27.3%</div><div class="xc muted">12/31/26</div><div class="xc orange">⏳ In progress</div></div>
+                        <div class="excel-row"><div class="xc row-num">9</div><div class="xc white" style="min-width:130px">Crypto portfolio $20K</div><div class="xc orange">Crypto</div><div class="xc blue">$20,000</div><div class="xc gold">$13,303</div><div class="xc pos">66.5%</div><div class="xc muted">06/30/27</div><div class="xc pos">🏆 Achieved!</div></div>
+                        <div class="excel-row"><div class="xc row-num">10</div><div class="xc white" style="min-width:130px">Annual dividends $2K</div><div class="xc blue">Stock</div><div class="xc blue">$2,000</div><div class="xc gold">$317.50</div><div class="xc orange">15.9%</div><div class="xc muted">12/31/26</div><div class="xc orange">⏳ In progress</div></div>
+                    </div>
+
+                </div><!-- end excel-window -->
             </div>
 
             <!-- Modal Footer -->
             <div class="p-5 border-t border-border flex items-center justify-between">
                 <div class="text-sm text-muted">
-                    <span x-text="selectedProduct===0 ? '6 hojas · 2,000 registros · Filtros dinámicos · Estimación ISR' : '6 hojas · Acciones · ETFs · Crypto · Score automático'"></span>
+                    <span x-text="selectedProduct===0 ? '6 sheets · 2,000 records · Dynamic filters · ISR estimate' : selectedProduct===1 ? '6 sheets · Stocks · ETFs · Crypto · Auto score' : selectedProduct===2 ? '6 sheets · 2,000 records · Dynamic filters · ISR estimate (EN)' : '6 sheets · Stocks · ETFs · Crypto · Auto score (EN)'"></span>
                 </div>
                 <div class="flex gap-3">
-                    <button @click="previewModal=false" class="btn-secondary py-2 px-4 text-sm">Cerrar</button>
-                    <a href="#templates" @click="previewModal=false" class="btn-primary py-2 px-4 text-sm">Get Template — $9 USD</a>
+                    <button @click="previewModal=false" class="btn-secondary py-2 px-4 text-sm">Close</button>
+                    <a href="#templates" @click="previewModal=false" class="btn-primary py-2 px-4 text-sm">Get Template — $8 USD</a>
                 </div>
             </div>
         </div>
