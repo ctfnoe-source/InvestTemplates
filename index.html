@@ -359,39 +359,98 @@
                     </div>
                 </div>
                 <div class="relative animate-fade-in-scale delay-300">
-                    <div class="relative z-10 bg-bg-card rounded-2xl border border-border p-6 shadow-2xl">
-                        <div class="flex items-center gap-2 mb-4">
-                            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
-                            <span class="ml-4 text-sm text-muted font-mono">PORTAFOLIO_DE_INVERSIONES.xlsx</span>
+                    <div class="relative z-10 rounded-2xl shadow-2xl overflow-hidden" style="background:#080c14;border:1px solid #1a2a40">
+                        <!-- Titlebar -->
+                        <div style="background:linear-gradient(90deg,#0d1528,#111e38);padding:8px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid #1a2a40">
+                            <div style="width:11px;height:11px;border-radius:50%;background:#ff5f57"></div>
+                            <div style="width:11px;height:11px;border-radius:50%;background:#ffbd2e"></div>
+                            <div style="width:11px;height:11px;border-radius:50%;background:#28ca41"></div>
+                            <span style="margin-left:10px;font-size:0.7rem;color:rgba(255,255,255,0.6);font-family:monospace">INVESTMENT_PORTFOLIO.xlsx</span>
                         </div>
-                        <div class="hero-excel">
-                            <div class="grid grid-cols-5 gap-1 text-xs">
-                                <div class="cell cell-header">TICKER</div>
-                                <div class="cell cell-header">TIPO</div>
-                                <div class="cell cell-header">INVERTIDO</div>
-                                <div class="cell cell-header">VALOR HOY</div>
-                                <div class="cell cell-header">P&amp;L %</div>
-
-                                <div class="cell">AAPL</div><div class="cell">Acción</div><div class="cell">$3,582</div><div class="cell">$4,310</div><div class="cell cell-positive">+20.3%</div>
-                                <div class="cell">NVDA</div><div class="cell">Acción</div><div class="cell">$8,720</div><div class="cell">$11,450</div><div class="cell cell-positive">+31.3%</div>
-                                <div class="cell">VOO</div><div class="cell">ETF</div><div class="cell">$5,163</div><div class="cell">$6,290</div><div class="cell cell-positive">+21.8%</div>
-                                <div class="cell">BTC</div><div class="cell">Crypto</div><div class="cell">$12,870</div><div class="cell">$17,250</div><div class="cell cell-positive">+34.0%</div>
-                                <div class="cell cell-accent">TOTAL</div><div class="cell"></div><div class="cell cell-accent">$38,917</div><div class="cell cell-accent">$51,340</div><div class="cell cell-positive font-semibold">+31.9%</div>
+                        <!-- Sheet tabs -->
+                        <div style="background:#0a0f1e;display:flex;gap:1px;padding:0 8px;border-bottom:1px solid #1a2a3a">
+                            <div style="padding:5px 10px;font-size:0.62rem;background:#080c14;color:#d4af37;border-bottom:2px solid #d4af37;font-weight:600">🏠 Home</div>
+                            <div style="padding:5px 10px;font-size:0.62rem;color:#4a6070">📋 Transactions</div>
+                            <div style="padding:5px 10px;font-size:0.62rem;color:#4a6070">📈 Analysis</div>
+                            <div style="padding:5px 10px;font-size:0.62rem;color:#4a6070">🧾 Monthly Report</div>
+                            <div style="padding:5px 10px;font-size:0.62rem;color:#4a6070">🏅 Score</div>
+                            <div style="padding:5px 10px;font-size:0.62rem;color:#4a6070">🎯 Goals</div>
+                        </div>
+                        <!-- Dashboard body -->
+                        <div style="padding:12px;background:#080c14">
+                            <div style="font-size:0.6rem;color:#3a6070;font-weight:700;letter-spacing:0.06em;margin-bottom:8px">■ INVESTMENT PORTFOLIO · Stocks · ETFs · Crypto</div>
+                            <!-- KPI row 1 -->
+                            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:3px">
+                                <div class="kpi-green"><div class="kpi-label">💰 CAPITAL INV.</div><div class="kpi-val">$38,917</div></div>
+                                <div class="kpi-cyan"><div class="kpi-label">💵 RECOVERED</div><div class="kpi-val">$4,739</div></div>
+                                <div class="kpi-amber"><div class="kpi-label">💸 DIVIDENDS</div><div class="kpi-val">$317.50</div></div>
+                                <div class="kpi-red"><div class="kpi-label">💳 COMMISSIONS</div><div class="kpi-val">-$30.00</div></div>
                             </div>
-                        </div>
-                        <div class="mt-4 h-24 relative">
-                            <svg class="w-full h-full" viewBox="0 0 300 80" preserveAspectRatio="none">
-                                <defs><linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:rgba(212,175,55,0.3)"/><stop offset="100%" style="stop-color:rgba(212,175,55,0)"/></linearGradient></defs>
-                                <path d="M0,65 Q20,60 40,55 T80,50 T120,38 T160,42 T200,28 T240,22 T300,8 L300,80 L0,80 Z" fill="url(#chartGradient)"/>
-                                <path class="chart-line" d="M0,65 Q20,60 40,55 T80,50 T120,38 T160,42 T200,28 T240,22 T300,8" fill="none" stroke="#d4af37" stroke-width="2"/>
-                            </svg>
-                        </div>
-                        <div class="flex items-center justify-between mt-2">
-                            <span class="text-xs text-muted">Ene 2024</span>
-                            <span class="text-xs text-success font-semibold">+31.9% cumulative return</span>
-                            <span class="text-xs text-muted">Feb 2025</span>
+                            <!-- KPI row 2 -->
+                            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:10px">
+                                <div class="kpi-amber" style="background:#0a0800"><div class="kpi-label">📊 REALIZED G/P</div><div class="kpi-val">+$4,540</div></div>
+                                <div class="kpi-purple"><div class="kpi-label">🔢 TOTAL OPS</div><div class="kpi-val">30</div></div>
+                                <div class="kpi-green" style="background:#040e08"><div class="kpi-label">🟢 BUY OPS</div><div class="kpi-val">24</div></div>
+                                <div class="kpi-red" style="background:#0a0606"><div class="kpi-label">🔴 SELL OPS</div><div class="kpi-val">2</div></div>
+                            </div>
+                            <!-- Top 5 assets table -->
+                            <div style="font-size:0.55rem;color:#2a5040;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:3px">🏆 TOP 5 ASSETS</div>
+                            <div style="display:grid;grid-template-columns:20px 46px 40px 56px 52px 46px;gap:0;font-size:0.57rem">
+                                <div style="background:#0d1830;color:#4a7090;padding:2px 4px">#</div>
+                                <div style="background:#0d1830;color:#4a7090;padding:2px 4px">TICKER</div>
+                                <div style="background:#0d1830;color:#4a7090;padding:2px 4px">TYPE</div>
+                                <div style="background:#0d1830;color:#4a7090;padding:2px 4px">INVESTED</div>
+                                <div style="background:#0d1830;color:#4a7090;padding:2px 4px">REAL. G/P</div>
+                                <div style="background:#0d1830;color:#4a7090;padding:2px 4px">STATUS</div>
+
+                                <div style="background:#090d18;color:#4a6080;padding:2px 4px">1</div>
+                                <div style="background:#090d18;color:#f0c040;padding:2px 4px;font-weight:700">AAPL</div>
+                                <div style="background:#090d18;color:#60a8f8;padding:2px 4px">Stock</div>
+                                <div style="background:#090d18;color:#c8d8e8;padding:2px 4px">$3,582</div>
+                                <div style="background:#090d18;color:#22d35a;padding:2px 4px">+$728</div>
+                                <div style="background:#090d18;color:#22d35a;padding:2px 4px;font-size:0.52rem">↑ Open</div>
+
+                                <div style="background:#080c16;color:#4a6080;padding:2px 4px">2</div>
+                                <div style="background:#080c16;color:#f0c040;padding:2px 4px;font-weight:700">BTC</div>
+                                <div style="background:#080c16;color:#f08030;padding:2px 4px">Crypto</div>
+                                <div style="background:#080c16;color:#c8d8e8;padding:2px 4px">$9,145</div>
+                                <div style="background:#080c16;color:#22d35a;padding:2px 4px">+$3,891</div>
+                                <div style="background:#080c16;color:#22d35a;padding:2px 4px;font-size:0.52rem">↑ Open</div>
+
+                                <div style="background:#090d18;color:#4a6080;padding:2px 4px">3</div>
+                                <div style="background:#090d18;color:#f0c040;padding:2px 4px;font-weight:700">NVDA</div>
+                                <div style="background:#090d18;color:#60a8f8;padding:2px 4px">Stock</div>
+                                <div style="background:#090d18;color:#c8d8e8;padding:2px 4px">$8,720</div>
+                                <div style="background:#090d18;color:#22d35a;padding:2px 4px">+$2,979</div>
+                                <div style="background:#090d18;color:#22d35a;padding:2px 4px;font-size:0.52rem">↑ Open</div>
+
+                                <div style="background:#080c16;color:#4a6080;padding:2px 4px">4</div>
+                                <div style="background:#080c16;color:#f0c040;padding:2px 4px;font-weight:700">VOO</div>
+                                <div style="background:#080c16;color:#22d4ee;padding:2px 4px">ETF</div>
+                                <div style="background:#080c16;color:#c8d8e8;padding:2px 4px">$5,163</div>
+                                <div style="background:#080c16;color:#22d35a;padding:2px 4px">+$1,127</div>
+                                <div style="background:#080c16;color:#22d35a;padding:2px 4px;font-size:0.52rem">↑ Open</div>
+
+                                <div style="background:#090d18;color:#4a6080;padding:2px 4px">5</div>
+                                <div style="background:#090d18;color:#f0c040;padding:2px 4px;font-weight:700">MSFT</div>
+                                <div style="background:#090d18;color:#60a8f8;padding:2px 4px">Stock</div>
+                                <div style="background:#090d18;color:#c8d8e8;padding:2px 4px">$6,683</div>
+                                <div style="background:#090d18;color:#22d35a;padding:2px 4px">+$1,650</div>
+                                <div style="background:#090d18;color:#22d35a;padding:2px 4px;font-size:0.52rem">↑ Open</div>
+                            </div>
+                            <!-- Mini chart -->
+                            <div style="margin-top:8px;position:relative;height:44px">
+                                <svg style="width:100%;height:100%" viewBox="0 0 300 44" preserveAspectRatio="none">
+                                    <defs><linearGradient id="hg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:rgba(34,211,90,0.25)"/><stop offset="100%" style="stop-color:rgba(34,211,90,0)"/></linearGradient></defs>
+                                    <path d="M0,38 Q30,35 60,30 T120,22 T180,14 T240,10 T300,4 L300,44 L0,44 Z" fill="url(#hg)"/>
+                                    <path d="M0,38 Q30,35 60,30 T120,22 T180,14 T240,10 T300,4" fill="none" stroke="#22d35a" stroke-width="1.5"/>
+                                </svg>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;margin-top:3px">
+                                <span style="font-size:0.58rem;color:#4a6070">Jan 2024</span>
+                                <span style="font-size:0.6rem;color:#22d35a;font-weight:700">+31.9% cumulative return</span>
+                                <span style="font-size:0.58rem;color:#4a6070">Feb 2025</span>
+                            </div>
                         </div>
                     </div>
                     <div class="absolute -top-4 -right-4 w-24 h-24 bg-accent/20 rounded-full blur-2xl"></div>
@@ -505,14 +564,14 @@
                             </div>
                         </div>
                         <h3 class="font-display text-xl text-fg mb-2">PLATAFORMAS DE INVERSIONES</h3>
-                        <p class="text-muted text-sm mb-4">Manage all your investment accounts in one place. Consolidate multiple brokers and platforms with an automatic dashboard, net worth evolution chart and S&P500 comparison.</p>
+                        <p class="text-muted text-sm mb-4">Gestiona todas tus cuentas de inversión en un solo lugar. Consolida múltiples brokers y plataformas con un dashboard automático, evolución del patrimonio y comparativa vs S&P500.</p>
                         <ul class="space-y-2 mb-6">
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Consolidated multi-platform dashboard (up to 30)</li>
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Net worth evolution chart by month</li>
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Performance comparison vs S&P500 & CETES</li>
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Tax estimation (ISR 20% withholding)</li>
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Financial goals with projection</li>
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Up to 2,000 transaction records</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Dashboard multi-plataforma consolidado (hasta 30)</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Evolución del patrimonio mes a mes</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Comparativa de rendimiento vs S&P500 y CETES</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Estimación fiscal (ISR retención 20%)</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Metas financieras con proyección</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Hasta 2,000 registros de movimientos</li>
                         </ul>
                         <div class="flex items-center justify-between pt-4 border-t border-border">
                             <div><span class="text-3xl font-bold text-fg">$8</span><span class="text-muted text-sm ml-1">USD</span></div>
@@ -586,14 +645,14 @@
                             </div>
                         </div>
                         <h3 class="font-display text-xl text-fg mb-2">PORTAFOLIO DE INVERSIONES</h3>
-                        <p class="text-muted text-sm mb-4">Full tracking for stocks, ETFs and crypto. Automatic P&L per asset, dividend calendar, portfolio health score and financial goals — all in a single spreadsheet.</p>
+                        <p class="text-muted text-sm mb-4">Seguimiento completo de acciones, ETFs y criptomonedas. P&L automático por activo, calendario de dividendos, score de salud del portafolio y objetivos financieros — todo en un solo archivo.</p>
                         <ul class="space-y-2 mb-6">
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Stocks, ETFs &amp; Crypto tracking</li>
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Automatic P&amp;L per asset</li>
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Dividend calendar &amp; tracker</li>
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Automatic monthly report</li>
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Portfolio health score 0–100 pts</li>
-                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Financial goals progress tracking</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Acciones, ETFs y Crypto</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>P&L automático por activo</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Calendario y seguimiento de dividendos</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Reporte mensual automático</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Score de salud del portafolio 0–100 pts</li>
+                            <li class="flex items-center gap-2 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Seguimiento de objetivos financieros</li>
                         </ul>
                         <div class="flex items-center justify-between pt-4 border-t border-border">
                             <div><span class="text-3xl font-bold text-fg">$8</span><span class="text-muted text-sm ml-1">USD</span></div>
