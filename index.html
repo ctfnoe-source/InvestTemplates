@@ -1,297 +1,768 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InvestTemplates | Premium Excel Templates for Investment</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        bg: '#050508',
-                        'bg-elevated': '#0c0c14',
-                        'bg-card': '#12121e',
-                        fg: '#f5f5f7',
-                        muted: '#8a8a9a',
-                        accent: '#d4af37',
-                        'accent-light': '#e8c964',
-                        'accent-dark': '#b8942d',
-                        success: '#22c55e',
-                        border: '#1e1e2d',
-                    },
-                    fontFamily: {
-                        display: ['Instrument Serif', 'serif'],
-                        body: ['Space Grotesk', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        :root {
-            --bg: #050508;
-            --bg-elevated: #0c0c14;
-            --bg-card: #12121e;
-            --fg: #f5f5f7;
-            --muted: #8a8a9a;
-            --accent: #d4af37;
-            --accent-light: #e8c964;
-            --accent-dark: #b8942d;
-            --success: #22c55e;
-            --border: #1e1e2d;
-        }
-        * { scrollbar-width: thin; scrollbar-color: var(--accent) var(--bg-elevated); }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: var(--fg); overflow-x: hidden; }
-        .font-display { font-family: 'Instrument Serif', serif; }
-        
-        /* Efectos visuales modernos */
-        .hero-bg { background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(212, 175, 55, 0.15) 0%, transparent 50%), linear-gradient(180deg, var(--bg) 0%, var(--bg-elevated) 100%); }
-        .grid-pattern { background-image: linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px); background-size: 60px 60px; }
-        
-        /* Botones y Cards */
-        .btn-buy-es { background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color: white; transition: all 0.3s ease; }
-        .btn-buy-en { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); color: black; transition: all 0.3s ease; }
-        .btn-buy-es:hover, .btn-buy-en:hover { transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-        
-        .product-card { background: rgba(18, 18, 30, 0.5); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 24px; transition: all 0.4s ease; }
-        .product-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
-
-        /* ============================================
-           EXCEL PREVIEW ENGINE (Mantenemos tu lógica)
-        ============================================ */
-        .excel-window { background: #080c14; border-radius: 12px; overflow: hidden; font-family: 'Consolas', monospace; border: 1px solid #1a2540; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
-        .excel-titlebar { background: linear-gradient(90deg, #0d1528 0%, #111e38 100%); padding: 10px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #1e3060; }
-        .excel-tab { padding: 8px 16px; border-radius: 6px 6px 0 0; font-size: 0.65rem; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
-        .excel-tab.active { background: #0d1528; color: #f0c040; border: 1px solid #2a4080; border-bottom: 2px solid #f0c040; font-weight: 600; }
-        .excel-body { background: #080c14; padding: 15px; overflow-x: auto; }
-        .xc { padding: 6px 10px; min-width: 80px; border: 1px solid #101828; background: #0a0f1c; color: #c8d8e8; font-size: 0.7rem; }
-        .xc.gold { color: #f0c040; font-weight: 700; }
-        .xc.pos { color: #22d35a; }
-        .xc.neg { color: #f05050; }
-
-        /* KPI Cards integrados */
-        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
-        .kpi-box { padding: 10px; border-radius: 8px; border-width: 1px; }
-        .kpi-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
-        .kpi-val { font-size: 1.1rem; font-weight: 700; }
-
-        /* Animaciones de entrada */
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InvestTemplates | Premium Excel Templates for Investment</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+bg: '#0a0a0f',
+'bg-elevated': '#12121a',
+'bg-card': '#1a1a24',
+fg: '#f5f5f7',
+muted: '#8a8a9a',
+accent: '#d4af37',
+'accent-light': '#e8c964',
+'accent-dark': '#b8942d',
+success: '#22c55e',
+border: '#2a2a36',
+},
+fontFamily: {
+display: ['Instrument Serif', 'serif'],
+body: ['Space Grotesk', 'sans-serif'],
+}
+}
+}
+}
+</script>
+<style>
+:root {
+--bg: #0a0a0f;
+--bg-elevated: #12121a;
+--bg-card: #1a1a24;
+--fg: #f5f5f7;
+--muted: #8a8a9a;
+--accent: #d4af37;
+--accent-light: #e8c964;
+--accent-dark: #b8942d;
+--success: #22c55e;
+--border: #2a2a36;
+}
+* { scrollbar-width: thin; scrollbar-color: var(--accent) var(--bg-elevated); }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+html { scroll-behavior: auto; }
+*, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+body { font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: var(--fg); overflow-x: hidden; }
+.font-display { font-family: 'Instrument Serif', serif; }
+.hero-bg { background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(212, 175, 55, 0.15) 0%, transparent 50%), radial-gradient(ellipse 60% 40% at 80% 60%, rgba(212, 175, 55, 0.08) 0%, transparent 40%), linear-gradient(180deg, var(--bg) 0%, var(--bg-elevated) 100%); }
+.grid-pattern { background-image: linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px); background-size: 60px 60px; }
+.float-element { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.4; animation: float 20s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: translate(0, 0) scale(1); } 25% { transform: translate(30px, -30px) scale(1.1); } 50% { transform: translate(-20px, 20px) scale(0.9); } 75% { transform: translate(20px, 10px) scale(1.05); } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInScale { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+.animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
+.animate-fade-in-scale { animation: fadeInScale 0.6s ease-out forwards; opacity: 0; }
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.btn-primary { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); color: var(--bg); font-weight: 600; padding: 1rem 2rem; border-radius: 12px; transition: all 0.3s ease; position: relative; overflow: hidden; border: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.5s ease; }
+.btn-primary:hover::before { left: 100%; }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4); }
+.btn-secondary { background: transparent; border: 1px solid var(--accent); color: var(--accent); font-weight: 500; padding: 1rem 2rem; border-radius: 12px; transition: all 0.3s ease; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.btn-secondary:hover { background: rgba(212, 175, 55, 0.1); transform: translateY(-3px); }
+.product-card { background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-elevated) 100%); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: all 0.4s ease; }
+.product-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5), 0 0 50px rgba(212, 175, 55, 0.15); }
+.excel-window { background: #080c14; border-radius: 12px; overflow: hidden; font-family: 'Consolas', 'Courier New', monospace; font-size: 0.67rem; border: 1px solid #1a2540; }
+.excel-titlebar { background: linear-gradient(90deg, #0d1528 0%, #111e38 100%); padding: 8px 14px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #1e3060; }
+.excel-titlebar-dot { width: 12px; height: 12px; border-radius: 50%; }
+.excel-sheet-tabs { background: #060a10; display: flex; gap: 2px; padding: 6px 10px 0; border-top: 1px solid #1a2540; overflow-x: auto; }
+.excel-tab { padding: 5px 12px; border-radius: 6px 6px 0 0; font-size: 0.62rem; cursor: pointer; transition: all 0.2s; white-space: nowrap; font-family: 'Space Grotesk', sans-serif; }
+.excel-tab.active { background: #0d1528; color: #f0c040; border: 1px solid #2a4080; border-bottom: 1px solid #0d1528; font-weight: 600; }
+.excel-tab.inactive { background: #08111e; color: #4a6080; }
+.excel-tab:hover:not(.active) { background: #0d1825; color: #7090b0; }
+.excel-body { background: #080c14; padding: 12px; overflow-x: auto; }
+.excel-col-headers { display: flex; gap: 1px; margin-bottom: 1px; }
+.col-header { background: #0d1830; color: #5a7898; text-align: center; padding: 4px 8px; min-width: 70px; font-size: 0.6rem; border: 1px solid #1a2a48; text-transform: uppercase; letter-spacing: 0.02em; }
+.col-header.row-num { min-width: 32px; background: #060a10; border-color: #101828; }
+.excel-row { display: flex; gap: 1px; margin-bottom: 1px; }
+.excel-row:hover .xc { background: rgba(255,255,255,0.04) !important; }
+.xc { padding: 5px 8px; min-width: 70px; border: 1px solid #101828; background: #0a0f1c; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 130px; color: #c8d8e8; }
+.xc.row-num { min-width: 32px; background: #060a10; color: #2a4060; font-size: 0.57rem; text-align: center; border-color: #101828; }
+.xc.pos { color: #22d35a; font-weight: 500; }
+.xc.neg { color: #f05050; font-weight: 500; }
+.xc.gold { color: #f0c040; font-weight: 700; }
+.xc.cyan { color: #22d4ee; font-weight: 500; }
+.xc.amber { color: #f0a020; }
+.xc.blue { color: #60a8f8; }
+.xc.purple { color: #b87cf8; }
+.xc.orange { color: #f87840; }
+.xc.white { color: #e8eef8; }
+.xc.muted { color: #4a6880; font-size: 0.61rem; }
+.xc.formula { color: #6090c8; font-size: 0.6rem; font-style: italic; }
+.xc.total { background: #101828; color: #f0c040; font-weight: 700; border-color: #2a3a58; }
+.xc.inp { background: #0d1820; color: #f0d060; border: 1px solid #3a5020; }
+.kpi-green { background: #071a10; border: 1px solid #1a5c28; border-radius: 8px; padding: 10px 12px; }
+.kpi-green .kpi-label { font-size: 0.6rem; color: #3a8050; text-transform: uppercase; letter-spacing: 0.05em; }
+.kpi-green .kpi-val { color: #22d35a; font-weight: 700; font-size: 1.1rem; margin-top: 3px; }
+.kpi-cyan { background: #061520; border: 1px solid #104858; border-radius: 8px; padding: 10px 12px; }
+.kpi-cyan .kpi-label { font-size: 0.6rem; color: #2a6878; text-transform: uppercase; letter-spacing: 0.05em; }
+.kpi-cyan .kpi-val { color: #22d4ee; font-weight: 700; font-size: 1.1rem; margin-top: 3px; }
+.kpi-amber { background: #100e04; border: 1px solid #503808; border-radius: 8px; padding: 10px 12px; }
+.kpi-amber .kpi-label { font-size: 0.6rem; color: #705010; text-transform: uppercase; letter-spacing: 0.05em; }
+.kpi-amber .kpi-val { color: #f0c040; font-weight: 700; font-size: 1.1rem; margin-top: 3px; }
+.kpi-blue { background: #060e20; border: 1px solid #0e2858; border-radius: 8px; padding: 10px 12px; }
+.kpi-blue .kpi-label { font-size: 0.6rem; color: #2a4878; text-transform: uppercase; letter-spacing: 0.05em; }
+.kpi-blue .kpi-val { color: #60a8f8; font-weight: 700; font-size: 1.1rem; margin-top: 3px; }
+.kpi-red { background: #100606; border: 1px solid #501010; border-radius: 8px; padding: 10px 12px; }
+.kpi-red .kpi-label { font-size: 0.6rem; color: #703030; text-transform: uppercase; letter-spacing: 0.05em; }
+.kpi-red .kpi-val { color: #f05050; font-weight: 700; font-size: 1.1rem; margin-top: 3px; }
+.kpi-purple { background: #0c0618; border: 1px solid #3a1868; border-radius: 8px; padding: 10px 12px; }
+.kpi-purple .kpi-label { font-size: 0.6rem; color: #603090; text-transform: uppercase; letter-spacing: 0.05em; }
+.kpi-purple .kpi-val { color: #b87cf8; font-weight: 700; font-size: 1.1rem; margin-top: 3px; }
+.stat-box { background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.25); border-radius: 12px; padding: 14px 18px; }
+.testimonial-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; }
+.stat-number { background: linear-gradient(135deg, var(--fg) 0%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.modal-backdrop { background: rgba(10, 10, 15, 0.94); backdrop-filter: blur(16px); }
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: none; }
+.mobile-menu { background: var(--bg-elevated); border-left: 1px solid var(--border); }
+.product-badge { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.85rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+.product-badge.es { background: rgba(34, 197, 94, 0.12); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.35); }
+.product-badge.en { background: rgba(59, 130, 246, 0.12); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.35); }
+</style>
 </head>
 <body class="font-body antialiased" x-data="{
-    mobileMenuOpen: false,
-    previewModal: false,
-    selectedProduct: null,
-    activeTab: 0,
-    scrolled: false,
-    testimonials: [
-        { name: 'Carlos Mendoza', role: 'Independent Investor', avatar: 'CM', content: 'The Portfolio template has saved me hours every week. Everything is in one place. The dividend tracking is incredible.' },
-        { name: 'Ana García', role: 'Financial Consultant', avatar: 'AG', content: 'I recommend these templates to all my clients. The level of detail and formulas are professional grade.' }
-    ],
-    products: [
-        {
-            id: 'platforms',
-            title: 'Investment Platforms Tracker',
-            desc: 'Complete control over your brokerages and platforms. Monitor balances, deposits, and performance across multiple accounts in real-time.',
-            tabs: ['🏠 Inicio','📋 Movimientos','📈 Análisis','🧾 Reporte','🏅 Score','🎯 Objetivos'],
-            link_es: 'https://payhip.com/b/EYk2g',
-            link_en: 'https://payhip.com/b/EYk2g',
-            kpis: [
-                { label: 'Capital Inv.', val: '$12,450', color: 'border-green-900/50 bg-green-950/20 text-green-400' },
-                { label: 'Platforms', val: '5 Active', color: 'border-blue-900/50 bg-blue-950/20 text-blue-400' },
-                { label: 'Returns', val: '+$1,120', color: 'border-accent/30 bg-accent/5 text-accent' },
-                { label: 'Fees', val: '-$45.00', color: 'border-red-900/50 bg-red-950/20 text-red-400' }
-            ]
-        },
-        {
-            id: 'portfolio',
-            title: 'Investment Portfolio Pro',
-            desc: 'The ultimate dashboard for stocks, ETFs and crypto. Includes heatmaps, automated tickers, and sector allocation analysis.',
-            tabs: ['🏠 Inicio','💰 Saldos','📋 Movimientos','📈 Análisis','📊 S&P500','🎯 Metas'],
-            link_es: 'https://payhip.com/b/zW8Ic',
-            link_en: 'https://payhip.com/b/zW8Ic',
-            kpis: [
-                { label: 'Net Liquidity', val: '$38,917', color: 'border-green-900/50 bg-green-950/20 text-green-400' },
-                { label: 'Dividends', val: '$317.50', color: 'border-accent/30 bg-accent/5 text-accent' },
-                { label: 'Unrealized G/P', val: '+$4,540', color: 'border-cyan-900/50 bg-cyan-950/20 text-cyan-400' },
-                { label: 'Total Ops', val: '30 Trade', color: 'border-purple-900/50 bg-purple-950/20 text-purple-400' }
-            ]
-        }
-    ]
+mobileMenuOpen: false,
+previewModal: false,
+selectedProduct: null,
+activeTab: 0,
+activeFilter: 'all',
+currentTestimonial: 0,
+openFaq: null,
+scrolled: false,
+testimonials: [
+{ name: 'Carlos Mendoza', role: 'Independent Investor', avatar: 'CM', content: 'The Portfolio template has saved me hours every week. I used to juggle 3 different spreadsheets — now everything is in one place. The dividend tracking is incredible.' },
+{ name: 'Ana García', role: 'Financial Consultant', avatar: 'AG', content: 'I recommend these templates to all my clients. The level of detail and the analysis formulas are on par with tools that cost ten times more.' },
+{ name: 'Michael Johnson', role: 'Financial Analyst', avatar: 'MJ', content: 'The Platforms template is exactly what I needed. I can finally track all my accounts in one place. The automated reports save me hours every month.' },
+{ name: 'Laura Sánchez', role: 'Entrepreneur', avatar: 'LS', content: 'This completely transformed my personal finances. For the first time I have total clarity over my investments and expenses. Highly recommended!' }
+],
+products: [
+{ tabs: ['🏠 Inicio','📋 Movimientos','📈 Análisis','🧾 Reporte','🏅 Score','🎯 Objetivos'] },
+{ tabs: ['🏠 Inicio','💰 Saldos','📋 Movimientos','📈 Análisis','📊 S&P500','🎯 Metas'] }
+]
 }" @scroll.window="scrolled = window.scrollY > 50">
 
-    <div class="fixed inset-0 grid-pattern pointer-events-none opacity-50"></div>
+<!-- Background Elements -->
+<div class="fixed inset-0 pointer-events-none overflow-hidden">
+<div class="float-element w-96 h-96 bg-accent/20 -top-48 -left-48" style="animation-delay:0s;"></div>
+<div class="float-element w-64 h-64 bg-accent/10 top-1/3 right-0" style="animation-delay:-5s;"></div>
+<div class="float-element w-80 h-80 bg-accent/15 bottom-0 left-1/4" style="animation-delay:-10s;"></div>
+</div>
+<div class="fixed inset-0 grid-pattern pointer-events-none opacity-50"></div>
 
-    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" :class="scrolled ? 'bg-bg/90 backdrop-blur-md border-b border-border py-4' : 'bg-transparent py-6'">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center">
-                    <svg class="w-6 h-6 text-bg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 5-6"/></svg>
-                </div>
-                <span class="font-display text-2xl tracking-tight">InvestTemplates</span>
-            </a>
-            <div class="hidden md:flex gap-8 items-center">
-                <a href="#templates" class="text-sm font-medium text-muted hover:text-accent transition-colors">Templates</a>
-                <a href="#templates" class="bg-fg text-bg px-6 py-2.5 rounded-full text-sm font-bold hover:bg-accent transition-all">Get Started</a>
-            </div>
-        </div>
-    </nav>
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" :class="scrolled ? 'bg-bg/95 backdrop-blur-md border-b border-border' : 'bg-transparent'">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<a href="#" class="flex items-center gap-3 group">
+<div class="w-11 h-11 rounded-xl bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center transition-transform group-hover:scale-110 shadow-lg shadow-accent/20">
+<svg class="w-6 h-6 text-bg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 5-6"/>
+</svg>
+</div>
+<span class="font-display text-2xl text-fg">InvestTemplates</span>
+</a>
+<div class="hidden md:flex items-center gap-8">
+<a href="#templates" class="text-muted hover:text-fg transition-colors">Templates</a>
+<a href="#benefits" class="text-muted hover:text-fg transition-colors">Benefits</a>
+<a href="#testimonials" class="text-muted hover:text-fg transition-colors">Testimonials</a>
+<a href="#faq" class="text-muted hover:text-fg transition-colors">FAQ</a>
+</div>
+<div class="hidden md:flex items-center gap-4">
+<a href="#templates" class="btn-primary text-sm">View Templates</a>
+</div>
+<button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 text-fg">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+<path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+</svg>
+</button>
+</div>
+</div>
+<div x-show="mobileMenuOpen" x-transition class="mobile-menu fixed top-0 right-0 bottom-0 w-80 z-50 md:hidden">
+<div class="p-6 pt-24 flex flex-col gap-6">
+<a href="#templates" @click="mobileMenuOpen=false" class="text-lg text-fg hover:text-accent transition-colors">Templates</a>
+<a href="#benefits" @click="mobileMenuOpen=false" class="text-lg text-fg hover:text-accent transition-colors">Benefits</a>
+<a href="#testimonials" @click="mobileMenuOpen=false" class="text-lg text-fg hover:text-accent transition-colors">Testimonials</a>
+<a href="#faq" @click="mobileMenuOpen=false" class="text-lg text-fg hover:text-accent transition-colors">FAQ</a>
+<hr class="border-border">
+<a href="#templates" @click="mobileMenuOpen=false" class="btn-primary text-center">View Templates</a>
+</div>
+</div>
+</nav>
 
-    <section class="hero-bg relative pt-40 pb-20 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-            <div class="animate-fade-in-up">
-                <h1 class="font-display text-6xl md:text-8xl mb-8 leading-[0.9]">
-                    Professional <br><span class="text-accent italic">Financial</span> Tools
-                </h1>
-                <p class="text-muted text-lg md:text-xl max-w-xl mb-10 leading-relaxed">
-                    Built by analysts, for investors. Automate your tracking and get institutional-grade insights from your own spreadsheets.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#templates" class="bg-accent text-bg px-8 py-4 rounded-xl font-bold hover:bg-accent-light transition-all">View Collection</a>
-                    <button @click="previewModal=true; selectedProduct=1" class="border border-border bg-white/5 px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-all">Live Preview</button>
-                </div>
-            </div>
+<!-- Hero Section -->
+<section class="hero-bg relative min-h-screen flex items-center pt-20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+<div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+<div class="text-center lg:text-left">
+<div class="animate-fade-in-up">
+<span class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent/10 border border-accent/30 text-accent text-sm font-semibold mb-6">
+<span class="w-2.5 h-2.5 rounded-full bg-success animate-pulse"></span>
+Trusted by over 2,500 investors
+</span>
+</div>
+<h1 class="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-fg leading-tight mb-6 animate-fade-in-up delay-100">
+Master your finances with<br><span class="text-accent italic">professional Excel</span><br>templates
+</h1>
+<p class="text-lg sm:text-xl text-muted max-w-xl mx-auto lg:mx-0 mb-8 animate-fade-in-up delay-200">
+Investment tools built by financial analysts. Track your portfolio, analyze returns and make informed decisions — all in one spreadsheet.
+</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up delay-300">
+<a href="#templates" class="btn-primary text-lg">View Templates</a>
+<button @click="previewModal=true; selectedProduct=0; activeTab=0" class="btn-secondary text-lg gap-2">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+</svg>
+Live Demo
+</button>
+</div>
+<div class="mt-12 pt-8 border-t border-border/50 animate-fade-in-up delay-400">
+<p class="text-sm text-muted mb-4">Compatible with:</p>
+<div class="flex flex-wrap gap-6 justify-center lg:justify-start items-center opacity-60">
+<span class="font-semibold">Excel 365</span>
+<span class="font-semibold">Google Sheets</span>
+<span class="font-semibold">Numbers</span>
+</div>
+</div>
+</div>
+<div class="relative animate-fade-in-scale delay-300">
+<div class="relative z-10 rounded-2xl shadow-2xl overflow-hidden" style="background:#080c14;border:1px solid #1a2a40">
+<div style="background:linear-gradient(90deg,#0d1528,#111e38);padding:10px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #1a2a40">
+<div style="width:12px;height:12px;border-radius:50%;background:#ff5f57"></div>
+<div style="width:12px;height:12px;border-radius:50%;background:#ffbd2e"></div>
+<div style="width:12px;height:12px;border-radius:50%;background:#28ca41"></div>
+<span style="margin-left:12px;font-size:0.75rem;color:rgba(255,255,255,0.6);font-family:monospace">INVESTMENT_PORTFOLIO.xlsx</span>
+</div>
+<div style="background:#0a0f1e;display:flex;gap:1px;padding:0 10px;border-bottom:1px solid #1a2a3a">
+<div style="padding:6px 12px;font-size:0.65rem;background:#080c14;color:#d4af37;border-bottom:2px solid #d4af37;font-weight:600;border-radius:6px 6px 0 0">🏠 Home</div>
+<div style="padding:6px 12px;font-size:0.65rem;color:#4a6070">📋 Transactions</div>
+<div style="padding:6px 12px;font-size:0.65rem;color:#4a6070">📈 Analysis</div>
+<div style="padding:6px 12px;font-size:0.65rem;color:#4a6070">🧾 Report</div>
+</div>
+<div style="padding:14px;background:#080c14">
+<div style="font-size:0.65rem;color:#3a6070;font-weight:700;letter-spacing:0.06em;margin-bottom:10px">■ INVESTMENT PORTFOLIO · Stocks · ETFs · Crypto</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:4px">
+<div class="kpi-green"><div class="kpi-label">💰 CAPITAL INV.</div><div class="kpi-val">$38,917</div></div>
+<div class="kpi-cyan"><div class="kpi-label">💵 RECOVERED</div><div class="kpi-val">$4,739</div></div>
+<div class="kpi-amber"><div class="kpi-label">💸 DIVIDENDS</div><div class="kpi-val">$317.50</div></div>
+<div class="kpi-red"><div class="kpi-label">💳 COMMISSIONS</div><div class="kpi-val">-$30.00</div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:12px">
+<div class="kpi-amber" style="background:#0a0800"><div class="kpi-label">📊 REALIZED G/P</div><div class="kpi-val">+$4,540</div></div>
+<div class="kpi-purple"><div class="kpi-label">🔢 TOTAL OPS</div><div class="kpi-val">30</div></div>
+<div class="kpi-green" style="background:#040e08"><div class="kpi-label">🟢 BUY OPS</div><div class="kpi-val">24</div></div>
+<div class="kpi-red" style="background:#0a0606"><div class="kpi-label">🔴 SELL OPS</div><div class="kpi-val">2</div></div>
+</div>
+<div style="font-size:0.6rem;color:#2a5040;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px">🏆 TOP 5 ASSETS</div>
+<div style="display:grid;grid-template-columns:24px 50px 44px 60px 56px 50px;gap:0;font-size:0.6rem">
+<div style="background:#0d1830;color:#4a7090;padding:3px 5px">#</div>
+<div style="background:#0d1830;color:#4a7090;padding:3px 5px">TICKER</div>
+<div style="background:#0d1830;color:#4a7090;padding:3px 5px">TYPE</div>
+<div style="background:#0d1830;color:#4a7090;padding:3px 5px">INVESTED</div>
+<div style="background:#0d1830;color:#4a7090;padding:3px 5px">REAL. G/P</div>
+<div style="background:#0d1830;color:#4a7090;padding:3px 5px">STATUS</div>
+<div style="background:#090d18;color:#4a6080;padding:3px 5px">1</div>
+<div style="background:#090d18;color:#f0c040;padding:3px 5px;font-weight:700">AAPL</div>
+<div style="background:#090d18;color:#60a8f8;padding:3px 5px">Stock</div>
+<div style="background:#090d18;color:#c8d8e8;padding:3px 5px">$3,582</div>
+<div style="background:#090d18;color:#22d35a;padding:3px 5px">+$728</div>
+<div style="background:#090d18;color:#22d35a;padding:3px 5px;font-size:0.55rem">↑ Open</div>
+<div style="background:#080c16;color:#4a6080;padding:3px 5px">2</div>
+<div style="background:#080c16;color:#f0c040;padding:3px 5px;font-weight:700">BTC</div>
+<div style="background:#080c16;color:#f08030;padding:3px 5px">Crypto</div>
+<div style="background:#080c16;color:#c8d8e8;padding:3px 5px">$9,145</div>
+<div style="background:#080c16;color:#22d35a;padding:3px 5px">+$3,891</div>
+<div style="background:#080c16;color:#22d35a;padding:3px 5px;font-size:0.55rem">↑ Open</div>
+<div style="background:#090d18;color:#4a6080;padding:3px 5px">3</div>
+<div style="background:#090d18;color:#f0c040;padding:3px 5px;font-weight:700">NVDA</div>
+<div style="background:#090d18;color:#60a8f8;padding:3px 5px">Stock</div>
+<div style="background:#090d18;color:#c8d8e8;padding:3px 5px">$8,720</div>
+<div style="background:#090d18;color:#22d35a;padding:3px 5px">+$2,979</div>
+<div style="background:#090d18;color:#22d35a;padding:3px 5px;font-size:0.55rem">↑ Open</div>
+</div>
+<div style="margin-top:10px;position:relative;height:50px">
+<svg style="width:100%;height:100%" viewBox="0 0 300 50" preserveAspectRatio="none">
+<defs><linearGradient id="hg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:rgba(34,211,90,0.25)"/><stop offset="100%" style="stop-color:rgba(34,211,90,0)"/></linearGradient></defs>
+<path d="M0,42 Q30,38 60,32 T120,24 T180,16 T240,10 T300,4 L300,50 L0,50 Z" fill="url(#hg)"/>
+<path d="M0,42 Q30,38 60,32 T120,24 T180,16 T240,10 T300,4" fill="none" stroke="#22d35a" stroke-width="2"/>
+</svg>
+</div>
+<div style="display:flex;justify-content:space-between;margin-top:4px">
+<span style="font-size:0.62rem;color:#4a6070">Jan 2024</span>
+<span style="font-size:0.65rem;color:#22d35a;font-weight:700">+31.9% cumulative return</span>
+<span style="font-size:0.62rem;color:#4a6070">Feb 2025</span>
+</div>
+</div>
+</div>
+<div class="absolute -top-4 -right-4 w-24 h-24 bg-accent/20 rounded-full blur-2xl"></div>
+<div class="absolute -bottom-6 -left-6 w-32 h-32 bg-accent/10 rounded-full blur-3xl"></div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+<svg class="w-6 h-6 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+</svg>
+</div>
+</section>
 
-            <div class="relative hidden lg:block animate-fade-in-up" style="animation-delay: 0.2s">
-                <div class="excel-window rotate-2 hover:rotate-0 transition-transform duration-700">
-                    <div class="excel-titlebar">
-                        <div class="flex gap-1.5"><div class="w-3 h-3 rounded-full bg-red-500/50"></div><div class="w-3 h-3 rounded-full bg-yellow-500/50"></div><div class="w-3 h-3 rounded-full bg-green-500/50"></div></div>
-                        <span class="text-[10px] text-muted font-mono ml-4">CARTERA_INVERSION_2026.xlsx</span>
-                    </div>
-                    <div class="excel-body">
-                        <div class="kpi-grid">
-                            <div class="kpi-box border-green-900/30 bg-green-950/10 text-green-400"><div class="kpi-label">Value</div><div class="kpi-val">$45.2k</div></div>
-                            <div class="kpi-box border-accent/20 bg-accent/5 text-accent"><div class="kpi-label">Yield</div><div class="kpi-val">12.4%</div></div>
-                            <div class="kpi-box border-cyan-900/30 bg-cyan-950/10 text-cyan-400"><div class="kpi-label">Profit</div><div class="kpi-val">+$8.1k</div></div>
-                            <div class="kpi-box border-purple-900/30 bg-purple-950/10 text-purple-400"><div class="kpi-label">Divs</div><div class="kpi-val">$412</div></div>
-                        </div>
-                        <div class="space-y-1">
-                            <div class="flex gap-1"><div class="xc bg-white/5 font-bold">ASSET</div><div class="xc bg-white/5">PRICE</div><div class="xc bg-white/5">ALLOC</div></div>
-                            <div class="flex gap-1"><div class="xc gold">NVDA</div><div class="xc">$822.1</div><div class="xc">24.5%</div></div>
-                            <div class="flex gap-1"><div class="xc gold">VOO</div><div class="xc">$465.2</div><div class="xc">45.0%</div></div>
-                            <div class="flex gap-1"><div class="xc gold">BTC</div><div class="xc">$64,120</div><div class="xc">10.2%</div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Stats Section -->
+<section class="py-16 bg-bg-elevated border-y border-border relative overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="text-center reveal"><div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="2547">0</div><p class="text-muted">Active Clients</p></div>
+<div class="text-center reveal"><div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="4">0</div><p class="text-muted">Premium Templates</p></div>
+<div class="text-center reveal"><div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="98">0</div><p class="text-muted">% Satisfaction</p></div>
+<div class="text-center reveal"><div class="stat-number font-display text-4xl sm:text-5xl lg:text-6xl mb-2" data-target="4">0</div><p class="text-muted">Updates / Month</p></div>
+</div>
+</div>
+</section>
 
-    <section id="templates" class="py-32">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12">
-                <template x-for="(product, index) in products">
-                    <div class="product-card p-8 lg:p-12">
-                        <div class="mb-10">
-                            <h3 class="text-3xl font-bold mb-4" x-text="product.title"></h3>
-                            <p class="text-muted leading-relaxed" x-text="product.desc"></p>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                            <a :href="product.link_es" class="btn-buy-es py-4 rounded-xl font-bold text-center flex flex-col">
-                                <span class="text-[10px] uppercase tracking-widest opacity-80">Versión Española</span>
-                                <span>Comprar Ahora</span>
-                            </a>
-                            
-                            <a :href="product.link_en" class="btn-buy-en py-4 rounded-xl font-bold text-center flex flex-col">
-                                <span class="text-[10px] uppercase tracking-widest opacity-60">English Version</span>
-                                <span>Buy Now</span>
-                            </a>
-                        </div>
+<!-- Products Section -->
+<section id="templates" class="py-24 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16 reveal">
+<span class="text-accent font-medium tracking-wider uppercase text-sm">Our Templates</span>
+<h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mt-4 mb-6">
+Professional tools for<br><span class="text-accent italic">serious investors</span>
+</h2>
+<p class="text-muted text-lg max-w-2xl mx-auto">
+Each template is built with advanced formulas, professional formatting and automations that will save you hours of work every week.
+</p>
+</div>
+<div class="flex flex-wrap justify-center gap-2 mb-12 reveal">
+<button @click="activeFilter='all'" :class="activeFilter==='all' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2.5 rounded-full text-sm font-medium transition-all">All</button>
+<button @click="activeFilter='platform'" :class="activeFilter==='platform' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2.5 rounded-full text-sm font-medium transition-all">By Platform</button>
+<button @click="activeFilter='portfolio'" :class="activeFilter==='portfolio' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2.5 rounded-full text-sm font-medium transition-all">Portfolio</button>
+<button @click="activeFilter='spanish'" :class="activeFilter==='spanish' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2.5 rounded-full text-sm font-medium transition-all">🇪🇸 Español</button>
+<button @click="activeFilter='english'" :class="activeFilter==='english' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2.5 rounded-full text-sm font-medium transition-all">🇺🇸 English</button>
+</div>
+<div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
 
-                        <button @click="previewModal=true; selectedProduct=index; activeTab=0" class="w-full py-3 rounded-xl border border-border hover:bg-white/5 transition-colors text-sm font-medium">
-                            Explore Spreadsheet Preview
-                        </button>
-                    </div>
-                </template>
-            </div>
-        </div>
-    </section>
+<!-- Product 1: PLATAFORMAS ES -->
+<article x-show="activeFilter==='all' || activeFilter==='platform' || activeFilter==='spanish'" class="product-card reveal relative">
+<div class="absolute top-5 left-5 z-10"><span class="product-badge es">🇪🇸 Español</span></div>
+<div class="p-5 border-b border-border pt-16">
+<div class="excel-window">
+<div class="excel-titlebar">
+<div class="excel-titlebar-dot bg-red-400"></div>
+<div class="excel-titlebar-dot bg-yellow-400"></div>
+<div class="excel-titlebar-dot bg-green-400"></div>
+<span class="text-white text-xs ml-2 opacity-80 font-sans">PLATAFORMAS_DE_INVERSIONES.xlsx</span>
+</div>
+<div class="excel-sheet-tabs">
+<div class="excel-tab active">🏠 Inicio</div>
+<div class="excel-tab inactive">💰 Saldos</div>
+<div class="excel-tab inactive">📋 Mov.</div>
+<div class="excel-tab inactive">📈 Análisis</div>
+</div>
+<div class="excel-body">
+<div style="font-size:0.65rem;color:#4a6880;margin-bottom:8px;font-weight:600;letter-spacing:0.05em">PORTAFOLIO DE INVERSIONES · México · Dashboard en tiempo real</div>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-bottom:8px">
+<div class="kpi-green"><div class="kpi-label">💼 VALOR TOTAL</div><div class="kpi-val" style="font-size:0.9rem">$118,977</div></div>
+<div class="kpi-cyan"><div class="kpi-label">📈 RENDIM.</div><div class="kpi-val" style="font-size:0.9rem">+$47,477</div></div>
+<div class="kpi-amber"><div class="kpi-label">📊 REND %</div><div class="kpi-val" style="font-size:0.9rem">+66.4%</div></div>
+<div class="kpi-blue"><div class="kpi-label">💰 APORTADO</div><div class="kpi-val" style="font-size:0.9rem">$71,500</div></div>
+<div class="kpi-red"><div class="kpi-label">📤 RETIROS</div><div class="kpi-val" style="font-size:0.9rem">$0</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-xs font-semibold px-2.5 py-1 rounded bg-accent/10 text-accent">By Platform</span>
+<div class="flex items-center gap-1 text-sm">
+<svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+<span class="text-fg">4.9</span><span class="text-muted">(342)</span>
+</div>
+</div>
+<h3 class="font-display text-xl text-fg mb-2">PLATAFORMAS DE INVERSIONES</h3>
+<p class="text-muted text-sm mb-5">Gestiona todas tus cuentas de inversión en un solo lugar. Consolida múltiples brokers y plataformas con un dashboard automático.</p>
+<ul class="space-y-2.5 mb-6">
+<li class="flex items-center gap-2.5 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Dashboard multi-plataforma consolidado (hasta 30)</li>
+<li class="flex items-center gap-2.5 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Evolución del patrimonio mes a mes</li>
+<li class="flex items-center gap-2.5 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Comparativa de rendimiento vs S&P500</li>
+<li class="flex items-center gap-2.5 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Estimación fiscal (ISR retención 20%)</li>
+</ul>
+<div class="flex items-center justify-between pt-5 border-t border-border">
+<div><span class="text-3xl font-bold text-fg">$8</span><span class="text-muted text-sm ml-1">USD</span></div>
+<div class="flex gap-2.5">
+<button @click="previewModal=true; selectedProduct=0; activeTab=0" class="btn-secondary text-sm py-2.5 px-5">Preview</button>
+<a href="https://payhip.com/b/9UZ6a" target="_blank" class="btn-primary text-sm py-2.5 px-5">Buy Now</a>
+</div>
+</div>
+</div>
+</article>
 
-    <div x-show="previewModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 lg:p-10" x-transition.opacity>
-        <div class="absolute inset-0 bg-bg/95 backdrop-blur-xl" @click="previewModal = false"></div>
-        
-        <div class="bg-bg-elevated w-full max-w-6xl max-h-full rounded-3xl border border-border overflow-hidden relative" 
-             x-show="previewModal" x-transition.scale>
-            
-            <div class="p-6 border-b border-border flex justify-between items-center bg-bg-card">
-                <div>
-                    <h3 class="text-xl font-bold" x-text="products[selectedProduct]?.title"></h3>
-                    <p class="text-xs text-muted mt-1">Interactive Excel Live Preview</p>
-                </div>
-                <button @click="previewModal = false" class="p-2 hover:bg-white/10 rounded-full transition-colors text-muted hover:text-fg">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                </button>
-            </div>
+<!-- Product 2: PORTAFOLIO ES -->
+<article x-show="activeFilter==='all' || activeFilter==='portfolio' || activeFilter==='spanish'" class="product-card reveal relative">
+<div class="absolute top-5 left-5 z-10"><span class="product-badge es">🇪🇸 Español</span></div>
+<div class="p-5 border-b border-border pt-16">
+<div class="excel-window">
+<div class="excel-titlebar">
+<div class="excel-titlebar-dot bg-red-400"></div>
+<div class="excel-titlebar-dot bg-yellow-400"></div>
+<div class="excel-titlebar-dot bg-green-400"></div>
+<span class="text-white text-xs ml-2 opacity-80 font-sans">PORTAFOLIO_DE_INVERSIONES.xlsx</span>
+</div>
+<div class="excel-sheet-tabs">
+<div class="excel-tab active">🏠 Inicio</div>
+<div class="excel-tab inactive">📋 Mov.</div>
+<div class="excel-tab inactive">📈 Análisis</div>
+<div class="excel-tab inactive">🧾 Reporte</div>
+</div>
+<div class="excel-body">
+<div style="font-size:0.65rem;color:#4a6880;margin-bottom:8px;font-weight:600;letter-spacing:0.05em">PORTAFOLIO DE INVERSIONES · Acciones · ETFs · Crypto</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:6px">
+<div class="kpi-green"><div class="kpi-label">💰 CAPITAL INV.</div><div class="kpi-val" style="font-size:0.9rem">$38,917</div></div>
+<div class="kpi-cyan"><div class="kpi-label">💵 RECUPERADO</div><div class="kpi-val" style="font-size:0.9rem">$4,739</div></div>
+<div class="kpi-amber"><div class="kpi-label">💸 DIVIDENDOS</div><div class="kpi-val" style="font-size:0.9rem">$317.50</div></div>
+<div class="kpi-red"><div class="kpi-label">💳 COMISIONES</div><div class="kpi-val" style="font-size:0.9rem">-$30.00</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-xs font-semibold px-2.5 py-1 rounded bg-accent/10 text-accent">Portfolio</span>
+<div class="flex items-center gap-1 text-sm">
+<svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+<span class="text-fg">4.9</span><span class="text-muted">(489)</span>
+</div>
+</div>
+<h3 class="font-display text-xl text-fg mb-2">PORTAFOLIO DE INVERSIONES</h3>
+<p class="text-muted text-sm mb-5">Seguimiento completo de acciones, ETFs y criptomonedas. P&L automático por activo, calendario de dividendos y score de salud del portafolio.</p>
+<ul class="space-y-2.5 mb-6">
+<li class="flex items-center gap-2.5 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Acciones, ETFs y Crypto</li>
+<li class="flex items-center gap-2.5 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>P&L automático por activo</li>
+<li class="flex items-center gap-2.5 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Calendario y seguimiento de dividendos</li>
+<li class="flex items-center gap-2.5 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Score de salud del portafolio 0–100 pts</li>
+</ul>
+<div class="flex items-center justify-between pt-5 border-t border-border">
+<div><span class="text-3xl font-bold text-fg">$8</span><span class="text-muted text-sm ml-1">USD</span></div>
+<div class="flex gap-2.5">
+<button @click="previewModal=true; selectedProduct=1; activeTab=0" class="btn-secondary text-sm py-2.5 px-5">Preview</button>
+<a href="https://payhip.com/b/cp3hy" target="_blank" class="btn-primary text-sm py-2.5 px-5">Buy Now</a>
+</div>
+</div>
+</div>
+</article>
 
-            <div class="bg-[#060a10] px-4 flex gap-1 overflow-x-auto border-b border-border">
-                <template x-for="(tab, i) in products[selectedProduct]?.tabs">
-                    <button @click="activeTab = i" 
-                            class="excel-tab transition-all"
-                            :class="activeTab === i ? 'active' : 'text-muted hover:text-fg hover:bg-white/5'">
-                        <span x-text="tab"></span>
-                    </button>
-                </template>
-            </div>
+<!-- Product 3: PLATAFORMAS EN - ✅ LINK AGREGADO -->
+<article x-show="activeFilter==='all' || activeFilter==='platform' || activeFilter==='english'" class="product-card reveal relative">
+<div class="absolute top-5 left-5 z-10"><span class="product-badge en">🇺🇸 English</span></div>
+<div class="p-5 border-b border-border pt-16">
+<div class="excel-window">
+<div class="excel-titlebar">
+<div class="excel-titlebar-dot bg-red-400"></div>
+<div class="excel-titlebar-dot bg-yellow-400"></div>
+<div class="excel-titlebar-dot bg-green-400"></div>
+<span class="text-white text-xs ml-2 opacity-80 font-sans">INVESTMENT_PLATFORMS_TRACKER.xlsx</span>
+</div>
+<div class="excel-sheet-tabs">
+<div class="excel-tab active">🏠 Home</div>
+<div class="excel-tab inactive">💰 Balances</div>
+<div class="excel-tab inactive">📋 Transactions</div>
+<div class="excel-tab inactive">📈 Analysis</div>
+</div>
+<div class="excel-body">
+<div style="font-size:0.65rem;color:#4a6880;margin-bottom:8px;font-weight:600;letter-spacing:0.05em">INVESTMENT PORTFOLIO · Mexico · Real-time Dashboard</div>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-bottom:6px">
+<div class="kpi-green"><div class="kpi-label">💼 TOTAL VALUE</div><div class="kpi-val" style="font-size:0.9rem">$118,977</div></div>
+<div class="kpi-cyan"><div class="kpi-label">📈 RETURNS</div><div class="kpi-val" style="font-size:0.9rem">+$47,477</div></div>
+<div class="kpi-amber"><div class="kpi-label">📊 RETURN %</div><div class="kpi-val" style="font-size:0.9rem">+66.4%</div></div>
+<div class="kpi-blue"><div class="kpi-label">💰 CONTRIBUTED</div><div class="kpi-val" style="font-size:0.9rem">$71,500</div></div>
+<div class="kpi-red"><div class="kpi-label">📤 WITHDRAWALS</div><div class="kpi-val" style="font-size:0.9rem">$0</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-xs font-semibold px-2.5 py-1 rounded" style="background:rgba(59,130,246,0.12);color:#60a5fa">By Platform</span>
+<div class="flex items-center gap-1 text-sm">
+<svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+<span class="text-fg">4.9</span><span class="text-muted">(198)</span>
+</div>
+</div>
+<h3 class="font-display text-xl text-fg mb-2">INVESTMENT PLATFORMS TRACKER</h3>
+<p class="text-muted text-sm mb-5">Manage all your investment accounts in one place. Consolidate multiple brokers and platforms with an automatic dashboard and S&P500 comparison.</p>
+<ul class="space-y-2.5 mb-6">
+<li class="flex items-center gap-2.5 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Consolidated multi-platform dashboard (up to 30)</li>
+<li class="flex items-center gap-2.5 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Net worth evolution chart by month</li>
+<li class="flex items-center gap-2.5 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Performance comparison vs S&P500 & CETES</li>
+<li class="flex items-center gap-2.5 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Tax estimation (ISR 20% withholding)</li>
+</ul>
+<div class="flex items-center justify-between pt-5 border-t border-border">
+<div><span class="text-3xl font-bold text-fg">$8</span><span class="text-muted text-sm ml-1">USD</span></div>
+<div class="flex gap-2.5">
+<button @click="previewModal=true; selectedProduct=2; activeTab=0" class="btn-secondary text-sm py-2.5 px-5">Preview</button>
+<a href="https://payhip.com/b/EYk2g" target="_blank" class="btn-primary text-sm py-2.5 px-5">Buy Now</a>
+</div>
+</div>
+</div>
+</article>
 
-            <div class="p-6 lg:p-10 overflow-y-auto max-h-[60vh] bg-[#080c14]">
-                <div class="excel-window">
-                    <div class="excel-body">
-                        <div class="kpi-grid">
-                            <template x-for="kpi in products[selectedProduct]?.kpis">
-                                <div class="kpi-box" :class="kpi.color">
-                                    <div class="kpi-label" x-text="kpi.label"></div>
-                                    <div class="kpi-val" x-text="kpi.val"></div>
-                                </div>
-                            </template>
-                        </div>
-                        
-                        <div class="space-y-1 mt-6">
-                            <div class="flex gap-1">
-                                <div class="xc bg-[#0d1830] text-[#5a7898] font-bold">ASSET ID</div>
-                                <div class="xc bg-[#0d1830] text-[#5a7898]">TYPE</div>
-                                <div class="xc bg-[#0d1830] text-[#5a7898]">WEIGHT</div>
-                                <div class="xc bg-[#0d1830] text-[#5a7898]">STATUS</div>
-                            </div>
-                            <div class="flex gap-1">
-                                <div class="xc gold">AAPL.US</div><div class="xc">Equity</div><div class="xc">12.5%</div><div class="xc pos">▲ Overweight</div>
-                            </div>
-                            <div class="flex gap-1">
-                                <div class="xc gold">TSLA.US</div><div class="xc">Equity</div><div class="xc">8.2%</div><div class="xc neg">▼ Underweight</div>
-                            </div>
-                            <div class="flex gap-1">
-                                <div class="xc gold">MSFT.US</div><div class="xc">Equity</div><div class="xc">15.0%</div><div class="xc pos">▲ Neutral</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-8 text-center p-6 bg-white/5 rounded-2xl border border-border">
-                    <p class="text-sm text-muted mb-4">Esta es una representación visual simplificada de la pestaña <span class="text-accent" x-text="products[selectedProduct]?.tabs[activeTab]"></span>.</p>
-                    <a :href="products[selectedProduct]?.link_es" class="text-accent hover:underline text-sm font-bold">Descargar archivo completo .xlsx</a>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- Product 4: PORTAFOLIO EN - ✅ LINK AGREGADO -->
+<article x-show="activeFilter==='all' || activeFilter==='portfolio' || activeFilter==='english'" class="product-card reveal relative">
+<div class="absolute top-5 left-5 z-10"><span class="product-badge en">🇺🇸 English</span></div>
+<div class="p-5 border-b border-border pt-16">
+<div class="excel-window">
+<div class="excel-titlebar">
+<div class="excel-titlebar-dot bg-red-400"></div>
+<div class="excel-titlebar-dot bg-yellow-400"></div>
+<div class="excel-titlebar-dot bg-green-400"></div>
+<span class="text-white text-xs ml-2 opacity-80 font-sans">INVESTMENT_PORTFOLIO.xlsx</span>
+</div>
+<div class="excel-sheet-tabs">
+<div class="excel-tab active">🏠 Home</div>
+<div class="excel-tab inactive">📋 Transactions</div>
+<div class="excel-tab inactive">📈 Analysis</div>
+<div class="excel-tab inactive">🧾 Report</div>
+</div>
+<div class="excel-body">
+<div style="font-size:0.65rem;color:#4a6880;margin-bottom:8px;font-weight:600;letter-spacing:0.05em">INVESTMENT PORTFOLIO · Stocks · ETFs · Crypto</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:6px">
+<div class="kpi-green"><div class="kpi-label">💰 CAPITAL INV.</div><div class="kpi-val" style="font-size:0.9rem">$38,917</div></div>
+<div class="kpi-cyan"><div class="kpi-label">💵 RECOVERED</div><div class="kpi-val" style="font-size:0.9rem">$4,739</div></div>
+<div class="kpi-amber"><div class="kpi-label">💸 DIVIDENDS</div><div class="kpi-val" style="font-size:0.9rem">$317.50</div></div>
+<div class="kpi-red"><div class="kpi-label">💳 COMMISSIONS</div><div class="kpi-val" style="font-size:0.9rem">-$30.00</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-xs font-semibold px-2.5 py-1 rounded" style="background:rgba(59,130,246,0.12);color:#60a5fa">Portfolio</span>
+<div class="flex items-center gap-1 text-sm">
+<svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+<span class="text-fg">4.9</span><span class="text-muted">(231)</span>
+</div>
+</div>
+<h3 class="font-display text-xl text-fg mb-2">INVESTMENT PORTFOLIO</h3>
+<p class="text-muted text-sm mb-5">Full tracking for stocks, ETFs and crypto. Automatic P&L per asset, dividend calendar, portfolio health score and financial goals — all in English.</p>
+<ul class="space-y-2.5 mb-6">
+<li class="flex items-center gap-2.5 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Stocks, ETFs & Crypto tracking</li>
+<li class="flex items-center gap-2.5 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Automatic P&L per asset</li>
+<li class="flex items-center gap-2.5 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Dividend calendar & tracker</li>
+<li class="flex items-center gap-2.5 text-sm text-muted"><svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Portfolio health score 0–100 pts</li>
+</ul>
+<div class="flex items-center justify-between pt-5 border-t border-border">
+<div><span class="text-3xl font-bold text-fg">$8</span><span class="text-muted text-sm ml-1">USD</span></div>
+<div class="flex gap-2.5">
+<button @click="previewModal=true; selectedProduct=3; activeTab=0" class="btn-secondary text-sm py-2.5 px-5">Preview</button>
+<a href="https://payhip.com/b/zW8Ic" target="_blank" class="btn-primary text-sm py-2.5 px-5">Buy Now</a>
+</div>
+</div>
+</div>
+</article>
 
-    <footer class="py-20 border-t border-border mt-20">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <div class="flex justify-center gap-6 mb-8">
-                <div class="w-10 h-10 rounded-lg bg-white/5 border border-border flex items-center justify-center font-bold">X</div>
-                <div class="w-10 h-10 rounded-lg bg-white/5 border border-border flex items-center justify-center font-bold">In</div>
-            </div>
-            <p class="text-muted text-sm">© 2026 InvestTemplates. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+</div>
+</div>
+</section>
 
+<!-- Benefits Section -->
+<section id="benefits" class="py-24 bg-bg-elevated relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="reveal">
+<span class="text-accent font-medium tracking-wider uppercase text-sm">Why choose us?</span>
+<h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mt-4 mb-6">Stop wasting time on<br><span class="text-accent italic">mediocre spreadsheets</span></h2>
+<p class="text-muted text-lg mb-8">Our templates are built by financial analysts with over 10 years of experience in international markets.</p>
+<div class="space-y-6">
+<div class="flex gap-4"><div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0 text-2xl">⚡</div><div><h3 class="font-semibold text-fg text-lg mb-1">Ready to use in minutes</h3><p class="text-muted">No complex setup. Download, open and start managing your investments right away.</p></div></div>
+<div class="flex gap-4"><div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0 text-2xl">🛡️</div><div><h3 class="font-semibold text-fg text-lg mb-1">Audited and tested formulas</h3><p class="text-muted">Every calculation has been verified by accountants and analysts. 100% accuracy guaranteed.</p></div></div>
+<div class="flex gap-4"><div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0 text-2xl">🔄</div><div><h3 class="font-semibold text-fg text-lg mb-1">Free lifetime updates</h3><p class="text-muted">Markets change and our templates do too. Receive improvements at no extra cost, forever.</p></div></div>
+<div class="flex gap-4"><div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0 text-2xl">🛠️</div><div><h3 class="font-semibold text-fg text-lg mb-1">Priority technical support</h3><p class="text-muted">Questions? Our team responds within 24h with concrete solutions.</p></div></div>
+</div>
+</div>
+<div class="relative reveal">
+<div class="bg-bg-card rounded-2xl border border-border p-8 relative z-10">
+<h3 class="font-display text-xl text-fg mb-6">Comparison</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-bg rounded-xl"><span class="text-muted">Setup time</span><div class="flex gap-8"><div class="text-center"><span class="text-red-400 font-bold">4–8h</span><p class="text-xs text-muted">Basic Excel</p></div><div class="text-center"><span class="text-success font-bold">5 min</span><p class="text-xs text-muted">InvestTemplates</p></div></div></div>
+<div class="flex items-center justify-between p-4 bg-bg rounded-xl"><span class="text-muted">Advanced formulas</span><div class="flex gap-8"><div class="text-center"><span class="text-red-400 font-bold">Manual</span><p class="text-xs text-muted">Error-prone</p></div><div class="text-center"><span class="text-success font-bold">Included</span><p class="text-xs text-muted">Tested</p></div></div></div>
+<div class="flex items-center justify-between p-4 bg-bg rounded-xl"><span class="text-muted">Updates</span><div class="flex gap-8"><div class="text-center"><span class="text-red-400 font-bold">DIY</span><p class="text-xs text-muted">More work</p></div><div class="text-center"><span class="text-success font-bold">Free</span><p class="text-xs text-muted">Lifetime</p></div></div></div>
+<div class="flex items-center justify-between p-4 bg-bg rounded-xl"><span class="text-muted">Support</span><div class="flex gap-8"><div class="text-center"><span class="text-red-400 font-bold">None</span></div><div class="text-center"><span class="text-success font-bold">24h</span><p class="text-xs text-muted">Priority</p></div></div></div>
+</div>
+</div>
+<div class="absolute -top-6 -right-6 w-32 h-32 bg-accent/10 rounded-full blur-2xl"></div>
+<div class="absolute -bottom-8 -left-8 w-40 h-40 bg-accent/5 rounded-full blur-3xl"></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="py-24 relative overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16 reveal">
+<span class="text-accent font-medium tracking-wider uppercase text-sm">Testimonials</span>
+<h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mt-4 mb-6">What our<br><span class="text-accent italic">customers say</span></h2>
+</div>
+<div class="relative reveal">
+<div class="max-w-3xl mx-auto">
+<div class="testimonial-card">
+<div class="flex gap-1 mb-4">
+<template x-for="i in 5" :key="i"><svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></template>
+</div>
+<blockquote class="text-xl sm:text-2xl text-fg font-display leading-relaxed mb-6" x-text="testimonials[currentTestimonial].content"></blockquote>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center text-bg font-bold" x-text="testimonials[currentTestimonial].avatar"></div>
+<div>
+<div class="font-semibold text-fg" x-text="testimonials[currentTestimonial].name"></div>
+<div class="text-sm text-muted" x-text="testimonials[currentTestimonial].role"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center items-center gap-4 mt-8">
+<button @click="currentTestimonial = currentTestimonial > 0 ? currentTestimonial - 1 : testimonials.length - 1" class="w-12 h-12 rounded-full border border-border flex items-center justify-center text-muted hover:text-fg hover:border-accent transition-colors">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+</button>
+<div class="flex gap-2">
+<template x-for="(t, index) in testimonials" :key="index">
+<button @click="currentTestimonial = index" :class="currentTestimonial === index ? 'bg-accent w-8' : 'bg-border w-2'" class="h-2 rounded-full transition-all"></button>
+</template>
+</div>
+<button @click="currentTestimonial = currentTestimonial < testimonials.length - 1 ? currentTestimonial + 1 : 0" class="w-12 h-12 rounded-full border border-border flex items-center justify-center text-muted hover:text-fg hover:border-accent transition-colors">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="py-24 relative">
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16 reveal">
+<span class="text-accent font-medium tracking-wider uppercase text-sm">FAQ</span>
+<h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mt-4 mb-6">Frequently asked<br><span class="text-accent italic">questions</span></h2>
+</div>
+<div class="space-y-4 reveal" x-data="{ faqs: [
+{ q: 'Do I need advanced Excel skills?', a: 'No, our templates are designed for users of all levels. We include detailed guides and video tutorials that walk you through every step. You only need basic Excel knowledge.' },
+{ q: 'Do the templates work in Google Sheets?', a: 'Yes, all our templates are compatible with Google Sheets, Excel 365, Excel 2019+ and Numbers. On purchase you receive versions optimized for each platform.' },
+{ q: 'What if I have issues or questions?', a: 'We offer email technical support with a 24-hour response time. Our team is ready to help you with any questions.' },
+{ q: 'Do I get future updates?', a: 'Yes, all updates are free for life. When we improve a template or add new features, you will receive an email with the download link.' },
+{ q: 'Can I get a refund?', a: 'We offer a 30-day money-back guarantee. If you are not satisfied, send us an email and we will process your refund, no questions asked.' },
+{ q: 'What language are the templates in?', a: 'Our templates are available in both Spanish and English, with clear labels and formulas that work with any Excel language setting.' }
+] }">
+<template x-for="(faq, index) in faqs" :key="index">
+<div class="faq-item">
+<button @click="openFaq = openFaq === index ? null : index" class="w-full flex items-center justify-between py-5 text-left"><span class="text-fg font-medium pr-4" x-text="faq.q"></span><svg class="w-5 h-5 text-accent flex-shrink-0 transition-transform" :class="openFaq === index ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
+<div x-show="openFaq === index" class="pb-5"><p class="text-muted leading-relaxed" x-text="faq.a"></p></div>
+</div>
+</template>
+</div>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-24 bg-bg-elevated relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-accent/10 via-transparent to-accent/10"></div>
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center reveal">
+<h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mb-6">Start investing with<br><span class="text-accent italic">intelligence</span></h2>
+<p class="text-muted text-lg mb-8 max-w-2xl mx-auto">Join over 2,500 investors already using our templates to make smarter financial decisions.</p>
+<a href="#templates" class="btn-primary text-lg gap-2">View Templates <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="py-12 border-t border-border">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-4 gap-8 mb-12">
+<div class="md:col-span-2">
+<a href="#" class="flex items-center gap-3 mb-4">
+<div class="w-11 h-11 rounded-xl bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center"><svg class="w-6 h-6 text-bg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 5-6"/></svg></div>
+<span class="font-display text-2xl text-fg">InvestTemplates</span>
+</a>
+<p class="text-muted max-w-sm">Premium Excel templates for investors who want professional-grade analysis tools and portfolio management.</p>
+</div>
+<div><h4 class="font-semibold text-fg mb-4">Products</h4><ul class="space-y-2"><li><a href="#templates" class="text-muted hover:text-accent transition-colors">🇪🇸 Plataformas de Inversiones</a></li><li><a href="#templates" class="text-muted hover:text-accent transition-colors">🇪🇸 Portafolio de Inversiones</a></li><li><a href="#templates" class="text-muted hover:text-accent transition-colors">🇺🇸 Investment Platforms Tracker</a></li><li><a href="#templates" class="text-muted hover:text-accent transition-colors">🇺🇸 Investment Portfolio</a></li></ul></div>
+<div><h4 class="font-semibold text-fg mb-4">Legal</h4><ul class="space-y-2"><li><a href="#" class="text-muted hover:text-accent transition-colors">Terms of Service</a></li><li><a href="#" class="text-muted hover:text-accent transition-colors">Privacy Policy</a></li><li><a href="#" class="text-muted hover:text-accent transition-colors">Refund Policy</a></li><li><a href="#" class="text-muted hover:text-accent transition-colors">Contact</a></li></ul></div>
+</div>
+<div class="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
+<p class="text-muted text-sm">© 2026 InvestTemplates. All rights reserved.</p>
+</div>
+</div>
+</footer>
+
+<!-- ==================== PREVIEW MODAL ==================== -->
+<div x-show="previewModal" x-transition class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop" @click.self="previewModal=false" style="display:none">
+<div class="bg-bg-card border border-border rounded-2xl w-full max-w-5xl max-h-[92vh] overflow-auto">
+<div class="flex items-center justify-between p-5 border-b border-border sticky top-0 bg-bg-card z-10">
+<div>
+<h3 class="font-display text-xl text-fg" x-text="selectedProduct===0 ? 'PLATAFORMAS DE INVERSIONES' : selectedProduct===1 ? 'PORTAFOLIO DE INVERSIONES' : selectedProduct===2 ? 'INVESTMENT PLATFORMS TRACKER' : 'INVESTMENT PORTFOLIO'"></h3>
+<div class="flex items-center gap-3 mt-1">
+<span x-show="selectedProduct<=1" class="product-badge es">🇪🇸 Español</span>
+<span x-show="selectedProduct>=2" class="product-badge en">🇺🇸 English</span>
+<span class="text-muted text-xs" x-text="selectedProduct===0 ? '6 sheets · Up to 30 platforms' : selectedProduct===1 ? '6 sheets · Stocks · ETFs · Crypto' : selectedProduct===2 ? '6 sheets · Up to 30 platforms' : '6 sheets · Stocks · ETFs · Crypto'"></span>
+</div>
+</div>
+<button @click="previewModal=false" class="p-2 text-muted hover:text-fg transition-colors rounded-lg hover:bg-border">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+</button>
+</div>
+<div class="p-5 border-t border-border flex items-center justify-between">
+<div class="text-sm text-muted">
+<span x-text="selectedProduct===0 ? '6 sheets · 2,000 records · Dynamic filters · ISR estimate' : selectedProduct===1 ? '6 sheets · Stocks · ETFs · Crypto · Auto score' : selectedProduct===2 ? '6 sheets · 2,000 records · Dynamic filters · ISR estimate (EN)' : '6 sheets · Stocks · ETFs · Crypto · Auto score (EN)'"></span>
+</div>
+<div class="flex gap-3">
+<button @click="previewModal=false" class="btn-secondary py-2.5 px-5 text-sm">Close</button>
+<a href="#templates" @click="previewModal=false" class="btn-primary py-2.5 px-5 text-sm" x-text="'Get Template — $8 USD'"></a>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+revealElements.forEach(el => revealObserver.observe(el));
+
+const statNumbers = document.querySelectorAll('.stat-number');
+const counterObserver = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+const target = parseInt(entry.target.dataset.target);
+let current = 0;
+const increment = target / 60;
+const timer = setInterval(() => {
+current += increment;
+if (current >= target) { entry.target.textContent = target.toLocaleString(); clearInterval(timer); }
+else { entry.target.textContent = Math.floor(current).toLocaleString(); }
+}, 2000 / 60);
+counterObserver.unobserve(entry.target);
+}
+});
+}, { threshold: 0.5 });
+statNumbers.forEach(stat => counterObserver.observe(stat));
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function(e) {
+const target = document.querySelector(this.getAttribute('href'));
+if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+});
+});
+</script>
 </body>
 </html>
