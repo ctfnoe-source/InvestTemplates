@@ -60,11 +60,13 @@ body { font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: v
 @keyframes float { 0%, 100% { transform: translate(0, 0) scale(1); } 25% { transform: translate(30px, -30px) scale(1.1); } 50% { transform: translate(-20px, 20px) scale(0.9); } 75% { transform: translate(20px, 10px) scale(1.05); } }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeInScale { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+@keyframes drawLine { to { stroke-dashoffset: 0; } }
 .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
 .animate-fade-in-scale { animation: fadeInScale 0.6s ease-out forwards; opacity: 0; }
 .delay-100 { animation-delay: 0.1s; }
 .delay-200 { animation-delay: 0.2s; }
 .delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
 .btn-primary { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); color: var(--bg); font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 8px; transition: all 0.3s ease; position: relative; overflow: hidden; border: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
 .btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.5s ease; }
 .btn-primary:hover::before { left: 100%; }
@@ -128,6 +130,7 @@ body { font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: v
 .faq-item { border-bottom: 1px solid var(--border); }
 .faq-item:last-child { border-bottom: none; }
 .mobile-menu { background: var(--bg-elevated); border-left: 1px solid var(--border); }
+.chart-line { stroke-dasharray: 300; stroke-dashoffset: 300; animation: drawLine 2s ease forwards; }
 .product-badge { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500; }
 .product-badge.es { background: rgba(34, 197, 94, 0.1); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); }
 .product-badge.en { background: rgba(59, 130, 246, 0.12); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
@@ -152,9 +155,9 @@ testimonials: [
 
 <!-- Background Elements -->
 <div class="fixed inset-0 pointer-events-none overflow-hidden">
-<div class="float-element w-96 h-96 bg-accent/20 -top-48 -left-48"></div>
-<div class="float-element w-64 h-64 bg-accent/10 top-1/3 right-0"></div>
-<div class="float-element w-80 h-80 bg-accent/15 bottom-0 left-1/4"></div>
+<div class="float-element w-96 h-96 bg-accent/20 -top-48 -left-48" style="animation-delay:0s;"></div>
+<div class="float-element w-64 h-64 bg-accent/10 top-1/3 right-0" style="animation-delay:-5s;"></div>
+<div class="float-element w-80 h-80 bg-accent/15 bottom-0 left-1/4" style="animation-delay:-10s;"></div>
 </div>
 <div class="fixed inset-0 grid-pattern pointer-events-none opacity-50"></div>
 
@@ -224,7 +227,7 @@ Professional tools for<br><span class="text-accent italic">serious investors</sp
 <div class="excel-titlebar-dot bg-red-400"></div>
 <div class="excel-titlebar-dot bg-yellow-400"></div>
 <div class="excel-titlebar-dot bg-green-400"></div>
-<span class="text-white text-xs ml-2 opacity-80 font-sans">PLATAFORMAS_DE_INVERSIONES.xlsx</span>
+<span class="text-white text-xs ml-2 opacity-80 font-sans">PLATAFORMAS DE INVERSIONES.xlsx</span>
 </div>
 <div class="excel-sheet-tabs">
 <div class="excel-tab active">🏠 Inicio</div>
@@ -265,7 +268,7 @@ Professional tools for<br><span class="text-accent italic">serious investors</sp
 <div class="excel-titlebar-dot bg-red-400"></div>
 <div class="excel-titlebar-dot bg-yellow-400"></div>
 <div class="excel-titlebar-dot bg-green-400"></div>
-<span class="text-white text-xs ml-2 opacity-80 font-sans">PORTAFOLIO_DE_INVERSIONES.xlsx</span>
+<span class="text-white text-xs ml-2 opacity-80 font-sans">PORTAFOLIO DE INVERSIONES.xlsx</span>
 </div>
 <div class="excel-sheet-tabs">
 <div class="excel-tab active">🏠 Inicio</div>
@@ -305,7 +308,7 @@ Professional tools for<br><span class="text-accent italic">serious investors</sp
 <div class="excel-titlebar-dot bg-red-400"></div>
 <div class="excel-titlebar-dot bg-yellow-400"></div>
 <div class="excel-titlebar-dot bg-green-400"></div>
-<span class="text-white text-xs ml-2 opacity-80 font-sans">INVESTMENT_PLATFORMS_TRACKER.xlsx</span>
+<span class="text-white text-xs ml-2 opacity-80 font-sans">Investment Platforms Tracker.xlsx</span>
 </div>
 <div class="excel-sheet-tabs">
 <div class="excel-tab active">🏠 Home</div>
@@ -346,7 +349,7 @@ Professional tools for<br><span class="text-accent italic">serious investors</sp
 <div class="excel-titlebar-dot bg-red-400"></div>
 <div class="excel-titlebar-dot bg-yellow-400"></div>
 <div class="excel-titlebar-dot bg-green-400"></div>
-<span class="text-white text-xs ml-2 opacity-80 font-sans">INVESTMENT_PORTFOLIO.xlsx</span>
+<span class="text-white text-xs ml-2 opacity-80 font-sans">Investment Portfolio.xlsx</span>
 </div>
 <div class="excel-sheet-tabs">
 <div class="excel-tab active">🏠 Home</div>
@@ -450,7 +453,7 @@ Professional tools for<br><span class="text-accent italic">serious investors</sp
 <div class="excel-titlebar-dot bg-red-400"></div>
 <div class="excel-titlebar-dot bg-yellow-400"></div>
 <div class="excel-titlebar-dot bg-green-400"></div>
-<span class="text-white text-xs ml-3 opacity-80 font-sans" x-text="selectedProduct===0 ? 'PLATAFORMAS_DE_INVERSIONES.xlsx' : selectedProduct===1 ? 'PORTAFOLIO_DE_INVERSIONES.xlsx' : selectedProduct===2 ? 'INVESTMENT_PLATFORMS_TRACKER.xlsx' : 'INVESTMENT_PORTFOLIO.xlsx'"></span>
+<span class="text-white text-xs ml-3 opacity-80 font-sans" x-text="selectedProduct===0 ? 'PLATAFORMAS DE INVERSIONES.xlsx' : selectedProduct===1 ? 'PORTAFOLIO DE INVERSIONES.xlsx' : selectedProduct===2 ? 'Investment Platforms Tracker.xlsx' : 'Investment Portfolio.xlsx'"></span>
 </div>
 <div class="excel-body">
 <!-- P0: PLATAFORMAS ES -->
@@ -463,18 +466,6 @@ Professional tools for<br><span class="text-accent italic">serious investors</sp
 <div class="kpi-blue"><div class="kpi-label">💰 APORTADO</div><div class="kpi-val">$140</div></div>
 <div class="kpi-red"><div class="kpi-label">📤 RETIROS</div><div class="kpi-val">$1,200</div></div>
 </div>
-<div style="color:#3a6050;font-size:0.55rem;font-weight:600;text-transform:uppercase;margin-bottom:3px">■ RESUMEN POR PLATAFORMA</div>
-<div class="excel-col-headers">
-<div class="col-header row-num">#</div>
-<div class="col-header" style="min-width:100px">PLATAFORMA</div>
-<div class="col-header">TIPO</div>
-<div class="col-header">SALDO</div>
-<div class="col-header">% PORT.</div>
-<div class="col-header">ESTATUS</div>
-</div>
-<div class="excel-row"><div class="xc row-num">1</div><div class="xc white" style="min-width:100px;font-weight:700">GBM</div><div class="xc muted">Bolsa/ETFs</div><div class="xc gold">$535,579</div><div class="xc white">33.3%</div><div class="xc neg" style="font-size:0.55rem">⚠️ Alta</div></div>
-<div class="excel-row"><div class="xc row-num">2</div><div class="xc white" style="min-width:100px;font-weight:700">NU BANK</div><div class="xc blue">Banco</div><div class="xc gold">$172,760</div><div class="xc white">10.8%</div><div class="xc pos" style="font-size:0.55rem">✅ Moderada</div></div>
-<div class="excel-row"><div class="xc row-num">3</div><div class="xc white" style="min-width:100px;font-weight:700">STORI</div><div class="xc cyan">SOFIPO</div><div class="xc gold">$160,644</div><div class="xc white">10.0%</div><div class="xc pos" style="font-size:0.55rem">✅ Baja</div></div>
 </div>
 <!-- P1: PORTAFOLIO ES -->
 <div class="excel-body" x-show="selectedProduct===1">
@@ -485,18 +476,6 @@ Professional tools for<br><span class="text-accent italic">serious investors</sp
 <div class="kpi-amber"><div class="kpi-label">💸 DIVIDENDOS</div><div class="kpi-val">$317.50</div></div>
 <div class="kpi-red"><div class="kpi-label">💳 COMISIONES</div><div class="kpi-val">-$30.00</div></div>
 </div>
-<div style="color:#3a6050;font-size:0.55rem;font-weight:600;text-transform:uppercase;margin-bottom:3px">🏆 TOP 5 ACTIVOS</div>
-<div class="excel-col-headers">
-<div class="col-header row-num"></div>
-<div class="col-header" style="min-width:50px">TICKER</div>
-<div class="col-header">TIPO</div>
-<div class="col-header">INVERTIDO</div>
-<div class="col-header">G/P REAL.</div>
-<div class="col-header">ESTADO</div>
-</div>
-<div class="excel-row"><div class="xc row-num">1</div><div class="xc gold" style="min-width:50px;font-weight:700">AAPL</div><div class="xc blue">Acción</div><div class="xc white">$3,582</div><div class="xc pos">+$728</div><div class="xc pos" style="font-size:0.55rem">↑ Abierta</div></div>
-<div class="excel-row"><div class="xc row-num">2</div><div class="xc gold" style="min-width:50px;font-weight:700">BTC</div><div class="xc orange">Crypto</div><div class="xc white">$9,145</div><div class="xc pos">+$3,891</div><div class="xc pos" style="font-size:0.55rem">↑ Abierta</div></div>
-<div class="excel-row"><div class="xc row-num">3</div><div class="xc gold" style="min-width:50px;font-weight:700">NVDA</div><div class="xc blue">Acción</div><div class="xc white">$8,720</div><div class="xc pos">+$2,979</div><div class="xc pos" style="font-size:0.55rem">↑ Abierta</div></div>
 </div>
 <!-- P2: PLATAFORMAS EN -->
 <div class="excel-body" x-show="selectedProduct===2">
@@ -508,18 +487,6 @@ Professional tools for<br><span class="text-accent italic">serious investors</sp
 <div class="kpi-blue"><div class="kpi-label">💰 DEPOSITED</div><div class="kpi-val">$140</div></div>
 <div class="kpi-red"><div class="kpi-label">📤 WITHDRAWALS</div><div class="kpi-val">$1,200</div></div>
 </div>
-<div style="color:#3a6050;font-size:0.55rem;font-weight:600;text-transform:uppercase;margin-bottom:3px">■ SUMMARY BY PLATFORM</div>
-<div class="excel-col-headers">
-<div class="col-header row-num">#</div>
-<div class="col-header" style="min-width:100px">PLATFORM</div>
-<div class="col-header">TYPE</div>
-<div class="col-header">BALANCE</div>
-<div class="col-header">% PORT.</div>
-<div class="col-header">STATUS</div>
-</div>
-<div class="excel-row"><div class="xc row-num">1</div><div class="xc white" style="min-width:100px;font-weight:700">FIDELITY</div><div class="xc muted">Brokerage</div><div class="xc gold">$535,579</div><div class="xc white">33.3%</div><div class="xc neg" style="font-size:0.55rem">⚠️ High</div></div>
-<div class="excel-row"><div class="xc row-num">2</div><div class="xc white" style="min-width:100px;font-weight:700">SOFI</div><div class="xc blue">Bank</div><div class="xc gold">$172,760</div><div class="xc white">10.8%</div><div class="xc pos" style="font-size:0.55rem">✅ Moderate</div></div>
-<div class="excel-row"><div class="xc row-num">3</div><div class="xc white" style="min-width:100px;font-weight:700">CAPITAL ONE</div><div class="xc cyan">Online Bank</div><div class="xc gold">$160,644</div><div class="xc white">10.0%</div><div class="xc pos" style="font-size:0.55rem">✅ Low</div></div>
 </div>
 <!-- P3: PORTAFOLIO EN -->
 <div class="excel-body" x-show="selectedProduct===3">
@@ -530,18 +497,6 @@ Professional tools for<br><span class="text-accent italic">serious investors</sp
 <div class="kpi-amber"><div class="kpi-label">💸 DIVIDENDS</div><div class="kpi-val">$317.50</div></div>
 <div class="kpi-red"><div class="kpi-label">💳 COMMISSIONS</div><div class="kpi-val">-$30.00</div></div>
 </div>
-<div style="color:#3a6050;font-size:0.55rem;font-weight:600;text-transform:uppercase;margin-bottom:3px">🏆 TOP 5 ASSETS</div>
-<div class="excel-col-headers">
-<div class="col-header row-num"></div>
-<div class="col-header" style="min-width:50px">TICKER</div>
-<div class="col-header">TYPE</div>
-<div class="col-header">INVESTED</div>
-<div class="col-header">REAL. G/P</div>
-<div class="col-header">STATUS</div>
-</div>
-<div class="excel-row"><div class="xc row-num">1</div><div class="xc gold" style="min-width:50px;font-weight:700">AAPL</div><div class="xc blue">Stock</div><div class="xc white">$3,582</div><div class="xc pos">+$728</div><div class="xc pos" style="font-size:0.55rem">↑ Open</div></div>
-<div class="excel-row"><div class="xc row-num">2</div><div class="xc gold" style="min-width:50px;font-weight:700">BTC</div><div class="xc orange">Crypto</div><div class="xc white">$9,145</div><div class="xc pos">+$3,891</div><div class="xc pos" style="font-size:0.55rem">↑ Open</div></div>
-<div class="excel-row"><div class="xc row-num">3</div><div class="xc gold" style="min-width:50px;font-weight:700">NVDA</div><div class="xc blue">Stock</div><div class="xc white">$8,720</div><div class="xc pos">+$2,979</div><div class="xc pos" style="font-size:0.55rem">↑ Open</div></div>
 </div>
 </div>
 </div>
