@@ -65,12 +65,11 @@ body { font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: v
 .delay-100 { animation-delay: 0.1s; }
 .delay-200 { animation-delay: 0.2s; }
 .delay-300 { animation-delay: 0.3s; }
-.delay-400 { animation-delay: 0.4s; }
-.btn-primary { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); color: var(--bg); font-weight: 600; padding: 1rem 2rem; border-radius: 8px; transition: all 0.3s ease; position: relative; overflow: hidden; border: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.btn-primary { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); color: var(--bg); font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 8px; transition: all 0.3s ease; position: relative; overflow: hidden; border: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
 .btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.5s ease; }
 .btn-primary:hover::before { left: 100%; }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4); }
-.btn-secondary { background: transparent; border: 1px solid var(--accent); color: var(--accent); font-weight: 500; padding: 1rem 2rem; border-radius: 8px; transition: all 0.3s ease; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.btn-secondary { background: transparent; border: 1px solid var(--accent); color: var(--accent); font-weight: 500; padding: 0.75rem 1.5rem; border-radius: 8px; transition: all 0.3s ease; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
 .btn-secondary:hover { background: rgba(212, 175, 55, 0.1); transform: translateY(-2px); }
 .product-card { background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-elevated) 100%); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: all 0.4s ease; }
 .product-card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.1); }
@@ -162,26 +161,22 @@ testimonials: [
 <!-- Navigation -->
 <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" :class="scrolled ? 'bg-bg/95 backdrop-blur-md border-b border-border' : 'bg-transparent'">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex items-center justify-between h-20">
+<div class="flex items-center justify-between h-16">
 <a href="#" class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center">
-<svg class="w-6 h-6 text-bg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<div class="w-9 h-9 rounded-lg bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center">
+<svg class="w-5 h-5 text-bg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 <path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 5-6"/>
 </svg>
 </div>
-<span class="font-display text-2xl text-fg">InvestTemplates</span>
+<span class="font-display text-xl text-fg">InvestTemplates</span>
 </a>
-<div class="hidden md:flex items-center gap-8">
-<a href="#templates" class="text-muted hover:text-fg transition-colors">Templates</a>
-<a href="#benefits" class="text-muted hover:text-fg transition-colors">Benefits</a>
-<a href="#testimonials" class="text-muted hover:text-fg transition-colors">Testimonials</a>
-<a href="#faq" class="text-muted hover:text-fg transition-colors">FAQ</a>
-</div>
-<div class="hidden md:flex items-center gap-4">
-<a href="#templates" class="btn-primary text-sm">View Templates</a>
+<div class="hidden md:flex items-center gap-6">
+<a href="#templates" class="text-muted hover:text-fg transition-colors text-sm">Templates</a>
+<a href="#benefits" class="text-muted hover:text-fg transition-colors text-sm">Benefits</a>
+<a href="#faq" class="text-muted hover:text-fg transition-colors text-sm">FAQ</a>
 </div>
 <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 text-fg">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
 <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
 </svg>
@@ -190,80 +185,46 @@ testimonials: [
 </div>
 </nav>
 
-<!-- Hero Section -->
-<section class="hero-bg relative min-h-screen flex items-center pt-20">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-<div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-<div class="text-center lg:text-left">
-<span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/30 text-accent text-sm font-medium mb-6">
-<span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
-Trusted by over 2,500 investors
-</span>
-<h1 class="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-fg leading-tight mb-6">
-Master your finances with<br><span class="text-accent italic">professional Excel</span><br>templates
+<!-- Compact Hero Section -->
+<section class="hero-bg relative pt-20 pb-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="text-center">
+<h1 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg leading-tight mb-3">
+Master your finances with<br><span class="text-accent italic">professional Excel</span>
 </h1>
-<p class="text-lg sm:text-xl text-muted max-w-xl mx-auto lg:mx-0 mb-8">
+<p class="text-base sm:text-lg text-muted max-w-2xl mx-auto">
 Investment tools built by financial analysts. Track your portfolio, analyze returns and make informed decisions.
 </p>
-<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-<a href="#templates" class="btn-primary text-lg">View Templates</a>
-<button @click="previewModal=true; selectedProduct=0; activeTab=0" class="btn-secondary text-lg gap-2">
-<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-</svg>
-Live Demo
-</button>
-</div>
-</div>
-<div class="relative">
-<div class="relative z-10 rounded-2xl shadow-2xl overflow-hidden" style="background:#080c14;border:1px solid #1a2a40">
-<div style="background:linear-gradient(90deg,#0d1528,#111e38);padding:8px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid #1a2a40">
-<div style="width:11px;height:11px;border-radius:50%;background:#ff5f57"></div>
-<div style="width:11px;height:11px;border-radius:50%;background:#ffbd2e"></div>
-<div style="width:11px;height:11px;border-radius:50%;background:#28ca41"></div>
-<span style="margin-left:10px;font-size:0.7rem;color:rgba(255,255,255,0.6);font-family:monospace">INVESTMENT_PORTFOLIO.xlsx</span>
-</div>
-<div style="padding:12px;background:#080c14">
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:10px">
-<div class="kpi-green"><div class="kpi-label">💰 CAPITAL INV.</div><div class="kpi-val">$38,917</div></div>
-<div class="kpi-cyan"><div class="kpi-label">💵 RECOVERED</div><div class="kpi-val">$4,739</div></div>
-<div class="kpi-amber"><div class="kpi-label">💸 DIVIDENDS</div><div class="kpi-val">$317.50</div></div>
-<div class="kpi-red"><div class="kpi-label">💳 COMMISSIONS</div><div class="kpi-val">-$30.00</div></div>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 </section>
 
-<!-- Products Section -->
-<section id="templates" class="py-24 relative">
+<!-- Products Section - FIRST THING USERS SEE -->
+<section id="templates" class="py-16 relative">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center mb-16">
-<span class="text-accent font-medium tracking-wider uppercase text-sm">Our Templates</span>
-<h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-fg mt-4 mb-6">
+<div class="text-center mb-10 reveal">
+<span class="text-accent font-medium tracking-wider uppercase text-xs">Our Templates</span>
+<h2 class="font-display text-2xl sm:text-3xl lg:text-4xl text-fg mt-3 mb-4">
 Professional tools for<br><span class="text-accent italic">serious investors</span>
 </h2>
 </div>
-<div class="flex flex-wrap justify-center gap-2 mb-12">
-<button @click="activeFilter='all'" :class="activeFilter==='all' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">All</button>
-<button @click="activeFilter='spanish'" :class="activeFilter==='spanish' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">🇪🇸 Español</button>
-<button @click="activeFilter='english'" :class="activeFilter==='english' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-6 py-2 rounded-full text-sm font-medium transition-all">🇺🇸 English</button>
+<div class="flex flex-wrap justify-center gap-2 mb-10 reveal">
+<button @click="activeFilter='all'" :class="activeFilter==='all' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-5 py-2 rounded-full text-sm font-medium transition-all">All</button>
+<button @click="activeFilter='spanish'" :class="activeFilter==='spanish' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-5 py-2 rounded-full text-sm font-medium transition-all">🇪🇸 Español</button>
+<button @click="activeFilter='english'" :class="activeFilter==='english' ? 'bg-accent text-bg' : 'bg-bg-card text-muted hover:text-fg border border-border'" class="px-5 py-2 rounded-full text-sm font-medium transition-all">🇺🇸 English</button>
 </div>
-<div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+<div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
 
 <!-- Product 1: PLATAFORMAS ES -->
 <article x-show="activeFilter==='all' || activeFilter==='spanish'" class="product-card reveal relative">
-<div class="absolute top-4 left-4 z-10"><span class="product-badge es">🇪🇸 Español</span></div>
-<div class="p-4 border-b border-border pt-14">
+<div class="absolute top-3 left-3 z-10"><span class="product-badge es">🇪🇸 Español</span></div>
+<div class="p-3 border-b border-border pt-12">
 <div class="excel-window">
 <div class="excel-titlebar">
 <div class="excel-titlebar-dot bg-red-400"></div>
 <div class="excel-titlebar-dot bg-yellow-400"></div>
 <div class="excel-titlebar-dot bg-green-400"></div>
-<span class="text-white text-xs ml-2 opacity-80 font-sans">PLATAFORMAS_NOE_PERSONAL.xlsx</span>
+<span class="text-white text-xs ml-2 opacity-80 font-sans">PLATAFORMAS_DE_INVERSIONES.xlsx</span>
 </div>
 <div class="excel-sheet-tabs">
 <div class="excel-tab active">🏠 Inicio</div>
@@ -271,25 +232,25 @@ Professional tools for<br><span class="text-accent italic">serious investors</sp
 <div class="excel-tab inactive">📋 Mov.</div>
 </div>
 <div class="excel-body">
-<div style="font-size:0.62rem;color:#4a6880;margin-bottom:6px;font-weight:600">PORTAFOLIO DE INVERSIONES · México</div>
-<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-bottom:4px">
-<div class="kpi-green"><div class="kpi-label">💼 VALOR TOTAL</div><div class="kpi-val" style="font-size:0.82rem">$1,607,053</div></div>
-<div class="kpi-cyan"><div class="kpi-label">📈 RENDIM.</div><div class="kpi-val" style="font-size:0.82rem">-$16,942</div></div>
-<div class="kpi-amber"><div class="kpi-label">📊 REND %</div><div class="kpi-val" style="font-size:0.82rem">-1.04%</div></div>
-<div class="kpi-blue"><div class="kpi-label">💰 APORTADO</div><div class="kpi-val" style="font-size:0.82rem">$140</div></div>
-<div class="kpi-red"><div class="kpi-label">📤 RETIROS</div><div class="kpi-val" style="font-size:0.82rem">$1,200</div></div>
+<div style="font-size:0.6rem;color:#4a6880;margin-bottom:5px;font-weight:600">PORTAFOLIO DE INVERSIONES · México · Dashboard en tiempo real</div>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-bottom:3px">
+<div class="kpi-green"><div class="kpi-label">💼 VALOR TOTAL</div><div class="kpi-val" style="font-size:0.75rem">$1,607,053</div></div>
+<div class="kpi-cyan"><div class="kpi-label">📈 RENDIM.</div><div class="kpi-val" style="font-size:0.75rem">-$16,942</div></div>
+<div class="kpi-amber"><div class="kpi-label">📊 REND %</div><div class="kpi-val" style="font-size:0.75rem">-1.04%</div></div>
+<div class="kpi-blue"><div class="kpi-label">💰 APORTADO</div><div class="kpi-val" style="font-size:0.75rem">$140</div></div>
+<div class="kpi-red"><div class="kpi-label">📤 RETIROS</div><div class="kpi-val" style="font-size:0.75rem">$1,200</div></div>
 </div>
 </div>
 </div>
 </div>
-<div class="p-6">
-<h3 class="font-display text-xl text-fg mb-2">PLATAFORMAS DE INVERSIONES</h3>
+<div class="p-5">
+<h3 class="font-display text-lg text-fg mb-2">PLATAFORMAS DE INVERSIONES</h3>
 <p class="text-muted text-sm mb-4">Gestiona todas tus cuentas de inversión en un solo lugar. Dashboard automático con hasta 30 plataformas.</p>
-<div class="flex items-center justify-between pt-4 border-t border-border">
-<div><span class="text-3xl font-bold text-fg">$8</span><span class="text-muted text-sm ml-1">USD</span></div>
+<div class="flex items-center justify-between pt-3 border-t border-border">
+<div><span class="text-2xl font-bold text-fg">$8</span><span class="text-muted text-xs ml-1">USD</span></div>
 <div class="flex gap-2">
-<button @click="previewModal=true; selectedProduct=0; activeTab=0" class="btn-secondary text-sm py-2 px-4">Preview</button>
-<a href="https://payhip.com/b/9UZ6a" target="_blank" class="btn-primary text-sm py-2 px-4">Buy Now</a>
+<button @click="previewModal=true; selectedProduct=0; activeTab=0" class="btn-secondary text-xs py-2 px-3">Preview</button>
+<a href="https://payhip.com/b/9UZ6a" target="_blank" class="btn-primary text-xs py-2 px-3">Buy Now</a>
 </div>
 </div>
 </div>
@@ -297,14 +258,14 @@ Professional tools for<br><span class="text-accent italic">serious investors</sp
 
 <!-- Product 2: PORTAFOLIO ES -->
 <article x-show="activeFilter==='all' || activeFilter==='spanish'" class="product-card reveal relative">
-<div class="absolute top-4 left-4 z-10"><span class="product-badge es">🇪🇸 Español</span></div>
-<div class="p-4 border-b border-border pt-14">
+<div class="absolute top-3 left-3 z-10"><span class="product-badge es">🇪🇸 Español</span></div>
+<div class="p-3 border-b border-border pt-12">
 <div class="excel-window">
 <div class="excel-titlebar">
 <div class="excel-titlebar-dot bg-red-400"></div>
 <div class="excel-titlebar-dot bg-yellow-400"></div>
 <div class="excel-titlebar-dot bg-green-400"></div>
-<span class="text-white text-xs ml-2 opacity-80 font-sans">PORTAFOLIO_DE_INVERSIONES_ESPAÑOL.xlsx</span>
+<span class="text-white text-xs ml-2 opacity-80 font-sans">PORTAFOLIO_DE_INVERSIONES.xlsx</span>
 </div>
 <div class="excel-sheet-tabs">
 <div class="excel-tab active">🏠 Inicio</div>
@@ -312,39 +273,39 @@ Professional tools for<br><span class="text-accent italic">serious investors</sp
 <div class="excel-tab inactive">📈 Análisis</div>
 </div>
 <div class="excel-body">
-<div style="font-size:0.62rem;color:#4a6880;margin-bottom:6px;font-weight:600">PORTAFOLIO DE INVERSIONES · Acciones · ETFs · Crypto</div>
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:4px">
-<div class="kpi-green"><div class="kpi-label">💰 CAPITAL INV.</div><div class="kpi-val" style="font-size:0.82rem">$38,917</div></div>
-<div class="kpi-cyan"><div class="kpi-label">💵 RECUPERADO</div><div class="kpi-val" style="font-size:0.82rem">$4,739</div></div>
-<div class="kpi-amber"><div class="kpi-label">💸 DIVIDENDOS</div><div class="kpi-val" style="font-size:0.82rem">$317.50</div></div>
-<div class="kpi-red"><div class="kpi-label">💳 COMISIONES</div><div class="kpi-val" style="font-size:0.82rem">-$30.00</div></div>
+<div style="font-size:0.6rem;color:#4a6880;margin-bottom:5px;font-weight:600">PORTAFOLIO DE INVERSIONES · Acciones · ETFs · Crypto</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:3px">
+<div class="kpi-green"><div class="kpi-label">💰 CAPITAL INV.</div><div class="kpi-val" style="font-size:0.75rem">$38,917</div></div>
+<div class="kpi-cyan"><div class="kpi-label">💵 RECUPERADO</div><div class="kpi-val" style="font-size:0.75rem">$4,739</div></div>
+<div class="kpi-amber"><div class="kpi-label">💸 DIVIDENDOS</div><div class="kpi-val" style="font-size:0.75rem">$317.50</div></div>
+<div class="kpi-red"><div class="kpi-label">💳 COMISIONES</div><div class="kpi-val" style="font-size:0.75rem">-$30.00</div></div>
 </div>
 </div>
 </div>
 </div>
-<div class="p-6">
-<h3 class="font-display text-xl text-fg mb-2">PORTAFOLIO DE INVERSIONES</h3>
+<div class="p-5">
+<h3 class="font-display text-lg text-fg mb-2">PORTAFOLIO DE INVERSIONES</h3>
 <p class="text-muted text-sm mb-4">Seguimiento completo de acciones, ETFs y criptomonedas. P&L automático y score de salud.</p>
-<div class="flex items-center justify-between pt-4 border-t border-border">
-<div><span class="text-3xl font-bold text-fg">$8</span><span class="text-muted text-sm ml-1">USD</span></div>
+<div class="flex items-center justify-between pt-3 border-t border-border">
+<div><span class="text-2xl font-bold text-fg">$8</span><span class="text-muted text-xs ml-1">USD</span></div>
 <div class="flex gap-2">
-<button @click="previewModal=true; selectedProduct=1; activeTab=0" class="btn-secondary text-sm py-2 px-4">Preview</button>
-<a href="https://payhip.com/b/cp3hy" target="_blank" class="btn-primary text-sm py-2 px-4">Buy Now</a>
+<button @click="previewModal=true; selectedProduct=1; activeTab=0" class="btn-secondary text-xs py-2 px-3">Preview</button>
+<a href="https://payhip.com/b/cp3hy" target="_blank" class="btn-primary text-xs py-2 px-3">Buy Now</a>
 </div>
 </div>
 </div>
 </article>
 
-<!-- Product 3: PLATAFORMAS EN -->
+<!-- Product 3: PLATAFORMAS EN - ✅ LINK CORREGIDO -->
 <article x-show="activeFilter==='all' || activeFilter==='english'" class="product-card reveal relative">
-<div class="absolute top-4 left-4 z-10"><span class="product-badge en">🇺🇸 English</span></div>
-<div class="p-4 border-b border-border pt-14">
+<div class="absolute top-3 left-3 z-10"><span class="product-badge en">🇺🇸 English</span></div>
+<div class="p-3 border-b border-border pt-12">
 <div class="excel-window">
 <div class="excel-titlebar">
 <div class="excel-titlebar-dot bg-red-400"></div>
 <div class="excel-titlebar-dot bg-yellow-400"></div>
 <div class="excel-titlebar-dot bg-green-400"></div>
-<span class="text-white text-xs ml-2 opacity-80 font-sans">PLATAFORMAS_NOE_PERSONAL_EN_FINAL2.xlsx</span>
+<span class="text-white text-xs ml-2 opacity-80 font-sans">INVESTMENT_PLATFORMS_TRACKER.xlsx</span>
 </div>
 <div class="excel-sheet-tabs">
 <div class="excel-tab active">🏠 Home</div>
@@ -352,40 +313,40 @@ Professional tools for<br><span class="text-accent italic">serious investors</sp
 <div class="excel-tab inactive">📋 Transactions</div>
 </div>
 <div class="excel-body">
-<div style="font-size:0.62rem;color:#4a6880;margin-bottom:6px;font-weight:600">INVESTMENT PORTFOLIO · Mexico · Real-time Dashboard</div>
-<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-bottom:4px">
-<div class="kpi-green"><div class="kpi-label">💼 TOTAL VALUE</div><div class="kpi-val" style="font-size:0.82rem">$1,607,053</div></div>
-<div class="kpi-cyan"><div class="kpi-label">📈 RETURNS</div><div class="kpi-val" style="font-size:0.82rem">-$16,942</div></div>
-<div class="kpi-amber"><div class="kpi-label">📊 RETURN %</div><div class="kpi-val" style="font-size:0.82rem">-1.04%</div></div>
-<div class="kpi-blue"><div class="kpi-label">💰 DEPOSITED</div><div class="kpi-val" style="font-size:0.82rem">$140</div></div>
-<div class="kpi-red"><div class="kpi-label">📤 WITHDRAWALS</div><div class="kpi-val" style="font-size:0.82rem">$1,200</div></div>
+<div style="font-size:0.6rem;color:#4a6880;margin-bottom:5px;font-weight:600">INVESTMENT PORTFOLIO · Mexico · Real-time Dashboard</div>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-bottom:3px">
+<div class="kpi-green"><div class="kpi-label">💼 TOTAL VALUE</div><div class="kpi-val" style="font-size:0.75rem">$1,607,053</div></div>
+<div class="kpi-cyan"><div class="kpi-label">📈 RETURNS</div><div class="kpi-val" style="font-size:0.75rem">-$16,942</div></div>
+<div class="kpi-amber"><div class="kpi-label">📊 RETURN %</div><div class="kpi-val" style="font-size:0.75rem">-1.04%</div></div>
+<div class="kpi-blue"><div class="kpi-label">💰 DEPOSITED</div><div class="kpi-val" style="font-size:0.75rem">$140</div></div>
+<div class="kpi-red"><div class="kpi-label">📤 WITHDRAWALS</div><div class="kpi-val" style="font-size:0.75rem">$1,200</div></div>
 </div>
 </div>
 </div>
 </div>
-<div class="p-6">
-<h3 class="font-display text-xl text-fg mb-2">INVESTMENT PLATFORMS TRACKER</h3>
+<div class="p-5">
+<h3 class="font-display text-lg text-fg mb-2">INVESTMENT PLATFORMS TRACKER</h3>
 <p class="text-muted text-sm mb-4">Manage all your investment accounts in one place. Consolidated dashboard with up to 30 platforms.</p>
-<div class="flex items-center justify-between pt-4 border-t border-border">
-<div><span class="text-3xl font-bold text-fg">$8</span><span class="text-muted text-sm ml-1">USD</span></div>
+<div class="flex items-center justify-between pt-3 border-t border-border">
+<div><span class="text-2xl font-bold text-fg">$8</span><span class="text-muted text-xs ml-1">USD</span></div>
 <div class="flex gap-2">
-<button @click="previewModal=true; selectedProduct=2; activeTab=0" class="btn-secondary text-sm py-2 px-4">Preview</button>
-<a href="https://payhip.com/b/zW8Ic" target="_blank" class="btn-primary text-sm py-2 px-4">Buy Now</a>
+<button @click="previewModal=true; selectedProduct=2; activeTab=0" class="btn-secondary text-xs py-2 px-3">Preview</button>
+<a href="https://payhip.com/b/EYk2g" target="_blank" class="btn-primary text-xs py-2 px-3">Buy Now</a>
 </div>
 </div>
 </div>
 </article>
 
-<!-- Product 4: PORTAFOLIO EN -->
+<!-- Product 4: PORTAFOLIO EN - ✅ LINK CORREGIDO -->
 <article x-show="activeFilter==='all' || activeFilter==='english'" class="product-card reveal relative">
-<div class="absolute top-4 left-4 z-10"><span class="product-badge en">🇺🇸 English</span></div>
-<div class="p-4 border-b border-border pt-14">
+<div class="absolute top-3 left-3 z-10"><span class="product-badge en">🇺🇸 English</span></div>
+<div class="p-3 border-b border-border pt-12">
 <div class="excel-window">
 <div class="excel-titlebar">
 <div class="excel-titlebar-dot bg-red-400"></div>
 <div class="excel-titlebar-dot bg-yellow-400"></div>
 <div class="excel-titlebar-dot bg-green-400"></div>
-<span class="text-white text-xs ml-2 opacity-80 font-sans">PORTAFOLIO_DE_INVERSIONES_EN_FIXED_CHARTS.xlsx</span>
+<span class="text-white text-xs ml-2 opacity-80 font-sans">INVESTMENT_PORTFOLIO.xlsx</span>
 </div>
 <div class="excel-sheet-tabs">
 <div class="excel-tab active">🏠 Home</div>
@@ -393,24 +354,24 @@ Professional tools for<br><span class="text-accent italic">serious investors</sp
 <div class="excel-tab inactive">📈 Analysis</div>
 </div>
 <div class="excel-body">
-<div style="font-size:0.62rem;color:#4a6880;margin-bottom:6px;font-weight:600">INVESTMENT PORTFOLIO · Stocks · ETFs · Crypto</div>
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:4px">
-<div class="kpi-green"><div class="kpi-label">💰 CAPITAL INV.</div><div class="kpi-val" style="font-size:0.82rem">$38,917</div></div>
-<div class="kpi-cyan"><div class="kpi-label">💵 RECOVERED</div><div class="kpi-val" style="font-size:0.82rem">$4,739</div></div>
-<div class="kpi-amber"><div class="kpi-label">💸 DIVIDENDS</div><div class="kpi-val" style="font-size:0.82rem">$317.50</div></div>
-<div class="kpi-red"><div class="kpi-label">💳 COMMISSIONS</div><div class="kpi-val" style="font-size:0.82rem">-$30.00</div></div>
+<div style="font-size:0.6rem;color:#4a6880;margin-bottom:5px;font-weight:600">INVESTMENT PORTFOLIO · Stocks · ETFs · Crypto</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:3px">
+<div class="kpi-green"><div class="kpi-label">💰 CAPITAL INV.</div><div class="kpi-val" style="font-size:0.75rem">$38,917</div></div>
+<div class="kpi-cyan"><div class="kpi-label">💵 RECOVERED</div><div class="kpi-val" style="font-size:0.75rem">$4,739</div></div>
+<div class="kpi-amber"><div class="kpi-label">💸 DIVIDENDS</div><div class="kpi-val" style="font-size:0.75rem">$317.50</div></div>
+<div class="kpi-red"><div class="kpi-label">💳 COMMISSIONS</div><div class="kpi-val" style="font-size:0.75rem">-$30.00</div></div>
 </div>
 </div>
 </div>
 </div>
-<div class="p-6">
-<h3 class="font-display text-xl text-fg mb-2">INVESTMENT PORTFOLIO</h3>
+<div class="p-5">
+<h3 class="font-display text-lg text-fg mb-2">INVESTMENT PORTFOLIO</h3>
 <p class="text-muted text-sm mb-4">Full tracking for stocks, ETFs and crypto. Automatic P&L per asset and portfolio health score.</p>
-<div class="flex items-center justify-between pt-4 border-t border-border">
-<div><span class="text-3xl font-bold text-fg">$8</span><span class="text-muted text-sm ml-1">USD</span></div>
+<div class="flex items-center justify-between pt-3 border-t border-border">
+<div><span class="text-2xl font-bold text-fg">$8</span><span class="text-muted text-xs ml-1">USD</span></div>
 <div class="flex gap-2">
-<button @click="previewModal=true; selectedProduct=3; activeTab=0" class="btn-secondary text-sm py-2 px-4">Preview</button>
-<a href="https://payhip.com/b/EYk2g" target="_blank" class="btn-primary text-sm py-2 px-4">Buy Now</a>
+<button @click="previewModal=true; selectedProduct=3; activeTab=0" class="btn-secondary text-xs py-2 px-3">Preview</button>
+<a href="https://payhip.com/b/zW8Ic" target="_blank" class="btn-primary text-xs py-2 px-3">Buy Now</a>
 </div>
 </div>
 </div>
@@ -420,50 +381,70 @@ Professional tools for<br><span class="text-accent italic">serious investors</sp
 </div>
 </section>
 
-<!-- ==================== PREVIEW MODAL - CORREGIDO ==================== -->
-<div x-show="previewModal" 
-     x-transition:enter="transition ease-out duration-300"
-     x-transition:enter-start="opacity-0"
-     x-transition:enter-end="opacity-100"
-     x-transition:leave="transition ease-in duration-200"
-     x-transition:leave-start="opacity-100"
-     x-transition:leave-end="opacity-0"
-     class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop" 
-     @click.self="previewModal=false"
-     style="display: none;">
-     
+<!-- Benefits Section -->
+<section id="benefits" class="py-16 bg-bg-elevated relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div class="reveal">
+<span class="text-accent font-medium tracking-wider uppercase text-xs">Why choose us?</span>
+<h2 class="font-display text-2xl sm:text-3xl lg:text-4xl text-fg mt-3 mb-4">Stop wasting time on<br><span class="text-accent italic">mediocre spreadsheets</span></h2>
+<p class="text-muted text-base mb-6">Our templates are built by financial analysts with over 10 years of experience.</p>
+<div class="space-y-4">
+<div class="flex gap-3"><div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 text-xl">⚡</div><div><h3 class="font-semibold text-fg text-base mb-1">Ready to use in minutes</h3><p class="text-muted text-sm">No complex setup. Download, open and start managing.</p></div></div>
+<div class="flex gap-3"><div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 text-xl">🛡️</div><div><h3 class="font-semibold text-fg text-base mb-1">Audited formulas</h3><p class="text-muted text-sm">Every calculation verified by accountants. 100% accuracy.</p></div></div>
+<div class="flex gap-3"><div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 text-xl">🔄</div><div><h3 class="font-semibold text-fg text-base mb-1">Free lifetime updates</h3><p class="text-muted text-sm">Receive improvements at no extra cost, forever.</p></div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="py-16 relative">
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-10 reveal">
+<span class="text-accent font-medium tracking-wider uppercase text-xs">FAQ</span>
+<h2 class="font-display text-2xl sm:text-3xl lg:text-4xl text-fg mt-3 mb-4">Frequently asked<br><span class="text-accent italic">questions</span></h2>
+</div>
+<div class="space-y-3 reveal" x-data="{ faqs: [
+{ q: 'Do I need advanced Excel skills?', a: 'No, our templates are designed for all levels. We include detailed guides and tutorials.' },
+{ q: 'Do the templates work in Google Sheets?', a: 'Yes, compatible with Google Sheets, Excel 365, Excel 2019+ and Numbers.' },
+{ q: 'Do I get future updates?', a: 'Yes, all updates are free for life. You will receive an email with the download link.' },
+{ q: 'Can I get a refund?', a: 'We offer a 30-day money-back guarantee. No questions asked.' }
+] }">
+<template x-for="(faq, index) in faqs" :key="index">
+<div class="faq-item">
+<button @click="openFaq = openFaq === index ? null : index" class="w-full flex items-center justify-between py-4 text-left"><span class="text-fg font-medium pr-4 text-sm" x-text="faq.q"></span><svg class="w-4 h-4 text-accent flex-shrink-0 transition-transform" :class="openFaq === index ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
+<div x-show="openFaq === index" class="pb-4"><p class="text-muted leading-relaxed text-sm" x-text="faq.a"></p></div>
+</div>
+</template>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="py-10 border-t border-border">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<p class="text-muted text-sm">© 2026 InvestTemplates. All rights reserved.</p>
+</div>
+</footer>
+
+<!-- ==================== PREVIEW MODAL ==================== -->
+<div x-show="previewModal" x-transition class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop" @click.self="previewModal=false" style="display:none">
 <div class="bg-bg-card border border-border rounded-2xl w-full max-w-5xl max-h-[90vh] overflow-auto">
-<!-- Modal Header -->
-<div class="flex items-center justify-between p-5 border-b border-border sticky top-0 bg-bg-card z-10">
+<div class="flex items-center justify-between p-4 border-b border-border sticky top-0 bg-bg-card z-10">
 <div>
-<h3 class="font-display text-xl text-fg" x-text="selectedProduct===0 ? 'PLATAFORMAS DE INVERSIONES' : selectedProduct===1 ? 'PORTAFOLIO DE INVERSIONES' : selectedProduct===2 ? 'INVESTMENT PLATFORMS TRACKER' : 'INVESTMENT PORTFOLIO'"></h3>
-<div class="flex items-center gap-3 mt-1">
+<h3 class="font-display text-lg text-fg" x-text="selectedProduct===0 ? 'PLATAFORMAS DE INVERSIONES' : selectedProduct===1 ? 'PORTAFOLIO DE INVERSIONES' : selectedProduct===2 ? 'INVESTMENT PLATFORMS TRACKER' : 'INVESTMENT PORTFOLIO'"></h3>
+<div class="flex items-center gap-2 mt-1">
 <span x-show="selectedProduct<=1" class="product-badge es">🇪🇸 Español</span>
 <span x-show="selectedProduct>=2" class="product-badge en">🇺🇸 English</span>
 </div>
 </div>
 <button @click="previewModal=false" class="p-2 text-muted hover:text-fg transition-colors rounded-lg hover:bg-border">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-</svg>
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
 </button>
 </div>
-
-<!-- Sheet Tabs Navigation -->
-<div class="px-5 pt-4 pb-2 border-b border-border">
-<p class="text-xs text-muted mb-2 uppercase tracking-wider">Template Sheets:</p>
-<div class="flex flex-wrap gap-2">
-<template x-for="(tab, i) in (selectedProduct<=1 ? ['🏠 Inicio','💰 Saldos','📋 Movimientos','📈 Análisis','🏅 Score','🎯 Objetivos'] : ['🏠 Home','💰 Balances','📋 Transactions','📈 Analysis','🏅 Score','🎯 Goals'])" :key="i">
-<button @click="activeTab=i" 
-        :class="activeTab===i ? 'bg-accent text-bg font-semibold' : 'bg-bg-elevated text-muted border border-border hover:text-fg'" 
-        class="px-3 py-1.5 rounded-lg text-xs transition-all" 
-        x-text="tab"></button>
-</template>
-</div>
-</div>
-
-<!-- Excel Preview Content -->
-<div class="p-5">
+<div class="p-4">
 <div class="excel-window">
 <div class="excel-titlebar">
 <div class="excel-titlebar-dot bg-red-400"></div>
@@ -471,41 +452,40 @@ Professional tools for<br><span class="text-accent italic">serious investors</sp
 <div class="excel-titlebar-dot bg-green-400"></div>
 <span class="text-white text-xs ml-3 opacity-80 font-sans" x-text="selectedProduct===0 ? 'PLATAFORMAS_DE_INVERSIONES.xlsx' : selectedProduct===1 ? 'PORTAFOLIO_DE_INVERSIONES.xlsx' : selectedProduct===2 ? 'INVESTMENT_PLATFORMS_TRACKER.xlsx' : 'INVESTMENT_PORTFOLIO.xlsx'"></span>
 </div>
-
+<div class="excel-body">
 <!-- P0: PLATAFORMAS ES -->
 <div class="excel-body" x-show="selectedProduct===0">
-<div style="color:#3a6878;font-size:0.72rem;font-weight:700;margin-bottom:10px">■ PORTAFOLIO DE INVERSIONES · México · Dashboard en tiempo real</div>
-<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:12px">
+<div style="color:#3a6878;font-size:0.7rem;font-weight:700;margin-bottom:8px">■ PORTAFOLIO DE INVERSIONES · México · Dashboard en tiempo real</div>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-bottom:10px">
 <div class="kpi-green"><div class="kpi-label">💼 VALOR TOTAL</div><div class="kpi-val">$1,607,053</div></div>
 <div class="kpi-cyan"><div class="kpi-label">📈 RENDIMIENTOS</div><div class="kpi-val">-$16,942</div></div>
 <div class="kpi-amber"><div class="kpi-label">📊 REND %</div><div class="kpi-val">-1.04%</div></div>
 <div class="kpi-blue"><div class="kpi-label">💰 APORTADO</div><div class="kpi-val">$140</div></div>
 <div class="kpi-red"><div class="kpi-label">📤 RETIROS</div><div class="kpi-val">$1,200</div></div>
 </div>
-<div style="color:#3a6050;font-size:0.58rem;font-weight:600;text-transform:uppercase;margin-bottom:4px">■ RESUMEN POR PLATAFORMA</div>
+<div style="color:#3a6050;font-size:0.55rem;font-weight:600;text-transform:uppercase;margin-bottom:3px">■ RESUMEN POR PLATAFORMA</div>
 <div class="excel-col-headers">
 <div class="col-header row-num">#</div>
-<div class="col-header" style="min-width:120px">PLATAFORMA</div>
+<div class="col-header" style="min-width:100px">PLATAFORMA</div>
 <div class="col-header">TIPO</div>
 <div class="col-header">SALDO</div>
 <div class="col-header">% PORT.</div>
 <div class="col-header">ESTATUS</div>
 </div>
-<div class="excel-row"><div class="xc row-num">1</div><div class="xc white" style="min-width:120px;font-weight:700">GBM</div><div class="xc muted">Bolsa/ETFs</div><div class="xc gold">$535,579</div><div class="xc white">33.3%</div><div class="xc neg" style="font-size:0.57rem">⚠️ Alta</div></div>
-<div class="excel-row"><div class="xc row-num">2</div><div class="xc white" style="min-width:120px;font-weight:700">NU BANK</div><div class="xc blue">Banco</div><div class="xc gold">$172,760</div><div class="xc white">10.8%</div><div class="xc pos" style="font-size:0.57rem">✅ Moderada</div></div>
-<div class="excel-row"><div class="xc row-num">3</div><div class="xc white" style="min-width:120px;font-weight:700">STORI</div><div class="xc cyan">SOFIPO</div><div class="xc gold">$160,644</div><div class="xc white">10.0%</div><div class="xc pos" style="font-size:0.57rem">✅ Baja</div></div>
+<div class="excel-row"><div class="xc row-num">1</div><div class="xc white" style="min-width:100px;font-weight:700">GBM</div><div class="xc muted">Bolsa/ETFs</div><div class="xc gold">$535,579</div><div class="xc white">33.3%</div><div class="xc neg" style="font-size:0.55rem">⚠️ Alta</div></div>
+<div class="excel-row"><div class="xc row-num">2</div><div class="xc white" style="min-width:100px;font-weight:700">NU BANK</div><div class="xc blue">Banco</div><div class="xc gold">$172,760</div><div class="xc white">10.8%</div><div class="xc pos" style="font-size:0.55rem">✅ Moderada</div></div>
+<div class="excel-row"><div class="xc row-num">3</div><div class="xc white" style="min-width:100px;font-weight:700">STORI</div><div class="xc cyan">SOFIPO</div><div class="xc gold">$160,644</div><div class="xc white">10.0%</div><div class="xc pos" style="font-size:0.55rem">✅ Baja</div></div>
 </div>
-
 <!-- P1: PORTAFOLIO ES -->
 <div class="excel-body" x-show="selectedProduct===1">
-<div style="color:#3a6878;font-size:0.72rem;font-weight:700;margin-bottom:10px">■ PORTAFOLIO DE INVERSIONES · Acciones · ETFs · Crypto</div>
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:12px">
+<div style="color:#3a6878;font-size:0.7rem;font-weight:700;margin-bottom:8px">■ PORTAFOLIO DE INVERSIONES · Acciones · ETFs · Crypto</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:10px">
 <div class="kpi-green"><div class="kpi-label">💰 CAPITAL INV.</div><div class="kpi-val">$38,917</div></div>
 <div class="kpi-cyan"><div class="kpi-label">💵 RECUPERADO</div><div class="kpi-val">$4,739</div></div>
 <div class="kpi-amber"><div class="kpi-label">💸 DIVIDENDOS</div><div class="kpi-val">$317.50</div></div>
 <div class="kpi-red"><div class="kpi-label">💳 COMISIONES</div><div class="kpi-val">-$30.00</div></div>
 </div>
-<div style="color:#3a6050;font-size:0.58rem;font-weight:600;text-transform:uppercase;margin-bottom:4px">🏆 TOP 5 ACTIVOS</div>
+<div style="color:#3a6050;font-size:0.55rem;font-weight:600;text-transform:uppercase;margin-bottom:3px">🏆 TOP 5 ACTIVOS</div>
 <div class="excel-col-headers">
 <div class="col-header row-num"></div>
 <div class="col-header" style="min-width:50px">TICKER</div>
@@ -514,45 +494,43 @@ Professional tools for<br><span class="text-accent italic">serious investors</sp
 <div class="col-header">G/P REAL.</div>
 <div class="col-header">ESTADO</div>
 </div>
-<div class="excel-row"><div class="xc row-num">1</div><div class="xc gold" style="min-width:50px;font-weight:700">AAPL</div><div class="xc blue">Acción</div><div class="xc white">$3,582</div><div class="xc pos">+$728</div><div class="xc pos" style="font-size:0.57rem">↑ Abierta</div></div>
-<div class="excel-row"><div class="xc row-num">2</div><div class="xc gold" style="min-width:50px;font-weight:700">BTC</div><div class="xc orange">Crypto</div><div class="xc white">$9,145</div><div class="xc pos">+$3,891</div><div class="xc pos" style="font-size:0.57rem">↑ Abierta</div></div>
-<div class="excel-row"><div class="xc row-num">3</div><div class="xc gold" style="min-width:50px;font-weight:700">NVDA</div><div class="xc blue">Acción</div><div class="xc white">$8,720</div><div class="xc pos">+$2,979</div><div class="xc pos" style="font-size:0.57rem">↑ Abierta</div></div>
+<div class="excel-row"><div class="xc row-num">1</div><div class="xc gold" style="min-width:50px;font-weight:700">AAPL</div><div class="xc blue">Acción</div><div class="xc white">$3,582</div><div class="xc pos">+$728</div><div class="xc pos" style="font-size:0.55rem">↑ Abierta</div></div>
+<div class="excel-row"><div class="xc row-num">2</div><div class="xc gold" style="min-width:50px;font-weight:700">BTC</div><div class="xc orange">Crypto</div><div class="xc white">$9,145</div><div class="xc pos">+$3,891</div><div class="xc pos" style="font-size:0.55rem">↑ Abierta</div></div>
+<div class="excel-row"><div class="xc row-num">3</div><div class="xc gold" style="min-width:50px;font-weight:700">NVDA</div><div class="xc blue">Acción</div><div class="xc white">$8,720</div><div class="xc pos">+$2,979</div><div class="xc pos" style="font-size:0.55rem">↑ Abierta</div></div>
 </div>
-
 <!-- P2: PLATAFORMAS EN -->
 <div class="excel-body" x-show="selectedProduct===2">
-<div style="color:#3a6878;font-size:0.72rem;font-weight:700;margin-bottom:10px">■ INVESTMENT PORTFOLIO · Mexico · Real-time Dashboard</div>
-<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:12px">
+<div style="color:#3a6878;font-size:0.7rem;font-weight:700;margin-bottom:8px">■ INVESTMENT PORTFOLIO · Mexico · Real-time Dashboard</div>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-bottom:10px">
 <div class="kpi-green"><div class="kpi-label">💼 TOTAL VALUE</div><div class="kpi-val">$1,607,053</div></div>
 <div class="kpi-cyan"><div class="kpi-label">📈 RETURNS</div><div class="kpi-val">-$16,942</div></div>
 <div class="kpi-amber"><div class="kpi-label">📊 RETURN %</div><div class="kpi-val">-1.04%</div></div>
 <div class="kpi-blue"><div class="kpi-label">💰 DEPOSITED</div><div class="kpi-val">$140</div></div>
 <div class="kpi-red"><div class="kpi-label">📤 WITHDRAWALS</div><div class="kpi-val">$1,200</div></div>
 </div>
-<div style="color:#3a6050;font-size:0.58rem;font-weight:600;text-transform:uppercase;margin-bottom:4px">■ SUMMARY BY PLATFORM</div>
+<div style="color:#3a6050;font-size:0.55rem;font-weight:600;text-transform:uppercase;margin-bottom:3px">■ SUMMARY BY PLATFORM</div>
 <div class="excel-col-headers">
 <div class="col-header row-num">#</div>
-<div class="col-header" style="min-width:120px">PLATFORM</div>
+<div class="col-header" style="min-width:100px">PLATFORM</div>
 <div class="col-header">TYPE</div>
 <div class="col-header">BALANCE</div>
 <div class="col-header">% PORT.</div>
 <div class="col-header">STATUS</div>
 </div>
-<div class="excel-row"><div class="xc row-num">1</div><div class="xc white" style="min-width:120px;font-weight:700">FIDELITY</div><div class="xc muted">Brokerage</div><div class="xc gold">$535,579</div><div class="xc white">33.3%</div><div class="xc neg" style="font-size:0.57rem">⚠️ High</div></div>
-<div class="excel-row"><div class="xc row-num">2</div><div class="xc white" style="min-width:120px;font-weight:700">SOFI</div><div class="xc blue">Bank</div><div class="xc gold">$172,760</div><div class="xc white">10.8%</div><div class="xc pos" style="font-size:0.57rem">✅ Moderate</div></div>
-<div class="excel-row"><div class="xc row-num">3</div><div class="xc white" style="min-width:120px;font-weight:700">CAPITAL ONE</div><div class="xc cyan">Online Bank</div><div class="xc gold">$160,644</div><div class="xc white">10.0%</div><div class="xc pos" style="font-size:0.57rem">✅ Low</div></div>
+<div class="excel-row"><div class="xc row-num">1</div><div class="xc white" style="min-width:100px;font-weight:700">FIDELITY</div><div class="xc muted">Brokerage</div><div class="xc gold">$535,579</div><div class="xc white">33.3%</div><div class="xc neg" style="font-size:0.55rem">⚠️ High</div></div>
+<div class="excel-row"><div class="xc row-num">2</div><div class="xc white" style="min-width:100px;font-weight:700">SOFI</div><div class="xc blue">Bank</div><div class="xc gold">$172,760</div><div class="xc white">10.8%</div><div class="xc pos" style="font-size:0.55rem">✅ Moderate</div></div>
+<div class="excel-row"><div class="xc row-num">3</div><div class="xc white" style="min-width:100px;font-weight:700">CAPITAL ONE</div><div class="xc cyan">Online Bank</div><div class="xc gold">$160,644</div><div class="xc white">10.0%</div><div class="xc pos" style="font-size:0.55rem">✅ Low</div></div>
 </div>
-
 <!-- P3: PORTAFOLIO EN -->
 <div class="excel-body" x-show="selectedProduct===3">
-<div style="color:#3a6878;font-size:0.72rem;font-weight:700;margin-bottom:10px">■ INVESTMENT PORTFOLIO · Stocks · ETFs · Crypto</div>
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:12px">
+<div style="color:#3a6878;font-size:0.7rem;font-weight:700;margin-bottom:8px">■ INVESTMENT PORTFOLIO · Stocks · ETFs · Crypto</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:10px">
 <div class="kpi-green"><div class="kpi-label">💰 CAPITAL INV.</div><div class="kpi-val">$38,917</div></div>
 <div class="kpi-cyan"><div class="kpi-label">💵 RECOVERED</div><div class="kpi-val">$4,739</div></div>
 <div class="kpi-amber"><div class="kpi-label">💸 DIVIDENDS</div><div class="kpi-val">$317.50</div></div>
 <div class="kpi-red"><div class="kpi-label">💳 COMMISSIONS</div><div class="kpi-val">-$30.00</div></div>
 </div>
-<div style="color:#3a6050;font-size:0.58rem;font-weight:600;text-transform:uppercase;margin-bottom:4px">🏆 TOP 5 ASSETS</div>
+<div style="color:#3a6050;font-size:0.55rem;font-weight:600;text-transform:uppercase;margin-bottom:3px">🏆 TOP 5 ASSETS</div>
 <div class="excel-col-headers">
 <div class="col-header row-num"></div>
 <div class="col-header" style="min-width:50px">TICKER</div>
@@ -561,33 +539,24 @@ Professional tools for<br><span class="text-accent italic">serious investors</sp
 <div class="col-header">REAL. G/P</div>
 <div class="col-header">STATUS</div>
 </div>
-<div class="excel-row"><div class="xc row-num">1</div><div class="xc gold" style="min-width:50px;font-weight:700">AAPL</div><div class="xc blue">Stock</div><div class="xc white">$3,582</div><div class="xc pos">+$728</div><div class="xc pos" style="font-size:0.57rem">↑ Open</div></div>
-<div class="excel-row"><div class="xc row-num">2</div><div class="xc gold" style="min-width:50px;font-weight:700">BTC</div><div class="xc orange">Crypto</div><div class="xc white">$9,145</div><div class="xc pos">+$3,891</div><div class="xc pos" style="font-size:0.57rem">↑ Open</div></div>
-<div class="excel-row"><div class="xc row-num">3</div><div class="xc gold" style="min-width:50px;font-weight:700">NVDA</div><div class="xc blue">Stock</div><div class="xc white">$8,720</div><div class="xc pos">+$2,979</div><div class="xc pos" style="font-size:0.57rem">↑ Open</div></div>
-</div>
-
+<div class="excel-row"><div class="xc row-num">1</div><div class="xc gold" style="min-width:50px;font-weight:700">AAPL</div><div class="xc blue">Stock</div><div class="xc white">$3,582</div><div class="xc pos">+$728</div><div class="xc pos" style="font-size:0.55rem">↑ Open</div></div>
+<div class="excel-row"><div class="xc row-num">2</div><div class="xc gold" style="min-width:50px;font-weight:700">BTC</div><div class="xc orange">Crypto</div><div class="xc white">$9,145</div><div class="xc pos">+$3,891</div><div class="xc pos" style="font-size:0.55rem">↑ Open</div></div>
+<div class="excel-row"><div class="xc row-num">3</div><div class="xc gold" style="min-width:50px;font-weight:700">NVDA</div><div class="xc blue">Stock</div><div class="xc white">$8,720</div><div class="xc pos">+$2,979</div><div class="xc pos" style="font-size:0.55rem">↑ Open</div></div>
 </div>
 </div>
-
-<!-- Modal Footer -->
-<div class="p-5 border-t border-border flex items-center justify-between">
-<div class="text-sm text-muted">
+</div>
+</div>
+<div class="p-4 border-t border-border flex items-center justify-between">
+<div class="text-xs text-muted">
 <span x-text="selectedProduct<=1 ? '6 hojas · 2,000 registros · Filtros dinámicos' : '6 sheets · 2,000 records · Dynamic filters'"></span>
 </div>
-<div class="flex gap-3">
-<button @click="previewModal=false" class="btn-secondary py-2 px-4 text-sm">Close</button>
-<a href="#templates" @click="previewModal=false" class="btn-primary py-2 px-4 text-sm">Get Template — $8 USD</a>
+<div class="flex gap-2">
+<button @click="previewModal=false" class="btn-secondary py-2 px-4 text-xs">Close</button>
+<a href="#templates" @click="previewModal=false" class="btn-primary py-2 px-4 text-xs">Get Template — $8 USD</a>
 </div>
 </div>
 </div>
 </div>
-
-<!-- Footer -->
-<footer class="py-12 border-t border-border">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-<p class="text-muted text-sm">© 2026 InvestTemplates. All rights reserved.</p>
-</div>
-</footer>
 
 <script>
 const revealElements = document.querySelectorAll('.reveal');
