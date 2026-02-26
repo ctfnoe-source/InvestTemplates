@@ -49,6 +49,8 @@
         .product-badge { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.2rem 0.5rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 500; }
         .product-badge.es { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
         .product-badge.en { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+        .feature-check { display: flex; align-items: center; gap: 0.5rem; font-size: 0.7rem; color: #4b5563; margin-bottom: 0.25rem; }
+        .feature-check svg { width: 0.9rem; height: 0.9rem; color: #22c55e; flex-shrink: 0; }
     </style>
 </head>
 <body class="font-body antialiased" x-data="{ 
@@ -67,7 +69,7 @@
         { name: 'Ana García', role: 'Consultora Financiera', avatar: 'AG', content: 'Recomiendo estas plantillas a todos mis clientes. El nivel de detalle es increíble.', lang: 'es' }
     ]
 }" @scroll.window="scrolled = window.scrollY > 30">
-    <!-- Navegación aún más compacta -->
+    <!-- Navegación compacta -->
     <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" :class="scrolled ? 'glass border-b border-neutral-200/50' : 'bg-transparent'">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-14">
@@ -94,7 +96,7 @@
                 </button>
             </div>
         </div>
-        <!-- Menú móvil compacto -->
+        <!-- Menú móvil -->
         <div x-show="mobileMenuOpen" x-transition class="glass fixed top-14 right-4 left-4 rounded-lg p-4 flex flex-col gap-3 md:hidden shadow-lg">
             <a href="#templates" @click="mobileMenuOpen=false" class="text-gray-900 hover:text-accent text-sm py-1">Templates</a>
             <a href="#benefits" @click="mobileMenuOpen=false" class="text-gray-900 hover:text-accent text-sm py-1">Benefits</a>
@@ -120,7 +122,7 @@
         </div>
     </section>
 
-    <!-- Stats en una sola línea -->
+    <!-- Stats en línea -->
     <section class="py-2 bg-white border-y border-neutral-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-center gap-8 md:gap-16 text-center">
@@ -132,7 +134,7 @@
         </div>
     </section>
 
-    <!-- Products Section (ahora visible sin scroll) -->
+    <!-- Products Section con descripciones detalladas y checkmarks -->
     <section id="templates" class="py-6 bg-neutral-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-4">
@@ -147,8 +149,8 @@
                 <button @click="activeFilter='english'" :class="activeFilter==='english' ? 'bg-accent text-white' : 'bg-white text-gray-600 border border-neutral-300'" class="px-4 py-1 rounded-full text-xs font-medium transition-all">🇺🇸 English</button>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-                <!-- Producto 1: PLATAFORMAS ES -->
+            <div class="grid md:grid-cols-2 gap-4 max-w-5xl mx-auto">
+                <!-- PLATAFORMAS DE INVERSIONES (ES) -->
                 <article x-show="activeFilter==='all' || activeFilter==='platform' || activeFilter==='spanish'" class="bg-white border border-neutral-200 rounded-xl overflow-hidden card-hover relative shadow-sm">
                     <span class="absolute top-2 left-2 product-badge es z-10">🇪🇸 Español</span>
                     <div class="p-3 pt-8 border-b border-neutral-200">
@@ -167,7 +169,15 @@
                     </div>
                     <div class="p-3">
                         <h3 class="font-display text-sm text-gray-900 mb-1">PLATAFORMAS DE INVERSIONES</h3>
-                        <div class="flex items-center justify-between">
+                        <p class="text-gray-600 text-xs mb-2 leading-relaxed">Gestiona todas tus cuentas de inversión en un solo lugar. Consolida múltiples brokers y plataformas con un dashboard automático, evolución del patrimonio y comparativa vs S&P500.</p>
+                        <div class="space-y-1 mb-3">
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Dashboard multi-plataforma consolidado (hasta 30)</div>
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Evolución del patrimonio mes a mes</div>
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Comparativa vs S&P500 y CETES</div>
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Estimación fiscal (ISR retención 20%)</div>
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Metas financieras con proyección</div>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-neutral-200">
                             <span class="text-base font-bold text-gray-900">$8 <span class="text-xs text-gray-500">USD</span></span>
                             <div class="flex gap-1">
                                 <button @click="previewModal=true; selectedProduct=0; activeTab=0" class="border border-accent text-accent px-2 py-1 rounded text-xs hover:bg-accent/10">Preview</button>
@@ -177,7 +187,7 @@
                     </div>
                 </article>
 
-                <!-- Producto 2: PORTAFOLIO ES -->
+                <!-- PORTAFOLIO DE INVERSIONES (ES) -->
                 <article x-show="activeFilter==='all' || activeFilter==='portfolio' || activeFilter==='spanish'" class="bg-white border border-neutral-200 rounded-xl overflow-hidden card-hover relative shadow-sm">
                     <span class="absolute top-2 left-2 product-badge es z-10">🇪🇸 Español</span>
                     <div class="p-3 pt-8 border-b border-neutral-200">
@@ -195,7 +205,15 @@
                     </div>
                     <div class="p-3">
                         <h3 class="font-display text-sm text-gray-900 mb-1">PORTAFOLIO DE INVERSIONES</h3>
-                        <div class="flex items-center justify-between">
+                        <p class="text-gray-600 text-xs mb-2 leading-relaxed">Seguimiento completo de acciones, ETFs y criptomonedas. P&L automático por activo, calendario de dividendos, score de salud del portafolio y objetivos financieros — todo en un solo archivo.</p>
+                        <div class="space-y-1 mb-3">
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Acciones, ETFs y Crypto</div>
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>P&L automático por activo</div>
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Calendario y seguimiento de dividendos</div>
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Reporte mensual automático</div>
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Score de salud del portafolio 0–100 pts</div>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-neutral-200">
                             <span class="text-base font-bold text-gray-900">$8 <span class="text-xs text-gray-500">USD</span></span>
                             <div class="flex gap-1">
                                 <button @click="previewModal=true; selectedProduct=1; activeTab=0" class="border border-accent text-accent px-2 py-1 rounded text-xs hover:bg-accent/10">Preview</button>
@@ -205,7 +223,7 @@
                     </div>
                 </article>
 
-                <!-- Producto 3: INVESTMENT PLATFORMS TRACKER EN -->
+                <!-- INVESTMENT PLATFORMS TRACKER (EN) -->
                 <article x-show="activeFilter==='all' || activeFilter==='platform' || activeFilter==='english'" class="bg-white border border-neutral-200 rounded-xl overflow-hidden card-hover relative shadow-sm">
                     <span class="absolute top-2 left-2 product-badge en z-10">🇺🇸 English</span>
                     <div class="p-3 pt-8 border-b border-neutral-200">
@@ -224,7 +242,15 @@
                     </div>
                     <div class="p-3">
                         <h3 class="font-display text-sm text-gray-900 mb-1">INVESTMENT PLATFORMS TRACKER</h3>
-                        <div class="flex items-center justify-between">
+                        <p class="text-gray-600 text-xs mb-2 leading-relaxed">Manage all your investment accounts in one place. Consolidate multiple brokers and platforms with an automatic dashboard, net worth chart and S&P500 comparison — fully in English.</p>
+                        <div class="space-y-1 mb-3">
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Consolidated multi-platform dashboard (up to 30)</div>
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Net worth evolution chart by month</div>
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Performance vs S&P500 & CETES</div>
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Tax estimation (ISR 20% withholding)</div>
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Financial goals with 6% projection</div>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-neutral-200">
                             <span class="text-base font-bold text-gray-900">$8 <span class="text-xs text-gray-500">USD</span></span>
                             <div class="flex gap-1">
                                 <button @click="previewModal=true; selectedProduct=2; activeTab=0" class="border border-accent text-accent px-2 py-1 rounded text-xs hover:bg-accent/10">Preview</button>
@@ -234,7 +260,7 @@
                     </div>
                 </article>
 
-                <!-- Producto 4: INVESTMENT PORTFOLIO EN -->
+                <!-- INVESTMENT PORTFOLIO (EN) -->
                 <article x-show="activeFilter==='all' || activeFilter==='portfolio' || activeFilter==='english'" class="bg-white border border-neutral-200 rounded-xl overflow-hidden card-hover relative shadow-sm">
                     <span class="absolute top-2 left-2 product-badge en z-10">🇺🇸 English</span>
                     <div class="p-3 pt-8 border-b border-neutral-200">
@@ -252,7 +278,16 @@
                     </div>
                     <div class="p-3">
                         <h3 class="font-display text-sm text-gray-900 mb-1">INVESTMENT PORTFOLIO</h3>
-                        <div class="flex items-center justify-between">
+                        <p class="text-gray-600 text-xs mb-2 leading-relaxed">Full tracking for stocks, ETFs and crypto. Automatic P&L per asset, dividend calendar, portfolio health score and financial goals — all in English, ready to use worldwide.</p>
+                        <div class="space-y-1 mb-3">
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Stocks, ETFs & Crypto tracking</div>
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Automatic P&L per asset</div>
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Dividend calendar & tracker</div>
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Automatic monthly report</div>
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Portfolio health score 0–100 pts</div>
+                            <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Financial goals progress tracking</div>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-neutral-200">
                             <span class="text-base font-bold text-gray-900">$8 <span class="text-xs text-gray-500">USD</span></span>
                             <div class="flex gap-1">
                                 <button @click="previewModal=true; selectedProduct=3; activeTab=0" class="border border-accent text-accent px-2 py-1 rounded text-xs hover:bg-accent/10">Preview</button>
@@ -265,7 +300,7 @@
         </div>
     </section>
 
-    <!-- Modal de previsualización compacto -->
+    <!-- Modal de previsualización (simplificado) -->
     <div x-show="previewModal" x-transition class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" @click.self="previewModal=false" style="display:none">
         <div class="bg-white border border-neutral-200 rounded-xl w-full max-w-2xl max-h-[80vh] overflow-auto shadow-xl">
             <div class="p-3 border-b border-neutral-200 flex justify-between items-center sticky top-0 bg-white">
@@ -290,7 +325,7 @@
         </div>
     </div>
 
-    <!-- El resto de secciones (beneficios, testimonios, FAQ, footer) se mantienen pero más compactas -->
+    <!-- Benefits (compacto) -->
     <section id="benefits" class="py-10 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-8 items-center">
