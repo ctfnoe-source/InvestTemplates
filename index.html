@@ -18,12 +18,6 @@
                         'accent-light': '#e8c964',
                         'accent-dark': '#b8942d',
                         success: '#22c55e',
-                        'excel-bg': '#0a0a0f',
-                        'excel-card': '#1a1a24',
-                        'excel-border': '#2a2a36',
-                        'excel-gold': '#d4af37',
-                        'excel-green': '#22c55e',
-                        'excel-red': '#ef4444',
                     },
                     fontFamily: {
                         display: ['Instrument Serif', 'serif'],
@@ -41,31 +35,116 @@
         .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); border: 1px solid rgba(0,0,0,0.05); }
         .card-hover { transition: all 0.3s ease; }
         .card-hover:hover { transform: translateY(-4px); box-shadow: 0 10px 25px -10px rgba(0,0,0,0.1), 0 0 0 1px #d4af37; }
-        .excel-window { background: #0a0a0f; border-radius: 8px; overflow: hidden; border: 1px solid #2a2a36; font-family: 'Consolas', monospace; font-size: 0.65rem; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
-        .excel-titlebar { background: #0d1528; padding: 4px 8px; display: flex; align-items: center; gap: 4px; border-bottom: 1px solid #1e3060; }
-        .excel-titlebar-dot { width: 8px; height: 8px; border-radius: 50%; background: #9ca3af; }
-        .excel-sheet-tabs { background: #060a10; display: flex; gap: 1px; padding: 3px 6px 0; border-top: 1px solid #1a2540; overflow-x: auto; }
-        .excel-tab { padding: 2px 6px; border-radius: 4px 4px 0 0; font-size: 0.55rem; cursor: pointer; white-space: nowrap; background: #08111e; color: #4a6080; border: 1px solid #1e3060; border-bottom: none; }
-        .excel-tab.active { background: #0d1528; color: #d4af37; font-weight: 600; border-color: #d4af37; }
-        .excel-tab.inactive { background: #08111e; color: #4a6080; }
-        .excel-body { background: #0a0a0f; padding: 6px; overflow-x: auto; }
-        .kpi-mini { background: #0d1528; border: 1px solid #1e3060; border-radius: 4px; padding: 4px; text-align: center; }
-        .kpi-mini .kpi-label { font-size: 0.5rem; color: #5a7898; text-transform: uppercase; }
-        .kpi-mini .kpi-val { font-size: 0.7rem; font-weight: 600; color: #c8d8e8; }
-        .kpi-mini .kpi-val.text-green-500 { color: #22c55e; }
-        .kpi-mini .kpi-val.text-red-500 { color: #ef4444; }
-        .product-badge { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.2rem 0.5rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 500; }
+        
+        /* Estilo Excel oscuro (real) */
+        .excel-window-dark {
+            background: #0a0f1c;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #1e2a3a;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.65rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .excel-titlebar-dark {
+            background: linear-gradient(90deg, #0d1a2a, #102336);
+            padding: 6px 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-bottom: 1px solid #1e3a5a;
+            color: #c0d0e0;
+        }
+        .excel-titlebar-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #4a6070;
+        }
+        .excel-sheet-tabs-dark {
+            background: #060a12;
+            display: flex;
+            gap: 1px;
+            padding: 4px 8px 0;
+            border-top: 1px solid #1e2a3a;
+            overflow-x: auto;
+        }
+        .excel-tab-dark {
+            padding: 3px 8px;
+            border-radius: 4px 4px 0 0;
+            font-size: 0.55rem;
+            cursor: pointer;
+            white-space: nowrap;
+            background: #0a1420;
+            color: #8a9ab0;
+            border: 1px solid #1e3a5a;
+            border-bottom: none;
+        }
+        .excel-tab-dark.active {
+            background: #0a0f1c;
+            color: #d4af37;
+            font-weight: 600;
+            border-color: #d4af37;
+        }
+        .excel-body-dark {
+            background: #0a0f1c;
+            padding: 8px;
+            color: #d0e0f0;
+        }
+        .kpi-excel {
+            background: #0f1a2a;
+            border: 1px solid #1e3a5a;
+            border-radius: 4px;
+            padding: 6px;
+        }
+        .kpi-excel .kpi-label {
+            font-size: 0.5rem;
+            color: #7a9ac0;
+            text-transform: uppercase;
+        }
+        .kpi-excel .kpi-val {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #f0f8ff;
+        }
+        .kpi-excel .kpi-val.positive { color: #4ade80; }
+        .kpi-excel .kpi-val.negative { color: #f87171; }
+        
+        .product-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.65rem;
+            font-weight: 500;
+        }
         .product-badge.es { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
         .product-badge.en { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
-        .feature-check { display: flex; align-items: center; gap: 0.5rem; font-size: 0.7rem; color: #c8d8e8; margin-bottom: 0.25rem; }
-        .feature-check svg { width: 0.9rem; height: 0.9rem; color: #22c55e; flex-shrink: 0; }
-        .compat-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: #f1f5f9; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.65rem; color: #334155; }
-        /* Estilos específicos para tarjetas de productos */
-        .product-card { background: #0a0a0f; border: 1px solid #2a2a36; border-radius: 12px; overflow: hidden; color: #f5f5f7; }
-        .product-card .product-title { color: #d4af37; font-family: 'Instrument Serif', serif; }
-        .product-card .product-description { color: #8a8a9a; }
-        .product-card .price { color: #f5f5f7; }
-        .product-card .feature-check { color: #c8d8e8; }
+        .feature-check {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.7rem;
+            color: #4b5563;
+            margin-bottom: 0.25rem;
+        }
+        .feature-check svg {
+            width: 0.9rem;
+            height: 0.9rem;
+            color: #22c55e;
+            flex-shrink: 0;
+        }
+        .compat-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f1f5f9;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.65rem;
+            color: #334155;
+        }
     </style>
 </head>
 <body class="font-body antialiased" x-data="{ 
@@ -84,7 +163,7 @@
         { name: 'Ana García', role: 'Consultora Financiera', avatar: 'AG', content: 'Recomiendo estas plantillas a todos mis clientes. El nivel de detalle es increíble.', lang: 'es' }
     ]
 }" @scroll.window="scrolled = window.scrollY > 30">
-    <!-- Navegación clara -->
+    <!-- Navegación compacta -->
     <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" :class="scrolled ? 'glass border-b border-neutral-200/50' : 'bg-transparent'">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-14">
@@ -111,7 +190,7 @@
                 </button>
             </div>
         </div>
-        <!-- Menú móvil claro -->
+        <!-- Menú móvil -->
         <div x-show="mobileMenuOpen" x-transition class="glass fixed top-14 right-4 left-4 rounded-lg p-4 flex flex-col gap-3 md:hidden shadow-lg">
             <a href="#templates" @click="mobileMenuOpen=false" class="text-gray-900 hover:text-accent text-sm py-1">Templates</a>
             <a href="#benefits" @click="mobileMenuOpen=false" class="text-gray-900 hover:text-accent text-sm py-1">Benefits</a>
@@ -122,7 +201,7 @@
         </div>
     </nav>
 
-    <!-- Hero ultracompacto claro -->
+    <!-- Hero ultracompacto -->
     <section class="pt-16 pb-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
@@ -137,7 +216,7 @@
         </div>
     </section>
 
-    <!-- Stats en línea claro -->
+    <!-- Stats en línea -->
     <section class="py-2 bg-white border-y border-neutral-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-center gap-8 md:gap-16 text-center">
@@ -149,7 +228,7 @@
         </div>
     </section>
 
-    <!-- Products Section con tarjetas estilo Excel (oscuras) -->
+    <!-- Products Section con ventanas Excel oscuras -->
     <section id="templates" class="py-6 bg-neutral-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-4">
@@ -165,26 +244,35 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-4 max-w-5xl mx-auto">
-                <!-- PLATAFORMAS DE INVERSIONES (ES) - Tarjeta oscura -->
-                <article x-show="activeFilter==='all' || activeFilter==='platform' || activeFilter==='spanish'" class="product-card relative">
+                <!-- PLATAFORMAS DE INVERSIONES (ES) con ventana Excel oscura -->
+                <article x-show="activeFilter==='all' || activeFilter==='platform' || activeFilter==='spanish'" class="bg-white border border-neutral-200 rounded-xl overflow-hidden card-hover relative shadow-sm">
                     <span class="absolute top-2 left-2 product-badge es z-10">🇪🇸 Español</span>
-                    <div class="p-3 pt-8 border-b border-excel-border">
-                        <div class="excel-window">
-                            <div class="excel-titlebar"><span class="text-white text-[0.6rem] opacity-80">Plataformas de Inversiones.xlsx</span></div>
-                            <div class="excel-sheet-tabs"><span class="excel-tab active">🏠 Inicio</span><span class="excel-tab inactive">💰 Saldos</span></div>
-                            <div class="excel-body">
+                    <div class="p-3 pt-8 border-b border-neutral-200">
+                        <div class="excel-window-dark">
+                            <div class="excel-titlebar-dark">
+                                <div class="excel-titlebar-dot"></div>
+                                <div class="excel-titlebar-dot"></div>
+                                <div class="excel-titlebar-dot"></div>
+                                <span class="text-gray-300 text-[0.6rem] ml-1">Plataformas de Inversiones.xlsx</span>
+                            </div>
+                            <div class="excel-sheet-tabs-dark">
+                                <span class="excel-tab-dark active">🏠 Inicio</span>
+                                <span class="excel-tab-dark">💰 Saldos</span>
+                                <span class="excel-tab-dark">📋 Mov.</span>
+                            </div>
+                            <div class="excel-body-dark">
                                 <div class="grid grid-cols-3 gap-1 mb-1">
-                                    <div class="kpi-mini"><div class="kpi-label">💼 VALOR</div><div class="kpi-val">$1,607k</div></div>
-                                    <div class="kpi-mini"><div class="kpi-label">📈 REND.</div><div class="kpi-val text-red-500">-$16.9k</div></div>
-                                    <div class="kpi-mini"><div class="kpi-label">📊 %</div><div class="kpi-val text-red-500">-1.04%</div></div>
+                                    <div class="kpi-excel"><div class="kpi-label">💼 VALOR</div><div class="kpi-val">$1,607k</div></div>
+                                    <div class="kpi-excel"><div class="kpi-label">📈 REND.</div><div class="kpi-val negative">-$16.9k</div></div>
+                                    <div class="kpi-excel"><div class="kpi-label">📊 %</div><div class="kpi-val negative">-1.04%</div></div>
                                 </div>
-                                <div class="text-[0.5rem] text-excel-gold">📋 SOFI: $1,627k · Brokerage: $535k</div>
+                                <div class="text-[0.5rem] text-gray-400 mt-1">📋 SOFI: $1,627k · Brokerage: $535k</div>
                             </div>
                         </div>
                     </div>
                     <div class="p-3">
-                        <h3 class="product-title text-sm mb-1">PLATAFORMAS DE INVERSIONES</h3>
-                        <p class="product-description text-xs mb-2 leading-relaxed">Gestiona todas tus cuentas de inversión en un solo lugar. Consolida múltiples brokers y plataformas con un dashboard automático, evolución del patrimonio y comparativa vs S&P500.</p>
+                        <h3 class="font-display text-sm text-gray-900 mb-1">PLATAFORMAS DE INVERSIONES</h3>
+                        <p class="text-gray-600 text-xs mb-2 leading-relaxed">Gestiona todas tus cuentas de inversión en un solo lugar. Consolida múltiples brokers y plataformas con un dashboard automático, evolución del patrimonio y comparativa vs S&P500.</p>
                         <div class="space-y-1 mb-3">
                             <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Dashboard multi-plataforma consolidado (hasta 30)</div>
                             <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Evolución del patrimonio mes a mes</div>
@@ -192,35 +280,44 @@
                             <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Estimación fiscal (ISR retención 20%)</div>
                             <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Metas financieras con proyección</div>
                         </div>
-                        <div class="flex items-center justify-between pt-2 border-t border-excel-border">
-                            <span class="price text-base font-bold">$8 <span class="text-xs text-excel-gold opacity-70">USD</span></span>
+                        <div class="flex items-center justify-between pt-2 border-t border-neutral-200">
+                            <span class="text-base font-bold text-gray-900">$8 <span class="text-xs text-gray-500">USD</span></span>
                             <div class="flex gap-1">
-                                <button @click="previewModal=true; selectedProduct=0; activeTab=0" class="border border-excel-gold text-excel-gold px-2 py-1 rounded text-xs hover:bg-excel-gold/10">Preview</button>
-                                <a href="https://payhip.com/b/9UZ6a" target="_blank" class="bg-excel-gold text-excel-bg px-2 py-1 rounded text-xs font-semibold">Buy</a>
+                                <button @click="previewModal=true; selectedProduct=0; activeTab=0" class="border border-accent text-accent px-2 py-1 rounded text-xs hover:bg-accent/10">Preview</button>
+                                <a href="https://payhip.com/b/9UZ6a" target="_blank" class="bg-accent text-white px-2 py-1 rounded text-xs font-semibold">Buy</a>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                <!-- PORTAFOLIO DE INVERSIONES (ES) - Tarjeta oscura -->
-                <article x-show="activeFilter==='all' || activeFilter==='portfolio' || activeFilter==='spanish'" class="product-card relative">
+                <!-- PORTAFOLIO DE INVERSIONES (ES) con ventana Excel oscura -->
+                <article x-show="activeFilter==='all' || activeFilter==='portfolio' || activeFilter==='spanish'" class="bg-white border border-neutral-200 rounded-xl overflow-hidden card-hover relative shadow-sm">
                     <span class="absolute top-2 left-2 product-badge es z-10">🇪🇸 Español</span>
-                    <div class="p-3 pt-8 border-b border-excel-border">
-                        <div class="excel-window">
-                            <div class="excel-titlebar"><span class="text-white text-[0.6rem] opacity-80">Portafolio de Inversiones.xlsx</span></div>
-                            <div class="excel-sheet-tabs"><span class="excel-tab active">🏠 Inicio</span><span class="excel-tab inactive">📋 Mov.</span></div>
-                            <div class="excel-body">
+                    <div class="p-3 pt-8 border-b border-neutral-200">
+                        <div class="excel-window-dark">
+                            <div class="excel-titlebar-dark">
+                                <div class="excel-titlebar-dot"></div>
+                                <div class="excel-titlebar-dot"></div>
+                                <div class="excel-titlebar-dot"></div>
+                                <span class="text-gray-300 text-[0.6rem] ml-1">Portafolio de Inversiones.xlsx</span>
+                            </div>
+                            <div class="excel-sheet-tabs-dark">
+                                <span class="excel-tab-dark active">🏠 Inicio</span>
+                                <span class="excel-tab-dark">📋 Mov.</span>
+                                <span class="excel-tab-dark">📈 Análisis</span>
+                            </div>
+                            <div class="excel-body-dark">
                                 <div class="grid grid-cols-2 gap-1 mb-1">
-                                    <div class="kpi-mini"><div class="kpi-label">💰 CAPITAL</div><div class="kpi-val">$38.9k</div></div>
-                                    <div class="kpi-mini"><div class="kpi-label">📊 G/P</div><div class="kpi-val text-green-500">+$4.5k</div></div>
+                                    <div class="kpi-excel"><div class="kpi-label">💰 CAPITAL</div><div class="kpi-val">$150.9k</div></div>
+                                    <div class="kpi-excel"><div class="kpi-label">📊 G/P</div><div class="kpi-val positive">+$82</div></div>
                                 </div>
-                                <div class="text-[0.5rem] text-excel-gold">🏆 AAPL · BTC · NVDA</div>
+                                <div class="text-[0.5rem] text-gray-400">🏆 BTC: $138k · ETH: $5.4k</div>
                             </div>
                         </div>
                     </div>
                     <div class="p-3">
-                        <h3 class="product-title text-sm mb-1">PORTAFOLIO DE INVERSIONES</h3>
-                        <p class="product-description text-xs mb-2 leading-relaxed">Seguimiento completo de acciones, ETFs y criptomonedas. P&L automático por activo, calendario de dividendos, score de salud del portafolio y objetivos financieros — todo en un solo archivo.</p>
+                        <h3 class="font-display text-sm text-gray-900 mb-1">PORTAFOLIO DE INVERSIONES</h3>
+                        <p class="text-gray-600 text-xs mb-2 leading-relaxed">Seguimiento completo de acciones, ETFs y criptomonedas. P&L automático por activo, calendario de dividendos, score de salud del portafolio y objetivos financieros — todo en un solo archivo.</p>
                         <div class="space-y-1 mb-3">
                             <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Acciones, ETFs y Crypto</div>
                             <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>P&L automático por activo</div>
@@ -228,36 +325,45 @@
                             <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Reporte mensual automático</div>
                             <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Score de salud del portafolio 0–100 pts</div>
                         </div>
-                        <div class="flex items-center justify-between pt-2 border-t border-excel-border">
-                            <span class="price text-base font-bold">$8 <span class="text-xs text-excel-gold opacity-70">USD</span></span>
+                        <div class="flex items-center justify-between pt-2 border-t border-neutral-200">
+                            <span class="text-base font-bold text-gray-900">$8 <span class="text-xs text-gray-500">USD</span></span>
                             <div class="flex gap-1">
-                                <button @click="previewModal=true; selectedProduct=1; activeTab=0" class="border border-excel-gold text-excel-gold px-2 py-1 rounded text-xs hover:bg-excel-gold/10">Preview</button>
-                                <a href="https://payhip.com/b/cp3hy" target="_blank" class="bg-excel-gold text-excel-bg px-2 py-1 rounded text-xs font-semibold">Buy</a>
+                                <button @click="previewModal=true; selectedProduct=1; activeTab=0" class="border border-accent text-accent px-2 py-1 rounded text-xs hover:bg-accent/10">Preview</button>
+                                <a href="https://payhip.com/b/cp3hy" target="_blank" class="bg-accent text-white px-2 py-1 rounded text-xs font-semibold">Buy</a>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                <!-- INVESTMENT PLATFORMS TRACKER (EN) - Tarjeta oscura -->
-                <article x-show="activeFilter==='all' || activeFilter==='platform' || activeFilter==='english'" class="product-card relative">
+                <!-- INVESTMENT PLATFORMS TRACKER (EN) con ventana Excel oscura -->
+                <article x-show="activeFilter==='all' || activeFilter==='platform' || activeFilter==='english'" class="bg-white border border-neutral-200 rounded-xl overflow-hidden card-hover relative shadow-sm">
                     <span class="absolute top-2 left-2 product-badge en z-10">🇺🇸 English</span>
-                    <div class="p-3 pt-8 border-b border-excel-border">
-                        <div class="excel-window">
-                            <div class="excel-titlebar"><span class="text-white text-[0.6rem] opacity-80">Investment Platforms Tracker.xlsx</span></div>
-                            <div class="excel-sheet-tabs"><span class="excel-tab active">🏠 Home</span><span class="excel-tab inactive">💰 Balances</span></div>
-                            <div class="excel-body">
+                    <div class="p-3 pt-8 border-b border-neutral-200">
+                        <div class="excel-window-dark">
+                            <div class="excel-titlebar-dark">
+                                <div class="excel-titlebar-dot"></div>
+                                <div class="excel-titlebar-dot"></div>
+                                <div class="excel-titlebar-dot"></div>
+                                <span class="text-gray-300 text-[0.6rem] ml-1">Investment Platforms Tracker.xlsx</span>
+                            </div>
+                            <div class="excel-sheet-tabs-dark">
+                                <span class="excel-tab-dark active">🏠 Home</span>
+                                <span class="excel-tab-dark">💰 Balances</span>
+                                <span class="excel-tab-dark">📋 Trans.</span>
+                            </div>
+                            <div class="excel-body-dark">
                                 <div class="grid grid-cols-3 gap-1 mb-1">
-                                    <div class="kpi-mini"><div class="kpi-label">💼 TOTAL</div><div class="kpi-val">$118k</div></div>
-                                    <div class="kpi-mini"><div class="kpi-label">📈 RETURNS</div><div class="kpi-val text-green-500">+$47k</div></div>
-                                    <div class="kpi-mini"><div class="kpi-label">📊 %</div><div class="kpi-val text-green-500">+66%</div></div>
+                                    <div class="kpi-excel"><div class="kpi-label">💼 TOTAL</div><div class="kpi-val">$118k</div></div>
+                                    <div class="kpi-excel"><div class="kpi-label">📈 RETURNS</div><div class="kpi-val positive">+$47k</div></div>
+                                    <div class="kpi-excel"><div class="kpi-label">📊 %</div><div class="kpi-val positive">+66%</div></div>
                                 </div>
-                                <div class="text-[0.5rem] text-excel-gold">📋 GBM+: $72.9k · Binance: $14k</div>
+                                <div class="text-[0.5rem] text-gray-400">📋 GBM+: $72.9k · Binance: $14k</div>
                             </div>
                         </div>
                     </div>
                     <div class="p-3">
-                        <h3 class="product-title text-sm mb-1">INVESTMENT PLATFORMS TRACKER</h3>
-                        <p class="product-description text-xs mb-2 leading-relaxed">Manage all your investment accounts in one place. Consolidate multiple brokers and platforms with an automatic dashboard, net worth chart and S&P500 comparison — fully in English.</p>
+                        <h3 class="font-display text-sm text-gray-900 mb-1">INVESTMENT PLATFORMS TRACKER</h3>
+                        <p class="text-gray-600 text-xs mb-2 leading-relaxed">Manage all your investment accounts in one place. Consolidate multiple brokers and platforms with an automatic dashboard, net worth chart and S&P500 comparison — fully in English.</p>
                         <div class="space-y-1 mb-3">
                             <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Consolidated multi-platform dashboard (up to 30)</div>
                             <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Net worth evolution chart by month</div>
@@ -265,35 +371,44 @@
                             <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Tax estimation (ISR 20% withholding)</div>
                             <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Financial goals with 6% projection</div>
                         </div>
-                        <div class="flex items-center justify-between pt-2 border-t border-excel-border">
-                            <span class="price text-base font-bold">$8 <span class="text-xs text-excel-gold opacity-70">USD</span></span>
+                        <div class="flex items-center justify-between pt-2 border-t border-neutral-200">
+                            <span class="text-base font-bold text-gray-900">$8 <span class="text-xs text-gray-500">USD</span></span>
                             <div class="flex gap-1">
-                                <button @click="previewModal=true; selectedProduct=2; activeTab=0" class="border border-excel-gold text-excel-gold px-2 py-1 rounded text-xs hover:bg-excel-gold/10">Preview</button>
-                                <a href="https://payhip.com/b/zW8Ic" target="_blank" class="bg-excel-gold text-excel-bg px-2 py-1 rounded text-xs font-semibold">Buy</a>
+                                <button @click="previewModal=true; selectedProduct=2; activeTab=0" class="border border-accent text-accent px-2 py-1 rounded text-xs hover:bg-accent/10">Preview</button>
+                                <a href="https://payhip.com/b/zW8Ic" target="_blank" class="bg-accent text-white px-2 py-1 rounded text-xs font-semibold">Buy</a>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                <!-- INVESTMENT PORTFOLIO (EN) - Tarjeta oscura -->
-                <article x-show="activeFilter==='all' || activeFilter==='portfolio' || activeFilter==='english'" class="product-card relative">
+                <!-- INVESTMENT PORTFOLIO (EN) con ventana Excel oscura -->
+                <article x-show="activeFilter==='all' || activeFilter==='portfolio' || activeFilter==='english'" class="bg-white border border-neutral-200 rounded-xl overflow-hidden card-hover relative shadow-sm">
                     <span class="absolute top-2 left-2 product-badge en z-10">🇺🇸 English</span>
-                    <div class="p-3 pt-8 border-b border-excel-border">
-                        <div class="excel-window">
-                            <div class="excel-titlebar"><span class="text-white text-[0.6rem] opacity-80">Investment Portfolio.xlsx</span></div>
-                            <div class="excel-sheet-tabs"><span class="excel-tab active">🏠 Home</span><span class="excel-tab inactive">📋 Trans.</span></div>
-                            <div class="excel-body">
+                    <div class="p-3 pt-8 border-b border-neutral-200">
+                        <div class="excel-window-dark">
+                            <div class="excel-titlebar-dark">
+                                <div class="excel-titlebar-dot"></div>
+                                <div class="excel-titlebar-dot"></div>
+                                <div class="excel-titlebar-dot"></div>
+                                <span class="text-gray-300 text-[0.6rem] ml-1">Investment Portfolio.xlsx</span>
+                            </div>
+                            <div class="excel-sheet-tabs-dark">
+                                <span class="excel-tab-dark active">🏠 Home</span>
+                                <span class="excel-tab-dark">📋 Trans.</span>
+                                <span class="excel-tab-dark">📈 Analysis</span>
+                            </div>
+                            <div class="excel-body-dark">
                                 <div class="grid grid-cols-2 gap-1 mb-1">
-                                    <div class="kpi-mini"><div class="kpi-label">💰 CAPITAL</div><div class="kpi-val">$38.9k</div></div>
-                                    <div class="kpi-mini"><div class="kpi-label">📊 G/P</div><div class="kpi-val text-green-500">+$4.5k</div></div>
+                                    <div class="kpi-excel"><div class="kpi-label">💰 CAPITAL</div><div class="kpi-val">$150.9k</div></div>
+                                    <div class="kpi-excel"><div class="kpi-label">📊 G/P</div><div class="kpi-val positive">+$82</div></div>
                                 </div>
-                                <div class="text-[0.5rem] text-excel-gold">🏆 AAPL · BTC · NVDA</div>
+                                <div class="text-[0.5rem] text-gray-400">🏆 BTC · ETH · AMD</div>
                             </div>
                         </div>
                     </div>
                     <div class="p-3">
-                        <h3 class="product-title text-sm mb-1">INVESTMENT PORTFOLIO</h3>
-                        <p class="product-description text-xs mb-2 leading-relaxed">Full tracking for stocks, ETFs and crypto. Automatic P&L per asset, dividend calendar, portfolio health score and financial goals — all in English, ready to use worldwide.</p>
+                        <h3 class="font-display text-sm text-gray-900 mb-1">INVESTMENT PORTFOLIO</h3>
+                        <p class="text-gray-600 text-xs mb-2 leading-relaxed">Full tracking for stocks, ETFs and crypto. Automatic P&L per asset, dividend calendar, portfolio health score and financial goals — all in English, ready to use worldwide.</p>
                         <div class="space-y-1 mb-3">
                             <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Stocks, ETFs & Crypto tracking</div>
                             <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Automatic P&L per asset</div>
@@ -302,18 +417,18 @@
                             <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Portfolio health score 0–100 pts</div>
                             <div class="feature-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Financial goals progress tracking</div>
                         </div>
-                        <div class="flex items-center justify-between pt-2 border-t border-excel-border">
-                            <span class="price text-base font-bold">$8 <span class="text-xs text-excel-gold opacity-70">USD</span></span>
+                        <div class="flex items-center justify-between pt-2 border-t border-neutral-200">
+                            <span class="text-base font-bold text-gray-900">$8 <span class="text-xs text-gray-500">USD</span></span>
                             <div class="flex gap-1">
-                                <button @click="previewModal=true; selectedProduct=3; activeTab=0" class="border border-excel-gold text-excel-gold px-2 py-1 rounded text-xs hover:bg-excel-gold/10">Preview</button>
-                                <a href="https://payhip.com/b/EYk2g" target="_blank" class="bg-excel-gold text-excel-bg px-2 py-1 rounded text-xs font-semibold">Buy</a>
+                                <button @click="previewModal=true; selectedProduct=3; activeTab=0" class="border border-accent text-accent px-2 py-1 rounded text-xs hover:bg-accent/10">Preview</button>
+                                <a href="https://payhip.com/b/EYk2g" target="_blank" class="bg-accent text-white px-2 py-1 rounded text-xs font-semibold">Buy</a>
                             </div>
                         </div>
                     </div>
                 </article>
             </div>
 
-            <!-- Compatibilidad (se mantiene claro) -->
+            <!-- Compatibilidad -->
             <div class="flex justify-center items-center gap-4 mt-6">
                 <span class="text-xs text-gray-500">Compatible with:</span>
                 <div class="flex gap-2">
@@ -325,99 +440,375 @@
         </div>
     </section>
 
-    <!-- Modal de previsualización (se mantiene oscuro para coherencia) -->
+    <!-- Modal de previsualización (con pestañas para ambos productos en español) -->
     <div x-show="previewModal" x-transition class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" @click.self="previewModal=false" style="display:none">
-        <div class="bg-excel-bg border border-excel-border rounded-xl w-full max-w-6xl max-h-[90vh] overflow-auto shadow-xl">
+        <div class="bg-white border border-neutral-200 rounded-xl w-full max-w-6xl max-h-[90vh] overflow-auto shadow-xl">
             <!-- Cabecera del modal -->
-            <div class="p-3 border-b border-excel-border flex justify-between items-center sticky top-0 bg-excel-bg z-10">
+            <div class="p-3 border-b border-neutral-200 flex justify-between items-center sticky top-0 bg-white z-10">
                 <div>
-                    <h3 class="font-display text-sm text-excel-gold" x-text="selectedProduct===0 ? 'PLATAFORMAS DE INVERSIONES' : selectedProduct===1 ? 'PORTAFOLIO DE INVERSIONES' : selectedProduct===2 ? 'INVESTMENT PLATFORMS TRACKER' : 'INVESTMENT PORTFOLIO'"></h3>
+                    <h3 class="font-display text-sm text-gray-900" x-text="selectedProduct===0 ? 'PLATAFORMAS DE INVERSIONES' : selectedProduct===1 ? 'PORTAFOLIO DE INVERSIONES' : selectedProduct===2 ? 'INVESTMENT PLATFORMS TRACKER' : 'INVESTMENT PORTFOLIO'"></h3>
                     <div class="flex items-center gap-2 mt-1">
                         <span x-show="selectedProduct===0 || selectedProduct===1" class="product-badge es">🇪🇸 Español</span>
                         <span x-show="selectedProduct===2 || selectedProduct===3" class="product-badge en">🇺🇸 English</span>
-                        <span class="text-[0.6rem] text-excel-gold opacity-60">8 hojas · Dashboard completo</span>
+                        <span class="text-[0.6rem] text-gray-400">8 hojas · Dashboard completo</span>
                     </div>
                 </div>
-                <button @click="previewModal=false" class="p-1 text-excel-gold hover:text-white">✕</button>
+                <button @click="previewModal=false" class="p-1 text-gray-500 hover:text-gray-900">✕</button>
             </div>
 
-            <!-- Pestañas -->
-            <div class="px-3 pt-2 pb-1 border-b border-excel-border flex gap-2">
+            <!-- Pestañas (dinámicas según producto) -->
+            <div class="px-3 pt-2 pb-1 border-b border-neutral-200 flex gap-2">
+                <!-- Pestañas para PLATAFORMAS DE INVERSIONES (restauradas) -->
                 <template x-if="selectedProduct===0">
                     <div class="flex gap-2">
-                        <button @click="activeTab=0" :class="activeTab===0 ? 'bg-excel-gold text-excel-bg' : 'bg-excel-card text-excel-gold border border-excel-border'" class="px-3 py-1 rounded text-xs font-medium">🏠 Inicio</button>
-                        <button @click="activeTab=1" :class="activeTab===1 ? 'bg-excel-gold text-excel-bg' : 'bg-excel-card text-excel-gold border border-excel-border'" class="px-3 py-1 rounded text-xs font-medium">🎯 Metas</button>
+                        <button @click="activeTab=0" :class="activeTab===0 ? 'bg-accent text-white' : 'bg-neutral-100 text-gray-600'" class="px-3 py-1 rounded text-xs font-medium">🏠 Inicio</button>
+                        <button @click="activeTab=1" :class="activeTab===1 ? 'bg-accent text-white' : 'bg-neutral-100 text-gray-600'" class="px-3 py-1 rounded text-xs font-medium">🎯 Metas</button>
                     </div>
                 </template>
-                <template x-if="selectedProduct!==0">
-                    <div class="text-xs text-excel-gold py-1">Vista previa genérica</div>
+                <!-- Pestañas para PORTAFOLIO DE INVERSIONES (nuevas) -->
+                <template x-if="selectedProduct===1">
+                    <div class="flex gap-2">
+                        <button @click="activeTab=0" :class="activeTab===0 ? 'bg-accent text-white' : 'bg-neutral-100 text-gray-600'" class="px-3 py-1 rounded text-xs font-medium">🏠 Inicio</button>
+                        <button @click="activeTab=1" :class="activeTab===1 ? 'bg-accent text-white' : 'bg-neutral-100 text-gray-600'" class="px-3 py-1 rounded text-xs font-medium">🧾 Reporte</button>
+                        <button @click="activeTab=2" :class="activeTab===2 ? 'bg-accent text-white' : 'bg-neutral-100 text-gray-600'" class="px-3 py-1 rounded text-xs font-medium">🎯 Objetivos</button>
+                    </div>
+                </template>
+                <!-- Para productos en inglés, mensaje genérico -->
+                <template x-if="selectedProduct>=2">
+                    <div class="text-xs text-gray-500 py-1">Vista previa genérica</div>
                 </template>
             </div>
 
-            <!-- Contenido del modal (igual que antes pero con fondo oscuro) -->
+            <!-- Contenido del modal -->
             <div class="p-4">
+                <!-- PLATAFORMAS DE INVERSIONES - INICIO (restaurado) -->
                 <template x-if="selectedProduct===0 && activeTab===0">
-                    <div class="excel-window">
-                        <div class="excel-titlebar">
-                            <span class="text-white text-xs">Plataformas de Inversiones.xlsx - Inicio</span>
+                    <div class="excel-window-dark">
+                        <div class="excel-titlebar-dark">
+                            <span class="text-gray-300 text-xs">Plataformas de Inversiones.xlsx - Inicio</span>
                         </div>
-                        <div class="excel-body p-3">
-                            <!-- Mismo contenido de las capturas, ya en estilo oscuro por la clase excel-body -->
-                            <div class="text-sm font-semibold text-excel-gold mb-2">PORTAFOLIO DE INVERSIONES · México · Dashboard en tiempo real</div>
+                        <div class="excel-body-dark p-3">
+                            <div class="text-sm font-semibold text-gray-200 mb-2">PORTAFOLIO DE INVERSIONES · México · Dashboard en tiempo real</div>
                             <div class="grid grid-cols-5 gap-1 mb-2">
-                                <div class="bg-[#0d1528] p-2 rounded border border-[#1e3060]">
-                                    <div class="text-[0.55rem] text-[#5a7898] uppercase">💼 VALOR TOTAL</div>
-                                    <div class="text-sm font-bold text-excel-gold">$1,607,053</div>
-                                </div>
-                                <div class="bg-[#0d1528] p-2 rounded border border-[#1e3060]">
-                                    <div class="text-[0.55rem] text-[#5a7898] uppercase">📈 RENDIMIENTOS</div>
-                                    <div class="text-sm font-bold text-red-500">-$16,942</div>
-                                </div>
-                                <div class="bg-[#0d1528] p-2 rounded border border-[#1e3060]">
-                                    <div class="text-[0.55rem] text-[#5a7898] uppercase">📊 REND %</div>
-                                    <div class="text-sm font-bold text-red-500">-1.04%</div>
-                                </div>
-                                <div class="bg-[#0d1528] p-2 rounded border border-[#1e3060]">
-                                    <div class="text-[0.55rem] text-[#5a7898] uppercase">💰 APORTADO</div>
-                                    <div class="text-sm font-bold text-white">$140</div>
-                                </div>
-                                <div class="bg-[#0d1528] p-2 rounded border border-[#1e3060]">
-                                    <div class="text-[0.55rem] text-[#5a7898] uppercase">📤 RETIROS</div>
-                                    <div class="text-sm font-bold text-white">$1,200</div>
-                                </div>
+                                <div class="kpi-excel"><div class="kpi-label">💼 VALOR TOTAL</div><div class="kpi-val">$1,607,053</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">📈 RENDIMIENTOS</div><div class="kpi-val negative">-$16,942</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">📊 REND %</div><div class="kpi-val negative">-1.04%</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">💰 APORTADO</div><div class="kpi-val">$140</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">📤 RETIROS</div><div class="kpi-val">$1,200</div></div>
                             </div>
-                            <!-- Resto del contenido igual que antes pero con clases de texto claras -->
-                            <div class="text-xs font-semibold text-excel-gold mb-1">📋 RESUMEN POR PLATAFORMA · Todas (7)</div>
-                            <div class="grid grid-cols-7 gap-[1px] bg-[#1e3060] text-[0.55rem] mb-4">
-                                <div class="bg-[#0d1830] p-1 text-[#5a7898]">#</div>
-                                <div class="bg-[#0d1830] p-1 text-[#5a7898]">PLATAFORMA</div>
-                                <div class="bg-[#0d1830] p-1 text-[#5a7898]">TIPO</div>
-                                <div class="bg-[#0d1830] p-1 text-[#5a7898]">SALDO</div>
-                                <div class="bg-[#0d1830] p-1 text-[#5a7898]">% PORT.</div>
-                                <div class="bg-[#0d1830] p-1 text-[#5a7898]">RETIROS</div>
-                                <div class="bg-[#0d1830] p-1 text-[#5a7898]">ESTATUS</div>
-                                <!-- Filas... (se pueden mantener igual) -->
+                            <div class="grid grid-cols-5 gap-1 mb-3">
+                                <div class="kpi-excel"><div class="kpi-label">🏦 INV. INICIAL</div><div class="kpi-val">$1,625,054</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">🔢 MOVIMIENTOS</div><div class="kpi-val">19</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">🏆 TOP PLAT.</div><div class="kpi-val">FIDELITY</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">📉 GASTOS</div><div class="kpi-val">$0</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">💹 GANANCIA NETA</div><div class="kpi-val negative">-$16,942</div></div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">📋 RESUMEN POR PLATAFORMA · Todas (7)</div>
+                            <div class="grid grid-cols-7 gap-[1px] bg-gray-700 text-[0.55rem] mb-4">
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">#</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">PLATAFORMA</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">TIPO</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">SALDO</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">% PORT.</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">RETIROS</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">ESTATUS</div>
+
+                                <div class="bg-gray-900 p-1">1</div>
+                                <div class="bg-gray-900 p-1 font-semibold">SOFI</div>
+                                <div class="bg-gray-900 p-1">Bolsa/ETFs</div>
+                                <div class="bg-gray-900 p-1 text-accent">$1,627,053</div>
+                                <div class="bg-gray-900 p-1">101.2%</div>
+                                <div class="bg-gray-900 p-1">$0</div>
+                                <div class="bg-gray-900 p-1 text-green-400">✅ Activa</div>
+
+                                <div class="bg-gray-900 p-1">2</div>
+                                <div class="bg-gray-900 p-1 font-semibold">BROKERAGE</div>
+                                <div class="bg-gray-900 p-1">Bolsa/ETFs</div>
+                                <div class="bg-gray-900 p-1 text-accent">$535,579</div>
+                                <div class="bg-gray-900 p-1">33.3%</div>
+                                <div class="bg-gray-900 p-1">$0</div>
+                                <div class="bg-gray-900 p-1 text-green-400">✅ Activa</div>
+
+                                <div class="bg-gray-900 p-1">3</div>
+                                <div class="bg-gray-900 p-1 font-semibold">CAPITAL ONE 360</div>
+                                <div class="bg-gray-900 p-1">Banco</div>
+                                <div class="bg-gray-900 p-1 text-accent">$172,760</div>
+                                <div class="bg-gray-900 p-1">10.7%</div>
+                                <div class="bg-gray-900 p-1">$0</div>
+                                <div class="bg-gray-900 p-1 text-green-400">✅ Activa</div>
+
+                                <div class="bg-gray-900 p-1">4</div>
+                                <div class="bg-gray-900 p-1 font-semibold">ALLOY BANK</div>
+                                <div class="bg-gray-900 p-1">Banco</div>
+                                <div class="bg-gray-900 p-1 text-accent">$160,644</div>
+                                <div class="bg-gray-900 p-1">10.0%</div>
+                                <div class="bg-gray-900 p-1">$0</div>
+                                <div class="bg-gray-900 p-1 text-green-400">✅ Activa</div>
+
+                                <div class="bg-gray-900 p-1">5</div>
+                                <div class="bg-gray-900 p-1 font-semibold">WEALTHFRONT</div>
+                                <div class="bg-gray-900 p-1">Inversión</div>
+                                <div class="bg-gray-900 p-1 text-accent">$151,492</div>
+                                <div class="bg-gray-900 p-1">9.4%</div>
+                                <div class="bg-gray-900 p-1">$0</div>
+                                <div class="bg-gray-900 p-1 text-green-400">✅ Activa</div>
+
+                                <div class="bg-gray-900 p-1">6</div>
+                                <div class="bg-gray-900 p-1 font-semibold">CHARLES SCHWAB</div>
+                                <div class="bg-gray-900 p-1">Bolsa/ETFs</div>
+                                <div class="bg-gray-900 p-1 text-accent">$49,728</div>
+                                <div class="bg-gray-900 p-1">3.1%</div>
+                                <div class="bg-gray-900 p-1">$0</div>
+                                <div class="bg-gray-900 p-1 text-green-400">✅ Activa</div>
+
+                                <div class="bg-gray-900 p-1">7</div>
+                                <div class="bg-gray-900 p-1 font-semibold">CHIME</div>
+                                <div class="bg-gray-900 p-1">Banco</div>
+                                <div class="bg-gray-900 p-1 text-accent">$44,564</div>
+                                <div class="bg-gray-900 p-1">2.8%</div>
+                                <div class="bg-gray-900 p-1">$0</div>
+                                <div class="bg-gray-900 p-1 text-green-400">✅ Activa</div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">📈 EVOLUCIÓN DEL PATRIMONIO</div>
+                            <div class="h-12 bg-gray-800 rounded flex items-end px-1">
+                                <div class="w-1/12 h-4/5 bg-green-400 rounded-t"></div>
+                                <div class="w-1/12 h-3/5 bg-green-300 rounded-t"></div>
+                                <div class="w-1/12 h-2/5 bg-yellow-300 rounded-t"></div>
+                                <div class="w-1/12 h-1/5 bg-red-300 rounded-t"></div>
+                                <div class="w-1/12 h-3/5 bg-green-300 rounded-t"></div>
+                                <div class="w-1/12 h-4/5 bg-green-400 rounded-t"></div>
+                                <div class="w-1/12 h-5/6 bg-green-500 rounded-t"></div>
+                                <div class="w-1/12 h-3/4 bg-green-400 rounded-t"></div>
+                                <div class="w-1/12 h-2/3 bg-green-300 rounded-t"></div>
+                                <div class="w-1/12 h-1/2 bg-yellow-300 rounded-t"></div>
+                                <div class="w-1/12 h-1/3 bg-yellow-200 rounded-t"></div>
+                                <div class="w-1/12 h-1/4 bg-yellow-100 rounded-t"></div>
+                            </div>
+                            <div class="flex justify-between text-[0.5rem] text-gray-400 mt-1">
+                                <span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span><span>May</span><span>Jun</span><span>Jul</span><span>Ago</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dic</span>
                             </div>
                         </div>
                     </div>
                 </template>
-                <!-- ... resto del modal igual pero con estilos oscuros ya aplicados por las clases -->
+
+                <!-- PLATAFORMAS DE INVERSIONES - METAS (restaurado) -->
+                <template x-if="selectedProduct===0 && activeTab===1">
+                    <div class="excel-window-dark">
+                        <div class="excel-titlebar-dark">
+                            <span class="text-gray-300 text-xs">Plataformas de Inversiones.xlsx - Metas</span>
+                        </div>
+                        <div class="excel-body-dark p-3">
+                            <div class="text-sm font-semibold text-gray-200 mb-3">🎯 METAS FINANCIERAS · Proyección de crecimiento</div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">PORTFOLIO GOALS</div>
+                            <div class="grid grid-cols-7 gap-[1px] bg-gray-700 text-[0.55rem] mb-4">
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">META</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">SALDO ACTUAL</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">OBJETIVO</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">FALTANTE</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">PROGRESO</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">PLAZO</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">ESTATUS</div>
+
+                                <div class="bg-gray-900 p-1">Conservadora</div>
+                                <div class="bg-gray-900 p-1">$1,607,053</div>
+                                <div class="bg-gray-900 p-1">$2,000,000</div>
+                                <div class="bg-gray-900 p-1">$392,947</div>
+                                <div class="bg-gray-900 p-1 text-green-400">80.4%</div>
+                                <div class="bg-gray-900 p-1">5 años</div>
+                                <div class="bg-gray-900 p-1 text-yellow-400">🔥 Casi lista</div>
+
+                                <div class="bg-gray-900 p-1">Ambiciosa</div>
+                                <div class="bg-gray-900 p-1">$1,607,053</div>
+                                <div class="bg-gray-900 p-1">$5,000,000</div>
+                                <div class="bg-gray-900 p-1">$3,392,947</div>
+                                <div class="bg-gray-900 p-1 text-yellow-400">32.1%</div>
+                                <div class="bg-gray-900 p-1">10 años</div>
+                                <div class="bg-gray-900 p-1 text-blue-400">⏳ En proceso</div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">📈 PROYECCIÓN ANUAL (Rendimiento base: 6%)</div>
+                            <div class="grid grid-cols-7 gap-[1px] bg-gray-700 text-[0.55rem] mb-4">
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">AÑO</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">ESPERADO</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">REAL</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">DIFERENCIA</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">ESTATUS</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">META $2M</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">META $5M</div>
+
+                                <div class="bg-gray-900 p-1">Hoy</div>
+                                <div class="bg-gray-900 p-1">$1,607,053</div>
+                                <div class="bg-gray-900 p-1">$1,607,053</div>
+                                <div class="bg-gray-900 p-1">$392,947</div>
+                                <div class="bg-gray-900 p-1 text-yellow-400">⏳ Pendiente</div>
+                                <div class="bg-gray-900 p-1">80.4%</div>
+                                <div class="bg-gray-900 p-1">32.1%</div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- PORTAFOLIO DE INVERSIONES - INICIO (nuevo) -->
+                <template x-if="selectedProduct===1 && activeTab===0">
+                    <div class="excel-window-dark">
+                        <div class="excel-titlebar-dark">
+                            <span class="text-gray-300 text-xs">Portafolio de Inversiones.xlsx - Inicio</span>
+                        </div>
+                        <div class="excel-body-dark p-3">
+                            <div class="text-sm font-semibold text-gray-200 mb-2">INVESTMENT PORTFOLIO · Stocks · ETFs · Crypto</div>
+                            <div class="grid grid-cols-4 gap-1 mb-2">
+                                <div class="kpi-excel"><div class="kpi-label">💰 CAPITAL INVERTIDO</div><div class="kpi-val">$150,890</div><div class="text-[0.45rem] text-gray-500">← what you put in</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">💵 DINERO RECUPERADO</div><div class="kpi-val">$2,882</div><div class="text-[0.45rem] text-gray-500">← what you recovered</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">💸 DIVIDENDOS</div><div class="kpi-val">$0</div><div class="text-[0.45rem] text-gray-500">← passive income</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">💳 COMISIONES</div><div class="kpi-val">$0</div><div class="text-[0.45rem] text-gray-500">← broker costs</div></div>
+                            </div>
+                            <div class="grid grid-cols-4 gap-1 mb-3">
+                                <div class="kpi-excel"><div class="kpi-label">📊 G/P REALIZADA</div><div class="kpi-val positive">+$82</div><div class="text-[0.45rem] text-gray-500">← only when selling</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">🔢 TOTAL OPS</div><div class="kpi-val">9</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">🟢 OPS COMPRA</div><div class="kpi-val">7</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">🔴 OPS VENTA</div><div class="kpi-val">2</div></div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">📋 RESUMEN POR CLASE DE ACTIVO</div>
+                            <div class="grid grid-cols-4 gap-[1px] bg-gray-700 text-[0.55rem] mb-3">
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">TIPO</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">COMPRAS ($)</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">VENTAS ($)</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">DIVIDENDOS ($)</div>
+                                <div class="bg-gray-900 p-1">🟢 Acciones</div><div class="bg-gray-900 p-1">$1,890</div><div class="bg-gray-900 p-1">$1,160</div><div class="bg-gray-900 p-1">$0</div>
+                                <div class="bg-gray-900 p-1">🔵 ETFs</div><div class="bg-gray-900 p-1">$5,100</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$0</div>
+                                <div class="bg-gray-900 p-1">🟠 Crypto</div><div class="bg-gray-900 p-1">$143,400</div><div class="bg-gray-900 p-1">$1,722</div><div class="bg-gray-900 p-1">$0</div>
+                                <div class="bg-gray-900 p-1">🟡 Efectivo/Liquidez</div><div class="bg-gray-900 p-1">$500</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$0</div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">🏦 RESUMEN POR BROKER</div>
+                            <div class="grid grid-cols-2 gap-[1px] bg-gray-700 text-[0.55rem] mb-3">
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">BROKER</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">COMPRAS ($)</div>
+                                <div class="bg-gray-900 p-1">Interactive Brokers</div><div class="bg-gray-900 p-1">$5,490</div>
+                                <div class="bg-gray-900 p-1">Fidelity</div><div class="bg-gray-900 p-1">$1,500</div>
+                                <div class="bg-gray-900 p-1">Binance</div><div class="bg-gray-900 p-1">$143,400</div>
+                                <div class="bg-gray-900 p-1">Robinhood</div><div class="bg-gray-900 p-1">$500</div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">🕐 ÚLTIMOS 5 MOVIMIENTOS</div>
+                            <div class="grid grid-cols-7 gap-[1px] bg-gray-700 text-[0.5rem] mb-3">
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">FECHA</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">TICKER</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">TIPO</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">MOV.</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">PRECIO</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">TOTAL</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">BROKER</div>
+                                <div class="bg-gray-900 p-1">09/02/26</div><div class="bg-gray-900 p-1">ETH</div><div class="bg-gray-900 p-1">Crypto</div><div class="bg-gray-900 p-1">Venta</div><div class="bg-gray-900 p-1">$1,722</div><div class="bg-gray-900 p-1">$1,722</div><div class="bg-gray-900 p-1">Binance</div>
+                                <div class="bg-gray-900 p-1">08/02/26</div><div class="bg-gray-900 p-1">AMD</div><div class="bg-gray-900 p-1">Stock</div><div class="bg-gray-900 p-1">Venta</div><div class="bg-gray-900 p-1">$290</div><div class="bg-gray-900 p-1">$1,160</div><div class="bg-gray-900 p-1">IB</div>
+                                <div class="bg-gray-900 p-1">07/02/26</div><div class="bg-gray-900 p-1">QQQ</div><div class="bg-gray-900 p-1">ETF</div><div class="bg-gray-900 p-1">Compra</div><div class="bg-gray-900 p-1">$600</div><div class="bg-gray-900 p-1">$3,600</div><div class="bg-gray-900 p-1">IB</div>
+                                <div class="bg-gray-900 p-1">06/02/26</div><div class="bg-gray-900 p-1">PLTR</div><div class="bg-gray-900 p-1">Stock</div><div class="bg-gray-900 p-1">Compra</div><div class="bg-gray-900 p-1">$130</div><div class="bg-gray-900 p-1">$390</div><div class="bg-gray-900 p-1">IB</div>
+                                <div class="bg-gray-900 p-1">05/02/26</div><div class="bg-gray-900 p-1">ETH</div><div class="bg-gray-900 p-1">Crypto</div><div class="bg-gray-900 p-1">Compra</div><div class="bg-gray-900 p-1">$1,800</div><div class="bg-gray-900 p-1">$5,400</div><div class="bg-gray-900 p-1">Binance</div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">🏆 TOP 5 ACTIVOS</div>
+                            <div class="grid grid-cols-8 gap-[1px] bg-gray-700 text-[0.5rem]">
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">TICKER</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">TIPO</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">INVERTIDO</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">RECUP.</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">G/P REAL</div><div class="bg-gray-800 p-1 text-gray-300 font-medium"># OPS</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">ESTADO</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">% PORT.</div>
+                                <div class="bg-gray-900 p-1">BTC</div><div class="bg-gray-900 p-1">Crypto</div><div class="bg-gray-900 p-1">$138,000</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">—</div><div class="bg-gray-900 p-1">1</div><div class="bg-gray-900 p-1 text-green-400">Abierta</div><div class="bg-gray-900 p-1">91.5%</div>
+                                <div class="bg-gray-900 p-1">ETH</div><div class="bg-gray-900 p-1">Crypto</div><div class="bg-gray-900 p-1">$5,400</div><div class="bg-gray-900 p-1">$1,722</div><div class="bg-gray-900 p-1 negative">-$78</div><div class="bg-gray-900 p-1">2</div><div class="bg-gray-900 p-1 text-green-400">Abierta</div><div class="bg-gray-900 p-1">3.6%</div>
+                                <div class="bg-gray-900 p-1">QQQ</div><div class="bg-gray-900 p-1">ETF</div><div class="bg-gray-900 p-1">$3,600</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">—</div><div class="bg-gray-900 p-1">1</div><div class="bg-gray-900 p-1 text-green-400">Abierta</div><div class="bg-gray-900 p-1">2.4%</div>
+                                <div class="bg-gray-900 p-1">AMD</div><div class="bg-gray-900 p-1">Stock</div><div class="bg-gray-900 p-1">$1,500</div><div class="bg-gray-900 p-1">$1,160</div><div class="bg-gray-900 p-1 positive">+$160</div><div class="bg-gray-900 p-1">2</div><div class="bg-gray-900 p-1 text-green-400">Abierta</div><div class="bg-gray-900 p-1">1.0%</div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- PORTAFOLIO DE INVERSIONES - REPORTE MENSUAL (nuevo) -->
+                <template x-if="selectedProduct===1 && activeTab===1">
+                    <div class="excel-window-dark">
+                        <div class="excel-titlebar-dark">
+                            <span class="text-gray-300 text-xs">Portafolio de Inversiones.xlsx - Reporte Mensual</span>
+                        </div>
+                        <div class="excel-body-dark p-3">
+                            <div class="text-sm font-semibold text-gray-200 mb-2">🧾 REPORTE MENSUAL · Febrero 2026</div>
+                            <div class="grid grid-cols-4 gap-1 mb-3">
+                                <div class="kpi-excel"><div class="kpi-label">💰 COMPRAS</div><div class="kpi-val">$150,890</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">📤 VENTAS</div><div class="kpi-val">$2,882</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">💸 DIVIDENDOS</div><div class="kpi-val">$0</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">🔢 OPERACIONES</div><div class="kpi-val">9</div></div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">📊 COMPARATIVA VS MES ANTERIOR</div>
+                            <div class="grid grid-cols-6 gap-[1px] bg-gray-700 text-[0.5rem] mb-3">
+                                <div class="bg-gray-800 p-1 text-gray-300">MÉTRICA</div><div class="bg-gray-800 p-1 text-gray-300">MES ACTUAL</div><div class="bg-gray-800 p-1 text-gray-300">MES ANTERIOR</div><div class="bg-gray-800 p-1 text-gray-300">DIF ($)</div><div class="bg-gray-800 p-1 text-gray-300">DIF %</div><div class="bg-gray-800 p-1 text-gray-300">TENDENCIA</div>
+                                <div class="bg-gray-900 p-1">Compras</div><div class="bg-gray-900 p-1">$150,890</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1 positive">+$150,890</div><div class="bg-gray-900 p-1">—</div><div class="bg-gray-900 p-1 text-green-400">🟢 Subió</div>
+                                <div class="bg-gray-900 p-1">Ventas</div><div class="bg-gray-900 p-1">$2,882</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1 positive">+$2,882</div><div class="bg-gray-900 p-1">—</div><div class="bg-gray-900 p-1 text-green-400">🟢 Subió</div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">🔍 DESGLOSE POR TIPO DE ACTIVO</div>
+                            <div class="grid grid-cols-6 gap-[1px] bg-gray-700 text-[0.5rem] mb-3">
+                                <div class="bg-gray-800 p-1 text-gray-300">TIPO</div><div class="bg-gray-800 p-1 text-gray-300">COMPRAS</div><div class="bg-gray-800 p-1 text-gray-300">VENTAS</div><div class="bg-gray-800 p-1 text-gray-300">DIV.</div><div class="bg-gray-800 p-1 text-gray-300"># OPS</div><div class="bg-gray-800 p-1 text-gray-300">% ACTIV.</div>
+                                <div class="bg-gray-900 p-1">Acciones</div><div class="bg-gray-900 p-1">$1,890</div><div class="bg-gray-900 p-1">$1,160</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">4</div><div class="bg-gray-900 p-1">44.4%</div>
+                                <div class="bg-gray-900 p-1">ETFs</div><div class="bg-gray-900 p-1">$5,100</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">2</div><div class="bg-gray-900 p-1">22.2%</div>
+                                <div class="bg-gray-900 p-1">Crypto</div><div class="bg-gray-900 p-1">$143,400</div><div class="bg-gray-900 p-1">$1,722</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">3</div><div class="bg-gray-900 p-1">33.3%</div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">📋 MOVIMIENTOS DE FEBRERO 2026</div>
+                            <div class="grid grid-cols-6 gap-[1px] bg-gray-700 text-[0.5rem]">
+                                <div class="bg-gray-800 p-1 text-gray-300">FECHA</div><div class="bg-gray-800 p-1 text-gray-300">TICKER</div><div class="bg-gray-800 p-1 text-gray-300">TIPO</div><div class="bg-gray-800 p-1 text-gray-300">MOV.</div><div class="bg-gray-800 p-1 text-gray-300">CANT.</div><div class="bg-gray-800 p-1 text-gray-300">TOTAL</div>
+                                <div class="bg-gray-900 p-1">01/02</div><div class="bg-gray-900 p-1">AMD</div><div class="bg-gray-900 p-1">Stock</div><div class="bg-gray-900 p-1">Compra</div><div class="bg-gray-900 p-1">6</div><div class="bg-gray-900 p-1">$1,500</div>
+                                <div class="bg-gray-900 p-1">02/02</div><div class="bg-gray-900 p-1">VOO</div><div class="bg-gray-900 p-1">ETF</div><div class="bg-gray-900 p-1">Compra</div><div class="bg-gray-900 p-1">5</div><div class="bg-gray-900 p-1">$1,500</div>
+                                <div class="bg-gray-900 p-1">03/02</div><div class="bg-gray-900 p-1">BTC</div><div class="bg-gray-900 p-1">Crypto</div><div class="bg-gray-900 p-1">Compra</div><div class="bg-gray-900 p-1">2</div><div class="bg-gray-900 p-1">$138,000</div>
+                                <div class="bg-gray-900 p-1">04/02</div><div class="bg-gray-900 p-1">USD</div><div class="bg-gray-900 p-1">Cash</div><div class="bg-gray-900 p-1">Compra</div><div class="bg-gray-900 p-1">500</div><div class="bg-gray-900 p-1">$500</div>
+                                <div class="bg-gray-900 p-1">05/02</div><div class="bg-gray-900 p-1">ETH</div><div class="bg-gray-900 p-1">Crypto</div><div class="bg-gray-900 p-1">Compra</div><div class="bg-gray-900 p-1">3</div><div class="bg-gray-900 p-1">$5,400</div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- PORTAFOLIO DE INVERSIONES - OBJETIVOS (nuevo) -->
+                <template x-if="selectedProduct===1 && activeTab===2">
+                    <div class="excel-window-dark">
+                        <div class="excel-titlebar-dark">
+                            <span class="text-gray-300 text-xs">Portafolio de Inversiones.xlsx - Objetivos</span>
+                        </div>
+                        <div class="excel-body-dark p-3">
+                            <div class="text-sm font-semibold text-gray-200 mb-2">🎯 OBJETIVOS FINANCIEROS</div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">METAS PRINCIPALES</div>
+                            <div class="grid grid-cols-7 gap-[1px] bg-gray-700 text-[0.55rem] mb-3">
+                                <div class="bg-gray-800 p-1 text-gray-300">OBJETIVO</div><div class="bg-gray-800 p-1 text-gray-300">CLASE</div><div class="bg-gray-800 p-1 text-gray-300">META ($)</div><div class="bg-gray-800 p-1 text-gray-300">TIENES ($)</div><div class="bg-gray-800 p-1 text-gray-300">% AVANCE</div><div class="bg-gray-800 p-1 text-gray-300">FECHA</div><div class="bg-gray-800 p-1 text-gray-300">ESTATUS</div>
+                                <div class="bg-gray-900 p-1">Portafolio $100K</div><div class="bg-gray-900 p-1">Todos</div><div class="bg-gray-900 p-1">$100,000</div><div class="bg-gray-900 p-1">$150,890</div><div class="bg-gray-900 p-1 text-green-400">150.9%</div><div class="bg-gray-900 p-1">2027</div><div class="bg-gray-900 p-1 text-green-400">🏆 LOGRADA</div>
+                                <div class="bg-gray-900 p-1">Acciones $50K</div><div class="bg-gray-900 p-1">Acción</div><div class="bg-gray-900 p-1">$50,000</div><div class="bg-gray-900 p-1">$1,890</div><div class="bg-gray-900 p-1 text-yellow-400">3.8%</div><div class="bg-gray-900 p-1">2026</div><div class="bg-gray-900 p-1 text-blue-400">🌱 Iniciando</div>
+                                <div class="bg-gray-900 p-1">ETFs $30K</div><div class="bg-gray-900 p-1">ETF</div><div class="bg-gray-900 p-1">$30,000</div><div class="bg-gray-900 p-1">$5,100</div><div class="bg-gray-900 p-1 text-yellow-400">17.0%</div><div class="bg-gray-900 p-1">2026</div><div class="bg-gray-900 p-1 text-blue-400">🌱 Iniciando</div>
+                                <div class="bg-gray-900 p-1">Crypto $20K</div><div class="bg-gray-900 p-1">Crypto</div><div class="bg-gray-900 p-1">$20,000</div><div class="bg-gray-900 p-1">$143,400</div><div class="bg-gray-900 p-1 text-green-400">717%</div><div class="bg-gray-900 p-1">2027</div><div class="bg-gray-900 p-1 text-green-400">🏆 LOGRADA</div>
+                                <div class="bg-gray-900 p-1">Dividendos $2K</div><div class="bg-gray-900 p-1">Acción</div><div class="bg-gray-900 p-1">$2,000</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1 text-red-400">0%</div><div class="bg-gray-900 p-1">2026</div><div class="bg-gray-900 p-1 text-blue-400">💤 Sin empezar</div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">📊 PROGRESO VISUAL</div>
+                            <div class="space-y-1 mb-3">
+                                <div><span class="text-[0.55rem] text-gray-400">Portafolio $100K:</span> <span class="text-green-400">████████████████████ 150.9%</span></div>
+                                <div><span class="text-[0.55rem] text-gray-400">Acciones $50K:</span> <span class="text-yellow-400">█░░░░░░░░░░░░░░░░░░░ 3.8%</span></div>
+                                <div><span class="text-[0.55rem] text-gray-400">ETFs $30K:</span> <span class="text-yellow-400">███░░░░░░░░░░░░░░░░░ 17.0%</span></div>
+                                <div><span class="text-[0.55rem] text-gray-400">Crypto $20K:</span> <span class="text-green-400">████████████████████ 717%</span></div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">📈 vs S&P500</div>
+                            <div class="grid grid-cols-4 gap-[1px] bg-gray-700 text-[0.55rem]">
+                                <div class="bg-gray-800 p-1 text-gray-300">MÉTRICA</div><div class="bg-gray-800 p-1 text-gray-300">TU PORTAFOLIO</div><div class="bg-gray-800 p-1 text-gray-300">S&P500</div><div class="bg-gray-800 p-1 text-gray-300">¿LO SUPERAS?</div>
+                                <div class="bg-gray-900 p-1">Rendimiento total</div><div class="bg-gray-900 p-1">2.93%</div><div class="bg-gray-900 p-1">10.0%</div><div class="bg-gray-900 p-1 text-red-400">🔴 Por debajo</div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Productos en inglés (genérico) -->
+                <template x-if="selectedProduct>=2">
+                    <div class="excel-window-dark">
+                        <div class="excel-titlebar-dark">
+                            <span class="text-gray-300 text-xs" x-text="selectedProduct===2 ? 'Investment Platforms Tracker.xlsx' : 'Investment Portfolio.xlsx'"></span>
+                        </div>
+                        <div class="excel-body-dark p-8 text-center text-gray-400">
+                            Vista previa completa disponible en la plantilla real.<br>
+                            <span class="text-xs">Aquí se mostrarían todas las hojas con datos dinámicos.</span>
+                        </div>
+                    </div>
+                </template>
             </div>
 
             <!-- Pie del modal -->
-            <div class="p-3 border-t border-excel-border flex justify-between items-center">
-                <div class="text-xs text-excel-gold opacity-70">
+            <div class="p-3 border-t border-neutral-200 flex justify-between items-center">
+                <div class="text-xs text-gray-500">
                     <span x-text="selectedProduct===0 ? '8 hojas · Dashboard multi-plataforma · Hasta 30 cuentas' : selectedProduct===1 ? '6 hojas · Acciones · ETFs · Crypto' : selectedProduct===2 ? '6 sheets · Multi-platform · Up to 30 accounts' : '6 sheets · Stocks · ETFs · Crypto'"></span>
                 </div>
                 <div class="flex gap-2">
-                    <button @click="previewModal=false" class="border border-excel-gold text-excel-gold px-3 py-1 rounded text-xs hover:bg-excel-gold/10">Cerrar</button>
-                    <a href="#" class="bg-excel-gold text-excel-bg px-3 py-1 rounded text-xs font-semibold">Comprar — $8 USD</a>
+                    <button @click="previewModal=false" class="border border-neutral-300 text-gray-700 px-3 py-1 rounded text-xs">Cerrar</button>
+                    <a href="#" class="bg-accent text-white px-3 py-1 rounded text-xs font-semibold">Comprar — $8 USD</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Benefits mejorado (claro) -->
+    <!-- Benefits mejorado -->
     <section id="benefits" class="py-12 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8">
@@ -460,7 +851,7 @@
         </div>
     </section>
 
-    <!-- Testimonios bilingües (claros) -->
+    <!-- Testimonios bilingües -->
     <section id="testimonials" class="py-10 bg-neutral-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-4">
@@ -490,7 +881,7 @@
         </div>
     </section>
 
-    <!-- FAQ compacto claro -->
+    <!-- FAQ compacto -->
     <section id="faq" class="py-10 bg-white">
         <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-4">
@@ -507,7 +898,7 @@
         </div>
     </section>
 
-    <!-- CTA final clara -->
+    <!-- CTA final -->
     <section class="py-10 bg-accent/5">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="font-display text-2xl sm:text-3xl text-gray-900 mb-3">Start investing with <span class="text-accent italic">intelligence</span></h2>
@@ -516,7 +907,7 @@
         </div>
     </section>
 
-    <!-- Footer claro -->
+    <!-- Footer -->
     <footer class="py-4 border-t border-neutral-200 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400 text-xs">
             © 2025 InvestTemplates. All rights reserved.
