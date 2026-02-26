@@ -1,286 +1,1094 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InvestTemplates | Premium Excel Tools for Investors</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        bg: '#0a0a0f',
-                        'bg-elevated': '#12121a',
-                        'bg-card': '#1a1a24',
-                        fg: '#f5f5f7',
-                        muted: '#8a8a9a',
-                        accent: '#d4af37',
-                        'accent-light': '#e8c964',
-                        'accent-dark': '#b8942d',
-                        success: '#22c55e',
-                        border: '#2a2a36',
-                    },
-                    fontFamily: {
-                        display: ['Instrument Serif', 'serif'],
-                        body: ['Space Grotesk', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        :root {
-            --bg: #0a0a0f;
-            --bg-elevated: #12121a;
-            --bg-card: #161620;
-            --fg: #f5f5f7;
-            --accent: #d4af37;
-            --border: #2a2a36;
-        }
-        * { scrollbar-width: thin; scrollbar-color: var(--accent) var(--bg-elevated); }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: var(--fg); overflow-x: hidden; }
-        .font-display { font-family: 'Instrument Serif', serif; }
-        
-        /* Estética moderna y gradientes */
-        .hero-bg { background: radial-gradient(circle at 50% -20%, rgba(212, 175, 55, 0.12) 0%, transparent 70%); }
-        .grid-pattern { background-image: linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px); background-size: 60px 60px; }
-        
-        /* Animaciones */
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InvestTemplates | Premium Excel Templates for Investment</title>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:       #080810;
+      --bg-card:  #0f0f1c;
+      --bg-raised:#161628;
+      --fg:       #f0f0f5;
+      --muted:    #7070a0;
+      --border:   #1e1e38;
+      --gold:     #d4af37;
+      --gold-lt:  #e8c964;
+      --gold-dk:  #b8942d;
+      --green:    #22d35a;
+      --red:      #f05050;
+      --cyan:     #22d4ee;
+      --blue:     #5090f8;
+      --purple:   #b87cf8;
+      --orange:   #f08030;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--gold) var(--bg)}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--fg);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    .display{font-family:'Fraunces',serif}
+    .mono{font-family:'JetBrains Mono',monospace}
 
-        /* Botones Premium */
-        .btn-primary { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); color: #000; font-weight: 700; padding: 0.8rem 1.8rem; border-radius: 12px; transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(212, 175, 55, 0.15); }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3); }
-        .btn-secondary { background: rgba(255,255,255,0.03); border: 1px solid var(--border); color: var(--fg); padding: 0.8rem 1.8rem; border-radius: 12px; transition: all 0.3s ease; }
-        .btn-secondary:hover { background: rgba(255,255,255,0.08); border-color: var(--accent); }
+    /* ── NAV ── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .4s}
+    nav.scrolled{background:rgba(8,8,16,.85);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--gold),var(--gold-dk));border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+    .logo-text{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--fg)}
+    .nav-links{display:flex;gap:28px}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:var(--fg)}
+    .btn-nav{background:linear-gradient(135deg,var(--gold),var(--gold-dk));color:var(--bg);font-weight:700;font-size:.85rem;padding:.55rem 1.4rem;border-radius:8px;text-decoration:none;transition:all .3s;white-space:nowrap}
+    .btn-nav:hover{box-shadow:0 0 24px rgba(212,175,55,.45);transform:translateY(-1px)}
 
-        /* Tarjetas de Producto */
-        .product-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; }
-        .product-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+    /* ── HERO ── */
+    .hero{min-height:100vh;display:flex;align-items:center;padding-top:72px;position:relative;overflow:hidden}
+    .hero-mesh{position:absolute;inset:0;pointer-events:none}
+    .hero-mesh::before{content:'';position:absolute;top:-30%;left:-10%;width:70%;height:80%;background:radial-gradient(ellipse,rgba(212,175,55,.12) 0%,transparent 60%);animation:drift1 18s ease-in-out infinite}
+    .hero-mesh::after{content:'';position:absolute;bottom:-20%;right:-10%;width:60%;height:70%;background:radial-gradient(ellipse,rgba(34,211,234,.06) 0%,transparent 60%);animation:drift2 22s ease-in-out infinite}
+    @keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-40px) scale(1.1)}}
+    @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,30px) scale(1.08)}}
+    .grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(212,175,55,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(212,175,55,.025) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
+    .hero-inner{max-width:1200px;margin:0 auto;padding:80px 24px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:.35rem .9rem;border-radius:99px;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.25);color:var(--gold);font-size:.8rem;font-weight:600;letter-spacing:.04em;margin-bottom:24px}
+    .pulse{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(34,211,90,.4)}50%{box-shadow:0 0 0 6px rgba(34,211,90,0)}}
+    .hero-h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5vw,4rem);line-height:1.1;color:var(--fg);margin-bottom:20px;font-weight:600}
+    .hero-h1 em{font-style:italic;color:var(--gold)}
+    .hero-sub{color:var(--muted);font-size:1.05rem;line-height:1.7;max-width:480px;margin-bottom:36px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+    .btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-dk));color:var(--bg);font-weight:700;padding:.8rem 1.8rem;border-radius:10px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .3s;border:none;cursor:pointer;font-size:.95rem;font-family:inherit}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(212,175,55,.35)}
+    .btn-secondary{background:transparent;border:1px solid rgba(212,175,55,.4);color:var(--gold);font-weight:600;padding:.8rem 1.8rem;border-radius:10px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .3s;cursor:pointer;font-size:.95rem;font-family:inherit}
+    .btn-secondary:hover{background:rgba(212,175,55,.08);transform:translateY(-2px)}
+    .hero-compat{display:flex;align-items:center;gap:12px}
+    .compat-label{font-size:.75rem;color:var(--muted);font-weight:500}
+    .compat-chips{display:flex;gap:8px}
+    .chip{padding:.25rem .7rem;border-radius:6px;background:var(--bg-raised);border:1px solid var(--border);font-size:.75rem;color:var(--muted);font-weight:500}
 
-        /* --- Estilos Excel Preview (Toda tu lógica visual original) --- */
-        .excel-window { background: #080c14; border-radius: 12px; overflow: hidden; border: 1px solid #1a2540; box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
-        .excel-titlebar { background: #0d1528; padding: 10px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #1e3060; }
-        .excel-tab { padding: 6px 14px; font-size: 0.7rem; cursor: pointer; transition: all 0.2s; border-radius: 6px 6px 0 0; }
-        .excel-tab.active { background: #0d1528; color: #f0c040; border: 1px solid #2a4080; border-bottom: 2px solid #f0c040; font-weight: 600; }
-        .excel-body { background: #080c14; padding: 15px; overflow-x: auto; }
-        .xc { padding: 6px 10px; border: 1px solid #101828; background: #0a0f1c; color: #c8d8e8; font-size: 0.7rem; min-width: 80px; }
-        .kpi-box { border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 4px; }
-        .kpi-green { background: rgba(34, 211, 90, 0.05); border: 1px solid rgba(34, 211, 90, 0.2); }
-        .kpi-val { font-size: 1.1rem; font-weight: 700; }
-    </style>
+    /* ── EXCEL PREVIEW (hero) ── */
+    .excel-frame{background:#070b13;border:1px solid #1a2540;border-radius:12px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 1px rgba(212,175,55,.08)}
+    .excel-bar{background:linear-gradient(90deg,#0d1528,#111e38);padding:8px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid #1a2540}
+    .dot{width:11px;height:11px;border-radius:50%}
+    .dot-r{background:#ff5f57}.dot-y{background:#ffbd2e}.dot-g{background:#28ca41}
+    .excel-bar span{margin-left:10px;font-size:.68rem;color:rgba(255,255,255,.5);font-family:'JetBrains Mono',monospace}
+    .excel-tabs{background:#0a0f1e;display:flex;padding:0 8px;border-bottom:1px solid #1a2a3a}
+    .etab{padding:5px 11px;font-size:.6rem;font-family:'Plus Jakarta Sans',sans-serif}
+    .etab.on{background:#070b13;color:var(--gold);border-bottom:2px solid var(--gold);font-weight:700}
+    .etab.off{color:#3a5060}
+    .ebody{padding:12px;background:#070b13}
+    .kpi-row{display:grid;gap:3px;margin-bottom:3px}
+    .kpi-row.c4{grid-template-columns:repeat(4,1fr)}
+    .kpi-row.c5{grid-template-columns:repeat(5,1fr)}
+    .kpi{border-radius:5px;padding:7px 9px}
+    .kpi-lbl{font-size:.54rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px}
+    .kpi-val{font-weight:700;font-size:.92rem}
+    .k-green{background:#071a10;border:1px solid #1a5c28}.k-green .kpi-lbl{color:#3a8050}.k-green .kpi-val{color:#22d35a}
+    .k-cyan{background:#061520;border:1px solid #104858}.k-cyan .kpi-lbl{color:#2a6878}.k-cyan .kpi-val{color:#22d4ee}
+    .k-amber{background:#100e04;border:1px solid #503808}.k-amber .kpi-lbl{color:#705010}.k-amber .kpi-val{color:#f0c040}
+    .k-blue{background:#060e20;border:1px solid #0e2858}.k-blue .kpi-lbl{color:#2a4878}.k-blue .kpi-val{color:#5090f8}
+    .k-red{background:#100606;border:1px solid #501010}.k-red .kpi-lbl{color:#703030}.k-red .kpi-val{color:#f05050}
+    .k-purple{background:#0c0618;border:1px solid #3a1868}.k-purple .kpi-lbl{color:#603090}.k-purple .kpi-val{color:#b87cf8}
+    .tbl-head{display:flex;gap:1px;margin-bottom:1px}
+    .th{background:#0d1830;color:#4a7090;padding:3px 6px;min-width:52px;font-size:.54rem;border:1px solid #1a2a48;text-transform:uppercase;letter-spacing:.02em}
+    .th.w80{min-width:80px}.th.w100{min-width:100px}.th.rn{min-width:24px;background:#060a10;border-color:#101828}
+    .tr{display:flex;gap:1px;margin-bottom:1px}
+    .tc{padding:3px 6px;min-width:52px;border:1px solid #101828;background:#0a0f1c;font-size:.6rem;color:#c8d8e8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .tc.rn{min-width:24px;background:#060a10;color:#2a4060;text-align:center;border-color:#101828}
+    .tc.w80{min-width:80px}.tc.w100{min-width:100px}
+    .c-gold{color:#f0c040;font-weight:700}.c-green{color:#22d35a;font-weight:500}.c-muted{color:#4a6880;font-size:.57rem}.c-blue{color:#5090f8}.c-orange{color:#f08030}.c-cyan{color:#22d4ee}.c-white{color:#e8eef8}
+
+    /* ── STATS BAR ── */
+    .stats-bar{background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 24px}
+    .stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+    .stat-item{text-align:center}
+    .stat-num{font-family:'Fraunces',serif;font-size:3.2rem;font-weight:600;background:linear-gradient(135deg,var(--fg) 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+    .stat-lbl{color:var(--muted);font-size:.85rem;margin-top:6px}
+
+    /* ── SECTION STYLES ── */
+    section{padding:96px 24px}
+    .section-inner{max-width:1200px;margin:0 auto}
+    .section-tag{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+    .section-h2{font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3rem);font-weight:600;line-height:1.15;color:var(--fg);margin-bottom:16px}
+    .section-h2 em{font-style:italic;color:var(--gold)}
+    .section-sub{color:var(--muted);font-size:1.05rem;line-height:1.7;max-width:560px}
+
+    /* ── FILTER PILLS ── */
+    .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px}
+    .filter-btn{padding:.45rem 1.1rem;border-radius:99px;font-size:.82rem;font-weight:600;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s;font-family:inherit}
+    .filter-btn.active,.filter-btn:hover{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+
+    /* ── PRODUCT CARDS ── */
+    .products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:1100px;margin:0 auto}
+    .pcard{background:var(--bg-card);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:all .4s;position:relative}
+    .pcard::before{content:'';position:absolute;inset:0;border-radius:18px;opacity:0;transition:opacity .4s;background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(212,175,55,.08),transparent)}
+    .pcard:hover{transform:translateY(-6px);border-color:rgba(212,175,55,.4);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 40px rgba(212,175,55,.08)}
+    .pcard:hover::before{opacity:1}
+    .pcard-preview{padding:16px;border-bottom:1px solid var(--border);position:relative;padding-top:56px}
+    .pcard-badge{position:absolute;top:14px;left:14px;padding:.25rem .75rem;border-radius:99px;font-size:.72rem;font-weight:700;z-index:2}
+    .badge-es{background:rgba(34,197,94,.1);color:#22c55e;border:1px solid rgba(34,197,94,.3)}
+    .badge-en{background:rgba(80,144,248,.1);color:#5090f8;border:1px solid rgba(80,144,248,.3)}
+    .pcard-body{padding:24px}
+    .pcard-tags{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+    .ptag{padding:.22rem .7rem;border-radius:6px;background:rgba(212,175,55,.08);color:var(--gold);font-size:.72rem;font-weight:600;border:1px solid rgba(212,175,55,.2)}
+    .ptag.blue{background:rgba(80,144,248,.08);color:#5090f8;border-color:rgba(80,144,248,.2)}
+    .stars{display:flex;gap:2px;align-items:center}
+    .stars svg{width:14px;height:14px;fill:var(--gold)}
+    .stars span{font-size:.8rem;color:var(--fg);font-weight:600;margin-left:4px}
+    .stars span.ct{color:var(--muted)}
+    .pcard-title{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--fg);margin-bottom:8px;line-height:1.2}
+    .pcard-desc{color:var(--muted);font-size:.88rem;line-height:1.65;margin-bottom:18px}
+    .features{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+    .features li{display:flex;align-items:flex-start;gap:8px;font-size:.85rem;color:var(--muted);line-height:1.5}
+    .features li::before{content:'';width:16px;height:16px;border-radius:50%;background:rgba(34,211,90,.15);border:1px solid rgba(34,211,90,.4);flex-shrink:0;margin-top:1px;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 8l3 3 7-7' stroke='%2322d35a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
+    .pcard-footer{display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid var(--border)}
+    .price{display:flex;align-items:baseline;gap:4px}
+    .price-num{font-family:'Fraunces',serif;font-size:2rem;font-weight:600;color:var(--fg)}
+    .price-cur{color:var(--muted);font-size:.85rem}
+    .pcard-btns{display:flex;gap:8px}
+    .btn-sm-outline{padding:.55rem 1rem;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit}
+    .btn-sm-outline:hover{border-color:var(--gold);color:var(--gold)}
+    .btn-sm-buy{padding:.55rem 1.1rem;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold-dk));color:var(--bg);font-size:.82rem;font-weight:700;border:none;cursor:pointer;transition:all .3s;font-family:inherit;text-decoration:none;display:inline-flex;align-items:center}
+    .btn-sm-buy:hover{box-shadow:0 8px 20px rgba(212,175,55,.35);transform:translateY(-1px)}
+
+    /* mini excel in cards */
+    .mini-excel{background:#070b13;border:1px solid #1a2540;border-radius:8px;overflow:hidden;font-family:'JetBrains Mono',monospace;font-size:.6rem}
+    .mini-bar{background:linear-gradient(90deg,#0d1528,#111e38);padding:5px 10px;display:flex;align-items:center;gap:5px;border-bottom:1px solid #1a2540}
+    .mini-dot{width:9px;height:9px;border-radius:50%}
+    .mini-tabs{background:#0a0f1e;display:flex;padding:0 6px;border-bottom:1px solid #1a2a3a;overflow-x:auto}
+
+    /* ── BENEFITS ── */
+    .benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+    .benefits-list{list-style:none;display:flex;flex-direction:column;gap:28px;margin-top:32px}
+    .benefit{display:flex;gap:18px;align-items:flex-start}
+    .benefit-icon{width:48px;height:48px;border-radius:12px;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.2);display:grid;place-items:center;flex-shrink:0;font-size:1.3rem}
+    .benefit-body h3{font-size:1rem;font-weight:700;color:var(--fg);margin-bottom:4px}
+    .benefit-body p{color:var(--muted);font-size:.88rem;line-height:1.6}
+    .compare-card{background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:32px}
+    .compare-title{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--fg);margin-bottom:24px}
+    .compare-row{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--bg);border-radius:10px;margin-bottom:8px}
+    .compare-row:last-child{margin-bottom:0}
+    .compare-label{color:var(--muted);font-size:.85rem}
+    .compare-cols{display:flex;gap:40px}
+    .compare-col{text-align:center}
+    .compare-col .val-bad{color:var(--red);font-weight:700;font-size:.9rem}
+    .compare-col .val-good{color:var(--green);font-weight:700;font-size:.9rem}
+    .compare-col .sub{font-size:.7rem;color:var(--muted);margin-top:2px}
+
+    /* ── TESTIMONIALS ── */
+    .testi-section{background:var(--bg-card)}
+    .testi-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:36px;max-width:720px;margin:0 auto}
+    .testi-stars{display:flex;gap:4px;margin-bottom:20px}
+    .testi-stars svg{width:18px;height:18px;fill:var(--gold)}
+    .testi-text{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--fg);line-height:1.6;margin-bottom:24px;font-style:italic}
+    .testi-author{display:flex;align-items:center;gap:14px}
+    .testi-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dk));display:grid;place-items:center;font-weight:700;color:var(--bg);font-size:.9rem;flex-shrink:0}
+    .testi-name{font-weight:700;color:var(--fg);font-size:.9rem}
+    .testi-role{color:var(--muted);font-size:.8rem;margin-top:2px}
+    .testi-controls{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:32px}
+    .testi-arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;display:grid;place-items:center;transition:all .2s}
+    .testi-arrow:hover{border-color:var(--gold);color:var(--gold)}
+    .testi-dots{display:flex;gap:8px}
+    .testi-dot{height:6px;border-radius:3px;background:var(--border);cursor:pointer;transition:all .3s}
+    .testi-dot.active{background:var(--gold);width:24px}
+    .testi-dot:not(.active){width:6px}
+
+    /* ── FAQ ── */
+    .faq-list{max-width:720px;margin:0 auto;margin-top:48px}
+    .faq-item{border-bottom:1px solid var(--border)}
+    .faq-q{width:100%;background:none;border:none;color:var(--fg);font-family:inherit;font-size:.95rem;font-weight:600;text-align:left;padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+    .faq-arrow{width:22px;height:22px;border-radius:50%;border:1px solid var(--border);display:grid;place-items:center;flex-shrink:0;transition:transform .3s,border-color .3s}
+    .faq-arrow svg{transition:transform .3s;color:var(--muted)}
+    .faq-item.open .faq-arrow{border-color:var(--gold)}
+    .faq-item.open .faq-arrow svg{transform:rotate(180deg);color:var(--gold)}
+    .faq-a{color:var(--muted);font-size:.88rem;line-height:1.7;max-height:0;overflow:hidden;transition:max-height .4s ease, padding .3s}
+    .faq-item.open .faq-a{max-height:200px;padding-bottom:18px}
+
+    /* ── CTA ── */
+    .cta-section{background:var(--bg-card);text-align:center;position:relative;overflow:hidden}
+    .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(212,175,55,.08),transparent)}
+    .cta-inner{position:relative;z-index:1}
+
+    /* ── FOOTER ── */
+    footer{background:var(--bg);border-top:1px solid var(--border);padding:56px 24px 32px}
+    .footer-inner{max-width:1200px;margin:0 auto}
+    .footer-grid{display:grid;grid-template-columns:1fr auto auto;gap:64px;margin-bottom:48px}
+    .footer-brand p{color:var(--muted);font-size:.88rem;line-height:1.6;max-width:320px;margin-top:14px}
+    .footer-col h4{font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg);margin-bottom:16px}
+    .footer-col a{display:block;color:var(--muted);text-decoration:none;font-size:.85rem;margin-bottom:10px;transition:color .2s}
+    .footer-col a:hover{color:var(--gold)}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border)}
+    .footer-bottom p{color:var(--muted);font-size:.8rem}
+
+    /* ── MODAL ── */
+    .modal-bg{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.85);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;padding:20px}
+    .modal-box{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;width:100%;max-width:960px;max-height:92vh;overflow:auto}
+    .modal-header{display:flex;justify-content:space-between;align-items:flex-start;padding:24px 28px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg-card);z-index:5}
+    .modal-title{font-family:'Fraunces',serif;font-size:1.35rem;color:var(--fg)}
+    .modal-close{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;display:grid;place-items:center;transition:all .2s}
+    .modal-close:hover{border-color:var(--gold);color:var(--gold)}
+    .modal-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:20px 28px}
+    .stat-box{background:rgba(212,175,55,.05);border:1px solid rgba(212,175,55,.18);border-radius:12px;padding:14px 18px}
+    .stat-box .lb{font-size:.72rem;color:var(--muted);margin-bottom:4px}
+    .stat-box .vl{font-size:1.25rem;font-weight:700}
+    .vl-gold{color:var(--gold)}.vl-green{color:var(--green)}
+    .modal-tabs-wrap{padding:0 28px 4px}
+    .modal-tabs{display:flex;flex-wrap:wrap;gap:8px}
+    .modal-tab{padding:.4rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:.78rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit}
+    .modal-tab.active{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+    .modal-excel-wrap{padding:16px 28px}
+    .modal-footer{padding:18px 28px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+    .modal-footer-note{font-size:.8rem;color:var(--muted)}
+
+    /* ── EXCEL FULL ── */
+    .ef{background:#070b13;border:1px solid #1a2540;border-radius:8px;overflow:hidden;font-family:'JetBrains Mono',monospace;font-size:.62rem}
+    .ef-bar{background:linear-gradient(90deg,#0d1528,#111e38);padding:7px 12px;display:flex;align-items:center;gap:6px;border-bottom:1px solid #1a2540}
+    .ef-tabs{background:#0a0f1e;display:flex;padding:0 8px;border-bottom:1px solid #1a2a3a;overflow-x:auto}
+    .ef-tab{padding:5px 11px;font-size:.6rem;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer}
+    .ef-tab.on{background:#070b13;color:var(--gold);border-bottom:2px solid var(--gold);font-weight:700}
+    .ef-tab.off{color:#3a5060}
+    .ef-body{padding:11px;background:#070b13;overflow-x:auto}
+    .ef-info{font-size:.62rem;color:#60a8f8;margin-bottom:8px;padding:4px 10px;background:#060e20;border-left:3px solid #204880;border-radius:0 4px 4px 0}
+    .ef-head{display:flex;gap:1px;margin-bottom:1px}
+    .eh{background:#0d1830;color:#4a7090;padding:3px 6px;min-width:64px;font-size:.56rem;border:1px solid #1a2a48;text-transform:uppercase;letter-spacing:.02em}
+    .eh.rn{min-width:26px;background:#060a10;border-color:#101828}.eh.w90{min-width:90px}.eh.w110{min-width:110px}.eh.w120{min-width:120px}
+    .er{display:flex;gap:1px;margin-bottom:1px}
+    .ec{padding:3px 6px;min-width:64px;border:1px solid #101828;background:#0a0f1c;font-size:.61rem;color:#c8d8e8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .ec.rn{min-width:26px;background:#060a10;color:#2a4060;text-align:center;border-color:#101828}
+    .ec.w90{min-width:90px}.ec.w110{min-width:110px}.ec.w120{min-width:120px}
+    .ec-gold{color:#f0c040;font-weight:700}.ec-green{color:#22d35a;font-weight:500}.ec-red{color:#f05050}.ec-muted{color:#4a6880;font-size:.56rem}
+    .ec-blue{color:#5090f8}.ec-cyan{color:#22d4ee}.ec-orange{color:#f08030}.ec-purple{color:#b87cf8}.ec-white{color:#e8eef8}
+    .ec-form{color:#6090c8;font-style:italic;font-size:.56rem}.ec-inp{background:#0d1820;color:#f0d060;border:1px solid #3a5020}
+    .ec-total{background:#101828;color:#f0c040;font-weight:700;border-color:#2a3a58}
+    .ef-kpi-g{grid-template-columns:repeat(4,1fr)}.ef-kpi-5{grid-template-columns:repeat(5,1fr)}
+
+    /* ── ANIMATIONS ── */
+    .reveal{opacity:0;transform:translateY(28px);transition:all .7s cubic-bezier(.22,1,.36,1)}
+    .reveal.in{opacity:1;transform:none}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
+    .au{animation:fadeUp .8s cubic-bezier(.22,1,.36,1) forwards;opacity:0}
+    .au.d1{animation-delay:.1s}.au.d2{animation-delay:.2s}.au.d3{animation-delay:.3s}.au.d4{animation-delay:.4s}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px){
+      .hero-inner{grid-template-columns:1fr;gap:40px}
+      .products-grid{grid-template-columns:1fr}
+      .benefits-grid{grid-template-columns:1fr}
+      .stats-inner{grid-template-columns:repeat(2,1fr)}
+      .footer-grid{grid-template-columns:1fr;gap:32px}
+      .nav-links,.btn-nav{display:none}
+    }
+    @media(max-width:600px){
+      .modal-stats{grid-template-columns:1fr}
+      .stats-inner{grid-template-columns:repeat(2,1fr)}
+    }
+  </style>
 </head>
-<body class="font-body antialiased hero-bg" x-data="{
-    mobileMenuOpen: false,
-    previewModal: false,
-    selectedProduct: null,
-    activeTab: 0,
-    scrolled: false,
-    testimonials: [
-        { name: 'Carlos Mendoza', role: 'Investor Independiente', avatar: 'CM', content: 'La plantilla de Portfolio me ha ahorrado horas cada semana. Antes usaba 3 excels distintos, ahora todo está centralizado.' },
-        { name: 'Ana García', role: 'Consultora Financiera', avatar: 'AG', content: 'Recomiendo estas plantillas a todos mis clientes. El nivel de detalle y las fórmulas de análisis son profesionales.' },
-        { name: 'Michael Johnson', role: 'Analista Financiero', avatar: 'MJ', content: 'The Platforms template is exactly what I needed. I can finally track all my accounts in one place.' },
-        { name: 'Laura Sánchez', role: 'Emprendedora', avatar: 'LS', content: 'Esto transformó mis finanzas personales. Por primera vez tengo claridad total sobre mis inversiones.' }
-    ],
-    products: [
-        {
-            title: 'Investment Platforms Tracker',
-            desc: 'Control total de tus plataformas y brokers. Monitorea saldos, depósitos y rendimientos en tiempo real.',
-            tabs: ['🏠 Inicio','📋 Movimientos','📈 Análisis','🧾 Reporte','🏅 Score','🎯 Objetivos'],
-            link_es: 'https://payhip.com/b/EYk2g',
-            link_en: 'https://payhip.com/b/EYk2g'
-        },
-        {
-            title: 'Investment Portfolio Pro',
-            desc: 'La herramienta definitiva para acciones y dividendos. Incluye mapas de calor y tickers automatizados.',
-            tabs: ['🏠 Inicio','💰 Saldos','📋 Movimientos','📈 Análisis','📊 S&P500','🎯 Metas'],
-            link_es: 'https://payhip.com/b/zW8Ic',
-            link_en: 'https://payhip.com/b/zW8Ic'
-        }
-    ]
+<body x-data="{
+  scrolled: false,
+  previewModal: false,
+  selectedProduct: null,
+  activeTab: 0,
+  activeFilter: 'all',
+  currentTesti: 0,
+  testimonials: [
+    { name:'Carlos Mendoza', role:'Independent Investor', av:'CM', text:'The Portfolio template saved me hours every week. I used to juggle 3 spreadsheets — now everything is in one place. The dividend tracking is incredible.' },
+    { name:'Ana García', role:'Financial Consultant', av:'AG', text:'I recommend these templates to all my clients. The formulas and analysis are on par with tools that cost ten times more.' },
+    { name:'Michael Johnson', role:'Financial Analyst', av:'MJ', text:'The Platforms template is exactly what I needed. I can finally track all my accounts in one place. Automated reports save me hours every month.' },
+    { name:'Laura Sánchez', role:'Entrepreneur', av:'LS', text:'This completely transformed my personal finances. For the first time I have total clarity over my investments. Highly recommended!' }
+  ],
+  faqs: [
+    { q:'Do I need advanced Excel skills?', a:'No. Our templates are designed for all levels. We include detailed guides so you can start right away with basic Excel knowledge.' },
+    { q:'Do the templates work in Google Sheets?', a:'Yes — all templates are compatible with Google Sheets, Excel 365, Excel 2019+ and Numbers. You receive a version optimized for each platform.' },
+    { q:'What if I have issues or questions?', a:'We offer priority email support with a 24-hour response time. Our team is ready to help you with any questions.' },
+    { q:'Do I get future updates?', a:'Yes, all updates are free for life. When we improve a template or add features, you receive an email with the download link at no cost.' },
+    { q:'Can I get a refund?', a:'We offer a 30-day money-back guarantee. If you are not satisfied, send us an email and we process your refund with no questions asked.' }
+  ],
+  openFaq: null
 }" @scroll.window="scrolled = window.scrollY > 50">
 
-    <div class="fixed inset-0 grid-pattern pointer-events-none opacity-40"></div>
+<!-- NAV -->
+<nav :class="scrolled ? 'scrolled' : ''">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#080810" stroke-width="2.2"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 5-6"/></svg>
+      </div>
+      <span class="logo-text">InvestTemplates</span>
+    </a>
+    <div class="nav-links">
+      <a href="#templates">Templates</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#templates" class="btn-nav">View Templates</a>
+  </div>
+</nav>
 
-    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" :class="scrolled ? 'bg-bg/80 backdrop-blur-xl border-b border-border py-4' : 'bg-transparent py-6'">
-        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center transition-transform group-hover:rotate-12">
-                    <svg class="w-6 h-6 text-bg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 5-6"/></svg>
-                </div>
-                <span class="font-display text-2xl text-fg tracking-tight">InvestTemplates</span>
-            </a>
-            
-            <div class="hidden md:flex items-center gap-10">
-                <a href="#templates" class="text-muted hover:text-accent transition-colors text-sm font-medium">Plantillas</a>
-                <a href="#testimonials" class="text-muted hover:text-accent transition-colors text-sm font-medium">Testimonios</a>
-                <a href="#templates" class="btn-primary text-sm">Comenzar ahora</a>
-            </div>
-
-            <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-fg">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></button>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-mesh"></div>
+  <div class="grid-lines"></div>
+  <div class="hero-inner">
+    <!-- Left -->
+    <div>
+      <div class="hero-eyebrow au"><span class="pulse"></span>Trusted by 2,500+ investors</div>
+      <h1 class="hero-h1 au d1">Master your finances with <em>professional Excel</em> templates</h1>
+      <p class="hero-sub au d2">Investment tools built by financial analysts. Track your portfolio, analyze returns and make informed decisions — all in one spreadsheet.</p>
+      <div class="hero-actions au d3">
+        <a href="#templates" class="btn-primary">View Templates <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <button @click="previewModal=true;selectedProduct=0;activeTab=0" class="btn-secondary">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><circle cx="12" cy="12" r="9"/></svg>
+          Live Demo
+        </button>
+      </div>
+      <div class="hero-compat au d4">
+        <span class="compat-label">Compatible with:</span>
+        <div class="compat-chips">
+          <span class="chip">Excel 365</span>
+          <span class="chip">Google Sheets</span>
+          <span class="chip">Numbers</span>
         </div>
-    </nav>
-
-    <section class="relative pt-40 pb-20 lg:pt-56 lg:pb-32">
-        <div class="max-w-7xl mx-auto px-6 text-center lg:text-left grid lg:grid-cols-2 gap-16 items-center">
-            <div class="animate-fade-in-up">
-                <span class="inline-block px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-bold uppercase tracking-widest mb-6">Excel de Grado Profesional</span>
-                <h1 class="font-display text-5xl md:text-7xl lg:text-8xl text-fg leading-none mb-8">
-                    Domina tus <br><span class="text-accent italic">inversiones</span>
-                </h1>
-                <p class="text-muted text-lg md:text-xl max-w-xl mb-10 leading-relaxed">
-                    Herramientas financieras construidas por analistas. Rastrea tu cartera, analiza retornos y toma decisiones informadas en un solo lugar.
-                </p>
-                <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
-                    <a href="#templates" class="btn-primary text-lg px-10">Ver Catálogo</a>
-                    <button @click="previewModal=true; selectedProduct=0" class="btn-secondary text-lg flex items-center gap-2">
-                        <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg>
-                        Demo en Vivo
-                    </button>
-                </div>
-            </div>
-
-            <div class="relative hidden lg:block animate-fade-in-up" style="animation-delay: 0.2s">
-                <div class="excel-window scale-110 origin-right">
-                    <div class="excel-titlebar">
-                        <div class="flex gap-1.5"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div>
-                        <span class="text-[10px] text-muted font-mono ml-4 uppercase">Portfolio_Pro_v4.xlsx</span>
-                    </div>
-                    <div class="excel-body">
-                        <div class="grid grid-cols-3 gap-3 mb-4">
-                            <div class="kpi-box kpi-green"><span class="text-[9px] text-success/70 uppercase">Total Inv.</span><span class="kpi-val text-success">$45,280</span></div>
-                            <div class="kpi-box" style="background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.2);"><span class="text-[9px] text-accent/70 uppercase">Profit</span><span class="kpi-val text-accent">+$8,120</span></div>
-                            <div class="kpi-box" style="background: rgba(34,211,238,0.05); border: 1px solid rgba(34,211,238,0.2);"><span class="text-[9px] text-cyan-400 uppercase">Yield</span><span class="kpi-val text-cyan-400">12.4%</span></div>
-                        </div>
-                        <div class="space-y-1">
-                            <div class="flex gap-1"><div class="xc bg-accent/20 border-accent/30 font-bold">TICKER</div><div class="xc">PRECIO</div><div class="xc">CAMBIO</div></div>
-                            <div class="flex gap-1"><div class="xc font-bold text-accent">AAPL</div><div class="xc">$189.43</div><div class="xc text-success">+1.24%</div></div>
-                            <div class="flex gap-1"><div class="xc font-bold text-accent">NVDA</div><div class="xc">$822.10</div><div class="xc text-success">+4.50%</div></div>
-                            <div class="flex gap-1"><div class="xc font-bold text-accent">BTC</div><div class="xc">$64,120</div><div class="xc text-red-500">-0.82%</div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+    <!-- Right: Excel mockup -->
+    <div class="au d2">
+      <div class="excel-frame">
+        <div class="excel-bar">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <span>INVESTMENT_PORTFOLIO.xlsx</span>
         </div>
-    </section>
-
-    <section id="templates" class="py-24 bg-bg-elevated/50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20">
-                <h2 class="font-display text-4xl md:text-6xl mb-6">Nuestras Soluciones</h2>
-                <p class="text-muted max-w-2xl mx-auto">Elige la herramienta que mejor se adapte a tu nivel de inversión. Disponibles en Español e Inglés.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
-                <template x-for="(product, index) in products">
-                    <div class="product-card p-8 lg:p-12 flex flex-col">
-                        <div class="mb-8">
-                            <h3 class="text-3xl font-bold mb-4" x-text="product.title"></h3>
-                            <p class="text-muted leading-relaxed" x-text="product.desc"></p>
-                        </div>
-                        
-                        <div class="space-y-4 mt-auto">
-                            <a :href="product.link_es" class="flex items-center justify-between p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-accent transition-all group">
-                                <span class="font-medium">Versión en Español 🇪🇸</span>
-                                <span class="text-accent group-hover:translate-x-1 transition-transform">→</span>
-                            </a>
-                            
-                            <a :href="product.link_en" class="flex items-center justify-between p-5 rounded-2xl bg-accent/5 border border-accent/20 hover:bg-accent/10 hover:border-accent transition-all group">
-                                <span class="font-medium text-accent">English Version 🇺🇸</span>
-                                <span class="text-accent group-hover:translate-x-1 transition-transform">→</span>
-                            </a>
-
-                            <button @click="previewModal=true; selectedProduct=index; activeTab=0" class="w-full text-center text-sm text-muted hover:text-fg pt-4 transition-colors underline underline-offset-8">Ver demo detallada</button>
-                        </div>
-                    </div>
-                </template>
-            </div>
+        <div class="excel-tabs">
+          <div class="etab on">🏠 Home</div>
+          <div class="etab off">📋 Transactions</div>
+          <div class="etab off">📈 Analysis</div>
+          <div class="etab off">🧾 Report</div>
+          <div class="etab off">🏅 Score</div>
+          <div class="etab off">🎯 Goals</div>
         </div>
-    </section>
-
-    <section id="testimonials" class="py-24">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="font-display text-4xl mb-16">Lo que dicen nuestros usuarios</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <template x-for="t in testimonials">
-                    <div class="bg-bg-card p-8 rounded-3xl border border-border text-left">
-                        <div class="flex items-center gap-3 mb-6">
-                            <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold" x-text="t.avatar"></div>
-                            <div>
-                                <div class="font-bold text-sm" x-text="t.name"></div>
-                                <div class="text-xs text-muted" x-text="t.role"></div>
-                            </div>
-                        </div>
-                        <p class="text-sm text-muted leading-relaxed italic" x-text="'“' + t.content + '”'"></p>
-                    </div>
-                </template>
-            </div>
+        <div class="ebody">
+          <div style="font-size:.58rem;color:#3a6070;font-weight:700;letter-spacing:.06em;margin-bottom:8px">■ INVESTMENT PORTFOLIO · Stocks · ETFs · Crypto</div>
+          <div class="kpi-row c4" style="margin-bottom:3px">
+            <div class="kpi k-green"><div class="kpi-lbl">💰 CAPITAL INV.</div><div class="kpi-val">$38,917</div></div>
+            <div class="kpi k-cyan"><div class="kpi-lbl">💵 RECOVERED</div><div class="kpi-val">$4,739</div></div>
+            <div class="kpi k-amber"><div class="kpi-lbl">💸 DIVIDENDS</div><div class="kpi-val">$317.50</div></div>
+            <div class="kpi k-red"><div class="kpi-lbl">💳 COMMISSIONS</div><div class="kpi-val">-$30.00</div></div>
+          </div>
+          <div class="kpi-row c4" style="margin-bottom:10px">
+            <div class="kpi k-amber" style="background:#0a0800"><div class="kpi-lbl">📊 REALIZED G/P</div><div class="kpi-val">+$4,540</div></div>
+            <div class="kpi k-purple"><div class="kpi-lbl">🔢 TOTAL OPS</div><div class="kpi-val">30</div></div>
+            <div class="kpi k-green" style="background:#040e08"><div class="kpi-lbl">🟢 BUY OPS</div><div class="kpi-val">24</div></div>
+            <div class="kpi k-red" style="background:#0a0606"><div class="kpi-lbl">🔴 SELL OPS</div><div class="kpi-val">2</div></div>
+          </div>
+          <div style="font-size:.55rem;color:#2a5040;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px">🏆 TOP 5 ASSETS</div>
+          <div class="tbl-head">
+            <div class="th rn">#</div><div class="th w80">TICKER</div><div class="th">TYPE</div><div class="th">INVESTED</div><div class="th">G/P</div><div class="th">STATUS</div>
+          </div>
+          <div class="tr"><div class="tc rn">1</div><div class="tc w80 c-gold">AAPL</div><div class="tc c-blue">Stock</div><div class="tc c-white">$3,582</div><div class="tc c-green">+$728</div><div class="tc c-green" style="font-size:.54rem">↑ Open</div></div>
+          <div class="tr"><div class="tc rn">2</div><div class="tc w80 c-gold">BTC</div><div class="tc c-orange">Crypto</div><div class="tc c-white">$9,145</div><div class="tc c-green">+$3,891</div><div class="tc c-green" style="font-size:.54rem">↑ Open</div></div>
+          <div class="tr"><div class="tc rn">3</div><div class="tc w80 c-gold">NVDA</div><div class="tc c-blue">Stock</div><div class="tc c-white">$8,720</div><div class="tc c-green">+$2,979</div><div class="tc c-green" style="font-size:.54rem">↑ Open</div></div>
+          <div class="tr"><div class="tc rn">4</div><div class="tc w80 c-gold">VOO</div><div class="tc c-cyan">ETF</div><div class="tc c-white">$5,163</div><div class="tc c-green">+$1,127</div><div class="tc c-green" style="font-size:.54rem">↑ Open</div></div>
+          <div class="tr"><div class="tc rn">5</div><div class="tc w80 c-gold">MSFT</div><div class="tc c-blue">Stock</div><div class="tc c-white">$6,683</div><div class="tc c-green">+$1,650</div><div class="tc c-green" style="font-size:.54rem">↑ Open</div></div>
+          <!-- mini chart -->
+          <div style="margin-top:9px;height:44px;position:relative">
+            <svg width="100%" height="44" viewBox="0 0 300 44" preserveAspectRatio="none">
+              <defs><linearGradient id="hg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="rgba(34,211,90,.22)"/><stop offset="100%" stop-color="rgba(34,211,90,0)"/></linearGradient></defs>
+              <path d="M0,38 Q30,35 60,30 T120,22 T180,14 T240,10 T300,4 L300,44 L0,44 Z" fill="url(#hg)"/>
+              <path d="M0,38 Q30,35 60,30 T120,22 T180,14 T240,10 T300,4" fill="none" stroke="#22d35a" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:3px">
+            <span style="font-size:.56rem;color:#4a6070">Jan 2024</span>
+            <span style="font-size:.58rem;color:#22d35a;font-weight:700">+31.9% cumulative return</span>
+            <span style="font-size:.56rem;color:#4a6070">Feb 2025</span>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div x-show="previewModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 lg:p-10" x-transition.opacity>
-        <div class="absolute inset-0 bg-bg/95 backdrop-blur-md" @click="previewModal = false"></div>
-        <div class="bg-bg-elevated w-full max-w-6xl max-h-full rounded-3xl border border-border overflow-hidden relative shadow-2xl" x-show="previewModal" x-transition.scale>
-            
-            <div class="p-6 border-b border-border flex justify-between items-center bg-bg-card">
-                <h3 class="text-xl font-bold flex items-center gap-3">
-                    <span class="text-accent">●</span> 
-                    <span x-text="products[selectedProduct]?.title"></span>
-                </h3>
-                <button @click="previewModal = false" class="p-2 hover:bg-white/10 rounded-full transition-colors">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                </button>
-            </div>
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item reveal"><div class="stat-num" data-target="2547">0</div><div class="stat-lbl">Active Clients</div></div>
+    <div class="stat-item reveal"><div class="stat-num" data-target="4">0</div><div class="stat-lbl">Premium Templates</div></div>
+    <div class="stat-item reveal"><div class="stat-num" data-target="98">0</div><div class="stat-lbl">% Satisfaction Rate</div></div>
+    <div class="stat-item reveal"><div class="stat-num" data-target="4">0</div><div class="stat-lbl">Updates / Month</div></div>
+  </div>
+</div>
 
-            <div class="bg-[#060a10] px-4 flex gap-1 overflow-x-auto border-b border-border">
-                <template x-for="(tab, i) in products[selectedProduct]?.tabs">
-                    <button @click="activeTab = i" 
-                            class="px-6 py-3 text-xs font-medium transition-all whitespace-nowrap"
-                            :class="activeTab === i ? 'bg-bg-elevated text-accent border-b-2 border-accent' : 'text-muted hover:text-fg'">
-                        <span x-text="tab"></span>
-                    </button>
-                </template>
-            </div>
-
-            <div class="p-8 overflow-y-auto max-h-[70vh]">
-                <div class="excel-window max-w-4xl mx-auto">
-                    <div class="p-10 text-center">
-                        <div class="mb-6 inline-block p-4 bg-accent/10 rounded-full">
-                            <svg class="w-12 h-12 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                        </div>
-                        <h4 class="text-2xl font-bold mb-4">Vista previa de <span x-text="products[selectedProduct]?.tabs[activeTab]"></span></h4>
-                        <p class="text-muted mb-8">Esta sección contiene fórmulas automatizadas y gráficos dinámicos diseñados para <span x-text="products[selectedProduct]?.title"></span>.</p>
-                        <a :href="products[selectedProduct]?.link_es" class="btn-primary inline-block">Adquirir esta plantilla</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- TEMPLATES -->
+<section id="templates">
+  <div class="section-inner">
+    <div class="text-center reveal" style="margin-bottom:48px">
+      <span class="section-tag">Our Templates</span>
+      <h2 class="section-h2">Professional tools for <em>serious investors</em></h2>
+      <p class="section-sub" style="margin:0 auto">Each template is built with advanced formulas, professional formatting and automations that save you hours every week.</p>
+    </div>
+    <div class="filters reveal" style="justify-content:center">
+      <button @click="activeFilter='all'" :class="activeFilter==='all'?'active':''" class="filter-btn">All</button>
+      <button @click="activeFilter='platform'" :class="activeFilter==='platform'?'active':''" class="filter-btn">By Platform</button>
+      <button @click="activeFilter='portfolio'" :class="activeFilter==='portfolio'?'active':''" class="filter-btn">Portfolio</button>
+      <button @click="activeFilter='spanish'" :class="activeFilter==='spanish'?'active':''" class="filter-btn">🇪🇸 Español</button>
+      <button @click="activeFilter='english'" :class="activeFilter==='english'?'active':''" class="filter-btn">🇺🇸 English</button>
     </div>
 
-    <footer class="py-20 border-t border-border bg-bg-card/30">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 text-center md:text-left">
-            <div>
-                <span class="font-display text-2xl text-fg mb-6 block">InvestTemplates</span>
-                <p class="text-sm text-muted">Las mejores herramientas de Excel para inversores modernos. Automatiza tu camino hacia la libertad financiera.</p>
+    <div class="products-grid">
+      <!-- CARD 1: PLATAFORMAS ES -->
+      <article x-show="activeFilter==='all'||activeFilter==='platform'||activeFilter==='spanish'" class="pcard reveal">
+        <div class="pcard-preview">
+          <span class="pcard-badge badge-es">🇪🇸 Español</span>
+          <div class="mini-excel">
+            <div class="mini-bar"><div class="mini-dot" style="background:#ff5f57"></div><div class="mini-dot" style="background:#ffbd2e"></div><div class="mini-dot" style="background:#28ca41"></div><span style="margin-left:8px;font-size:.6rem;color:rgba(255,255,255,.45)">PLATAFORMAS_DE_INVERSIONES.xlsx</span></div>
+            <div class="mini-tabs"><div class="etab on" style="padding:4px 9px">🏠 Inicio</div><div class="etab off" style="padding:4px 9px">💰 Saldos</div><div class="etab off" style="padding:4px 9px">📋 Mov.</div><div class="etab off" style="padding:4px 9px">📈 Análisis</div><div class="etab off" style="padding:4px 9px">📊 S&P500</div><div class="etab off" style="padding:4px 9px">🎯 Metas</div></div>
+            <div class="ebody">
+              <div style="font-size:.58rem;color:#4a6880;margin-bottom:5px;font-weight:600;letter-spacing:.05em">PORTAFOLIO · México · Dashboard en tiempo real</div>
+              <div class="kpi-row c5" style="margin-bottom:3px">
+                <div class="kpi k-green"><div class="kpi-lbl">💼 VALOR TOTAL</div><div class="kpi-val" style="font-size:.78rem">$118,977</div></div>
+                <div class="kpi k-cyan"><div class="kpi-lbl">📈 RENDIM.</div><div class="kpi-val" style="font-size:.78rem">+$47,477</div></div>
+                <div class="kpi k-amber"><div class="kpi-lbl">📊 REND %</div><div class="kpi-val" style="font-size:.78rem">+66.4%</div></div>
+                <div class="kpi k-blue"><div class="kpi-lbl">💰 APORTADO</div><div class="kpi-val" style="font-size:.78rem">$71,500</div></div>
+                <div class="kpi k-red"><div class="kpi-lbl">📤 RETIROS</div><div class="kpi-val" style="font-size:.78rem">$0</div></div>
+              </div>
+              <div class="tbl-head"><div class="th rn">#</div><div class="th w90">PLATAFORMA</div><div class="th">TIPO</div><div class="th">SALDO</div><div class="th">% PORT.</div><div class="th">STATUS</div></div>
+              <div class="tr"><div class="tc rn">1</div><div class="tc w90 ec-white" style="font-weight:700">Interactive Brokers</div><div class="tc ec-muted">Bolsa/ETFs</div><div class="tc ec-gold">$72,915</div><div class="tc ec-white">61.3%</div><div class="tc ec-green" style="font-size:.55rem">● Activa</div></div>
+              <div class="tr"><div class="tc rn">2</div><div class="tc w90 ec-white" style="font-weight:700">Binance</div><div class="tc ec-orange">Crypto</div><div class="tc ec-gold">$14,150</div><div class="tc ec-white">11.9%</div><div class="tc ec-green" style="font-size:.55rem">● Activa</div></div>
+              <div class="tr"><div class="tc rn">3</div><div class="tc w90 ec-white" style="font-weight:700">Fidelity</div><div class="tc ec-muted">Bolsa/ETFs</div><div class="tc ec-gold">$13,000</div><div class="tc ec-white">10.9%</div><div class="tc ec-green" style="font-size:.55rem">● Activa</div></div>
             </div>
-            <div class="md:col-start-3">
-                <span class="text-xs font-bold uppercase tracking-widest text-accent mb-6 block">Contacto</span>
-                <p class="text-sm text-muted mb-2">¿Tienes dudas?</p>
-                <a href="mailto:soporte@investtemplates.com" class="text-fg hover:text-accent transition-colors font-medium">soporte@investtemplates.com</a>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-tags">
+            <span class="ptag">By Platform</span>
+            <div class="stars">
+              <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <span>4.9</span><span class="ct">(342)</span>
             </div>
+          </div>
+          <h3 class="pcard-title">PLATAFORMAS DE INVERSIONES</h3>
+          <p class="pcard-desc">Gestiona todas tus cuentas de inversión en un solo lugar. Dashboard automático, evolución del patrimonio y comparativa vs S&P500.</p>
+          <ul class="features">
+            <li>Dashboard multi-plataforma consolidado (hasta 30)</li>
+            <li>Evolución del patrimonio mes a mes</li>
+            <li>Comparativa de rendimiento vs S&P500 y CETES</li>
+            <li>Estimación fiscal (ISR retención 20%)</li>
+            <li>Metas financieras con proyección</li>
+            <li>Hasta 2,000 registros de movimientos</li>
+          </ul>
+          <div class="pcard-footer">
+            <div class="price"><span class="price-num">$8</span><span class="price-cur">USD</span></div>
+            <div class="pcard-btns">
+              <button @click="previewModal=true;selectedProduct=0;activeTab=0" class="btn-sm-outline">Preview</button>
+              <a href="https://payhip.com/b/9UZ6a" target="_blank" class="btn-sm-buy">Buy Now</a>
+            </div>
+          </div>
         </div>
-        <div class="max-w-7xl mx-auto px-6 mt-20 pt-8 border-t border-border/50 text-center">
-            <p class="text-xs text-muted">© 2024 InvestTemplates. Todos los derechos reservados. Excel es una marca de Microsoft Corp.</p>
-        </div>
-    </footer>
+      </article>
 
+      <!-- CARD 2: PORTAFOLIO ES -->
+      <article x-show="activeFilter==='all'||activeFilter==='portfolio'||activeFilter==='spanish'" class="pcard reveal">
+        <div class="pcard-preview">
+          <span class="pcard-badge badge-es">🇪🇸 Español</span>
+          <div class="mini-excel">
+            <div class="mini-bar"><div class="mini-dot" style="background:#ff5f57"></div><div class="mini-dot" style="background:#ffbd2e"></div><div class="mini-dot" style="background:#28ca41"></div><span style="margin-left:8px;font-size:.6rem;color:rgba(255,255,255,.45)">PORTAFOLIO_DE_INVERSIONES.xlsx</span></div>
+            <div class="mini-tabs"><div class="etab on" style="padding:4px 9px">🏠 Inicio</div><div class="etab off" style="padding:4px 9px">📋 Mov.</div><div class="etab off" style="padding:4px 9px">📈 Análisis</div><div class="etab off" style="padding:4px 9px">🧾 Reporte</div><div class="etab off" style="padding:4px 9px">🏅 Score</div><div class="etab off" style="padding:4px 9px">🎯 Objetivos</div></div>
+            <div class="ebody">
+              <div style="font-size:.58rem;color:#4a6880;margin-bottom:5px;font-weight:600;letter-spacing:.05em">PORTAFOLIO · Acciones · ETFs · Crypto</div>
+              <div class="kpi-row c4" style="margin-bottom:3px">
+                <div class="kpi k-green"><div class="kpi-lbl">💰 CAPITAL INV.</div><div class="kpi-val" style="font-size:.78rem">$38,917</div></div>
+                <div class="kpi k-cyan"><div class="kpi-lbl">💵 RECUPERADO</div><div class="kpi-val" style="font-size:.78rem">$4,739</div></div>
+                <div class="kpi k-amber"><div class="kpi-lbl">💸 DIVIDENDOS</div><div class="kpi-val" style="font-size:.78rem">$317.50</div></div>
+                <div class="kpi k-red"><div class="kpi-lbl">💳 COMISIONES</div><div class="kpi-val" style="font-size:.78rem">-$30.00</div></div>
+              </div>
+              <div class="tbl-head"><div class="th rn"></div><div class="th" style="min-width:48px">TICKER</div><div class="th">TIPO</div><div class="th">INVERTIDO</div><div class="th">G/P REAL.</div><div class="th">ESTADO</div></div>
+              <div class="tr"><div class="tc rn">1</div><div class="tc ec-gold" style="min-width:48px;font-weight:700">AAPL</div><div class="tc ec-blue">Acción</div><div class="tc ec-white">$3,582</div><div class="tc ec-green">+$728</div><div class="tc ec-green" style="font-size:.54rem">↑ Abierta</div></div>
+              <div class="tr"><div class="tc rn">2</div><div class="tc ec-gold" style="min-width:48px;font-weight:700">BTC</div><div class="tc ec-orange">Crypto</div><div class="tc ec-white">$9,145</div><div class="tc ec-green">+$3,891</div><div class="tc ec-green" style="font-size:.54rem">↑ Abierta</div></div>
+              <div class="tr"><div class="tc rn">3</div><div class="tc ec-gold" style="min-width:48px;font-weight:700">NVDA</div><div class="tc ec-blue">Acción</div><div class="tc ec-white">$8,720</div><div class="tc ec-green">+$2,979</div><div class="tc ec-green" style="font-size:.54rem">↑ Abierta</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-tags">
+            <span class="ptag">Portfolio</span>
+            <div class="stars">
+              <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <span>4.9</span><span class="ct">(489)</span>
+            </div>
+          </div>
+          <h3 class="pcard-title">PORTAFOLIO DE INVERSIONES</h3>
+          <p class="pcard-desc">Seguimiento completo de acciones, ETFs y criptomonedas. P&L automático, calendario de dividendos y score de salud del portafolio.</p>
+          <ul class="features">
+            <li>Acciones, ETFs y Crypto</li>
+            <li>P&L automático por activo</li>
+            <li>Calendario y seguimiento de dividendos</li>
+            <li>Reporte mensual automático</li>
+            <li>Score de salud del portafolio 0–100 pts</li>
+            <li>Seguimiento de objetivos financieros</li>
+          </ul>
+          <div class="pcard-footer">
+            <div class="price"><span class="price-num">$8</span><span class="price-cur">USD</span></div>
+            <div class="pcard-btns">
+              <button @click="previewModal=true;selectedProduct=1;activeTab=0" class="btn-sm-outline">Preview</button>
+              <a href="https://payhip.com/b/cp3hy" target="_blank" class="btn-sm-buy">Buy Now</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 3: INVESTMENT PLATFORMS TRACKER EN -->
+      <article x-show="activeFilter==='all'||activeFilter==='platform'||activeFilter==='english'" class="pcard reveal">
+        <div class="pcard-preview">
+          <span class="pcard-badge badge-en">🇺🇸 English</span>
+          <div class="mini-excel">
+            <div class="mini-bar"><div class="mini-dot" style="background:#ff5f57"></div><div class="mini-dot" style="background:#ffbd2e"></div><div class="mini-dot" style="background:#28ca41"></div><span style="margin-left:8px;font-size:.6rem;color:rgba(255,255,255,.45)">INVESTMENT_PLATFORMS_TRACKER.xlsx</span></div>
+            <div class="mini-tabs"><div class="etab on" style="padding:4px 9px">🏠 Home</div><div class="etab off" style="padding:4px 9px">💰 Balances</div><div class="etab off" style="padding:4px 9px">📋 Transactions</div><div class="etab off" style="padding:4px 9px">📈 Analysis</div><div class="etab off" style="padding:4px 9px">📊 S&P500</div><div class="etab off" style="padding:4px 9px">🎯 Goals</div></div>
+            <div class="ebody">
+              <div style="font-size:.58rem;color:#4a6880;margin-bottom:5px;font-weight:600;letter-spacing:.05em">INVESTMENT PORTFOLIO · Real-time Dashboard</div>
+              <div class="kpi-row c5" style="margin-bottom:3px">
+                <div class="kpi k-green"><div class="kpi-lbl">💼 TOTAL VALUE</div><div class="kpi-val" style="font-size:.78rem">$118,977</div></div>
+                <div class="kpi k-cyan"><div class="kpi-lbl">📈 RETURNS</div><div class="kpi-val" style="font-size:.78rem">+$47,477</div></div>
+                <div class="kpi k-amber"><div class="kpi-lbl">📊 RETURN %</div><div class="kpi-val" style="font-size:.78rem">+66.4%</div></div>
+                <div class="kpi k-blue"><div class="kpi-lbl">💰 CONTRIBUTED</div><div class="kpi-val" style="font-size:.78rem">$71,500</div></div>
+                <div class="kpi k-red"><div class="kpi-lbl">📤 WITHDRAWALS</div><div class="kpi-val" style="font-size:.78rem">$0</div></div>
+              </div>
+              <div class="tbl-head"><div class="th rn">#</div><div class="th w90">PLATFORM</div><div class="th">TYPE</div><div class="th">BALANCE</div><div class="th">% PORT.</div><div class="th">STATUS</div></div>
+              <div class="tr"><div class="tc rn">1</div><div class="tc w90 ec-white" style="font-weight:700">Interactive Brokers</div><div class="tc ec-muted">Stocks/ETFs</div><div class="tc ec-gold">$72,915</div><div class="tc ec-white">61.3%</div><div class="tc ec-green" style="font-size:.55rem">● Active</div></div>
+              <div class="tr"><div class="tc rn">2</div><div class="tc w90 ec-white" style="font-weight:700">Binance</div><div class="tc ec-orange">Crypto</div><div class="tc ec-gold">$14,150</div><div class="tc ec-white">11.9%</div><div class="tc ec-green" style="font-size:.55rem">● Active</div></div>
+              <div class="tr"><div class="tc rn">3</div><div class="tc w90 ec-white" style="font-weight:700">Fidelity</div><div class="tc ec-muted">Stocks/ETFs</div><div class="tc ec-gold">$13,000</div><div class="tc ec-white">10.9%</div><div class="tc ec-green" style="font-size:.55rem">● Active</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-tags">
+            <span class="ptag blue">By Platform</span>
+            <div class="stars">
+              <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <span>4.9</span><span class="ct">(198)</span>
+            </div>
+          </div>
+          <h3 class="pcard-title">INVESTMENT PLATFORMS TRACKER</h3>
+          <p class="pcard-desc">Manage all your investment accounts in one place. Automatic dashboard, net worth chart and S&P500 comparison — fully in English.</p>
+          <ul class="features">
+            <li>Consolidated multi-platform dashboard (up to 30)</li>
+            <li>Net worth evolution chart by month</li>
+            <li>Performance comparison vs S&P500 & CETES</li>
+            <li>Tax estimation (ISR 20% withholding)</li>
+            <li>Financial goals with 6% annual projection</li>
+            <li>Up to 2,000 transaction records</li>
+          </ul>
+          <div class="pcard-footer">
+            <div class="price"><span class="price-num">$8</span><span class="price-cur">USD</span></div>
+            <div class="pcard-btns">
+              <button @click="previewModal=true;selectedProduct=2;activeTab=0" class="btn-sm-outline">Preview</button>
+              <!-- ✅ English link added -->
+              <a href="https://payhip.com/b/EYk2g" target="_blank" class="btn-sm-buy">Buy Now</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 4: INVESTMENT PORTFOLIO EN -->
+      <article x-show="activeFilter==='all'||activeFilter==='portfolio'||activeFilter==='english'" class="pcard reveal">
+        <div class="pcard-preview">
+          <span class="pcard-badge badge-en">🇺🇸 English</span>
+          <div class="mini-excel">
+            <div class="mini-bar"><div class="mini-dot" style="background:#ff5f57"></div><div class="mini-dot" style="background:#ffbd2e"></div><div class="mini-dot" style="background:#28ca41"></div><span style="margin-left:8px;font-size:.6rem;color:rgba(255,255,255,.45)">INVESTMENT_PORTFOLIO.xlsx</span></div>
+            <div class="mini-tabs"><div class="etab on" style="padding:4px 9px">🏠 Home</div><div class="etab off" style="padding:4px 9px">📋 Transactions</div><div class="etab off" style="padding:4px 9px">📈 Analysis</div><div class="etab off" style="padding:4px 9px">🧾 Monthly Report</div><div class="etab off" style="padding:4px 9px">🏅 Score</div><div class="etab off" style="padding:4px 9px">🎯 Goals</div></div>
+            <div class="ebody">
+              <div style="font-size:.58rem;color:#4a6880;margin-bottom:5px;font-weight:600;letter-spacing:.05em">INVESTMENT PORTFOLIO · Stocks · ETFs · Crypto</div>
+              <div class="kpi-row c4" style="margin-bottom:3px">
+                <div class="kpi k-green"><div class="kpi-lbl">💰 CAPITAL INV.</div><div class="kpi-val" style="font-size:.78rem">$38,917</div></div>
+                <div class="kpi k-cyan"><div class="kpi-lbl">💵 RECOVERED</div><div class="kpi-val" style="font-size:.78rem">$4,739</div></div>
+                <div class="kpi k-amber"><div class="kpi-lbl">💸 DIVIDENDS</div><div class="kpi-val" style="font-size:.78rem">$317.50</div></div>
+                <div class="kpi k-red"><div class="kpi-lbl">💳 COMMISSIONS</div><div class="kpi-val" style="font-size:.78rem">-$30.00</div></div>
+              </div>
+              <div class="tbl-head"><div class="th rn"></div><div class="th" style="min-width:48px">TICKER</div><div class="th">TYPE</div><div class="th">INVESTED</div><div class="th">G/P</div><div class="th">STATUS</div></div>
+              <div class="tr"><div class="tc rn">1</div><div class="tc ec-gold" style="min-width:48px;font-weight:700">AAPL</div><div class="tc ec-blue">Stock</div><div class="tc ec-white">$3,582</div><div class="tc ec-green">+$728</div><div class="tc ec-green" style="font-size:.54rem">↑ Open</div></div>
+              <div class="tr"><div class="tc rn">2</div><div class="tc ec-gold" style="min-width:48px;font-weight:700">BTC</div><div class="tc ec-orange">Crypto</div><div class="tc ec-white">$9,145</div><div class="tc ec-green">+$3,891</div><div class="tc ec-green" style="font-size:.54rem">↑ Open</div></div>
+              <div class="tr"><div class="tc rn">3</div><div class="tc ec-gold" style="min-width:48px;font-weight:700">NVDA</div><div class="tc ec-blue">Stock</div><div class="tc ec-white">$8,720</div><div class="tc ec-green">+$2,979</div><div class="tc ec-green" style="font-size:.54rem">↑ Open</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-tags">
+            <span class="ptag blue">Portfolio</span>
+            <div class="stars">
+              <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <span>4.9</span><span class="ct">(231)</span>
+            </div>
+          </div>
+          <h3 class="pcard-title">INVESTMENT PORTFOLIO</h3>
+          <p class="pcard-desc">Full tracking for stocks, ETFs and crypto. Automatic P&L per asset, dividend calendar, portfolio health score — all in English, ready worldwide.</p>
+          <ul class="features">
+            <li>Stocks, ETFs & Crypto tracking</li>
+            <li>Automatic P&L per asset</li>
+            <li>Dividend calendar & tracker</li>
+            <li>Automatic monthly report</li>
+            <li>Portfolio health score 0–100 pts</li>
+            <li>Financial goals progress tracking</li>
+          </ul>
+          <div class="pcard-footer">
+            <div class="price"><span class="price-num">$8</span><span class="price-cur">USD</span></div>
+            <div class="pcard-btns">
+              <button @click="previewModal=true;selectedProduct=3;activeTab=0" class="btn-sm-outline">Preview</button>
+              <!-- ✅ English link added -->
+              <a href="https://payhip.com/b/zW8Ic" target="_blank" class="btn-sm-buy">Buy Now</a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section id="benefits" style="background:var(--bg-card)">
+  <div class="section-inner">
+    <div class="benefits-grid">
+      <div class="reveal">
+        <span class="section-tag">Why choose us?</span>
+        <h2 class="section-h2">Stop wasting time on <em>mediocre spreadsheets</em></h2>
+        <p class="section-sub">Built by financial analysts with 10+ years of experience in international markets.</p>
+        <ul class="benefits-list">
+          <li class="benefit"><div class="benefit-icon">⚡</div><div class="benefit-body"><h3>Ready in minutes</h3><p>No complex setup. Download, open and start managing your investments right away.</p></div></li>
+          <li class="benefit"><div class="benefit-icon">🛡️</div><div class="benefit-body"><h3>Audited formulas</h3><p>Every calculation has been verified by accountants and analysts. 100% accuracy guaranteed.</p></div></li>
+          <li class="benefit"><div class="benefit-icon">🔄</div><div class="benefit-body"><h3>Free lifetime updates</h3><p>Markets change and our templates do too. Receive improvements at no extra cost, forever.</p></div></li>
+          <li class="benefit"><div class="benefit-icon">🛠️</div><div class="benefit-body"><h3>Priority support 24h</h3><p>Questions? Our team responds within 24 hours with concrete solutions.</p></div></li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <div class="compare-card">
+          <h3 class="compare-title">How we compare</h3>
+          <div class="compare-row">
+            <span class="compare-label">Setup time</span>
+            <div class="compare-cols">
+              <div class="compare-col"><div class="val-bad">4–8h</div><div class="sub">Basic Excel</div></div>
+              <div class="compare-col"><div class="val-good">5 min</div><div class="sub">InvestTemplates</div></div>
+            </div>
+          </div>
+          <div class="compare-row">
+            <span class="compare-label">Advanced formulas</span>
+            <div class="compare-cols">
+              <div class="compare-col"><div class="val-bad">Manual</div><div class="sub">Error-prone</div></div>
+              <div class="compare-col"><div class="val-good">Included</div><div class="sub">Tested</div></div>
+            </div>
+          </div>
+          <div class="compare-row">
+            <span class="compare-label">Updates</span>
+            <div class="compare-cols">
+              <div class="compare-col"><div class="val-bad">DIY</div><div class="sub">More work</div></div>
+              <div class="compare-col"><div class="val-good">Free</div><div class="sub">Lifetime</div></div>
+            </div>
+          </div>
+          <div class="compare-row">
+            <span class="compare-label">Technical support</span>
+            <div class="compare-cols">
+              <div class="compare-col"><div class="val-bad">None</div><div class="sub">—</div></div>
+              <div class="compare-col"><div class="val-good">24h</div><div class="sub">Priority</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testi-section">
+  <div class="section-inner">
+    <div class="text-center reveal" style="margin-bottom:40px">
+      <span class="section-tag">Testimonials</span>
+      <h2 class="section-h2">What our <em>customers say</em></h2>
+    </div>
+    <div class="reveal">
+      <div class="testi-card">
+        <div class="testi-stars">
+          <svg viewBox="0 0 20 20" fill="var(--gold)"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20" fill="var(--gold)"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20" fill="var(--gold)"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20" fill="var(--gold)"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg viewBox="0 0 20 20" fill="var(--gold)"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <blockquote class="testi-text" x-text="testimonials[currentTesti].text"></blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar" x-text="testimonials[currentTesti].av"></div>
+          <div>
+            <div class="testi-name" x-text="testimonials[currentTesti].name"></div>
+            <div class="testi-role" x-text="testimonials[currentTesti].role"></div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-controls">
+        <button class="testi-arrow" @click="currentTesti=currentTesti>0?currentTesti-1:testimonials.length-1">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <div class="testi-dots">
+          <template x-for="(t,i) in testimonials" :key="i">
+            <div class="testi-dot" :class="currentTesti===i?'active':''" @click="currentTesti=i"></div>
+          </template>
+        </div>
+        <button class="testi-arrow" @click="currentTesti=currentTesti<testimonials.length-1?currentTesti+1:0">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner" style="text-align:center">
+    <span class="section-tag">FAQ</span>
+    <h2 class="section-h2">Frequently asked <em>questions</em></h2>
+    <div class="faq-list" style="text-align:left">
+      <template x-for="(f,i) in faqs" :key="i">
+        <div class="faq-item" :class="openFaq===i?'open':''">
+          <button class="faq-q" @click="openFaq=openFaq===i?null:i">
+            <span x-text="f.q"></span>
+            <div class="faq-arrow">
+              <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
+            </div>
+          </button>
+          <div class="faq-a" x-text="f.a"></div>
+        </div>
+      </template>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-inner cta-inner reveal" style="text-align:center">
+    <span class="section-tag">Get started today</span>
+    <h2 class="section-h2" style="max-width:640px;margin:0 auto 16px">Start investing with <em>intelligence</em></h2>
+    <p style="color:var(--muted);font-size:1.05rem;margin-bottom:36px">Join over 2,500 investors already making smarter financial decisions.</p>
+    <a href="#templates" class="btn-primary" style="font-size:1rem;padding:.9rem 2rem">
+      View All Templates
+      <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#080810" stroke-width="2.2"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 5-6"/></svg></div>
+          <span class="logo-text">InvestTemplates</span>
+        </a>
+        <p>Premium Excel templates for investors who want professional-grade analysis and portfolio management tools.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <a href="#templates">🇪🇸 Plataformas de Inversiones</a>
+        <a href="#templates">🇪🇸 Portafolio de Inversiones</a>
+        <a href="#templates">🇺🇸 Investment Platforms Tracker</a>
+        <a href="#templates">🇺🇸 Investment Portfolio</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Refund Policy</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 InvestTemplates. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL (simplified but functional) -->
+<div x-show="previewModal" x-transition class="modal-bg" @click.self="previewModal=false" style="display:none">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <h3 class="modal-title" x-text="selectedProduct===0?'PLATAFORMAS DE INVERSIONES':selectedProduct===1?'PORTAFOLIO DE INVERSIONES':selectedProduct===2?'INVESTMENT PLATFORMS TRACKER':'INVESTMENT PORTFOLIO'"></h3>
+        <div style="display:flex;gap:10px;margin-top:6px;align-items:center">
+          <span x-show="selectedProduct<=1" class="pcard-badge badge-es" style="position:relative;top:0;left:0">🇪🇸 Español</span>
+          <span x-show="selectedProduct>=2" class="pcard-badge badge-en" style="position:relative;top:0;left:0">🇺🇸 English</span>
+          <span style="color:var(--muted);font-size:.75rem" x-text="selectedProduct===0||selectedProduct===2?'6 sheets · Up to 30 platforms':'6 sheets · Stocks · ETFs · Crypto'"></span>
+        </div>
+      </div>
+      <button @click="previewModal=false" class="modal-close">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-stats">
+      <template x-if="selectedProduct===0||selectedProduct===2">
+        <div class="stat-box"><div class="lb">💼 Total Value</div><div class="vl vl-gold">$118,977</div></div>
+      </template>
+      <template x-if="selectedProduct===0||selectedProduct===2">
+        <div class="stat-box"><div class="lb">📈 Gains</div><div class="vl vl-green">+$47,477</div></div>
+      </template>
+      <template x-if="selectedProduct===0||selectedProduct===2">
+        <div class="stat-box"><div class="lb">📊 Return</div><div class="vl vl-green">+66.4%</div></div>
+      </template>
+      <template x-if="selectedProduct===1||selectedProduct===3">
+        <div class="stat-box"><div class="lb">💰 Capital Invested</div><div class="vl vl-gold">$38,917</div></div>
+      </template>
+      <template x-if="selectedProduct===1||selectedProduct===3">
+        <div class="stat-box"><div class="lb">📈 Realized G/P</div><div class="vl vl-green">+$4,540</div></div>
+      </template>
+      <template x-if="selectedProduct===1||selectedProduct===3">
+        <div class="stat-box"><div class="lb">💸 Dividends</div><div class="vl vl-green">$317.50</div></div>
+      </template>
+    </div>
+    <div class="modal-tabs-wrap">
+      <p style="font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Sheet tabs:</p>
+      <div class="modal-tabs">
+        <template x-if="selectedProduct===0">
+          <div style="display:contents">
+            <template x-for="(t,i) in ['🏠 Inicio','💰 Saldos','📋 Movimientos','📈 Análisis','📊 S&P500','🎯 Metas']" :key="i">
+              <button @click="activeTab=i" :class="activeTab===i?'active':''" class="modal-tab" x-text="t"></button>
+            </template>
+          </div>
+        </template>
+        <template x-if="selectedProduct===1">
+          <div style="display:contents">
+            <template x-for="(t,i) in ['🏠 Inicio','📋 Movimientos','📈 Análisis','🧾 Reporte Mensual','🏅 Score','🎯 Objetivos']" :key="i">
+              <button @click="activeTab=i" :class="activeTab===i?'active':''" class="modal-tab" x-text="t"></button>
+            </template>
+          </div>
+        </template>
+        <template x-if="selectedProduct===2">
+          <div style="display:contents">
+            <template x-for="(t,i) in ['🏠 Home','💰 Balances','📋 Transactions','📈 Analysis','📊 S&P500','🎯 Goals']" :key="i">
+              <button @click="activeTab=i" :class="activeTab===i?'active':''" class="modal-tab" x-text="t"></button>
+            </template>
+          </div>
+        </template>
+        <template x-if="selectedProduct===3">
+          <div style="display:contents">
+            <template x-for="(t,i) in ['🏠 Home','📋 Transactions','📈 Analysis','🧾 Monthly Report','🏅 Score','🎯 Goals']" :key="i">
+              <button @click="activeTab=i" :class="activeTab===i?'active':''" class="modal-tab" x-text="t"></button>
+            </template>
+          </div>
+        </template>
+      </div>
+    </div>
+    <div class="modal-excel-wrap">
+      <div class="ef">
+        <div class="ef-bar">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <span style="margin-left:10px;font-size:.65rem;color:rgba(255,255,255,.45);font-family:'JetBrains Mono',monospace" x-text="selectedProduct===0?'PLATAFORMAS_DE_INVERSIONES.xlsx':selectedProduct===1?'PORTAFOLIO_DE_INVERSIONES.xlsx':selectedProduct===2?'INVESTMENT_PLATFORMS_TRACKER.xlsx':'INVESTMENT_PORTFOLIO.xlsx'"></span>
+        </div>
+        <div class="ef-tabs">
+          <template x-if="selectedProduct===0">
+            <div style="display:contents">
+              <template x-for="(t,i) in ['🏠 Inicio','💰 Saldos','📋 Movimientos','📈 Análisis','📊 S&P500','🎯 Metas']" :key="i">
+                <div :class="activeTab===i?'ef-tab on':'ef-tab off'" x-text="t" @click="activeTab=i"></div>
+              </template>
+            </div>
+          </template>
+          <template x-if="selectedProduct===1">
+            <div style="display:contents">
+              <template x-for="(t,i) in ['🏠 Inicio','📋 Movimientos','📈 Análisis','🧾 Reporte','🏅 Score','🎯 Objetivos']" :key="i">
+                <div :class="activeTab===i?'ef-tab on':'ef-tab off'" x-text="t" @click="activeTab=i"></div>
+              </template>
+            </div>
+          </template>
+          <template x-if="selectedProduct===2">
+            <div style="display:contents">
+              <template x-for="(t,i) in ['🏠 Home','💰 Balances','📋 Transactions','📈 Analysis','📊 S&P500','🎯 Goals']" :key="i">
+                <div :class="activeTab===i?'ef-tab on':'ef-tab off'" x-text="t" @click="activeTab=i"></div>
+              </template>
+            </div>
+          </template>
+          <template x-if="selectedProduct===3">
+            <div style="display:contents">
+              <template x-for="(t,i) in ['🏠 Home','📋 Transactions','📈 Analysis','🧾 Monthly Report','🏅 Score','🎯 Goals']" :key="i">
+                <div :class="activeTab===i?'ef-tab on':'ef-tab off'" x-text="t" @click="activeTab=i"></div>
+              </template>
+            </div>
+          </template>
+        </div>
+        <div class="ef-body">
+          <!-- PLATAFORMAS Inicio (P0 T0 / P2 T0) -->
+          <div x-show="(selectedProduct===0||selectedProduct===2)&&activeTab===0">
+            <div class="ef-info" x-text="selectedProduct===0?'■ PORTAFOLIO DE INVERSIONES · México · Dashboard en tiempo real':'■ INVESTMENT PORTFOLIO · Mexico · Real-time Dashboard'"></div>
+            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-bottom:3px">
+              <div class="kpi k-green"><div class="kpi-lbl" x-text="selectedProduct===0?'💼 VALOR TOTAL':'💼 TOTAL VALUE'"></div><div class="kpi-val">$118,977</div></div>
+              <div class="kpi k-cyan"><div class="kpi-lbl" x-text="selectedProduct===0?'📈 RENDIMIENTOS':'📈 RETURNS'"></div><div class="kpi-val">+$47,477</div></div>
+              <div class="kpi k-amber"><div class="kpi-lbl" x-text="selectedProduct===0?'📊 REND %':'📊 RETURN %'"></div><div class="kpi-val">+66.4%</div></div>
+              <div class="kpi k-blue"><div class="kpi-lbl" x-text="selectedProduct===0?'💰 APORTADO':'💰 CONTRIBUTED'"></div><div class="kpi-val">$71,500</div></div>
+              <div class="kpi k-red"><div class="kpi-lbl" x-text="selectedProduct===0?'📤 RETIROS':'📤 WITHDRAWALS'"></div><div class="kpi-val">$0</div></div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-bottom:10px">
+              <div class="kpi k-blue" style="background:#050c1c"><div class="kpi-lbl" x-text="selectedProduct===0?'🏦 INV. INICIAL':'🏦 INIT. INV.'"></div><div class="kpi-val">$35,000</div></div>
+              <div class="kpi k-cyan" style="background:#040c18"><div class="kpi-lbl" x-text="selectedProduct===0?'🔢 MOVIMIENTOS':'🔢 MOVEMENTS'"></div><div class="kpi-val" style="color:#22d4ee">55</div></div>
+              <div class="kpi k-amber" style="background:#0c0a04"><div class="kpi-lbl">🏆 TOP</div><div class="kpi-val">GBM+</div></div>
+              <div class="kpi k-red" style="background:#0a0606"><div class="kpi-lbl" x-text="selectedProduct===0?'📉 GASTOS':'📉 EXPENSES'"></div><div class="kpi-val">$85</div></div>
+              <div class="kpi k-green" style="background:#040e08"><div class="kpi-lbl" x-text="selectedProduct===0?'💹 GANANCIA NETA':'💹 NET GAIN'"></div><div class="kpi-val">+$47,392</div></div>
+            </div>
+            <div style="font-size:.56rem;color:#3a6050;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px" x-text="selectedProduct===0?'■ RESUMEN POR PLATAFORMA · Todas (6)':'■ SUMMARY BY PLATFORM · All (6)'"></div>
+            <div class="ef-head"><div class="eh rn">#</div><div class="eh w120" x-text="selectedProduct===0?'PLATAFORMA':'PLATFORM'"></div><div class="eh" x-text="selectedProduct===0?'TIPO':'TYPE'"></div><div class="eh" x-text="selectedProduct===0?'SALDO ACTUAL':'BALANCE'"></div><div class="eh">% PORT.</div><div class="eh">STATUS</div></div>
+            <div class="er"><div class="ec rn">1</div><div class="ec w120 ec-white" style="font-weight:700">GBM+</div><div class="ec ec-muted" x-text="selectedProduct===0?'Bolsa/ETFs':'Stocks/ETFs'"></div><div class="ec ec-gold">$72,915</div><div class="ec ec-white">61.3%</div><div class="ec ec-green" style="font-size:.54rem">● <span x-text="selectedProduct===0?'Activa':'Active'"></span></div></div>
+            <div class="er"><div class="ec rn">2</div><div class="ec w120 ec-white" style="font-weight:700">Binance</div><div class="ec ec-orange">Crypto</div><div class="ec ec-gold">$14,150</div><div class="ec ec-white">11.9%</div><div class="ec ec-green" style="font-size:.54rem">● <span x-text="selectedProduct===0?'Activa':'Active'"></span></div></div>
+            <div class="er"><div class="ec rn">3</div><div class="ec w120 ec-white" style="font-weight:700">Fidelity</div><div class="ec ec-muted" x-text="selectedProduct===0?'Bolsa/ETFs':'Stocks/ETFs'"></div><div class="ec ec-gold">$13,000</div><div class="ec ec-white">10.9%</div><div class="ec ec-green" style="font-size:.54rem">● <span x-text="selectedProduct===0?'Activa':'Active'"></span></div></div>
+            <div class="er"><div class="ec rn">4</div><div class="ec w120 ec-white" style="font-weight:700">CETES Directo</div><div class="ec ec-cyan" x-text="selectedProduct===0?'Deuda/CETE':'Fixed Income'"></div><div class="ec ec-gold">$6,302</div><div class="ec ec-white">5.3%</div><div class="ec ec-green" style="font-size:.54rem">● <span x-text="selectedProduct===0?'Activa':'Active'"></span></div></div>
+          </div>
+          <!-- PLATAFORMAS Movimientos (P0 T2 / P2 T2) -->
+          <div x-show="(selectedProduct===0&&activeTab===2)||(selectedProduct===2&&activeTab===2)">
+            <div class="ef-info" x-text="selectedProduct===0?'📋 REGISTRO DE MOVIMIENTOS · Listas desplegables · Hasta 2,000 registros':'📋 TRANSACTIONS LOG · Dropdown lists · Up to 2,000 records'"></div>
+            <div class="ef-head"><div class="eh rn">#</div><div class="eh" x-text="selectedProduct===0?'AÑO':'YEAR'"></div><div class="eh" x-text="selectedProduct===0?'MES':'MONTH'"></div><div class="eh w110" x-text="selectedProduct===0?'PLATAFORMA':'PLATFORM'"></div><div class="eh" x-text="selectedProduct===0?'TIPO':'TYPE'"></div><div class="eh">MONTO ($)</div><div class="eh w90">DESC.</div></div>
+            <div class="er"><div class="ec rn">6</div><div class="ec ec-muted">2023</div><div class="ec ec-muted" x-text="selectedProduct===0?'Ene':'Jan'"></div><div class="ec w110 ec-white">Interactive Brokers</div><div class="ec ec-blue" x-text="selectedProduct===0?'Aportación':'Contribution'"></div><div class="ec ec-gold">$10,000</div><div class="ec ec-muted w90" x-text="selectedProduct===0?'Capital inicial IB':'Initial capital IB'"></div></div>
+            <div class="er"><div class="ec rn">7</div><div class="ec ec-muted">2023</div><div class="ec ec-muted" x-text="selectedProduct===0?'Mar':'Mar'"></div><div class="ec w110 ec-white">Interactive Brokers</div><div class="ec ec-green">Rendimiento</div><div class="ec ec-green">+$850</div><div class="ec ec-muted w90" x-text="selectedProduct===0?'Ganancias Q1':'Q1 gains'"></div></div>
+            <div class="er"><div class="ec rn">8</div><div class="ec ec-muted">2024</div><div class="ec ec-muted" x-text="selectedProduct===0?'Feb':'Feb'"></div><div class="ec w110 ec-white">Binance</div><div class="ec ec-green" x-text="selectedProduct===0?'Rendimiento':'Return'"></div><div class="ec ec-green">+$2,100</div><div class="ec ec-muted w90" x-text="selectedProduct===0?'Aprobación BTC ETF':'BTC ETF approval'"></div></div>
+            <div class="er"><div class="ec rn">9</div><div class="ec ec-muted">2025</div><div class="ec ec-muted" x-text="selectedProduct===0?'Feb':'Feb'"></div><div class="ec w110 ec-white">Interactive Brokers</div><div class="ec ec-red" x-text="selectedProduct===0?'Gasto':'Expense'"></div><div class="ec ec-red">-$85</div><div class="ec ec-muted w90" x-text="selectedProduct===0?'Comisión anual IB':'Annual IB fee'"></div></div>
+            <div style="padding:4px 6px;font-size:.56rem;color:#6a8a7a;text-align:center">... <span x-text="selectedProduct===0?'47 movimientos más · Tabla hasta 2,000 registros':'50 more transactions · Table up to 2,000 records'"></span> ...</div>
+          </div>
+          <!-- PLATAFORMAS Análisis (P0 T3 / P2 T3) -->
+          <div x-show="(selectedProduct===0&&activeTab===3)||(selectedProduct===2&&activeTab===3)">
+            <div class="ef-info" x-text="selectedProduct===0?'📈 ANÁLISIS · Filtros dinámicos · Todo se actualiza automáticamente':'📈 ANALYSIS · Dynamic filters · Everything updates automatically'"></div>
+            <div class="ef-head"><div class="eh rn"></div><div class="eh w110" x-text="selectedProduct===0?'PLATAFORMA':'PLATFORM'"></div><div class="eh" x-text="selectedProduct===0?'RENDIMIENTO':'RETURNS'"></div><div class="eh" x-text="selectedProduct===0?'APORTACIÓN':'CONTRIBUTED'"></div><div class="eh">SALDO</div><div class="eh">% PESO</div></div>
+            <div class="er"><div class="ec rn">9</div><div class="ec w110 ec-white">Interactive Brokers</div><div class="ec ec-green">+$28,415</div><div class="ec ec-blue">$44,500</div><div class="ec ec-gold">$72,915</div><div class="ec ec-muted">61.3%</div></div>
+            <div class="er"><div class="ec rn">10</div><div class="ec w110 ec-white">Binance</div><div class="ec ec-green">+$11,150</div><div class="ec ec-blue">$3,000</div><div class="ec ec-gold">$14,150</div><div class="ec ec-muted">11.9%</div></div>
+            <div class="er"><div class="ec rn">11</div><div class="ec w110 ec-white">Fidelity</div><div class="ec ec-green">+$3,000</div><div class="ec ec-blue">$10,000</div><div class="ec ec-gold">$13,000</div><div class="ec ec-muted">10.9%</div></div>
+            <div style="margin-top:8px;padding:8px;background:#060e20;border-radius:6px;border:1px solid #1a3060">
+              <div style="font-size:.58rem;color:#f0c040;font-weight:600;margin-bottom:5px" x-text="selectedProduct===0?'💰 ESTIMACIÓN FISCAL · ISR 20%':'💰 TAX ESTIMATION · ISR 20%'"></div>
+              <div class="er"><div class="ec w110 ec-muted" x-text="selectedProduct===0?'Rendimiento Bruto':'Gross Return'"></div><div class="ec ec-cyan">$47,477</div><div class="ec w110 ec-muted">ISR (20%)</div><div class="ec ec-red">-$9,495</div><div class="ec w90 ec-muted" x-text="selectedProduct===0?'Rend. Neto':'Net Return'"></div><div class="ec ec-green">$37,982</div></div>
+            </div>
+          </div>
+          <!-- S&P500 tabs (P0 T4 / P2 T4) -->
+          <div x-show="(selectedProduct===0&&activeTab===4)||(selectedProduct===2&&activeTab===4)">
+            <div class="ef-info" x-text="selectedProduct===0?'📊 RENDIMIENTO vs S&P 500 · ¿Tu portafolio le gana al mercado?':'📊 PERFORMANCE vs S&P 500 · Does your portfolio beat the market?'"></div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:8px">
+              <div class="kpi k-green"><div class="kpi-lbl" x-text="selectedProduct===0?'💼 PORTAFOLIO':'💼 PORTFOLIO'"></div><div class="kpi-val">+66.4%</div></div>
+              <div class="kpi k-blue"><div class="kpi-lbl">📈 S&P 500</div><div class="kpi-val">+24.2%</div></div>
+              <div class="kpi k-amber"><div class="kpi-lbl">🏦 CETES</div><div class="kpi-val">+10.5%</div></div>
+              <div class="kpi k-purple"><div class="kpi-lbl">🏆 ALPHA</div><div class="kpi-val">+42.2%</div></div>
+            </div>
+            <div class="ef-head"><div class="eh rn"></div><div class="eh" x-text="selectedProduct===0?'MES':'MONTH'"></div><div class="eh" x-text="selectedProduct===0?'REND. PORTAFOLIO':'PORTFOLIO'"></div><div class="eh">S&P 500</div><div class="eh">CETES</div><div class="eh" x-text="selectedProduct===0?'RESULTADO':'RESULT'"></div></div>
+            <div class="er"><div class="ec rn">8</div><div class="ec ec-muted">Ene/Jan 2024</div><div class="ec ec-green">+6.7%</div><div class="ec ec-blue">+1.8%</div><div class="ec" style="color:#f0a020">+0.9%</div><div class="ec ec-green" style="font-size:.55rem">✅ Win</div></div>
+            <div class="er"><div class="ec rn">9</div><div class="ec ec-muted">Mar 2024</div><div class="ec ec-green">+9.2%</div><div class="ec ec-blue">+3.1%</div><div class="ec" style="color:#f0a020">+0.9%</div><div class="ec ec-green" style="font-size:.55rem">✅ Win</div></div>
+            <div class="er"><div class="ec rn">10</div><div class="ec ec-muted">Nov 2024</div><div class="ec ec-green">+8.1%</div><div class="ec ec-blue">+5.9%</div><div class="ec" style="color:#f0a020">+0.9%</div><div class="ec ec-green" style="font-size:.55rem">✅ Win</div></div>
+          </div>
+          <!-- Metas/Goals (P0 T5 / P2 T5) -->
+          <div x-show="(selectedProduct===0&&activeTab===5)||(selectedProduct===2&&activeTab===5)">
+            <div class="ef-info" x-text="selectedProduct===0?'🎯 METAS FINANCIERAS · Proyección de crecimiento':'🎯 FINANCIAL GOALS · Track your path to financial freedom'"></div>
+            <div class="ef-head"><div class="eh rn"></div><div class="eh w110" x-text="selectedProduct===0?'META':'GOAL'"></div><div class="eh">ACTUAL</div><div class="eh" x-text="selectedProduct===0?'OBJETIVO':'TARGET'"></div><div class="eh">%</div><div class="eh" x-text="selectedProduct===0?'PLAZO':'TIMEFRAME'"></div><div class="eh">STATUS</div></div>
+            <div class="er"><div class="ec rn">5</div><div class="ec w110 ec-white" x-text="selectedProduct===0?'🎯 Meta Conservadora':'🎯 Conservative Goal'"></div><div class="ec ec-gold">$118,977</div><div class="ec ec-blue">$200,000</div><div class="ec" style="color:#f08030">59.5%</div><div class="ec ec-muted" x-text="selectedProduct===0?'5 años':'5 years'"></div><div class="ec" style="color:#f08030;font-size:.55rem">⏳</div></div>
+            <div class="er"><div class="ec rn">6</div><div class="ec w110 ec-white" x-text="selectedProduct===0?'🚀 Meta Ambiciosa':'🚀 Ambitious Goal'"></div><div class="ec ec-gold">$118,977</div><div class="ec ec-blue">$500,000</div><div class="ec" style="color:#f08030">23.8%</div><div class="ec ec-muted" x-text="selectedProduct===0?'10 años':'10 years'"></div><div class="ec" style="color:#f08030;font-size:.55rem">⏳</div></div>
+          </div>
+          <!-- Saldos (P0 T1 / P2 T1) -->
+          <div x-show="(selectedProduct===0&&activeTab===1)||(selectedProduct===2&&activeTab===1)">
+            <div class="ef-info" x-text="selectedProduct===0?'⚙️ MOTOR DE CÁLCULO · SALDOS POR PLATAFORMA · Solo edita columna D (amarillo)':'⚙️ CALCULATION ENGINE · BALANCES BY PLATFORM · Only edit column D (yellow)'"></div>
+            <div class="ef-head"><div class="eh rn">#</div><div class="eh w110" x-text="selectedProduct===0?'PLATAFORMA':'PLATFORM'"></div><div class="eh" x-text="selectedProduct===0?'SALDO INI.':'INIT. BAL.'"></div><div class="eh">+ APORTES</div><div class="eh">+ REND.</div><div class="eh">SALDO</div><div class="eh">REND %</div></div>
+            <div class="er"><div class="ec rn">6</div><div class="ec w110 ec-white">Interactive Brokers</div><div class="ec ec-inp">$10,000</div><div class="ec ec-form">=SUMIFS(...)</div><div class="ec ec-form">=SUMIFS(...)</div><div class="ec ec-gold">$72,915</div><div class="ec ec-green">+63.9%</div></div>
+            <div class="er"><div class="ec rn">7</div><div class="ec w110 ec-white">GBM+</div><div class="ec ec-inp">$5,000</div><div class="ec ec-form">=SUMIFS(...)</div><div class="ec ec-form">=SUMIFS(...)</div><div class="ec ec-gold">$9,900</div><div class="ec ec-green">+41.4%</div></div>
+            <div class="er"><div class="ec rn">8</div><div class="ec w110 ec-white">Binance</div><div class="ec ec-inp">$3,000</div><div class="ec ec-form">=SUMIFS(...)</div><div class="ec ec-form">=SUMIFS(...)</div><div class="ec ec-gold">$14,150</div><div class="ec ec-green">+371.7%</div></div>
+            <div class="er" style="border-top:1px solid #2a4060"><div class="ec rn">—</div><div class="ec w110 ec-total">TOTAL</div><div class="ec ec-total">$35,000</div><div class="ec ec-total">$36,500</div><div class="ec ec-total">$47,477</div><div class="ec ec-total">$118,977</div><div class="ec ec-green" style="font-weight:700;background:#071a10">+66.4%</div></div>
+          </div>
+
+          <!-- PORTAFOLIO Inicio (P1 T0 / P3 T0) -->
+          <div x-show="(selectedProduct===1||selectedProduct===3)&&activeTab===0">
+            <div class="ef-info" x-text="selectedProduct===1?'■ PORTAFOLIO DE INVERSIONES · Acciones · ETFs · Crypto':'■ INVESTMENT PORTFOLIO · Stocks · ETFs · Crypto'"></div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:3px">
+              <div class="kpi k-green"><div class="kpi-lbl" x-text="selectedProduct===1?'💰 CAPITAL INVERTIDO':'💰 CAPITAL INV.'"></div><div class="kpi-val">$38,917</div></div>
+              <div class="kpi k-cyan"><div class="kpi-lbl" x-text="selectedProduct===1?'💵 DINERO RECUPERADO':'💵 RECOVERED'"></div><div class="kpi-val">$4,739</div></div>
+              <div class="kpi k-amber"><div class="kpi-lbl" x-text="selectedProduct===1?'💸 DIVIDENDOS':'💸 DIVIDENDS'"></div><div class="kpi-val">$317.50</div></div>
+              <div class="kpi k-red"><div class="kpi-lbl" x-text="selectedProduct===1?'💳 COMISIONES':'💳 COMMISSIONS'"></div><div class="kpi-val">-$30.00</div></div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:10px">
+              <div class="kpi k-amber" style="background:#0c0800"><div class="kpi-lbl" x-text="selectedProduct===1?'📊 G/P REALIZADA':'📊 REALIZED G/P'"></div><div class="kpi-val">+$4,540</div></div>
+              <div class="kpi k-purple"><div class="kpi-lbl" x-text="selectedProduct===1?'🔢 TOTAL OPS':'🔢 TOTAL OPS'"></div><div class="kpi-val">30</div></div>
+              <div class="kpi k-green" style="background:#040e08"><div class="kpi-lbl" x-text="selectedProduct===1?'🟢 OPS COMPRA':'🟢 BUY OPS'"></div><div class="kpi-val">24</div></div>
+              <div class="kpi k-red" style="background:#0a0606"><div class="kpi-lbl" x-text="selectedProduct===1?'🔴 OPS VENTA':'🔴 SELL OPS'"></div><div class="kpi-val">2</div></div>
+            </div>
+            <div class="ef-head"><div class="eh rn"></div><div class="eh" x-text="selectedProduct===1?'TIPO':'TYPE'"></div><div class="eh" x-text="selectedProduct===1?'COMPRAS':'BOUGHT'"></div><div class="eh" x-text="selectedProduct===1?'VENTAS':'SOLD'"></div><div class="eh" x-text="selectedProduct===1?'DIVID.':'DIVID.'"></div></div>
+            <div class="er"><div class="ec rn">10</div><div class="ec ec-blue" x-text="selectedProduct===1?'🟢 Acciones':'🟢 Stocks'"></div><div class="ec ec-white">$17,560</div><div class="ec ec-green">$3,599</div><div class="ec ec-green">$160</div></div>
+            <div class="er"><div class="ec rn">11</div><div class="ec ec-cyan">🔵 ETFs</div><div class="ec ec-white">$8,184</div><div class="ec ec-muted">—</div><div class="ec ec-green">$89</div></div>
+            <div class="er"><div class="ec rn">12</div><div class="ec ec-orange">🟠 Crypto</div><div class="ec ec-white">$13,303</div><div class="ec ec-green">$1,138</div><div class="ec ec-muted">—</div></div>
+          </div>
+          <!-- PORTAFOLIO Movimientos (P1 T1 / P3 T1) -->
+          <div x-show="(selectedProduct===1&&activeTab===1)||(selectedProduct===3&&activeTab===1)">
+            <div class="ef-info" x-text="selectedProduct===1?'📋 REGISTRO DE MOVIMIENTOS · Acciones · ETFs · Crypto · Listas desplegables':'📋 TRANSACTIONS LOG · Stocks · ETFs · Crypto · Dropdown lists'"></div>
+            <div class="ef-head"><div class="eh rn"></div><div class="eh" x-text="selectedProduct===1?'FECHA':'DATE'"></div><div class="eh" x-text="selectedProduct===1?'TIPO':'TYPE'"></div><div class="eh">TICKER</div><div class="eh">BROKER</div><div class="eh" x-text="selectedProduct===1?'OPERACIÓN':'OPERATION'"></div><div class="eh">QTY</div><div class="eh" x-text="selectedProduct===1?'PRECIO':'PRICE'"></div><div class="eh">TOTAL</div></div>
+            <div class="er"><div class="ec rn">5</div><div class="ec ec-muted" x-text="selectedProduct===1?'15/01/24':'01/15/24'"></div><div class="ec ec-blue" x-text="selectedProduct===1?'Acción':'Stock'"></div><div class="ec ec-gold">AAPL</div><div class="ec ec-muted">IB</div><div class="ec ec-blue" x-text="selectedProduct===1?'Compra':'Buy'"></div><div class="ec ec-white">10</div><div class="ec ec-white">$185.50</div><div class="ec ec-red">$1,855</div></div>
+            <div class="er"><div class="ec rn">6</div><div class="ec ec-muted" x-text="selectedProduct===1?'28/02/24':'02/28/24'"></div><div class="ec ec-orange">Crypto</div><div class="ec ec-gold">BTC</div><div class="ec ec-muted">Binance</div><div class="ec ec-blue" x-text="selectedProduct===1?'Compra':'Buy'"></div><div class="ec ec-white">0.10</div><div class="ec ec-white">$48,200</div><div class="ec ec-red">$4,828</div></div>
+            <div class="er"><div class="ec rn">7</div><div class="ec ec-muted" x-text="selectedProduct===1?'10/07/24':'07/10/24'"></div><div class="ec ec-blue" x-text="selectedProduct===1?'Acción':'Stock'"></div><div class="ec ec-gold">NVDA</div><div class="ec ec-muted">IB</div><div class="ec ec-orange" x-text="selectedProduct===1?'Venta':'Sell'"></div><div class="ec ec-white">3</div><div class="ec ec-white">$1,200</div><div class="ec ec-green">+$3,599</div></div>
+            <div style="padding:4px;font-size:.55rem;color:#6a8a7a;text-align:center" x-text="selectedProduct===1?'... 27 movimientos más registrados ...':'... 27 more transactions recorded ...'"></div>
+          </div>
+          <!-- PORTAFOLIO Análisis (P1 T2 / P3 T2) -->
+          <div x-show="(selectedProduct===1&&activeTab===2)||(selectedProduct===3&&activeTab===2)">
+            <div class="ef-info" x-text="selectedProduct===1?'📈 ANÁLISIS DE PORTAFOLIO · P&L · Gráficos · Ingresa tickers en columna B (amarilla)':'📈 PORTFOLIO ANALYSIS · P&L · Charts · Enter tickers in column B (yellow)'"></div>
+            <div class="ef-head"><div class="eh rn"></div><div class="eh">TICKER</div><div class="eh" x-text="selectedProduct===1?'TIPO':'TYPE'"></div><div class="eh" x-text="selectedProduct===1?'INVERTIDO':'INVESTED'"></div><div class="eh" x-text="selectedProduct===1?'RECUPERADO':'RECOVERED'"></div><div class="eh" x-text="selectedProduct===1?'DIVIDENDOS':'DIVIDENDS'"></div><div class="eh">G/P</div></div>
+            <div class="er"><div class="ec rn">11</div><div class="ec ec-gold">AAPL</div><div class="ec ec-blue" x-text="selectedProduct===1?'Acción':'Stock'"></div><div class="ec ec-white">$3,582</div><div class="ec ec-muted">—</div><div class="ec ec-green">$121</div><div class="ec ec-form">=SUMIFS(...)</div></div>
+            <div class="er"><div class="ec rn">12</div><div class="ec ec-gold">NVDA</div><div class="ec ec-blue" x-text="selectedProduct===1?'Acción':'Stock'"></div><div class="ec ec-white">$8,720</div><div class="ec ec-green">$3,599</div><div class="ec ec-muted">—</div><div class="ec ec-green">+$2,979</div></div>
+            <div class="er"><div class="ec rn">13</div><div class="ec ec-gold">VOO</div><div class="ec ec-cyan">ETF</div><div class="ec ec-white">$5,163</div><div class="ec ec-muted">—</div><div class="ec ec-green">$89</div><div class="ec ec-form">=SUMIFS(...)</div></div>
+            <div class="er"><div class="ec rn">14</div><div class="ec ec-gold">BTC</div><div class="ec ec-orange">Crypto</div><div class="ec ec-white">$9,145</div><div class="ec ec-muted">—</div><div class="ec ec-muted">—</div><div class="ec ec-form">=SUMIFS(...)</div></div>
+          </div>
+          <!-- PORTAFOLIO Reporte (P1 T3 / P3 T3) -->
+          <div x-show="(selectedProduct===1&&activeTab===3)||(selectedProduct===3&&activeTab===3)">
+            <div class="ef-info" x-text="selectedProduct===1?'🧾 REPORTE MENSUAL · Selecciona año y mes · Todo se actualiza automáticamente':'🧾 MONTHLY REPORT · Select year and month · Everything updates automatically'"></div>
+            <div class="ef-head"><div class="eh rn"></div><div class="eh" x-text="selectedProduct===1?'AÑO':'YEAR'"></div><div class="eh" x-text="selectedProduct===1?'MES #':'MONTH #'"></div><div class="eh" x-text="selectedProduct===1?'MES':'MONTH'"></div><div class="eh" x-text="selectedProduct===1?'AÑO ACTUAL':'CURRENT YEAR'"></div><div class="eh" x-text="selectedProduct===1?'AÑO ANTERIOR':'PREV. YEAR'"></div><div class="eh">VARIACIÓN</div></div>
+            <div class="er"><div class="ec rn">5</div><div class="ec ec-inp">2025</div><div class="ec ec-inp">2</div><div class="ec ec-muted">February</div><div class="ec ec-gold">$8,432</div><div class="ec ec-white">$3,810</div><div class="ec ec-green">+$4,622</div></div>
+            <div style="margin-top:8px;font-size:.58rem;color:var(--muted);margin-bottom:3px" x-text="selectedProduct===1?'📊 RESUMEN: Febrero 2025':'📊 SUMMARY: February 2025'"></div>
+            <div class="ef-head"><div class="eh rn"></div><div class="eh" x-text="selectedProduct===1?'COMPRAS':'BOUGHT'"></div><div class="eh" x-text="selectedProduct===1?'VENTAS':'SOLD'"></div><div class="eh" x-text="selectedProduct===1?'DIVIDENDOS':'DIVIDENDS'"></div><div class="eh" x-text="selectedProduct===1?'COMISIONES':'COMMISSIONS'"></div><div class="eh" x-text="selectedProduct===1?'FLUJO NETO':'NET FLOW'"></div></div>
+            <div class="er"><div class="ec rn">9</div><div class="ec ec-red">-$1,091</div><div class="ec ec-green">—</div><div class="ec ec-green">$45</div><div class="ec ec-red">—</div><div class="ec ec-form">=SUMIFS(...)</div></div>
+          </div>
+          <!-- PORTAFOLIO Score (P1 T4 / P3 T4) -->
+          <div x-show="(selectedProduct===1&&activeTab===4)||(selectedProduct===3&&activeTab===4)">
+            <div class="ef-info" x-text="selectedProduct===1?'🏅 SCORE DE SALUD DEL PORTAFOLIO · Puntuación 0-100 · Evaluación automática':'🏅 PORTFOLIO HEALTH SCORE · Score 0-100 · Automatic evaluation'"></div>
+            <div style="text-align:center;padding:14px;background:#071a10;border-radius:8px;margin-bottom:10px;border:1px solid #1a5c28">
+              <div style="font-size:2.2rem;font-weight:700;color:#22d35a;font-family:'Fraunces',serif">78<span style="font-size:.9rem;color:#3a8050">/100</span></div>
+              <div style="font-size:.65rem;color:#3a8050;margin-top:4px" x-text="selectedProduct===1?'⭐ BUENO — Portafolio saludable':'⭐ GOOD — Healthy Portfolio'"></div>
+            </div>
+            <div class="ef-head"><div class="eh rn"></div><div class="eh w110" x-text="selectedProduct===1?'CRITERIO':'CATEGORY'"></div><div class="eh">SCORE</div><div class="eh">MAX</div><div class="eh">STATUS</div></div>
+            <div class="er"><div class="ec rn">11</div><div class="ec w110 ec-white" x-text="selectedProduct===1?'🌐 Diversificación':'🌍 Diversification'"></div><div class="ec ec-green">25</div><div class="ec ec-muted">25</div><div class="ec ec-green" style="font-size:.55rem">✅ <span x-text="selectedProduct===1?'Perfecto':'Excellent'"></span></div></div>
+            <div class="er"><div class="ec rn">12</div><div class="ec w110 ec-white" x-text="selectedProduct===1?'🔢 Cantidad activos':'📊 Asset count'"></div><div class="ec ec-green">15</div><div class="ec ec-muted">15</div><div class="ec ec-green" style="font-size:.55rem">✅ <span x-text="selectedProduct===1?'Perfecto':'Excellent'"></span></div></div>
+            <div class="er"><div class="ec rn">13</div><div class="ec w110 ec-white" x-text="selectedProduct===1?'📅 Disciplina':'📅 Discipline'"></div><div class="ec ec-green">15</div><div class="ec ec-muted">15</div><div class="ec ec-green" style="font-size:.55rem">✅ <span x-text="selectedProduct===1?'Perfecto':'Excellent'"></span></div></div>
+            <div class="er"><div class="ec rn">14</div><div class="ec w110 ec-white" x-text="selectedProduct===1?'💸 Dividendos':'💸 Dividends'"></div><div class="ec ec-orange">8</div><div class="ec ec-muted">15</div><div class="ec ec-orange" style="font-size:.55rem">⚡ <span x-text="selectedProduct===1?'Creciendo':'Improve'"></span></div></div>
+            <div class="er" style="border-top:1px solid rgba(212,175,55,.3)"><div class="ec rn">—</div><div class="ec w110 ec-total">TOTAL</div><div class="ec ec-total">78</div><div class="ec ec-total">100</div><div class="ec ec-green" style="font-weight:700">⭐ <span x-text="selectedProduct===1?'BUENO':'GOOD'"></span></div></div>
+          </div>
+          <!-- PORTAFOLIO Goals (P1 T5 / P3 T5) -->
+          <div x-show="(selectedProduct===1&&activeTab===5)||(selectedProduct===3&&activeTab===5)">
+            <div class="ef-info" x-text="selectedProduct===1?'🎯 OBJETIVOS FINANCIEROS · Define metas · Avance automático':'🎯 FINANCIAL GOALS · Set targets · Automatic progress tracking'"></div>
+            <div class="ef-head"><div class="eh rn"></div><div class="eh w110" x-text="selectedProduct===1?'OBJETIVO':'GOAL'"></div><div class="eh" x-text="selectedProduct===1?'META ($)':'TARGET ($)'"></div><div class="eh" x-text="selectedProduct===1?'TIENES ($)':'CURRENT ($)'"></div><div class="eh">%</div><div class="eh">STATUS</div></div>
+            <div class="er"><div class="ec rn">6</div><div class="ec w110 ec-white" x-text="selectedProduct===1?'Portafolio total $100K':'Total portfolio $100K'"></div><div class="ec ec-blue">$100,000</div><div class="ec ec-gold">$38,917</div><div class="ec ec-orange">38.9%</div><div class="ec ec-orange" style="font-size:.54rem">⏳</div></div>
+            <div class="er"><div class="ec rn">7</div><div class="ec w110 ec-white" x-text="selectedProduct===1?'Cartera Acciones $50K':'Stocks portfolio $50K'"></div><div class="ec ec-blue">$50,000</div><div class="ec ec-gold">$17,560</div><div class="ec ec-orange">35.1%</div><div class="ec ec-orange" style="font-size:.54rem">⏳</div></div>
+            <div class="er"><div class="ec rn">8</div><div class="ec w110 ec-white" x-text="selectedProduct===1?'Cartera Crypto $20K':'Crypto portfolio $20K'"></div><div class="ec ec-blue">$20,000</div><div class="ec ec-gold">$13,303</div><div class="ec ec-green">66.5%</div><div class="ec ec-green" style="font-size:.54rem">🏆 <span x-text="selectedProduct===1?'Casi!':'Almost!'"></span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="modal-footer-note" x-text="selectedProduct===0||selectedProduct===2?'6 sheets · 2,000 records · Dynamic filters · Tax estimate':'6 sheets · Stocks · ETFs · Crypto · Health score'"></div>
+      <div style="display:flex;gap:10px">
+        <button @click="previewModal=false" class="btn-sm-outline">Close</button>
+        <a :href="selectedProduct===0?'https://payhip.com/b/9UZ6a':selectedProduct===1?'https://payhip.com/b/cp3hy':selectedProduct===2?'https://payhip.com/b/EYk2g':'https://payhip.com/b/zW8Ic'" target="_blank" class="btn-sm-buy">Get Template — $8 USD</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Reveal on scroll
+  const els=document.querySelectorAll('.reveal');
+  new IntersectionObserver((e)=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')}),{threshold:.12,rootMargin:'0px 0px -40px 0px'}).observe && els.forEach(el=>new IntersectionObserver((e)=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')}),{threshold:.08}).observe(el));
+  // Counters
+  document.querySelectorAll('[data-target]').forEach(el=>{
+    new IntersectionObserver(([entry])=>{
+      if(!entry.isIntersecting) return;
+      const t=+el.dataset.target,dur=1800;let s=null;
+      const step=ts=>{if(!s)s=ts;const p=Math.min((ts-s)/dur,1);el.textContent=Math.floor(p*t).toLocaleString();if(p<1)requestAnimationFrame(step);};
+      requestAnimationFrame(step);
+    },{threshold:.5}).observe(el);
+  });
+  // Nav scroll class
+  window.addEventListener('scroll',()=>{
+    document.querySelector('nav').classList.toggle('scrolled',scrollY>50);
+  });
+</script>
 </body>
 </html>
