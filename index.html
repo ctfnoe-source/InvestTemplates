@@ -353,11 +353,11 @@
                             </div>
                             <div class="excel-body-dark">
                                 <div class="grid grid-cols-3 gap-1 mb-1">
-                                    <div class="kpi-excel"><div class="kpi-label">💼 TOTAL</div><div class="kpi-val">$118k</div></div>
-                                    <div class="kpi-excel"><div class="kpi-label">📈 RETURNS</div><div class="kpi-val positive">+$47k</div></div>
-                                    <div class="kpi-excel"><div class="kpi-label">📊 %</div><div class="kpi-val positive">+66%</div></div>
+                                    <div class="kpi-excel"><div class="kpi-label">💼 TOTAL</div><div class="kpi-val">$1,607k</div></div>
+                                    <div class="kpi-excel"><div class="kpi-label">📈 RETURNS</div><div class="kpi-val negative">-$16.9k</div></div>
+                                    <div class="kpi-excel"><div class="kpi-label">📊 %</div><div class="kpi-val negative">-1.04%</div></div>
                                 </div>
-                                <div class="text-[0.5rem] text-gray-400">📋 GBM+: $72.9k · Binance: $14k</div>
+                                <div class="text-[0.5rem] text-gray-400">📋 FIDELITY: $535k · SOFI: $172k</div>
                             </div>
                         </div>
                     </div>
@@ -400,9 +400,9 @@
                             <div class="excel-body-dark">
                                 <div class="grid grid-cols-2 gap-1 mb-1">
                                     <div class="kpi-excel"><div class="kpi-label">💰 CAPITAL</div><div class="kpi-val">$150.9k</div></div>
-                                    <div class="kpi-excel"><div class="kpi-label">📊 G/P</div><div class="kpi-val positive">+$82</div></div>
+                                    <div class="kpi-excel"><div class="kpi-label">📊 P&L</div><div class="kpi-val positive">+$82</div></div>
                                 </div>
-                                <div class="text-[0.5rem] text-gray-400">🏆 BTC · ETH · AMD</div>
+                                <div class="text-[0.5rem] text-gray-400">🏆 BTC: $138k · ETH: $5.4k</div>
                             </div>
                         </div>
                     </div>
@@ -440,7 +440,7 @@
         </div>
     </section>
 
-    <!-- Modal de previsualización (con pestañas para ambos productos en español) -->
+    <!-- Modal de previsualización (con pestañas para todos los productos) -->
     <div x-show="previewModal" x-transition class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" @click.self="previewModal=false" style="display:none">
         <div class="bg-white border border-neutral-200 rounded-xl w-full max-w-6xl max-h-[90vh] overflow-auto shadow-xl">
             <!-- Cabecera del modal -->
@@ -450,22 +450,22 @@
                     <div class="flex items-center gap-2 mt-1">
                         <span x-show="selectedProduct===0 || selectedProduct===1" class="product-badge es">🇪🇸 Español</span>
                         <span x-show="selectedProduct===2 || selectedProduct===3" class="product-badge en">🇺🇸 English</span>
-                        <span class="text-[0.6rem] text-gray-400">8 hojas · Dashboard completo</span>
+                        <span class="text-[0.6rem] text-gray-400" x-text="selectedProduct===0 ? '8 hojas · Dashboard completo' : selectedProduct===1 ? '6 hojas · Acciones · ETFs · Crypto' : selectedProduct===2 ? '6 sheets · Multi-platform · Up to 30 accounts' : '6 sheets · Stocks · ETFs · Crypto'"></span>
                     </div>
                 </div>
                 <button @click="previewModal=false" class="p-1 text-gray-500 hover:text-gray-900">✕</button>
             </div>
 
-            <!-- Pestañas (dinámicas según producto) -->
+            <!-- Pestañas dinámicas según producto -->
             <div class="px-3 pt-2 pb-1 border-b border-neutral-200 flex gap-2">
-                <!-- Pestañas para PLATAFORMAS DE INVERSIONES (restauradas) -->
+                <!-- PLATAFORMAS DE INVERSIONES (ES) -->
                 <template x-if="selectedProduct===0">
                     <div class="flex gap-2">
                         <button @click="activeTab=0" :class="activeTab===0 ? 'bg-accent text-white' : 'bg-neutral-100 text-gray-600'" class="px-3 py-1 rounded text-xs font-medium">🏠 Inicio</button>
                         <button @click="activeTab=1" :class="activeTab===1 ? 'bg-accent text-white' : 'bg-neutral-100 text-gray-600'" class="px-3 py-1 rounded text-xs font-medium">🎯 Metas</button>
                     </div>
                 </template>
-                <!-- Pestañas para PORTAFOLIO DE INVERSIONES (nuevas) -->
+                <!-- PORTAFOLIO DE INVERSIONES (ES) -->
                 <template x-if="selectedProduct===1">
                     <div class="flex gap-2">
                         <button @click="activeTab=0" :class="activeTab===0 ? 'bg-accent text-white' : 'bg-neutral-100 text-gray-600'" class="px-3 py-1 rounded text-xs font-medium">🏠 Inicio</button>
@@ -473,15 +473,27 @@
                         <button @click="activeTab=2" :class="activeTab===2 ? 'bg-accent text-white' : 'bg-neutral-100 text-gray-600'" class="px-3 py-1 rounded text-xs font-medium">🎯 Objetivos</button>
                     </div>
                 </template>
-                <!-- Para productos en inglés, mensaje genérico -->
-                <template x-if="selectedProduct>=2">
-                    <div class="text-xs text-gray-500 py-1">Vista previa genérica</div>
+                <!-- INVESTMENT PLATFORMS TRACKER (EN) - Ahora con datos reales de las capturas -->
+                <template x-if="selectedProduct===2">
+                    <div class="flex gap-2">
+                        <button @click="activeTab=0" :class="activeTab===0 ? 'bg-accent text-white' : 'bg-neutral-100 text-gray-600'" class="px-3 py-1 rounded text-xs font-medium">🏠 Home</button>
+                        <button @click="activeTab=1" :class="activeTab===1 ? 'bg-accent text-white' : 'bg-neutral-100 text-gray-600'" class="px-3 py-1 rounded text-xs font-medium">📊 Analysis</button>
+                        <button @click="activeTab=2" :class="activeTab===2 ? 'bg-accent text-white' : 'bg-neutral-100 text-gray-600'" class="px-3 py-1 rounded text-xs font-medium">🎯 Goals</button>
+                    </div>
+                </template>
+                <!-- INVESTMENT PORTFOLIO (EN) -->
+                <template x-if="selectedProduct===3">
+                    <div class="flex gap-2">
+                        <button @click="activeTab=0" :class="activeTab===0 ? 'bg-accent text-white' : 'bg-neutral-100 text-gray-600'" class="px-3 py-1 rounded text-xs font-medium">🏠 Overview</button>
+                        <button @click="activeTab=1" :class="activeTab===1 ? 'bg-accent text-white' : 'bg-neutral-100 text-gray-600'" class="px-3 py-1 rounded text-xs font-medium">📊 Monthly Report</button>
+                        <button @click="activeTab=2" :class="activeTab===2 ? 'bg-accent text-white' : 'bg-neutral-100 text-gray-600'" class="px-3 py-1 rounded text-xs font-medium">🎯 Goals</button>
+                    </div>
                 </template>
             </div>
 
             <!-- Contenido del modal -->
             <div class="p-4">
-                <!-- PLATAFORMAS DE INVERSIONES - INICIO (restaurado) -->
+                <!-- PLATAFORMAS DE INVERSIONES - INICIO (ES) -->
                 <template x-if="selectedProduct===0 && activeTab===0">
                     <div class="excel-window-dark">
                         <div class="excel-titlebar-dark">
@@ -591,7 +603,7 @@
                     </div>
                 </template>
 
-                <!-- PLATAFORMAS DE INVERSIONES - METAS (restaurado) -->
+                <!-- PLATAFORMAS DE INVERSIONES - METAS (ES) -->
                 <template x-if="selectedProduct===0 && activeTab===1">
                     <div class="excel-window-dark">
                         <div class="excel-titlebar-dark">
@@ -647,7 +659,7 @@
                     </div>
                 </template>
 
-                <!-- PORTAFOLIO DE INVERSIONES - INICIO (nuevo) -->
+                <!-- PORTAFOLIO DE INVERSIONES - INICIO (ES) -->
                 <template x-if="selectedProduct===1 && activeTab===0">
                     <div class="excel-window-dark">
                         <div class="excel-titlebar-dark">
@@ -708,7 +720,7 @@
                     </div>
                 </template>
 
-                <!-- PORTAFOLIO DE INVERSIONES - REPORTE MENSUAL (nuevo) -->
+                <!-- PORTAFOLIO DE INVERSIONES - REPORTE MENSUAL (ES) -->
                 <template x-if="selectedProduct===1 && activeTab===1">
                     <div class="excel-window-dark">
                         <div class="excel-titlebar-dark">
@@ -748,7 +760,7 @@
                     </div>
                 </template>
 
-                <!-- PORTAFOLIO DE INVERSIONES - OBJETIVOS (nuevo) -->
+                <!-- PORTAFOLIO DE INVERSIONES - OBJETIVOS (ES) -->
                 <template x-if="selectedProduct===1 && activeTab===2">
                     <div class="excel-window-dark">
                         <div class="excel-titlebar-dark">
@@ -781,15 +793,346 @@
                     </div>
                 </template>
 
-                <!-- Productos en inglés (genérico) -->
-                <template x-if="selectedProduct>=2">
+                <!-- INVESTMENT PLATFORMS TRACKER - HOME (EN) - Actualizado con datos de capturas -->
+                <template x-if="selectedProduct===2 && activeTab===0">
                     <div class="excel-window-dark">
                         <div class="excel-titlebar-dark">
-                            <span class="text-gray-300 text-xs" x-text="selectedProduct===2 ? 'Investment Platforms Tracker.xlsx' : 'Investment Portfolio.xlsx'"></span>
+                            <span class="text-gray-300 text-xs">Investment Platforms Tracker.xlsx - Home</span>
                         </div>
-                        <div class="excel-body-dark p-8 text-center text-gray-400">
-                            Vista previa completa disponible en la plantilla real.<br>
-                            <span class="text-xs">Aquí se mostrarían todas las hojas con datos dinámicos.</span>
+                        <div class="excel-body-dark p-3">
+                            <div class="text-sm font-semibold text-gray-200 mb-2">PORTAFOLIO DE INVERSIONES · Mexico · Real-time Dashboard</div>
+                            <div class="grid grid-cols-5 gap-1 mb-2">
+                                <div class="kpi-excel"><div class="kpi-label">💼 TOTAL VALUE</div><div class="kpi-val">$1,607,053</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">📈 RETURNS</div><div class="kpi-val negative">-$16,942</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">📊 RETURN %</div><div class="kpi-val negative">-1.04%</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">💰 DEPOSITED</div><div class="kpi-val">$140</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">📤 WITHDRAWALS</div><div class="kpi-val">$1,200</div></div>
+                            </div>
+                            <div class="grid grid-cols-5 gap-1 mb-3">
+                                <div class="kpi-excel"><div class="kpi-label">🏦 INITIAL INV.</div><div class="kpi-val">$1,625,054</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">🔢 TRANSACTIONS</div><div class="kpi-val">19</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">🏆 TOP PLATFORM</div><div class="kpi-val">FIDELITY</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">📉 EXPENSES</div><div class="kpi-val">$0</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">💹 NET GAIN</div><div class="kpi-val negative">-$16,942</div></div>
+                            </div>
+
+                            <div class="text-xs font-semibold text-gray-300 mb-1">📋 PLATFORM SUMMARY · All (18)</div>
+                            <div class="grid grid-cols-7 gap-[1px] bg-gray-700 text-[0.55rem] mb-4">
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">PLATFORM</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">TYPE</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">BALANCE</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">% PORT.</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">WITHDRAW.</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">CONCENT.</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">VARIATION</div>
+
+                                <div class="bg-gray-900 p-1 font-semibold">FIDELITY</div><div class="bg-gray-900 p-1">BROKERAGE</div><div class="bg-gray-900 p-1">$535,579</div><div class="bg-gray-900 p-1">33.3%</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">-$4,578</div><div class="bg-gray-900 p-1 negative">$(22,889)</div>
+                                <div class="bg-gray-900 p-1 font-semibold">SOFI</div><div class="bg-gray-900 p-1">BANK</div><div class="bg-gray-900 p-1">$172,760</div><div class="bg-gray-900 p-1">10.8%</div><div class="bg-gray-900 p-1">$1,200</div><div class="bg-gray-900 p-1">Moderate</div><div class="bg-gray-900 p-1 positive">$1,324</div>
+                                <div class="bg-gray-900 p-1 font-semibold">CAPITAL ONE 360</div><div class="bg-gray-900 p-1">ONLINE BANK</div><div class="bg-gray-900 p-1">$160,644</div><div class="bg-gray-900 p-1">10.0%</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">Low</div><div class="bg-gray-900 p-1 positive">$1,122</div>
+                                <div class="bg-gray-900 p-1 font-semibold">ALLY BANK</div><div class="bg-gray-900 p-1">ONLINE BANK</div><div class="bg-gray-900 p-1">$151,492</div><div class="bg-gray-900 p-1">9.4%</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">Low</div><div class="bg-gray-900 p-1 positive">$92</div>
+                                <div class="bg-gray-900 p-1 font-semibold">BETTERMENT</div><div class="bg-gray-900 p-1">CASH RESERVE</div><div class="bg-gray-900 p-1">$129,827</div><div class="bg-gray-900 p-1">8.1%</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">Low</div><div class="bg-gray-900 p-1 positive">$1,347</div>
+                                <div class="bg-gray-900 p-1 font-semibold">WEALTHFRONT</div><div class="bg-gray-900 p-1">CASH ACCOUNT</div><div class="bg-gray-900 p-1">$108,440</div><div class="bg-gray-900 p-1">6.7%</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">Low</div><div class="bg-gray-900 p-1 positive">$1,169</div>
+                                <div class="bg-gray-900 p-1 font-semibold">CHARLES SCHWAB</div><div class="bg-gray-900 p-1">BROKERAGE</div><div class="bg-gray-900 p-1">$87,728</div><div class="bg-gray-900 p-1">5.5%</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">Low</div><div class="bg-gray-900 p-1 positive">$459</div>
+                                <div class="bg-gray-900 p-1 font-semibold">CHIME</div><div class="bg-gray-900 p-1">NEOBANK</div><div class="bg-gray-900 p-1">$49,728</div><div class="bg-gray-900 p-1">3.1%</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">Low</div><div class="bg-gray-900 p-1 positive">$1</div>
+                                <div class="bg-gray-900 p-1 font-semibold">ACORNS</div><div class="bg-gray-900 p-1">ROBO-ADVICE</div><div class="bg-gray-900 p-1">$44,564</div><div class="bg-gray-900 p-1">2.8%</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">Low</div><div class="bg-gray-900 p-1 negative">$(300)</div>
+                                <div class="bg-gray-900 p-1 font-semibold">PAYPAL SAVINGS</div><div class="bg-gray-900 p-1">DIGITAL ACCOUNT</div><div class="bg-gray-900 p-1">$37,651</div><div class="bg-gray-900 p-1">2.2%</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">Low</div><div class="bg-gray-900 p-1 negative">$(1,023)</div>
+                            </div>
+
+                            <div class="text-xs font-semibold text-gray-300 mb-1">📈 PORTFOLIO EVOLUTION</div>
+                            <div class="h-12 bg-gray-800 rounded flex items-end px-1">
+                                <div class="w-1/12 h-4/5 bg-green-400 rounded-t"></div>
+                                <div class="w-1/12 h-3/5 bg-green-300 rounded-t"></div>
+                                <div class="w-1/12 h-2/5 bg-yellow-300 rounded-t"></div>
+                                <div class="w-1/12 h-1/5 bg-red-300 rounded-t"></div>
+                                <div class="w-1/12 h-3/5 bg-green-300 rounded-t"></div>
+                                <div class="w-1/12 h-4/5 bg-green-400 rounded-t"></div>
+                                <div class="w-1/12 h-5/6 bg-green-500 rounded-t"></div>
+                                <div class="w-1/12 h-3/4 bg-green-400 rounded-t"></div>
+                                <div class="w-1/12 h-2/3 bg-green-300 rounded-t"></div>
+                                <div class="w-1/12 h-1/2 bg-yellow-300 rounded-t"></div>
+                                <div class="w-1/12 h-1/3 bg-yellow-200 rounded-t"></div>
+                                <div class="w-1/12 h-1/4 bg-yellow-100 rounded-t"></div>
+                            </div>
+                            <div class="flex justify-between text-[0.5rem] text-gray-400 mt-1">
+                                <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- INVESTMENT PLATFORMS TRACKER - ANALYSIS (EN) - Basado en segunda y tercera captura -->
+                <template x-if="selectedProduct===2 && activeTab===1">
+                    <div class="excel-window-dark">
+                        <div class="excel-titlebar-dark">
+                            <span class="text-gray-300 text-xs">Investment Platforms Tracker.xlsx - Analysis</span>
+                        </div>
+                        <div class="excel-body-dark p-3">
+                            <div class="text-sm font-semibold text-gray-200 mb-2">📊 ANALYSIS · Returns & Balances</div>
+                            
+                            <div class="text-xs font-semibold text-gray-300 mb-1">⚙️ CALCULATION ENGINE · BALANCES BY PLATFORM</div>
+                            <div class="grid grid-cols-10 gap-[1px] bg-gray-700 text-[0.5rem] mb-3">
+                                <div class="bg-gray-800 p-1 text-gray-300">#</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">PLATFORM</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">TYPE</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">INT. BAL.</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">+DEP.</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">+RET.</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">-WITH.</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">TOTAL</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">BALANCE</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">RET%</div>
+
+                                <div class="bg-gray-900 p-1">1</div><div class="bg-gray-900 p-1">SOFI</div><div class="bg-gray-900 p-1">BANK</div><div class="bg-gray-900 p-1">$171,436</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$2,524</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$1,200</div><div class="bg-gray-900 p-1">$172,760</div><div class="bg-gray-900 p-1 positive">1.47%</div>
+                                <div class="bg-gray-900 p-1">2</div><div class="bg-gray-900 p-1">ALLY BANK</div><div class="bg-gray-900 p-1">ONLINE</div><div class="bg-gray-900 p-1">$151,400</div><div class="bg-gray-900 p-1">$140</div><div class="bg-gray-900 p-1 negative">-$48</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$151,492</div><div class="bg-gray-900 p-1 negative">-0.03%</div>
+                                <div class="bg-gray-900 p-1">3</div><div class="bg-gray-900 p-1">WEALTHFRONT</div><div class="bg-gray-900 p-1">CASH ACC</div><div class="bg-gray-900 p-1">$107,271</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$1,169</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$108,440</div><div class="bg-gray-900 p-1 positive">1.09%</div>
+                                <div class="bg-gray-900 p-1">4</div><div class="bg-gray-900 p-1">BETTERMENT</div><div class="bg-gray-900 p-1">CASH RES</div><div class="bg-gray-900 p-1">$128,480</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$1,347</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$129,827</div><div class="bg-gray-900 p-1 positive">1.05%</div>
+                                <div class="bg-gray-900 p-1">5</div><div class="bg-gray-900 p-1">CAPITAL ONE</div><div class="bg-gray-900 p-1">ONLINE</div><div class="bg-gray-900 p-1">$159,522</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$1,122</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$160,644</div><div class="bg-gray-900 p-1 positive">0.70%</div>
+                                <div class="bg-gray-900 p-1">6</div><div class="bg-gray-900 p-1">PAYPAL</div><div class="bg-gray-900 p-1">DIGITAL</div><div class="bg-gray-900 p-1">$38,674</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1 negative">-$1,023</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$37,651</div><div class="bg-gray-900 p-1 negative">-2.65%</div>
+                                <div class="bg-gray-900 p-1">7</div><div class="bg-gray-900 p-1">CHIME</div><div class="bg-gray-900 p-1">NEOBANK</div><div class="bg-gray-900 p-1">$49,727</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$1</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$49,728</div><div class="bg-gray-900 p-1">0.00%</div>
+                                <div class="bg-gray-900 p-1">9</div><div class="bg-gray-900 p-1">FIDELITY</div><div class="bg-gray-900 p-1">BROKERAGE</div><div class="bg-gray-900 p-1">$558,468</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1 negative">-$22,889</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$535,579</div><div class="bg-gray-900 p-1 negative">-4.10%</div>
+                                <div class="bg-gray-900 p-1">10</div><div class="bg-gray-900 p-1">SCHWAB</div><div class="bg-gray-900 p-1">BROKERAGE</div><div class="bg-gray-900 p-1">$87,269</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$459</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$87,728</div><div class="bg-gray-900 p-1 positive">0.53%</div>
+                                <div class="bg-gray-900 p-1">11</div><div class="bg-gray-900 p-1">DISCOVER</div><div class="bg-gray-900 p-1">ONLINE</div><div class="bg-gray-900 p-1">$27,608</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$762</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$28,370</div><div class="bg-gray-900 p-1 positive">2.76%</div>
+                                <div class="bg-gray-900 p-1">13</div><div class="bg-gray-900 p-1">ROBINHOOD</div><div class="bg-gray-900 p-1">TRADING</div><div class="bg-gray-900 p-1">$5,303</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1 negative">-$299</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$5,004</div><div class="bg-gray-900 p-1 negative">-5.65%</div>
+                                <div class="bg-gray-900 p-1">14</div><div class="bg-gray-900 p-1">ACORNS</div><div class="bg-gray-900 p-1">ROBO</div><div class="bg-gray-900 p-1">$44,864</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1 negative">-$300</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$44,564</div><div class="bg-gray-900 p-1 negative">-0.67%</div>
+                            </div>
+
+                            <div class="text-xs font-semibold text-gray-300 mb-1">🔍 ADVANCED KPIs</div>
+                            <div class="grid grid-cols-4 gap-1 mb-2">
+                                <div class="kpi-excel"><div class="kpi-label">📊 AVG. PER PLATFORM</div><div class="kpi-val">$89,281</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">🏆 HIGHEST BALANCE</div><div class="kpi-val">$535,579</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">📉 LOWEST BALANCE</div><div class="kpi-val">$5,004</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">⚠️ AT RISK (>25%)</div><div class="kpi-val">1.0x</div></div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-1">
+                                <div class="kpi-excel"><div class="kpi-label">💵 TOTAL INVESTED</div><div class="kpi-val">$1,607,053</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">📊 DIVERSIFICATION INDEX</div><div class="kpi-val">0.84 ★★★★</div></div>
+                            </div>
+
+                            <div class="text-xs font-semibold text-gray-300 mt-3 mb-1">📊 DISTRIBUTION BY ASSET TYPE</div>
+                            <div class="grid grid-cols-6 gap-[1px] bg-gray-700 text-[0.5rem]">
+                                <div class="bg-gray-800 p-1 text-gray-300">ASSET TYPE</div>
+                                <div class="bg-gray-800 p-1 text-gray-300"># PLAT.</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">BALANCE</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">% PORT.</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">STATUS</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">LIQUIDITY</div>
+                                <div class="bg-gray-900 p-1">Digital Account</div><div class="bg-gray-900 p-1">1</div><div class="bg-gray-900 p-1">$37,651</div><div class="bg-gray-900 p-1">2.3%</div><div class="bg-gray-900 p-1 text-green-400">Saludable</div><div class="bg-gray-900 p-1">$37,651</div>
+                                <div class="bg-gray-900 p-1">Savings/Liquidity</div><div class="bg-gray-900 p-1">2</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">0.0%</div><div class="bg-gray-900 p-1 text-green-400">Saludable</div><div class="bg-gray-900 p-1">$0</div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- INVESTMENT PLATFORMS TRACKER - GOALS (EN) - Basado en cuarta captura -->
+                <template x-if="selectedProduct===2 && activeTab===2">
+                    <div class="excel-window-dark">
+                        <div class="excel-titlebar-dark">
+                            <span class="text-gray-300 text-xs">Investment Platforms Tracker.xlsx - Goals</span>
+                        </div>
+                        <div class="excel-body-dark p-3">
+                            <div class="text-sm font-semibold text-gray-200 mb-3">🎯 FINANCIAL GOALS · Growth projection</div>
+                            
+                            <div class="text-xs font-semibold text-gray-300 mb-1">PORTFOLIO GOALS</div>
+                            <div class="grid grid-cols-7 gap-[1px] bg-gray-700 text-[0.55rem] mb-4">
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">GOAL</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">CURRENT</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">TARGET</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">REMAINING</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">PROGRESS</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">TIMEFRAME</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">STATUS</div>
+
+                                <div class="bg-gray-900 p-1">Conservative</div>
+                                <div class="bg-gray-900 p-1">$1,607,053</div>
+                                <div class="bg-gray-900 p-1">$2,000,000</div>
+                                <div class="bg-gray-900 p-1">$392,947</div>
+                                <div class="bg-gray-900 p-1 text-green-400">80.4%</div>
+                                <div class="bg-gray-900 p-1">5 years</div>
+                                <div class="bg-gray-900 p-1 text-yellow-400">🔥 Almost there</div>
+
+                                <div class="bg-gray-900 p-1">Ambitious</div>
+                                <div class="bg-gray-900 p-1">$1,607,053</div>
+                                <div class="bg-gray-900 p-1">$5,000,000</div>
+                                <div class="bg-gray-900 p-1">$3,392,947</div>
+                                <div class="bg-gray-900 p-1 text-yellow-400">32.1%</div>
+                                <div class="bg-gray-900 p-1">10 years</div>
+                                <div class="bg-gray-900 p-1 text-blue-400">⏳ In progress</div>
+                            </div>
+
+                            <div class="text-xs font-semibold text-gray-300 mb-1">📈 ANNUAL PROJECTION (Base return: 6%)</div>
+                            <div class="grid grid-cols-7 gap-[1px] bg-gray-700 text-[0.55rem] mb-4">
+                                <div class="bg-gray-800 p-1 text-gray-300">YEAR</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">EXPECTED</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">ACTUAL</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">DIFF</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">STATUS</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">GOAL $2M</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">GOAL $5M</div>
+
+                                <div class="bg-gray-900 p-1">Today</div>
+                                <div class="bg-gray-900 p-1">$1,607,053</div>
+                                <div class="bg-gray-900 p-1">$1,607,053</div>
+                                <div class="bg-gray-900 p-1">$392,947</div>
+                                <div class="bg-gray-900 p-1 text-yellow-400">⏳ Pending</div>
+                                <div class="bg-gray-900 p-1">80.4%</div>
+                                <div class="bg-gray-900 p-1">32.1%</div>
+                            </div>
+
+                            <div class="text-xs font-semibold text-gray-300 mb-1">📊 DISTRIBUTION BY INVESTMENT TYPE</div>
+                            <div class="grid grid-cols-5 gap-[1px] bg-gray-700 text-[0.55rem] mb-3">
+                                <div class="bg-gray-800 p-1 text-gray-300">TYPE</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">BALANCE</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">% PORT.</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">PLATFORMS</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">STATUS</div>
+                                <div class="bg-gray-900 p-1">Digital Account</div><div class="bg-gray-900 p-1">$37,651</div><div class="bg-gray-900 p-1">2.3%</div><div class="bg-gray-900 p-1">PAYPAL</div><div class="bg-gray-900 p-1 text-green-400">✓ Logrado</div>
+                                <div class="bg-gray-900 p-1">Savings/Liquidity</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">0.0%</div><div class="bg-gray-900 p-1">—</div><div class="bg-gray-900 p-1 text-green-400">✓ Logrado</div>
+                                <div class="bg-gray-900 p-1 font-semibold">TOTAL</div><div class="bg-gray-900 p-1">$37,651</div><div class="bg-gray-900 p-1">2.3%</div><div class="bg-gray-900 p-1"></div><div class="bg-gray-900 p-1"></div>
+                            </div>
+
+                            <div class="text-xs font-semibold text-gray-300 mb-1">📋 WHAT YOU NEED TO GET THERE</div>
+                            <div class="grid grid-cols-4 gap-[1px] bg-gray-700 text-[0.55rem]">
+                                <div class="bg-gray-800 p-1 text-gray-300">CONCEPT</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">GOAL $2M</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">GOAL $5M</div>
+                                <div class="bg-gray-800 p-1 text-gray-300">NOTES</div>
+                                <div class="bg-gray-900 p-1">Current balance</div><div class="bg-gray-900 p-1">$1,607,053</div><div class="bg-gray-900 p-1">$1,607,053</div><div class="bg-gray-900 p-1">Sum of all platforms</div>
+                                <div class="bg-gray-900 p-1">Growth 6% only</div><div class="bg-gray-900 p-1">$2,150,599</div><div class="bg-gray-900 p-1">$2,877,987</div><div class="bg-gray-900 p-1">If no extra deposits</div>
+                                <div class="bg-gray-900 p-1">Reach with returns only?</div><div class="bg-gray-900 p-1 text-green-400">✓ Yes</div><div class="bg-gray-900 p-1 text-red-400">✗ No</div><div class="bg-gray-900 p-1">Need $2,122,013 more</div>
+                                <div class="bg-gray-900 p-1">Rate needed (no contrib)</div><div class="bg-gray-900 p-1">4.5%</div><div class="bg-gray-900 p-1">12.0%</div><div class="bg-gray-900 p-1">Annual return needed</div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- INVESTMENT PORTFOLIO (EN) - Todo igual que antes -->
+                <template x-if="selectedProduct===3 && activeTab===0">
+                    <div class="excel-window-dark">
+                        <div class="excel-titlebar-dark">
+                            <span class="text-gray-300 text-xs">Investment Portfolio.xlsx - Overview</span>
+                        </div>
+                        <div class="excel-body-dark p-3">
+                            <div class="text-sm font-semibold text-gray-200 mb-2">INVESTMENT PORTFOLIO · Stocks · ETFs · Crypto</div>
+                            <div class="grid grid-cols-4 gap-1 mb-2">
+                                <div class="kpi-excel"><div class="kpi-label">💰 CAPITAL INVESTED</div><div class="kpi-val">$150,890</div><div class="text-[0.45rem] text-gray-500">← what you put in</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">💵 MONEY RECOVERED</div><div class="kpi-val">$2,882</div><div class="text-[0.45rem] text-gray-500">← what you recovered</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">💸 DIVIDENDS</div><div class="kpi-val">$0</div><div class="text-[0.45rem] text-gray-500">← passive income</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">💳 COMMISSIONS</div><div class="kpi-val">$0</div><div class="text-[0.45rem] text-gray-500">← broker costs</div></div>
+                            </div>
+                            <div class="grid grid-cols-4 gap-1 mb-3">
+                                <div class="kpi-excel"><div class="kpi-label">📊 REALIZED P&L</div><div class="kpi-val positive">+$82</div><div class="text-[0.45rem] text-gray-500">← only when selling</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">🔢 TOTAL OPS</div><div class="kpi-val">9</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">🟢 BUY OPS</div><div class="kpi-val">7</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">🔴 SELL OPS</div><div class="kpi-val">2</div></div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">📋 ASSET CLASS SUMMARY</div>
+                            <div class="grid grid-cols-4 gap-[1px] bg-gray-700 text-[0.55rem] mb-3">
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">TYPE</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">PURCHASES ($)</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">SALES ($)</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">DIVIDENDS ($)</div>
+                                <div class="bg-gray-900 p-1">🟢 Stocks</div><div class="bg-gray-900 p-1">$1,890</div><div class="bg-gray-900 p-1">$1,160</div><div class="bg-gray-900 p-1">$0</div>
+                                <div class="bg-gray-900 p-1">🔵 ETFs</div><div class="bg-gray-900 p-1">$5,100</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$0</div>
+                                <div class="bg-gray-900 p-1">🟠 Crypto</div><div class="bg-gray-900 p-1">$143,400</div><div class="bg-gray-900 p-1">$1,722</div><div class="bg-gray-900 p-1">$0</div>
+                                <div class="bg-gray-900 p-1">🟡 Cash/Liquidity</div><div class="bg-gray-900 p-1">$500</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$0</div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">🏦 BROKER SUMMARY</div>
+                            <div class="grid grid-cols-2 gap-[1px] bg-gray-700 text-[0.55rem] mb-3">
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">BROKER</div>
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">PURCHASES ($)</div>
+                                <div class="bg-gray-900 p-1">Interactive Brokers</div><div class="bg-gray-900 p-1">$5,490</div>
+                                <div class="bg-gray-900 p-1">Fidelity</div><div class="bg-gray-900 p-1">$1,500</div>
+                                <div class="bg-gray-900 p-1">Binance</div><div class="bg-gray-900 p-1">$143,400</div>
+                                <div class="bg-gray-900 p-1">Robinhood</div><div class="bg-gray-900 p-1">$500</div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">🕐 LAST 5 TRANSACTIONS</div>
+                            <div class="grid grid-cols-7 gap-[1px] bg-gray-700 text-[0.5rem] mb-3">
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">DATE</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">TICKER</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">TYPE</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">ACTION</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">PRICE</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">TOTAL</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">BROKER</div>
+                                <div class="bg-gray-900 p-1">09/02/26</div><div class="bg-gray-900 p-1">ETH</div><div class="bg-gray-900 p-1">Crypto</div><div class="bg-gray-900 p-1">Sell</div><div class="bg-gray-900 p-1">$1,722</div><div class="bg-gray-900 p-1">$1,722</div><div class="bg-gray-900 p-1">Binance</div>
+                                <div class="bg-gray-900 p-1">08/02/26</div><div class="bg-gray-900 p-1">AMD</div><div class="bg-gray-900 p-1">Stock</div><div class="bg-gray-900 p-1">Sell</div><div class="bg-gray-900 p-1">$290</div><div class="bg-gray-900 p-1">$1,160</div><div class="bg-gray-900 p-1">IB</div>
+                                <div class="bg-gray-900 p-1">07/02/26</div><div class="bg-gray-900 p-1">QQQ</div><div class="bg-gray-900 p-1">ETF</div><div class="bg-gray-900 p-1">Buy</div><div class="bg-gray-900 p-1">$600</div><div class="bg-gray-900 p-1">$3,600</div><div class="bg-gray-900 p-1">IB</div>
+                                <div class="bg-gray-900 p-1">06/02/26</div><div class="bg-gray-900 p-1">PLTR</div><div class="bg-gray-900 p-1">Stock</div><div class="bg-gray-900 p-1">Buy</div><div class="bg-gray-900 p-1">$130</div><div class="bg-gray-900 p-1">$390</div><div class="bg-gray-900 p-1">IB</div>
+                                <div class="bg-gray-900 p-1">05/02/26</div><div class="bg-gray-900 p-1">ETH</div><div class="bg-gray-900 p-1">Crypto</div><div class="bg-gray-900 p-1">Buy</div><div class="bg-gray-900 p-1">$1,800</div><div class="bg-gray-900 p-1">$5,400</div><div class="bg-gray-900 p-1">Binance</div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">🏆 TOP 5 ASSETS</div>
+                            <div class="grid grid-cols-8 gap-[1px] bg-gray-700 text-[0.5rem]">
+                                <div class="bg-gray-800 p-1 text-gray-300 font-medium">TICKER</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">TYPE</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">INVESTED</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">RECOVERED</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">P&L REAL</div><div class="bg-gray-800 p-1 text-gray-300 font-medium"># OPS</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">STATUS</div><div class="bg-gray-800 p-1 text-gray-300 font-medium">% PORT.</div>
+                                <div class="bg-gray-900 p-1">BTC</div><div class="bg-gray-900 p-1">Crypto</div><div class="bg-gray-900 p-1">$138,000</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">—</div><div class="bg-gray-900 p-1">1</div><div class="bg-gray-900 p-1 text-green-400">Open</div><div class="bg-gray-900 p-1">91.5%</div>
+                                <div class="bg-gray-900 p-1">ETH</div><div class="bg-gray-900 p-1">Crypto</div><div class="bg-gray-900 p-1">$5,400</div><div class="bg-gray-900 p-1">$1,722</div><div class="bg-gray-900 p-1 negative">-$78</div><div class="bg-gray-900 p-1">2</div><div class="bg-gray-900 p-1 text-green-400">Open</div><div class="bg-gray-900 p-1">3.6%</div>
+                                <div class="bg-gray-900 p-1">QQQ</div><div class="bg-gray-900 p-1">ETF</div><div class="bg-gray-900 p-1">$3,600</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">—</div><div class="bg-gray-900 p-1">1</div><div class="bg-gray-900 p-1 text-green-400">Open</div><div class="bg-gray-900 p-1">2.4%</div>
+                                <div class="bg-gray-900 p-1">AMD</div><div class="bg-gray-900 p-1">Stock</div><div class="bg-gray-900 p-1">$1,500</div><div class="bg-gray-900 p-1">$1,160</div><div class="bg-gray-900 p-1 positive">+$160</div><div class="bg-gray-900 p-1">2</div><div class="bg-gray-900 p-1 text-green-400">Open</div><div class="bg-gray-900 p-1">1.0%</div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <template x-if="selectedProduct===3 && activeTab===1">
+                    <div class="excel-window-dark">
+                        <div class="excel-titlebar-dark">
+                            <span class="text-gray-300 text-xs">Investment Portfolio.xlsx - Monthly Report</span>
+                        </div>
+                        <div class="excel-body-dark p-3">
+                            <div class="text-sm font-semibold text-gray-200 mb-2">📊 MONTHLY REPORT · February 2026</div>
+                            <div class="grid grid-cols-4 gap-1 mb-3">
+                                <div class="kpi-excel"><div class="kpi-label">💰 PURCHASES</div><div class="kpi-val">$150,890</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">📤 SALES</div><div class="kpi-val">$2,882</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">💸 DIVIDENDS</div><div class="kpi-val">$0</div></div>
+                                <div class="kpi-excel"><div class="kpi-label">🔢 OPERATIONS</div><div class="kpi-val">9</div></div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">📊 VS PREVIOUS MONTH</div>
+                            <div class="grid grid-cols-6 gap-[1px] bg-gray-700 text-[0.5rem] mb-3">
+                                <div class="bg-gray-800 p-1 text-gray-300">METRIC</div><div class="bg-gray-800 p-1 text-gray-300">CURRENT MONTH</div><div class="bg-gray-800 p-1 text-gray-300">PREVIOUS MONTH</div><div class="bg-gray-800 p-1 text-gray-300">DIFF ($)</div><div class="bg-gray-800 p-1 text-gray-300">DIFF %</div><div class="bg-gray-800 p-1 text-gray-300">TREND</div>
+                                <div class="bg-gray-900 p-1">Purchases</div><div class="bg-gray-900 p-1">$150,890</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1 positive">+$150,890</div><div class="bg-gray-900 p-1">—</div><div class="bg-gray-900 p-1 text-green-400">🟢 Up</div>
+                                <div class="bg-gray-900 p-1">Sales</div><div class="bg-gray-900 p-1">$2,882</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1 positive">+$2,882</div><div class="bg-gray-900 p-1">—</div><div class="bg-gray-900 p-1 text-green-400">🟢 Up</div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">🔍 BREAKDOWN BY ASSET TYPE</div>
+                            <div class="grid grid-cols-6 gap-[1px] bg-gray-700 text-[0.5rem] mb-3">
+                                <div class="bg-gray-800 p-1 text-gray-300">TYPE</div><div class="bg-gray-800 p-1 text-gray-300">PURCHASES</div><div class="bg-gray-800 p-1 text-gray-300">SALES</div><div class="bg-gray-800 p-1 text-gray-300">DIV.</div><div class="bg-gray-800 p-1 text-gray-300"># OPS</div><div class="bg-gray-800 p-1 text-gray-300">% ACTIVITY</div>
+                                <div class="bg-gray-900 p-1">Stocks</div><div class="bg-gray-900 p-1">$1,890</div><div class="bg-gray-900 p-1">$1,160</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">4</div><div class="bg-gray-900 p-1">44.4%</div>
+                                <div class="bg-gray-900 p-1">ETFs</div><div class="bg-gray-900 p-1">$5,100</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">2</div><div class="bg-gray-900 p-1">22.2%</div>
+                                <div class="bg-gray-900 p-1">Crypto</div><div class="bg-gray-900 p-1">$143,400</div><div class="bg-gray-900 p-1">$1,722</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1">3</div><div class="bg-gray-900 p-1">33.3%</div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">📋 FEBRUARY 2026 TRANSACTIONS</div>
+                            <div class="grid grid-cols-6 gap-[1px] bg-gray-700 text-[0.5rem]">
+                                <div class="bg-gray-800 p-1 text-gray-300">DATE</div><div class="bg-gray-800 p-1 text-gray-300">TICKER</div><div class="bg-gray-800 p-1 text-gray-300">TYPE</div><div class="bg-gray-800 p-1 text-gray-300">ACTION</div><div class="bg-gray-800 p-1 text-gray-300">QTY</div><div class="bg-gray-800 p-1 text-gray-300">TOTAL</div>
+                                <div class="bg-gray-900 p-1">01/02</div><div class="bg-gray-900 p-1">AMD</div><div class="bg-gray-900 p-1">Stock</div><div class="bg-gray-900 p-1">Buy</div><div class="bg-gray-900 p-1">6</div><div class="bg-gray-900 p-1">$1,500</div>
+                                <div class="bg-gray-900 p-1">02/02</div><div class="bg-gray-900 p-1">VOO</div><div class="bg-gray-900 p-1">ETF</div><div class="bg-gray-900 p-1">Buy</div><div class="bg-gray-900 p-1">5</div><div class="bg-gray-900 p-1">$1,500</div>
+                                <div class="bg-gray-900 p-1">03/02</div><div class="bg-gray-900 p-1">BTC</div><div class="bg-gray-900 p-1">Crypto</div><div class="bg-gray-900 p-1">Buy</div><div class="bg-gray-900 p-1">2</div><div class="bg-gray-900 p-1">$138,000</div>
+                                <div class="bg-gray-900 p-1">04/02</div><div class="bg-gray-900 p-1">USD</div><div class="bg-gray-900 p-1">Cash</div><div class="bg-gray-900 p-1">Buy</div><div class="bg-gray-900 p-1">500</div><div class="bg-gray-900 p-1">$500</div>
+                                <div class="bg-gray-900 p-1">05/02</div><div class="bg-gray-900 p-1">ETH</div><div class="bg-gray-900 p-1">Crypto</div><div class="bg-gray-900 p-1">Buy</div><div class="bg-gray-900 p-1">3</div><div class="bg-gray-900 p-1">$5,400</div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <template x-if="selectedProduct===3 && activeTab===2">
+                    <div class="excel-window-dark">
+                        <div class="excel-titlebar-dark">
+                            <span class="text-gray-300 text-xs">Investment Portfolio.xlsx - Goals</span>
+                        </div>
+                        <div class="excel-body-dark p-3">
+                            <div class="text-sm font-semibold text-gray-200 mb-2">🎯 FINANCIAL GOALS</div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">MAIN GOALS</div>
+                            <div class="grid grid-cols-7 gap-[1px] bg-gray-700 text-[0.55rem] mb-3">
+                                <div class="bg-gray-800 p-1 text-gray-300">GOAL</div><div class="bg-gray-800 p-1 text-gray-300">CLASS</div><div class="bg-gray-800 p-1 text-gray-300">TARGET ($)</div><div class="bg-gray-800 p-1 text-gray-300">CURRENT ($)</div><div class="bg-gray-800 p-1 text-gray-300">% PROGRESS</div><div class="bg-gray-800 p-1 text-gray-300">DEADLINE</div><div class="bg-gray-800 p-1 text-gray-300">STATUS</div>
+                                <div class="bg-gray-900 p-1">Portfolio $100K</div><div class="bg-gray-900 p-1">All</div><div class="bg-gray-900 p-1">$100,000</div><div class="bg-gray-900 p-1">$150,890</div><div class="bg-gray-900 p-1 text-green-400">150.9%</div><div class="bg-gray-900 p-1">2027</div><div class="bg-gray-900 p-1 text-green-400">🏆 ACHIEVED</div>
+                                <div class="bg-gray-900 p-1">Stocks $50K</div><div class="bg-gray-900 p-1">Stock</div><div class="bg-gray-900 p-1">$50,000</div><div class="bg-gray-900 p-1">$1,890</div><div class="bg-gray-900 p-1 text-yellow-400">3.8%</div><div class="bg-gray-900 p-1">2026</div><div class="bg-gray-900 p-1 text-blue-400">🌱 Starting</div>
+                                <div class="bg-gray-900 p-1">ETFs $30K</div><div class="bg-gray-900 p-1">ETF</div><div class="bg-gray-900 p-1">$30,000</div><div class="bg-gray-900 p-1">$5,100</div><div class="bg-gray-900 p-1 text-yellow-400">17.0%</div><div class="bg-gray-900 p-1">2026</div><div class="bg-gray-900 p-1 text-blue-400">🌱 Starting</div>
+                                <div class="bg-gray-900 p-1">Crypto $20K</div><div class="bg-gray-900 p-1">Crypto</div><div class="bg-gray-900 p-1">$20,000</div><div class="bg-gray-900 p-1">$143,400</div><div class="bg-gray-900 p-1 text-green-400">717%</div><div class="bg-gray-900 p-1">2027</div><div class="bg-gray-900 p-1 text-green-400">🏆 ACHIEVED</div>
+                                <div class="bg-gray-900 p-1">Dividends $2K</div><div class="bg-gray-900 p-1">Stock</div><div class="bg-gray-900 p-1">$2,000</div><div class="bg-gray-900 p-1">$0</div><div class="bg-gray-900 p-1 text-red-400">0%</div><div class="bg-gray-900 p-1">2026</div><div class="bg-gray-900 p-1 text-blue-400">💤 Not started</div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">📊 VISUAL PROGRESS</div>
+                            <div class="space-y-1 mb-3">
+                                <div><span class="text-[0.55rem] text-gray-400">Portfolio $100K:</span> <span class="text-green-400">████████████████████ 150.9%</span></div>
+                                <div><span class="text-[0.55rem] text-gray-400">Stocks $50K:</span> <span class="text-yellow-400">█░░░░░░░░░░░░░░░░░░░ 3.8%</span></div>
+                                <div><span class="text-[0.55rem] text-gray-400">ETFs $30K:</span> <span class="text-yellow-400">███░░░░░░░░░░░░░░░░░ 17.0%</span></div>
+                                <div><span class="text-[0.55rem] text-gray-400">Crypto $20K:</span> <span class="text-green-400">████████████████████ 717%</span></div>
+                            </div>
+                            <div class="text-xs font-semibold text-gray-300 mb-1">📈 vs S&P500</div>
+                            <div class="grid grid-cols-4 gap-[1px] bg-gray-700 text-[0.55rem]">
+                                <div class="bg-gray-800 p-1 text-gray-300">METRIC</div><div class="bg-gray-800 p-1 text-gray-300">YOUR PORTFOLIO</div><div class="bg-gray-800 p-1 text-gray-300">S&P500</div><div class="bg-gray-800 p-1 text-gray-300">BEATING?</div>
+                                <div class="bg-gray-900 p-1">Total return</div><div class="bg-gray-900 p-1">2.93%</div><div class="bg-gray-900 p-1">10.0%</div><div class="bg-gray-900 p-1 text-red-400">🔴 Below</div>
+                            </div>
                         </div>
                     </div>
                 </template>
