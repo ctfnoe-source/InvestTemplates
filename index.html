@@ -505,26 +505,45 @@ section{padding:100px 0;position:relative;z-index:2}
 .cards-grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(380px,1fr));
-  gap:1px;
-  background:var(--wire);
-  border:1px solid var(--wire);
-  border-radius:4px;overflow:hidden;
+  gap:16px;
 }
 
 .pcard{
   background:var(--ink-2);
   padding:32px;
-  transition:background .3s;
+  transition:background .3s, border-color .3s, box-shadow .3s;
   position:relative;
   overflow:hidden;
+  border-radius:4px;
+  border:1px solid var(--wire);
 }
+/* top accent line always visible, color per theme */
 .pcard::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--gold-3),transparent);
-  opacity:0;transition:opacity .4s;
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  transition:opacity .3s;
 }
-.pcard:hover{background:var(--ink-3)}
-.pcard:hover::before{opacity:1}
+.pcard.theme-dark::before  { background:linear-gradient(90deg,transparent,rgba(180,180,200,.5),transparent); }
+.pcard.theme-navy::before  { background:linear-gradient(90deg,transparent,rgba(77,158,255,.7),transparent); }
+.pcard.theme-light::before { background:linear-gradient(90deg,transparent,rgba(200,200,210,.6),transparent); }
+
+/* corner dot — instant visual theme indicator */
+.pcard::after{
+  content:'';position:absolute;top:14px;right:14px;
+  width:8px;height:8px;border-radius:50%;
+  border:1.5px solid;
+}
+.pcard.theme-dark::after  { border-color:rgba(160,170,190,.4); background:rgba(100,110,130,.25); }
+.pcard.theme-navy::after  { border-color:rgba(77,158,255,.5); background:rgba(77,158,255,.15); }
+.pcard.theme-light::after { border-color:rgba(220,220,228,.5); background:rgba(220,220,228,.15); }
+
+.pcard:hover{ background:var(--ink-3); box-shadow:0 4px 32px rgba(0,0,0,.4); }
+.pcard.theme-dark         { background:var(--ink-2); }
+.pcard.theme-navy         { background:#060e1c; border-color:rgba(26,56,120,.5); }
+.pcard.theme-light        { background:#f4f6fa; border-color:rgba(200,208,220,.6); }
+
+.pcard.theme-dark:hover  { border-color:rgba(160,170,190,.35); }
+.pcard.theme-navy:hover  { border-color:rgba(77,158,255,.45); box-shadow:0 4px 32px rgba(20,50,110,.35); background:#071020; }
+.pcard.theme-light:hover { border-color:rgba(180,190,210,.7); background:#eef1f6; }
 
 .pcard-badges{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
 .badge{
@@ -1124,7 +1143,7 @@ footer{
     <div class="cards-grid sr">
 
       <!-- 1 · Plataformas ES Dark -->
-      <div class="pcard" x-show="filter==='all'||filter==='platform'||filter==='spanish'">
+      <div class="pcard theme-dark" x-show="filter==='all'||filter==='platform'||filter==='spanish'">
         <div class="pcard-badges"><span class="badge b-es">🇪🇸 Español</span><span class="badge b-dark">⬛ Dark</span></div>
         <!-- mini excel -->
         <div class="excel-mini" style="background:#080d18;border:1px solid rgba(26,56,80,.6);border-radius:6px;overflow:hidden">
@@ -1172,7 +1191,7 @@ footer{
       </div>
 
       <!-- 2 · Plataformas ES Navy -->
-      <div class="pcard" style="background:var(--navy)" x-show="filter==='all'||filter==='platform'||filter==='spanish'">
+      <div class="pcard theme-navy" x-show="filter==='all'||filter==='platform'||filter==='spanish'">
         <div class="pcard-badges"><span class="badge b-es">🇪🇸 Español</span><span class="badge b-navy">🔵 Navy</span></div>
         <div class="excel-mini" style="background:#040d1e;border:1px solid rgba(26,56,120,.4);border-radius:6px;overflow:hidden">
           <div style="background:linear-gradient(90deg,#060f22,#0b1838);padding:7px 10px;display:flex;align-items:center;gap:5px;border-bottom:1px solid rgba(26,56,120,.4)">
@@ -1217,7 +1236,7 @@ footer{
       </div>
 
       <!-- 3 · Portafolio ES Dark -->
-      <div class="pcard" x-show="filter==='all'||filter==='portfolio'||filter==='spanish'">
+      <div class="pcard theme-dark" x-show="filter==='all'||filter==='portfolio'||filter==='spanish'">
         <div class="pcard-badges"><span class="badge b-es">🇪🇸 Español</span><span class="badge b-dark">⬛ Dark</span></div>
         <div class="excel-mini" style="background:#080d18;border:1px solid rgba(26,56,80,.6);border-radius:6px;overflow:hidden">
           <div style="background:linear-gradient(90deg,#0c1524,#0f1d30);padding:7px 10px;display:flex;align-items:center;gap:5px;border-bottom:1px solid rgba(26,56,80,.6)">
@@ -1259,7 +1278,7 @@ footer{
       </div>
 
       <!-- 4 · Investment Platforms EN Dark -->
-      <div class="pcard" x-show="filter==='all'||filter==='platform'||filter==='english'">
+      <div class="pcard theme-dark" x-show="filter==='all'||filter==='platform'||filter==='english'">
         <div class="pcard-badges"><span class="badge b-en">🇺🇸 English</span><span class="badge b-dark">⬛ Dark</span></div>
         <div class="excel-mini" style="background:#080d18;border:1px solid rgba(26,56,80,.6);border-radius:6px;overflow:hidden">
           <div style="background:linear-gradient(90deg,#0c1524,#0f1d30);padding:7px 10px;display:flex;align-items:center;gap:5px;border-bottom:1px solid rgba(26,56,80,.6)">
@@ -1303,7 +1322,7 @@ footer{
       </div>
 
       <!-- 5 · Investment Platforms EN Navy -->
-      <div class="pcard" style="background:var(--navy)" x-show="filter==='all'||filter==='platform'||filter==='english'">
+      <div class="pcard theme-navy" x-show="filter==='all'||filter==='platform'||filter==='english'">
         <div class="pcard-badges"><span class="badge b-en">🇺🇸 English</span><span class="badge b-navy">🔵 Navy</span></div>
         <div class="excel-mini" style="background:#040d1e;border:1px solid rgba(26,56,120,.4);border-radius:6px;overflow:hidden">
           <div style="background:linear-gradient(90deg,#060f22,#0b1838);padding:7px 10px;display:flex;align-items:center;gap:5px;border-bottom:1px solid rgba(26,56,120,.4)">
@@ -1346,7 +1365,7 @@ footer{
       </div>
 
       <!-- 6 · Investment Platforms EN Light -->
-      <div class="pcard" style="background:#f5f7fa" x-show="filter==='all'||filter==='platform'||filter==='english'">
+      <div class="pcard theme-light" x-show="filter==='all'||filter==='platform'||filter==='english'">
         <div class="pcard-badges"><span class="badge b-en">🇺🇸 English</span><span class="badge b-light" style="color:#475569;border-color:#cbd5e1">⬜ Light</span></div>
         <div class="excel-mini" style="background:#fafbfc;border:1px solid #dde4ec;border-radius:6px;overflow:hidden">
           <div style="background:linear-gradient(90deg,#edf1f7,#e4e9f2);padding:7px 10px;display:flex;align-items:center;gap:5px;border-bottom:1px solid #dde4ec">
@@ -1389,7 +1408,7 @@ footer{
       </div>
 
       <!-- 7 · Investment Portfolio EN Dark -->
-      <div class="pcard" x-show="filter==='all'||filter==='portfolio'||filter==='english'">
+      <div class="pcard theme-dark" x-show="filter==='all'||filter==='portfolio'||filter==='english'">
         <div class="pcard-badges"><span class="badge b-en">🇺🇸 English</span><span class="badge b-dark">⬛ Dark</span></div>
         <div class="excel-mini" style="background:#080d18;border:1px solid rgba(26,56,80,.6);border-radius:6px;overflow:hidden">
           <div style="background:linear-gradient(90deg,#0c1524,#0f1d30);padding:7px 10px;display:flex;align-items:center;gap:5px;border-bottom:1px solid rgba(26,56,80,.6)">
@@ -1432,7 +1451,7 @@ footer{
       </div>
 
       <!-- 8 · Investment Portfolio EN Navy -->
-      <div class="pcard" style="background:var(--navy)" x-show="filter==='all'||filter==='portfolio'||filter==='english'">
+      <div class="pcard theme-navy" x-show="filter==='all'||filter==='portfolio'||filter==='english'">
         <div class="pcard-badges"><span class="badge b-en">🇺🇸 English</span><span class="badge b-navy">🔵 Navy</span></div>
         <div class="excel-mini" style="background:#040d1e;border:1px solid rgba(26,56,120,.4);border-radius:6px;overflow:hidden">
           <div style="background:linear-gradient(90deg,#060f22,#0b1838);padding:7px 10px;display:flex;align-items:center;gap:5px;border-bottom:1px solid rgba(26,56,120,.4)">
